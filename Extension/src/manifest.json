@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+
+	"name": "XTVAutomate",
+  "version": "1.0",
+
+  "permissions": [
+    "scripting", "activeTab", "tabs"
+  ],
+
+  "host_permissions": [
+    "https://ignitetv.rogers.com/*",
+    "http://localhost/*"
+  ],
+
+  "web_accessible_resources": [{
+    "matches": ["https://ignitetv.rogers.com/*"],
+    "resources": [
+      "task/runner.mjs", "task/actions_base.mjs", "task/actions.mjs"
+    ]
+  }],
+
+  "externally_connectable": {
+    "ids": ["*"],
+    "matches": [
+      "https://ignitetv.rogers.com/*"
+      // "<all_urls>"
+    ]
+  },
+
+  "content_scripts": [{
+    "matches": ["https://ignitetv.rogers.com/*"],
+    "js": ["content.js"]
+  }],
+
+  "action": {
+    "default_popup": "popup.html"
+  }
+}

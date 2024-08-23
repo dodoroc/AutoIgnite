@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <body>
+
+<script type="module">
+const a = {
+  a: 'a',
+  b: 'b',
+  c: 'c',
+  d: 'd',
+  e: 'e',
+};
+
+let r1 = {};
+let r2 = {};
+let r3 = {};
+let r4 = {};
+let t;
+const lim = 1e5;
+
+
+t = -performance.now();
+for (let i = 0; i < lim; i++) {
+  r1 = Object.assign({}, a);
+}
+console.log('r1 ', Math.round(t + performance.now()));
+
+
+t = -performance.now();
+for (let i = 0; i < lim; i++) {
+  for (let k in a) {
+    r2[k] = a[k];
+  }
+}
+console.log('r2 ', Math.round(t + performance.now()));
+
+
+t = -performance.now();
+for (let i = 0; i < lim; i++) {
+  r3 = JSON.parse(JSON.stringify(a));
+}
+console.log('r3 ', Math.round(t + performance.now()));
+
+
+t = -performance.now();
+for (let i = 0; i < lim; i++) {
+  r4 = structuredClone(a);
+}
+console.log('r4 ', Math.round(t + performance.now()));
+
+
+console.dir(r1);
+console.dir(r2);
+console.dir(r3);
+console.dir(r4);
+
+    </script>
+  </body>
+</html>

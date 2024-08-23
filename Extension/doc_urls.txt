@@ -1,0 +1,24 @@
+https://xtvapi.cloudtv.comcast.net/
+https://xtvapi.cloudtv.comcast.net/unauth/
+
+
+https://developer.comcast.com/docs/firebolt-apis/1.0.0/core/intents/schemas#programentity
+https://developer.comcast.com/docs/firebolt-apis/1.0.0/core/intents/schemas#tvseriesentity
+https://developer.comcast.com/docs/firebolt-apis/1.0.0/core/Entertainment/schemas#programtype
+
+https://github.com/rdkcentral/firebolt/blob/main/apis/1.1.0/core/Entertainment/schemas/index.md
+https://github.com/rdkcentral/firebolt/blob/main/apis/1.0.0/core/Entertainment/schemas/index.md#entityinfo
+
+https://github.com/rdkcentral/firebolt-apis/blob/main/requirements/specifications/entities/programs.md
+https://github.com/rdkcentral/firebolt-schemas/blob/main/src/schemas/types.json
+https://github.com/rdkcentral/firebolt-apis/blob/main/openrpc/discovery.json
+https://github.com/rdkcentral/firebolt-apis/blob/main/src/schemas/entertainment.json
+
+
+
+
+https://xtvapi.cloudtv.comcast.net/ GET:: returns object with urls and parameters for the various functions that we can perform
+https://xtvapi.cloudtv.comcast.net/recordings/completedWithoutResumePoints/ GET:: Gets the groups of the series recordings as well as the one offs
+
+
+https://epguides.com/common/exportToCSVmaze.asp?maze=916

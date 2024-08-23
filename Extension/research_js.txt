@@ -1,0 +1,797 @@
+document.querySelector('tv-app').__data__.entityRecordings.entities[1].resource.getParent().getBase()
+let aa = document.querySelector('tv-app').__data__.watchedPrograms
+let aa = document.querySelector('tv-app')
+
+async function readData(url) {
+  const response = await fetch(url);
+  const reader = response.body.getReader();
+  let str = '';
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) {
+      // Do something with last chunk of data then exit reader
+      str = String.fromCharCode.apply(null, value);
+      console.log(str);
+      return;
+    }
+    // Otherwise do something here to process current chunk
+    str = String.fromCharCode.apply(null, value);
+    console.log(str);
+  }
+};
+readData('/watchedprograms/');
+
+
+async function watched(url) {
+  const response = await fetch(url);
+  const reader = response.body.getReader();
+  for await (const chunk of reader.read()) {
+    console.log(chunk);
+  }
+}
+watched('/watchedprograms/');
+
+
+
+
+/*
+GET /watchedprograms/ HTTP/1.1
+Accept: application/comcast+hal+json, application/json, * /*; q=0.01
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Authorization: CCP PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxuczI6eGNhbC1hdXRoLW1lc3NhZ2UgeG1sbnM6bnMyPSJ1cm46Y2NwOmRldmlkOmRybSIgdmVyc2lvbj0iMyI+DQogIDxhdHRyaWJ1dGUga2V5PSJtZXNzYWdlOnByb3RlY3Rpb24iPk1JSVNIakNCNlF3UmJXVnpjMkZuWlVGMGRISnBZblYwWlhNd2dkTXdEQXdIZG1WeWMybHZiZ3dCTXpBZERBVnViMjVqWlFRVXZ3Kzh4YlVtVjBRTXJ3OC9JLzgxS3dmS3Q4WXdHZ3dKYVhOemRXVkVZWFJsRncweU5EQXpNakV3TURJd01UVmFNQm9NQ1c1dmRFSmxabTl5WlJjTk1qUXdNekl4TURBeU1ERTFXakFkREF4dWIzUlBiazl5UVdaMFpYSVhEVEkwTURNeU1qQXdNakF4TlZvd0lnd0xiV1Z6YzJGblpWUjVjR1VNRTNoallXeFRaWE56YVc5dVEzUjRWRzlyWlc0d0Rnd0dhWE56ZFdWeURBUjRjMk56TUJrTUNuSmxZMmx3YVdWdWRITXdDd3dEWkd4ekRBUjRjMk56TUlIZURBMXRaWE56WVdkbFJHbG5aWE4wTUlITU1Ca01EMlJwWjJWemRFRnNaMjl5YVhSb2JRd0djMmhoTWpVMk1ERU1EVzFsYzNOaFoyVkVhV2RsYzNRRUlMRVVONmpiOFNMSVBMYmhzc2lNQlZPSmIzUGRJNEJaOVd1UjZacnhpZmtXTUQwTUdYQnNZV2x1ZEdWNGRFRjBkSEpwWW5WMFpYTkVhV2RsYzNRRUlKNDBIeTFsamhpdkVEeHd4dHlMVlA5Zk1BWC9ZQzZKZkFvYkJkNHpxSFdLTUQwTUdXVnVZM0o1Y0hSbFpFRjBkSEpwWW5WMFpYTkVhV2RsYzNRRUlPV05Kc3ZpeVdJd1Fhd0I3dkhXYnBtK2pKTmJqSXNoM2xDeHhEM3lCN001TUlJRkhnd09ZWFYwYUdWdWRHbGpZWFJwYjI0d2dnVUtNQllNQ1dGc1oyOXlhWFJvYlF3SmMyaGhNalUyVW5OaE1CY01DMnRsZVVsdVptOVVlWEJsREFoNE5UQTVSR0YwWVRDQ0JOVU1CMnRsZVVsdVptOEVnZ1RJTUlJRXhEQ0NBNnlnQXdJQkFnSU1JQ0lJTVJncEEvWnF3NkxPTUEwR0NTcUdTSWIzRFFFQkJRVUFNSUdQTVFzd0NRWURWUVFHREFKVlV6RUxNQWtHQTFVRUNBd0NVRUV4RlRBVEJnTlZCQWNNREZCb2FXeGhaR1ZzY0docFlURW5NQ1VHQTFVRUNnd2VRMjl0WTJGemRDQkRiMjUyWlhKblpXUWdVSEp2WkhWamRITWdURXhETVNJd0lBWURWUVFMREJsMWNtNDZZMjl0WTJGemREcGpZM0E2Y0d0cExXTnpMWFJrTVE4d0RRWURWUVFEREFaUU1ESXdNREV3SGhjTk1qSXdPRE14TVRneU9UQXpXaGNOTWpRd05qQXpNVFUxT1RVNVdqQ0JtakVMTUFrR0ExVUVCaE1DVlZNeEN6QUpCZ05WQkFnTUFsQkJNUlV3RXdZRFZRUUhEQXhRYUdsc1lXUmxiSEJvYVdFeEp6QWxCZ05WQkFvTUhrTnZiV05oYzNRZ1EyOXVkbVZ5WjJWa0lGQnliMlIxWTNSeklFeE1RekVvTUNZR0ExVUVDd3dmZFhKdU9tTnZiV05oYzNRNlkyTndPbkJyYVMxamN5MXBiblE2ZUhOamN6RVVNQklHQTFVRUF3d0xVREF5TWpBd01EQXdNVE13Z2dFaU1BMEdDU3FHU0liM0RRRUJBUVVBQTRJQkR3QXdnZ0VLQW9JQkFRQ0VWU1BvU1laRm1DWVN0SDRmdXZWdTI2OTJpUUpRbXZCd3AzalBXdjcrN0RNT2ZxMi83OEhva2oyME1aS041ZTlEVnFqQ01UWmpGMTRIeWpsVjkxc1NOdFQ1TnVxcVY4Q0Nac2xPbklsRjRHYnZVNFdtOWFiODV6RTZhRGMvRlBHYmRqbHFCc3BscHYyemI2TjhNNFI3UWEvblJ4cFExSFlIeWIvUStXNHhwbmtjQXBMZjhxcEliQ2ZEemo4cGNSa3ZhSExVTldMa3htdmkzNTA5TXJpS25VRkw0cFhBeDVRKzVqM2cveTBYVEVTZHdrakNyOGZPSUtFajBoUkYwVDZvcUc3VlBzSSsxQ25tclcwYlIxY1NFdUNMZWxpYjd2OE9Lc1V5b0FIT09kOWhvQkZQZlZTZ3ZZalFvbzJESEYxWGFtWGJMS2p6WDBJRXBZTkVKdXVYQWdNQkFBR2pnZ0VSTUlJQkRUQU1CZ05WSFJNQkFmOEVBakFBTUE0R0ExVWREd0VCL3dRRUF3SUhnREFkQmdOVkhRNEVGZ1FVL01mM3ZiV1YzQXozK3ZNZFF2cTkyVjFyTVVNd2djMEdBMVVkSXdTQnhUQ0J3b0FVbXNDeW9TNnkycncwNFI3bmNVdnFTdkl0NjU2aGdaT2tnWkF3Z1kweEN6QUpCZ05WQkFZTUFsVlRNUXN3Q1FZRFZRUUlEQUpRUVRFVk1CTUdBMVVFQnd3TVVHaHBiR0ZrWld4d2FHbGhNU2N3SlFZRFZRUUtEQjVEYjIxallYTjBJRU52Ym5abGNtZGxaQ0JRY205a2RXTjBjeUJNVEVNeElUQWZCZ05WQkFzTUdIVnlianBqYjIxallYTjBPbU5qY0Rwd2Eya3RZeTEwWVRFT01Bd0dBMVVFQXd3RlVEQXlNRENDRkQyUEY1c1BiNWZQcW1MbWxNc2REMGtxMlZFWU1BMEdDU3FHU0liM0RRRUJCUVVBQTRJQkFRQm1tNTFLOVR4WjZKK3RXTmM2UHAzYWxVV2pDa0VyZ1pZRWJvZWJacHp4NCtXeDJadVV0VVVmek5xQUpIK1cwNXhGNlBxRFlrZ1pra2xGWENYeG91L2xSSlRPK3pZWk1VVHNUbVljb29qQWVrb2VYNG5RZlNUY0VkZG1NYTB5aDBzNzBtK0daeDZVZkhYMXpIUVcrNUFXZHg0emRLaTBjT1kydjU2WDZIZldFTkI2WWZRTkY4SG5jL0ZjYXhnZmJCamthQWpic1B4VVN2THpNcTV1K0RsVFJxMXI2b2ZRaWIzTTZwdVFwQXZ6RUFJYzFhVW84UWdvTHgxTmkyOTNrczNZV3BZaGhUSVJXc3dNQVhwWDhzUnlVMFcvWEdwUFpBLzZJSEViZitkN3ljc1JoZTJodVRySk85NldTSDNBaEt0YXc5TmxaMVpmYm5GMEF6SHNBU1F1TUlIYkRBeHJaWGxVY21GdWMzQnZjblF3Z2Nvd0hnd0pZV3huYjNKcGRHaHREQkZ5YzJGUFlXVndVMmhoTWpVMlRXZG1NVEFWREF0clpYbEpibVp2Vkhsd1pRd0dlRFV3T1Vsa01JR1FEQWRyWlhsSmJtWnZNSUdFQkJRaTI3QkpzYys4TndSaEFveWQreUtHME91NzFRUVVJd1JxQ3lQY3RqZ0dhYTE4UjBhMGFUdlpHb1lFRkVRUWVRcXVHemszTnVlenJBcEFsZGlIcVRUMkJCUjRMclpJNVA0bHJHMWJTVThCb2ZKeC9GZUoyQVFVVE41ZDJQMzZENjNSNkFOMUdPaVJzODFuMlZrRUZEOW9BcHd3T0RuQk5wUGY0WHhQWHVzaHozbUlNSUcrREFwbGJtTnllWEIwYVc5dU1JR3ZNQmdNQ1dGc1oyOXlhWFJvYlF3TFlXVnpRMkpqVUd0amN6VXdIZ3dMYTJWNVNXNW1iMVI1Y0dVTUQyTnBjR2hsY2t0bGVWTm9ZVEkxTmpBckRBZHJaWGxKYm1adkJDRG5OVVdrRnBiN0ZZaEY0ZE5qS29nNjRqMGxiRm1JVmJ2aFhpQlRES2MxaGpBUkRBZHJaWGxVZVhCbERBWmhaWE15TlRZd0Znd0RhMlJtREE5amIyNWpZWFJMWkdaVGFHRXlOVFl3RXd3R2FYWlVlWEJsREFsemFYWlRhR0V5TlRZd0Jnd0NhWFlGQURDQ0NZd01DbU5wY0dobGNrUmhkR0V3Z2dsOE1JSUJEZ3dJWVhWMGFFUmhkR0VFZ2dFQUE1MjVXeDRkQ1VtY1JDVXl0Vld3ZnVzYTZITGNlMXVMUlk0NVdTVEFzN1lPU3lPbGtJbXgwckJNRnFNVTVPUms2R2FXWDZIWG1SbVUralI0V1dzSlhXTVVINzBpT2dmT2VjUThlN1pvb3VPaEpkTmQ2UjJhclFCWDM0Vmt2dnZXeXVER3lFOGh6Z2lIOUFVdjRCTkd5WXJvVzI3emRlUTM4akM0SzN4SHRRNmFYVi9YbWVyclE5ODdJWFI0MUIrbTJxdEtDcm5rbzFYRTRORkxudTBoa294bTZsOVNyYTZLV0Z6eE5pbFJNRWxaZW5DK3dMaE9SZEM5MTBIclpuNUk4TEtwS20yaER6ZEpXVmJvaEVrS1RHWjFOcUhVNklmNjZubHV0VkdKTER5Z0c4U21RcmpMTFpTcnhEbGFERFRRcWd0SVl2OHBXaXJsL0N5Yk0xOG83ekNDQmk0TUVHdGxlVlJ5WVc1emNHOXlkRVJoZEdFd2dnWVlCSUlCQUhXVG9yRTdUejJCQjFhQUpRVUc3cXBBWlVTQWlJN292N3BkaVI0OTNLai9DeHRLY1lXZzhYUk16cno0YUY3NzA5Ri9jK2NLRnZnbmRIa0p4Tmx4T0NsRG5MK0loWFFleGQxOWxoQkthbDNGZnhJWXNCNU14VFNyMWdscGFLOEhsVnBnZmQybW5kOEZNYkRnaEZMQTZRVVNDSS9qMFBzUCtGbVk5RUxXTlc0a29BVm8veVhwTmdwSlE0K0xYVlRjWkJqUmN4VkRURmRFblRSVDY3YjY5ZzV5K1hScnhsRzZPOURlelFGTENrMDlQdDlGaVduaVRSalEzb05OaTd5SC9sWHB6ZlJuSXRFYWFXeWYveUpqQlAyNkNwZlRZelU2SHdoYXpJTTQrWktjM1E4YjdLczlYNkU3VEtUT2VUZmd5QjJlUjRwMmpwc0RDL1pkZ1ZCLzNaMEVnZ0VBY21Help2N09NWjQxVXdMbDFnOTluRzdySnhpaS81WUVxeUlsQmVKQi9RS0pLVkI2c2hmalFaZk9UZVlzQ3hPVnllYUtqQlNodE1hQUtGK25SZWUxSS9oejVTeXIxTzRwcXh0TDRGVmlNWFJyZ0NvRkJKSmUvVDNSUjRhcVJwS3FHMC9Xa2FXOVNFQnpGaS9odjZQd0hnWjlpRXh3d2JMUHNBZW50SXlWK3JQT0Rsd1N0aTRZaXo3TGl6OFlBampJWS9qUS9EUXR1d1l3R2FPajhmSUNBNmtUcE4vQjNBc011YWZaNURjWG1vNlZOV3Uwa3JmVHVzQlZmRzhpeXJaWitsRDlBQ2V5d0xtQVQ1aFNVMGNuelViQndBTWZxM0piUHVVRThnQkI3UHdIYm5LZFc5dGZDL0N3dXFaUFA2M2VJUjZMaG5idEtEc2FTeS9qZzlYcDBRU0NBUUJCdXRURklRenZSVy9ucHlRamtGTjY5UzBlTW9OR3cwdC9Cb0hHcEp6Zko5N2Mzc2doaTZKeml1a1VKYmh5TVZyb2I3QjJWUXFBY3RESEk1WmhSOEVXdXV3a0RxeDluMS93RXQ4VmtadGVlZCtFZUN5RUcwWkJVUTlMV0NqVU5md3lOSkdkYWlUNzZkOUJTd21PYnNzMlEzM2owMlpnZ1hPSldQZmpkNVlOVmY2b3JKc2hRK3hLUnZ6VmdJL0s2S0IweC9pSlFtK1VzK0lRVDU0QnA5eWREUTdES2FUclNVNVdBbDY0VWNBczhIS2c5QVloWm1XbHVoVHRiT2liR3JKbE9iUEllZ0FkKzhHWURzbnQzTkFmWTBkNk1TeVQ5Q1pZWEc4OW5WNE84Y3FVRlRsc3Vha2JxNDlUTzRHL0tMNXdhS1MvUWMxaS9Kcm0xQS9lQXNqa0JJSUJBQW9ucktFbkFLc09mL3B6WEQ2ckhYTW90cERqMm43ajlGYmhRSjhib05hODFWekg4VCtnd1dVdjBRV1hLaHhmNThyYTh0djZaeE5LVE1oSjRnc2NXcWY1aHYyWWtBMzV4dkxNVk5VaE56bURaMldNS0g5eGZ1WFN0UmFZRzVmS3BwWUh6bFlSVEpSbWFHeVhYYTRxVkhzelZHQXM0dkJRaVdJUkl4VGh6SURabzVkN2dqWmNxYVI2V2RtTzZsRVBNVnAxdmtTWWEzaTZvUDJqY21vbkhBZjk4V05kUkxVamN4WEVRSCtXa2Z1b2F5RjE5YjU1S1pEMUp5VVRZZWs0aExsczNuT0tLTGtTT1p0ZWFGcVVtM1dnRGkzV1QxckY1MTUvTGhCaFM1REh2Umppbk9GeFhYeUoxTmhaMXNEbUV6NVZueW9jVUdzcDRiTUxBRTdTV09jRWdnRUFGejFiZkNZTHhocHNDaWk5Wk45VmJ5bm96dFBpRFJwRDVoTncyV0gvMlFqNDUwbFJQYURad1dFb2Nndi9sZDhWM05UY1hURnorZUo1czBiYkhxS3BvY0Zac1NobFQzaFVyMWMwRWZRU2xJRE4rampESXhab1BoZUxvMWRGUkJMTWZienR6T2ZqdkkzZnlQdnlqdFFyMnM5dzRraHF6SkoxakF6dE5WWG9hR1JXb3FEd0FCejB6RmlCcENOaXBoNS9vdzlMVS9hbXpwdEx1RDMwTVJ2QmVCQ1FDZStaV3hZL0lLRWRaeWtCeWQ4d1IwM29TYkg1OUVZR3hyeWNMNllCZ0tJVFk4UUJtZEJUVGk5eTNqRDFwWFNLMkZQSTdTYkppSHZNR29ZeHljaTJYWExrNVJtdXBMYk9KWEljS2lDV1NSSkFXTFlMTmtnQXhaWTlWc243UkFTQ0FRQlplU0hIdkludjdWSHN0L2Q0aGM1YmJIVGtTckUrTWhXdFdkQXYwbVZlZmZFM2k2V1dnNjRnSWNoNTJzZVpJaURtazIyTWdKdDk3VHVkZGN4V1J6N3o5KzRkbUF5ZVFyelUrR0NubVJ0M0dYdFpvenNvdUdzWWVaSFFoY2tLK2ppbjczbHhWSW5zV3AzaDVIR25ub1A0eTM1RVl1N3NEeGdtSTN3RlIwZHNwZ1AwNyt0d2ZIVWJFamlFUnUxcWhlWjh2Z3dMQjJMYURVQkp5alNSeTQwODhtTHlHYmdFeUtuTkwwZy9ZRE8vVmg3MHJybm9XWGxiZ0VLM2lBRXAzQkEzSEJ3dVR0K2RTaG9qNTVYZDFJUFpIZ2Q2N0Q5ZHFsQURDOFNORmdlK3JJekFRaWVJZGR3S3RJNElERDdZR2pXeGJ5cEQ0SUpVL09xK3NycVY2TjlzTUlJQ05Bd09ZMmx3YUdWeWRHVjRkRVJoZEdFRWdnSWdXbjVxZ1ZNK0lId3dLakVPZU12K3hCeUk0ZThQSzdybXlmZ1J3RUZuSzFvZGFXeXN2WEYySVlUZ1N4Mm5QTHUzcDNpQUJINEZPMG1SNmphbmM3bnFONGRTNnFGM2NCRnk4eWE0NjhCZTN3WFF2ZmVlbGZKbXl0Z29wNHphNldGd25pZGZTclhJWG4vWXBjU1VzNHp1ajgrWDBqU2F3Z2d6SFdwdTRGcXZWWnd1UU94ckpVdGNxbVpwRXJ0bGFOUHF4SVdvTUhoRHljekV5YWZieDUrcUxUQW1BcnhOcWdJSDVjTFo3QUI4eGpoR2U4TzNCTGxCU016MGJXSGFXMGdNbit2bTQ1NjlEZmMyT2IzQWN6MVJDdlhpUTNJRDVBWnlOcis2UE5NK2xXM0ppcHNXNkt1aDJTZW5KUDBxekVnS3VGYXI1QzBWQWhraXJybWRvUEVpVnplY3lUMk51ZUs4TlRYMnJHNzBMQm0rYmlqSTNBZjlUcm90bkF6djcrclh1Q0g3d0N1dHlvRTdJQm1rMlZCNEx4aE44NG1tcEszbmVYTnU2NEdmT3JJQmpXcGUrTkYyK05za1BKeUVzNm5EeklXWXlhNFU0QnNzcURGcGhMMjJ6dElvTFRNVEpZS0JKckEva1B0ZjhQUG9MMmZ6SzVtQkNLaVJFVy9FanF2V2NGVCt3TG9DaEV4bEZ1UTE2MmpCeG1VNUxrY1lZQWozR3dvMDFhUE9TSGU1dEVtUVVXNmQwWG5kYldpbzdNWWxveXVucE42N2lJWU9jTVNkelRqY1RVVFNhd252SEROV21wZ0dIU0dqTW1HdDZGUkdWbHJWMHRHTWk1WHFFem5UcU9YSzJBekpqQk5aMW9mVzZRa2NPWmZNQ01wUmRMQXBJSzR2N3VLeVcvQkIxaDE5RWtva1pydlQybXMvRzI0RHpTUk1mZlpVYm1rL1pxNGlmWmQ1OFE9PTwvYXR0cmlidXRlPg0KICA8YXR0cmlidXRlIGtleT0iZGV2aWNlOnhjYWw6c3RhdHVzIj5BY3RpdmU8L2F0dHJpYnV0ZT4NCiAgPGF0dHJpYnV0ZSBrZXk9Im1lc3NhZ2U6dHlwZSI+eGNhbFNlc3Npb25DdHhUb2tlbjwvYXR0cmlidXRlPg0KICA8YXR0cmlidXRlIGtleT0ibWVzc2FnZTpwcm90ZWN0aW9uOmlzc3VlRGF0ZSI+MjAyNC0wMy0yMVQwMDoyMDoxNFo8L2F0dHJpYnV0ZT4NCiAgPGF0dHJpYnV0ZSBrZXk9InNlcnZpY2U6eGNhbDpjbGllbnRQcm9maWxlIj54dHY6eDI6d2ViPC9hdHRyaWJ1dGU+DQogIDxhdHRyaWJ1dGUga2V5PSJkZXZpY2U6eGNhbDpsb2NhdGlvbkhvbWVaaXAiPk05QjZNMTwvYXR0cmlidXRlPg0KICA8YXR0cmlidXRlIGtleT0iZGV2aWNlOnhjYWw6bG9jYXRpb25JbkhvbWUiPnRydWU8L2F0dHJpYnV0ZT4NCiAgPGF0dHJpYnV0ZSBrZXk9ImFjY291bnQ6eGNhbDpzdGF0dXMiPkFjdGl2ZTwvYXR0cmlidXRlPg0KICA8YXR0cmlidXRlIGtleT0iZGV2aWNlOnhjYWw6bG9jYXRpb25PblBsYW50Ij50cnVlPC9hdHRyaWJ1dGU+DQogIDxhdHRyaWJ1dGUga2V5PSJkZXZpY2U6eGNhbDpsb2NhdGlvblNlc3Npb25UaW1lem9uZSI+Q2FuYWRhL0Vhc3Rlcm48L2F0dHJpYnV0ZT4NCiAgPGF0dHJpYnV0ZSBrZXk9Im1lc3NhZ2U6aWQiPmM0NjhlMDRhLWY4OTAtNGRlOS1iMDdlLTZjYmNlNWZiOWMzYjwvYXR0cmlidXRlPg0KICA8YXR0cmlidXRlIGtleT0ic2VydmljZTplbnRpdGxlbWVudHMiPnNlcnZpY2U6eGNhbDpDRFZSLU9PSCxzZXJ2aWNlOnhjYWw6SEQsc2VydmljZTp4Y2FsOkRWUixzZXJ2aWNlOnhjYWw6Q0RWUixzZXJ2aWNlOnhjYWw6aW50ZXJuZXRhcHBzLHNlcnZpY2U6eGNhbDp4YmNsb3VkLWJhc2ljLHNlcnZpY2U6eGNhbDpzZW5kdG90dixzZXJ2aWNlOnhjYWw6eGJjbG91ZC1hZHYtc2VjdXJpdHksc2VydmljZTp4Y2FsOkNMSU5FQVIsc2VydmljZTp4Y2FsOkNWT0Q8L2F0dHJpYnV0ZT4NCiAgPGF0dHJpYnV0ZSBrZXk9InNlcnZpY2U6eGNhbDpwcm9kdWN0Ij5jZHZyPC9hdHRyaWJ1dGU+DQogIDxhdHRyaWJ1dGUga2V5PSJkZXZpY2U6eGNhbDpsb2NhdGlvblNlc3Npb25aaXAiPk05QjZNMTwvYXR0cmlidXRlPg0KICA8YXR0cmlidXRlIGtleT0ibWVzc2FnZTpwcm90ZWN0aW9uOm5vdE9uT3JBZnRlciI+MjAyNC0wMy0yMlQwMDoyMDoxNFo8L2F0dHJpYnV0ZT4NCiAgPGF0dHJpYnV0ZSBrZXk9ImFjY291bnQ6Q0VUOmJpbGxpbmdJZCI+bjY1MzU3MzYyNDYyODQ0NjQ8L2F0dHJpYnV0ZT4NCiAgPGF0dHJpYnV0ZSBrZXk9ImRldmljZTp4Y2FsOmxvY2F0aW9uSG9tZVRpbWV6b25lIj5DYW5hZGEvRWFzdGVybjwvYXR0cmlidXRlPg0KICA8YXR0cmlidXRlIGtleT0iYWNjb3VudDp4Y2FsOnRpbWV6b25lIj5DYW5hZGEvRWFzdGVybjwvYXR0cmlidXRlPg0KICA8YXR0cmlidXRlIGtleT0ic2VydmljZTp4Y2FsOnBhcnRuZXIiPnJvZ2VyczwvYXR0cmlidXRlPg0KICA8YXR0cmlidXRlIGtleT0iZGV2aWNlOnhjYWw6bG9jYXRpb25Wb2QiPjE8L2F0dHJpYnV0ZT4NCiAgPGF0dHJpYnV0ZSBrZXk9Im1lc3NhZ2U6cHJvdGVjdGlvbjpub3RCZWZvcmUiPjIwMjQtMDMtMjFUMDA6MjA6MTRaPC9hdHRyaWJ1dGU+DQo8L25zMjp4Y2FsLWF1dGgtbWVzc2FnZT4NCg0K
+CLIENT-PLATFORM: web;linear-tve;local-tve;est;i18n-ratings;beta-channels;standard-sports-images;session;livod;local-tve-nbc-v3;record-tve
+Connection: keep-alive
+Fingerprint: cloudtv_web_polymer_7.4.0_prod_1710980420489_10790
+Host: xtvapi.cloudtv.comcast.net
+If-None-Match: "078585a03593936defaf705e0c9d435bd500103a22a9779a1424bba13926f185b"
+Origin: https://ignitetv.rogers.com
+Referer: https://ignitetv.rogers.com/
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: cross-site
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36 Edg/122.0.0.0
+X-Finity-Accept-Language: en-CA
+X-Finity-Client-Info: app_name="Ignite TV"; app_version="7.4.0"; os_name="Web"; web_user_agent="Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F122.0.0.0%20Safari%2F537.36%20Edg%2F122.0.0.0"
+X-Finity-Features: fd6VJcdTlqbCNFnq2l/et7E840mX0a7yf65CdoT20UWT5J2HUt4B6wKb1HgTRIzfOvFAv5OdQnR7K1/znmvgApg2CTHM5ZTaDKkWFSxK/+EmvgXF5ZEiV1n2rkG5zHSGpxfvJTJQulA6EEqG
+X-HyperGard: 6.0.0
+sec-ch-ua: "Chromium";v="122", "Not(A:Brand";v="24", "Microsoft Edge";v="122"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+*/
+
+
+async function watched() {
+  let hdrs = {
+    'Accept': 'application/comcast+hal+json, application/json, */*; q=0.01',
+    'Accept-Encoding': 'gzip, deflate, br',
+    'Accept-Language': 'en-US,en;q=0.9',
+    'Origin': 'https://ignitetv.rogers.com',
+    'Referer': 'https://ignitetv.rogers.com/',
+    'Host': 'xtvapi.cloudtv.comcast.net',
+    'Connection': 'keep-alive',
+
+    
+    // 'Sec-Ch-Ua': '"Chromium";v="122", "Not(A:Brand";v="24", "Microsoft Edge";v="122"',
+    // 'Sec-Ch-Ua-Mobile': '?0',
+    // 'Sec-Ch-Ua-Platform': '"Windows"',
+    // 'Sec-Fetch-Dest': 'empty',
+    // 'Sec-Fetch-Mode': 'cors',
+    // 'Sec-Fetch-Site': 'cross-site',
+
+    // 'If-None-Match': '"078585a03593936defaf705e0c9d435bd500103a22a9779a1424bba13926f185b"',
+
+    // 'CLIENT-PLATFORM': 'web;linear-tve;local-tve;est;i18n-ratings;beta-channels;standard-sports-images;session;livod;local-tve-nbc-v3;record-tve',
+    // 'Fingerprint': 'cloudtv_web_polymer_7.4.0_prod_1710980420489_10790',
+
+    // 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36 Edg/122.0.0.0',
+    
+
+    // 'X-Finity-Accept-Language': 'en-CA',
+    // 'X-Finity-Client-Info': 'app_name="Ignite TV"; app_version="7.4.0"; os_name="Web"; web_user_agent="Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F122.0.0.0%20Safari%2F537.36%20Edg%2F122.0.0.0"',
+    // 'X-Finity-Features': 'fd6VJcdTlqbCNFnq2l/et7E840mX0a7yf65CdoT20UWT5J2HUt4B6wKb1HgTRIzfOvFAv5OdQnR7K1/znmvgApg2CTHM5ZTaDKkWFSxK/+EmvgXF5ZEiV1n2rkG5zHSGpxfvJTJQulA6EEqG',
+    // 'X-Hypergard': '6.0.0',
+
+
+    'Authorization': 'CCP ' + localStorage.getItem('tv-xsct'),
+  };
+
+  const response = await fetch('https://xtvapi.cloudtv.comcast.net/watchedprograms/', {'headers':hdrs});
+  const reader = response.body.getReader();
+  let json = '';
+
+  while (true) {
+    let { done, value } = await reader.read();
+    if (value) {
+      for (const c of value) {
+        json += String.fromCharCode(c);
+      }
+      
+    }
+    //json += String.fromCharCode.apply(null, value);
+    //json += String.fromCodePoint(...value);
+    //if (value) json += value.toString();
+    
+    if (done) break;
+  }
+  console.log(JSON.parse(json));
+  //console.log(json.slice(0,20));
+  //console.log(String.fromCharCode.apply(null, json));
+
+/*
+  for await (const chunk of reader.read()) {
+    //console.log(chunk.value);
+    console.dir(chunk);
+  }
+*/
+
+  /*
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) {
+      // Do something with last chunk of data then exit reader
+      str = String.fromCharCode.apply(null, value);
+      console.log(str);
+      return;
+    }
+    // Otherwise do something here to process current chunk
+    str = String.fromCharCode.apply(null, value);
+    console.log(str);
+  }
+  */
+
+} watched();
+
+
+
+
+
+
+
+async function totes() {
+  let hdrs = {
+    'Authorization': 'CCP ' + localStorage.getItem('tv-xsct'),
+  };
+  
+  let par = new URLSearchParams({
+  });
+  let url = 'https://xtvapi.cloudtv.comcast.net/totes/';
+  
+  
+  const response = await fetch(url, {'headers':hdrs});
+  console.dir(response);
+  const reader = response.body.getReader();
+  let json = '';
+
+  while (true) {
+    let { done, value } = await reader.read();
+    if (value) {
+      for (const c of value) {
+        json += String.fromCharCode(c);
+      }
+      
+    }
+    //json += String.fromCharCode.apply(null, value);
+    //json += String.fromCodePoint(...value);
+    //if (value) json += value.toString();
+    
+    if (done) break;
+  }
+  console.log(JSON.parse(json));  
+  
+  
+   
+}  totes(); 
+
+
+
+
+async function show() {
+  let hdrs = {
+    'Accept': 'application/comcast+hal+json, application/json, */*; q=0.01',
+    'Accept-Encoding': 'gzip, deflate, br, zstd',
+    'Accept-Language': 'en-US,en;q=0.9',
+    'Origin': 'https://ignitetv.rogers.com',
+    'Referer': 'https://ignitetv.rogers.com/',
+    'Host': 'xtvapi.cloudtv.comcast.net',
+    'Connection': 'keep-alive',
+    'Referrer-Policy': 'strict-origin-when-cross-origin',
+
+    'Sec-Fetch-Dest': 'empty',
+    'Sec-Fetch-Mode': 'cors',
+    'Sec-Fetch-Site': 'cross-site',
+
+    'Client-Platform': 'web;linear-tve;local-tve;est;i18n-ratings;beta-channels;standard-sports-images;session;livod;local-tve-nbc-v3;record-tve',
+    'Fingerprint': 'cloudtv_web_polymer_7.4.0_prod_1715677697788_51894',
+
+
+    'X-Finity-Accept-Language': 'en-CA',
+    'X-Finity-Client-Info': 'app_name="Ignite TV"; app_version="7.4.0"; os_name="Web"; web_user_agent="Web"',
+    //'X-Finity-Client-Info': 'app_name="Ignite TV"; app_version="7.4.0"; os_name="Web"; web_user_agent="Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F124.0.0.0%20Safari%2F537.36%20Edg%2F124.0.0.0"',
+    'X-Finity-Client-Info': 'app_name="Ignite TV"; app_version="7.4.0"; os_name="Web"; web_user_agent="Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F124.0.0.0%20Safari%2F537.36%20Edg%2F124.0.0.0"',
+    'X-Finity-Features': 'gMZdSoLEc2uD8G/jJ3MLxC/d0BAR5Uc3OwoYghYJjnDfN/UDCPojQYTrqDDvXnAa+VQyVpXJEPUNRSMzd4AxU+m+2I/jSGRXK6QHyLzaORc/de9vrYfuQs2Iv1NtiA1eu/iRcHWQ7a+8Qp2x',
+    'X-Hypergard': '6.0.0',
+
+    'Content-Type': 'application/x-www-form-urlencoded',
+    'Referrer-Policy': 'strict-origin-when-cross-origin',
+
+    'Authorization': 'CCP ' + localStorage.getItem('tv-xsct'),
+  };
+  
+  
+  //8327465639090761112
+  //6569521162354520112
+  let par = new URLSearchParams({
+    streamFormat: 'M3U',
+    includeTve: true,
+    includeTveLinear: true,
+  });
+  //let url = 'https://xtvapi.cloudtv.comcast.net/entity/detail/program/6569521162354520112/?' + par.toString();
+  //let url = 'https://xtvapi.cloudtv.comcast.net/entity/detail/program/6569521162354520112/';
+  //let url = 'https://xtvapi.cloudtv.comcast.net/entity/related/program/6569521162354520112/';
+  //let url = 'https://xtvapi.cloudtv.comcast.net/entity/program/6569521162354520112/';
+  //let url = 'https://xtvapi.cloudtv.comcast.net/entity/program/4964656856412905000/';
+  //let url = 'https://xtvapi.cloudtv.comcast.net/entity/detail/program/4964656856412905000/';
+  let url = 'https://xtvapi.cloudtv.comcast.net/entity/program/5649760609895628112/';
+  
+  
+  const response = await fetch(url, {'headers':hdrs});
+  console.log('--------------------');
+  console.dir(response);
+  const reader = response.body.getReader();
+  let json = '';
+
+
+
+  while (true) {
+    const { done, chunk } = await reader.read();
+    if (!done && chunk?.length) {
+      for (const c of chunk) {
+        json += String.fromCharCode(c);
+      }
+    }
+    
+    if (done) break;
+  }
+  console.log(JSON.parse(json));  
+  
+  
+   
+}  show(); 
+
+///entity/related/program/{programId}/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+markProgramWatched
+{
+  action: "watchedprograms/",
+  method: "POST",
+  fields: {
+    programId: {}
+  }
+}
+
+getWatchedPrograms
+{
+  href: "watchedprograms/{?maxDaysOld}",
+  title: "Get Watched Programs for the account",
+  templated: true
+}
+
+updateResumePoint
+{
+  action: "resumepoint/progress/",
+  fields: {
+    mediaId: {},
+    programId: {},
+    progress: {}
+  }
+  method: "POST"
+  title: "Update Resume Point"
+}
+https://xtvapi.cloudtv.comcast.net/resumepoint/progress/
+mediaId: comcast:media:program:account:guid:5649760609895628112:RogersTitleVI:hs00s.caHWST9051540000011232-DCJA4848390030985383
+programId: 5649760609895628112
+progress: 7473
+markProgramWatched
+{
+  action: "watchedprograms/",
+  method: "POST",
+  fields: {
+    programId: {}
+  }
+}
+
+getWatchedPrograms
+{
+  href: "watchedprograms/{?maxDaysOld}",
+  title: "Get Watched Programs for the account",
+  templated: true
+}
+
+updateResumePoint
+{
+  action: "resumepoint/progress/",
+  fields: {
+    mediaId: {},
+    programId: {},
+    progress: {}
+  }
+  method: "POST"
+  title: "Update Resume Point"
+}
+https://xtvapi.cloudtv.comcast.net/resumepoint/progress/
+mediaId: comcast:media:program:account:guid:5649760609895628112:RogersTitleVI:hs00s.caHWST9051540000011232-DCJA4848390030985383
+programId: 5649760609895628112
+progress: 7473
+*/
+
+
+// returns empty object on error or success with an empty object otherwise the object
+/*
+async function convertStreamToObject(stream) {
+  let json = '';
+
+  const reader = stream.getReader();
+  const decoder = new TextDecoder();
+  const chunks = [];
+
+  while (true) {
+    const { done, value } = await reader.read();
+
+    if (done) {
+      const txt = chunks.join('');
+      return JSON.parse(txt || '{}');
+    }
+
+    const chunk = decoder.decode(value, {stream: true});
+    chunks.push(chunk);
+  }
+
+  return JSON.parse('{}');
+}
+*/
+
+
+//returns and object with required headers added for fetch to use
+function createFetchRequestHeaders(xsctAuthToken) {
+  const headers = {
+    'Accept': 'application/comcast+hal+json, application/json, */*; q=0.01',
+    'Accept-Encoding': 'gzip, deflate, br, zstd',
+    'Accept-Language': 'en-US,en;q=0.9',
+    'Origin': 'https://ignitetv.rogers.com',
+    'Referer': 'https://ignitetv.rogers.com/',
+    'Host': 'xtvapi.cloudtv.comcast.net',
+    'Connection': 'keep-alive',
+    // one of these commented headers has an error
+    /*
+    'Referrer Policy': 'strict-origin-when-cross-origin',
+
+    'Sec-Fetch-Dest': 'empty',
+    'Sec-Fetch-Mode': 'cors',
+    'Sec-Fetch-Site': 'cross-site',
+
+
+
+    'X-Finity-Client-Info': 'app_name="Ignite TV"; app_version="7.4.0"; os_name="Web"; web_user_agent="Mozilla"',
+
+    */
+    'Fingerprint': 'cloudtv_web_polymer_7.4.0_prod_1715677697788_51894',
+    'Client-Platform': 'web;linear-tve;local-tve;est;i18n-ratings;beta-channels;standard-sports-images;session;livod;local-tve-nbc-v3;record-tve',
+    'X-Finity-Accept-Language': 'en-CA',
+    'X-Finity-Features': 'aP1koSvIKH7QdUJ12MlT/R7F47oie94OmWtioE0NaInh+FvDqNmyF3pHD3Ub861Zd+PUk6pGGh5hBNSImdgL/3w1HvuBY57MOg4sMnQ6+0bsNA4IxNdJ7w9yJqUkVq4HfDFOpMcuS7owCXEk',
+    'X-Hypergard': '6.0.0',
+
+    'Authorization': null
+  };
+  headers.Authorization = 'CCP ' + xsctAuthToken;
+
+  return headers;
+}
+
+
+async function sendRequest(request, extraHeaders) {
+  const xsct = localStorage.getItem('tv-xsct');
+  extraHeaders = extraHeaders || {};
+  const headers = {...createFetchRequestHeaders(xsct), ...extraHeaders};
+  const params = (new URLSearchParams(request.params)).toString();
+  const options = {
+    headers,
+    method: request.method,
+  };
+
+  if (params.length) {
+    if (request.method === 'POST') {
+      options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+      options.body = params;
+    }
+    else if (request.method === 'GET') {
+      request.url += '?' + params;
+    }
+  }
+
+  return fetch(request.url, options)
+    .then(response => new Response(response.body).json())
+    .catch(error => console.dir);
+}
+
+/*
+*/
+const req_rid = [
+
+  {
+    // "search/term/{?query,ftmvod,freetome,limit,includeMenus,aliasName,includeStations,matchExactChannel,includeVodCompany}"
+    url: 'https://xtvapi.cloudtv.comcast.net/search/term/',
+    method: 'GET',
+    params: {
+      query: 'ridiculous',
+      includeMenus: true,
+    }
+  },
+
+  {
+    // entity/detail/program/6774048176174390112/{?streamFormat,includeTve,includeTveLinear}
+    url: 'https://xtvapi.cloudtv.comcast.net/entity/detail/program/6774048176174390112/',
+    method: 'GET',
+    params: {
+    }
+  },
+
+  {
+    // entity/series/{seriesId}/tvseason/{seasonNumber}/
+    url: 'https://xtvapi.cloudtv.comcast.net/entity/series/6774048176174390112/tvseason/31/',
+    method: 'GET',
+    params: {
+    }
+  },
+
+  {
+    // entity/series/{seriesId}/tvseason/{seasonNumber}/
+    url: 'https://xtvapi.cloudtv.comcast.net/entity/series/6774048176174390112/tvseason/41/',
+    method: 'GET',
+    params: {
+    }
+  },
+
+  {
+    // entity/series/{seriesId}/tvseason/{seasonNumber}/watchOptions/{?freetome,programsPerPage,programPage,programSortDir}
+    url: 'https://xtvapi.cloudtv.comcast.net/entity/series/6774048176174390112/tvseason/31/watchOptions/',
+    method: 'GET',
+    params: {
+      freetome: 'all',
+    }
+  },
+
+  {
+    // entity/series/{seriesId}/tvseason/{seasonNumber}/watchOptions/{?freetome,programsPerPage,programPage,programSortDir}
+    url: 'https://xtvapi.cloudtv.comcast.net/entity/series/6774048176174390112/tvseason/41/watchOptions/',
+    method: 'GET',
+    params: {
+      programsPerPage: 10,
+      programPage: 1,
+      programSortDir: 'desc',
+    }
+  },
+
+  {
+    // entity/series/{seriesId}/tvseason/{seasonNumber}/watchOptions/{?freetome,programsPerPage,programPage,programSortDir}
+    url: 'https://xtvapi.cloudtv.comcast.net/entity/series/6774048176174390112/tvseason/41/watchOptions/',
+    method: 'GET',
+    params: {
+      programsPerPage: 10,
+      programPage: 0,
+      programSortDir: 'desc',
+    }
+  },
+/*
+  {
+    // browse/node/entity/{entityType}/{entityId}/{?depth,maxPrograms,filters,embedPlayNowDetail,freetome}
+    url: 'https://xtvapi.cloudtv.comcast.net/browse/node/entity/{entityType}/{entityId}/',
+    method: 'GET',
+    params: {
+      programsPerPage: 10,
+      programPage: 0,
+      programSortDir: 'desc',
+    }
+  },
+*/
+
+  {
+    // entity/program/{programId}/upcomingListings/{?freetome}
+    url: 'https://xtvapi.cloudtv.comcast.net/entity/program/6774048176174390112/upcomingListings/',
+    method: 'GET',
+    params: {
+      freetome: 'all',
+    }
+  },
+
+  {
+    // search/entity/{?entityId,ftmvod,freetome,limit,includeVodCompany}
+    url: 'https://xtvapi.cloudtv.comcast.net/search/entity/',
+    method: 'GET',
+    params: {
+      entityId: '6774048176174390112',
+      limit: 100,
+      freetome: 'all',
+    }
+  },
+
+  {
+    // search/entity/{?entityId,ftmvod,freetome,limit,includeVodCompany}
+    // freetome 'all' +?????
+    //includeVodCompany bool
+    url: 'https://xtvapi.cloudtv.comcast.net/search/entity/',
+    method: 'GET',
+    params: {
+      entityId: '7016380549414581112',
+      limit: 100,
+      freetome: 'all',
+    }
+  },
+
+];
+
+
+
+
+
+// The Climb
+// '/entity/series/6124985572721027112/tvseason/1/'
+// '/entity/program/6124985572721027112/'
+
+const requests = [
+  {
+    // ridic
+    url: 'https://xtvapi.cloudtv.comcast.net/entity/program/6774048176174390112/',
+    method: 'GET',
+    params: {
+    }
+  },
+  {
+    // ridic
+    url: 'https://xtvapi.cloudtv.comcast.net/entity/detail/program/6774048176174390112/',
+    method: 'GET',
+    params: {
+    }
+  },
+  {
+    // Margin of error (one off tv show)
+    url: 'https://xtvapi.cloudtv.comcast.net/entity/program/6591212624131547112/',
+    method: 'GET',
+    params: {
+    }
+  },
+  {
+    // Margin of error (one off tv show)
+    url: 'https://xtvapi.cloudtv.comcast.net/entity/program/6591212624131547112/',
+    method: 'GET',
+    params: {
+    }
+  },
+  {
+    // You Are What You Act (movie)
+    url: 'https://xtvapi.cloudtv.comcast.net/entity/program/6236430486756019112/',
+    method: 'GET',
+    params: {
+    }
+  },
+
+
+
+
+  {
+    // ridic
+    url: 'https://xtvapi.cloudtv.comcast.net/entity/series/6774048176174390112/tvseason/31/',
+    method: 'GET',
+    params: {
+    }
+  },
+  {
+    // ridic
+    url: 'https://xtvapi.cloudtv.comcast.net/search/entity/',
+    method: 'GET',
+    params: {
+      entityId: '6774048176174390112',
+      // ftmvod: 1,
+      // freetome: 1,
+    }
+  },
+  {
+    // ridic
+    url: 'https://xtvapi.cloudtv.comcast.net/entity/series/6774048176174390112/tvseason/31/watchOptions/',
+    method: 'GET',
+    params: {
+      freetome: 1,
+    }
+  },
+  {
+    // sg1
+    url: 'https://xtvapi.cloudtv.comcast.net/entity/series/7188923726922774112/',
+    method: 'GET',
+    params: {
+      freetome: 1,
+    }
+  },
+  {
+    // The Climb
+    url: 'https://xtvapi.cloudtv.comcast.net/entity/series/6124985572721027112/tvseason/1/',
+    method: 'GET',
+    params: {
+    }
+  },
+  {
+    // The Climb
+    url: 'https://xtvapi.cloudtv.comcast.net/entity/program/6124985572721027112/',
+    method: 'GET',
+    params: {
+    }
+  },
+
+
+  {
+    // The Twilight Zone
+    url: 'https://xtvapi.cloudtv.comcast.net/entity/program/8866251514307483112/',
+    method: 'GET',
+    params: {
+    }
+  },
+  {
+    // The Twilight Zone: Of Late I Think of Cliffordville
+    url: 'https://xtvapi.cloudtv.comcast.net/entity/program/5824220530445437112/',
+    method: 'GET',
+    params: {
+    }
+  },
+  {
+    // The Twilight Zone: Of Late I Think of Cliffordville
+    url: 'https://xtvapi.cloudtv.comcast.net/entity/detail/program/5824220530445437112/',
+    method: 'GET',
+    params: {
+    }
+  },
+  {
+    // The Twilight Zone: Of Late I Think of Cliffordville
+    url: 'https://xtvapi.cloudtv.comcast.net/entity/related/program/5824220530445437112/',
+    method: 'GET',
+    params: {
+    }
+  },
+
+
+  {
+    //
+    url: 'https://xtvapi.cloudtv.comcast.net/entity/program/4718377049016975112/',
+    method: 'GET',
+    params: {
+    }
+  },
+
+
+
+  {
+    // The Twilight Zone: Of Late I Think of Cliffordville
+    url: 'https://xtvapi.cloudtv.comcast.net/resumepoint/progress/',
+    method: 'POST',
+    params: {
+      mediaId: 'comcast:dvr:schedule:V1247462785358186354L200342000429040024',
+      programId: '5824220530445437112',
+      progress: '3810000',
+    }
+  },
+  {
+    // The Twilight Zone: Of Late I Think of Cliffordville
+    url: 'https://xtvapi.cloudtv.comcast.net/watchedprograms/',
+    method: 'POST',
+    params: {
+      programId: '5824220530445437112',
+    }
+  },
+
+  {
+    // mission space series:abandoned engineering
+    url: 'https://xtvapi.cloudtv.comcast.net/watchedprograms/',
+    method: 'POST',
+    params: {
+      programId: '5817564908132739112',
+    }
+  },
+  {
+    // mission space series:abandoned engineering
+    url: 'https://xtvapi.cloudtv.comcast.net/entity/program/5817564908132739112/',
+    method: 'GET',
+    params: {
+    }
+  },
+  {
+    // series:abandoned engineering
+    url: 'https://xtvapi.cloudtv.comcast.net/entity/program/6932774445162525112/',
+    method: 'GET',
+    params: {
+    }
+  },
+  {
+    // True Romance
+    url: 'https://xtvapi.cloudtv.comcast.net/resumepoint/progress/',
+    method: 'POST',
+    params: {
+      mediaId: 'comcast:dvr:schedule:V1247462785358186354L200735711221020023',
+      programId: '7323407574626897112',
+      progress: '7590000',
+      // progress: '0',
+    }
+  },
+  {
+    // True Romance
+    url: 'https://xtvapi.cloudtv.comcast.net/watchedprograms/',
+    method: 'POST',
+    params: {
+      programId: '7323407574626897112',
+    }
+  },
+  {
+    //
+    url: 'https://xtvapi.cloudtv.comcast.net/recordings/completedWithoutResumePoints/',
+    method: 'GET',
+    params: {
+    }
+  },
+  {
+    //
+    url: 'https://xtvapi.cloudtv.comcast.net/watchedprograms/',
+    method: 'GET',
+    params: {
+    }
+  },
+
+
+];
+
+  //true romance
+  // listingId: 2007357112210200109
+  // programId: 7323407574626897112
+
+let res;
+
+const req = [];
+for (let i = 0; i < req_rid.length; i++) {
+  req.push(sendRequest(req_rid[i]));
+}
+res = await Promise.allSettled(req);
+for (let r of res) {
+  console.dir(r.value);
+}
+
+// res = sendRequest(requests[0]);
+// console.log(res);
+// res = sendRequest(requests[1]);
+// console.log(res);
+// res = sendRequest(requests[2]);
+// console.log(res);
+// res = sendRequest(requests[3]);
+// console.log(res);
+// res = sendRequest(requests[4]);
+// console.log(res);
+// res = sendRequest(requests[6]);
+// console.log(res);
+// res = sendRequest(requests[7]);
+// console.log(res);
+// res = sendRequest(requests[8]);
+// console.log(res);

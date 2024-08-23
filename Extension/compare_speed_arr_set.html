@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <body>
+    <script type="module">
+
+    Array.prototype.shuffle = function() {
+      let m = this.length, i;
+      while (m) {
+        i = (Math.random() * m--) >>> 0;
+        [this[m], this[i]] = [this[i], this[m]]
+      }
+      return this;
+    };
+
+    var watched = [];
+    for(let i = 0; i < 150000; i++){watched.push({programId:Math.random()});}
+
+    var ignored = [...watched];
+    ignored.shuffle();
+    ignored = ignored.slice(50000, 55000);
+
+    var c1 = 0;
+    var i1 = 0;
+    var c2 = 0;
+    var i2 = 0;
+    var c2 = 0;
+    var i2 = 0;
+    var once = false;
+
+    for (let i = 0; i < 30; i++) {
+      c1++;
+      watched.filter(wObj => {
+        return !ignored.some((iObj, ndx) => {
+          i1++;
+          return iObj.programId === wObj.programId;
+        });
+      });
+    }
+
+    for (let i = 0; i < 30; i++) {
+      c2++;
+      watched.filter(wObj =>
+        !ignored.some((iObj, ndx) => {
+          i2++;
+          if (iObj.programId === wObj.programId) {
+            ignored[ndx].programId = ignored.pop().programId;
+            return true;
+          }
+          return false;
+        })
+      );
+    }
+
+    // wa.filter(Set.prototype.has, new Set(ig));
+    const igSet = new Set(ignored.flatMap(obj => obj.parentId));
+    const toCheck = watched.filter(wObj => !igSet.has(wObj.parentId));
+
+
+
+    if (!once) {
+      const r1 = (i1/c1)/1000000;
+      const r2 = (i2/c2)/1000000;
+      console.log('Ops: ', r1.toFixed(2).padStart(6, ' ')+'M');
+      console.log('Ops: ', r2.toFixed(2).padStart(6, ' ')+'M');
+      once = true;
+    }
+
+    </script>
+  </body>
+</html>
