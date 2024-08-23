@@ -1,3 +1,4 @@
-.secrets/
-projects.ini
-err.txt
+.secrets/*
+err*.txt
+*.ini
+*.log
