@@ -4,6 +4,7 @@ import {ProgressObserver, EpisodeDataObserver, MessagesObserver} from './popup_o
  */
 
 class Extension {
+  apiBaseURL = null;
   browser = null;
   activeTab = null;
   siegePort = null;
@@ -24,7 +25,8 @@ class Extension {
     return tab ?? null;
   }
 
-  async init() {
+  async init(url) {
+    this.apiBaseURL = url;
     this.activeTab = await this.getCurrentTab();
 
     this.browser.runtime.onConnectExternal.addListener(port => {
@@ -37,7 +39,7 @@ class Extension {
   // shows we checked previously and will skip this run
   // returns obj {id0:null ... idn:null}}
   async getWatchedCheckedData() {
-    return fetch('http://localhost:8000/watched', {'method':'GET'})
+    return fetch(this.apiBaseURL+'/watched', {'method':'GET'})
     .then(response => {
       if (!response.ok) {
         throw new Error(`Response status: ${response.status}`);
@@ -81,7 +83,7 @@ class Extension {
       body
     };
 
-    return fetch('http://localhost:8000/watched', options)
+    return fetch(this.apiBaseURL+'/watched', options)
     .then(response => (response.status === 200));
   }
 
@@ -96,7 +98,7 @@ class Extension {
       body
     };
 
-    return fetch('http://localhost:8000/episode', options)
+    return fetch(this.apiBaseURL+'/episode', options)
     .then(response => (response.status === 200));
   }
 
@@ -256,9 +258,6 @@ class Extension {
 }
 
 
-
-
-
 /**
  * Execution start
  * Small delay to give the sieged site time to settle after
@@ -279,6 +278,8 @@ setTimeout(async () => {
   ext.observers.recvPrg = new ProgressObserver(document.querySelector('progress#recv'));
   ext.observers.infoMsg = new MessagesObserver(document.querySelector('ul#messages'));
 
-  await ext.init();
+  const url = 'http://192.168.50.200:9080';
+
+  await ext.init(url);
   await ext.run();
-}, 100);
+}, 6100);
