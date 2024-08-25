@@ -7,14 +7,15 @@
 
 namespace Server;
 
+/*
 function f(string $msg)
 {
   $fp = fopen('php://stderr', 'w');
   fwrite($fp, $msg);
   fclose($fp);
 }
+//*/
 
-// require __DIR__.DIRECTORY_SEPARATOR.'autoloader.php';
 require '../vendor/autoload.php';
 
 use Server\Router\{SimpleRouter, HttpMethods};
@@ -26,19 +27,17 @@ final class App
 
   public function __construct()
   {
-    // self::$config['db'] = parse_ini_file(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'.secrets'.DIRECTORY_SEPARATOR.'projects.db.ini');
     self::$config['db'] = parse_ini_file('../../.secrets/projects.db.ini');
-    // f("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
   }
 
   public function run() : ControllerInterface
   {
     $method = $_SERVER['REQUEST_METHOD'];
 
-    // Check which server var is correct with proper web server also rewriting may affect this as well
-    // UTF-8 is likely an issue for at least one of the functions to resolve the path
+    // CHECK Which server var is most correct (SCRIPT_NAME PHP_SELF apache/php)(DOCUMENt_URI nginx)
+    // TEST Confirm UTF-8 isn't mangled in any way
     // There is a bug in filter_input with INPUT_SERVER
-    $path = filter_var($_SERVER['DOCUMENT_URI'], FILTER_SANITIZE_URL); //SCRIPT_NAME PHP_SELF
+    $path = filter_var($_SERVER['DOCUMENT_URI'], FILTER_SANITIZE_URL); //
     $path = trim(urldecode($path ?: ''), '/');
     $path = $path === '' ? [] : explode('/', $path);
 

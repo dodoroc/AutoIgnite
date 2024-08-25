@@ -38,9 +38,6 @@ final class WatchedController extends AbstractController
     $proc->execute();
 
     $resp = new ResponseSuccess;
-    // $resp->body = json_encode($proc);
-    // $resp->setHeader('Content-Type', 'application/json');
-    // $resp->setHeader('Content-Length', (string)strlen($resp->body));
 
     return $resp;
   }

@@ -1,20 +1,25 @@
 {
   "name": "ignite/server",
+  "description": "Simple server to store and find missing episodes for a monitored series",
+  "license": "proprietary",
   "type": "project",
+  "authors": [
+    {
+    "name": "vjr aka dodoroc"
+    }
+  ],
+
+  "require": {
+    "php": ">=8.3.6"
+  },
+
+  "config": {
+    "optimize-autoloader": false
+  },
+
   "autoload": {
     "psr-4": {
       "Server\\": "src/"
     }
   },
-  "authors": [
-    {
-    "name": "vjr"
-    }
-  ],
-  "require": {
-    "php": ">=8.3.6"
-  },
-  "config": {
-    "optimize-autoloader": false
-  }
 }
