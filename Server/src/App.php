@@ -23,7 +23,7 @@ use Server\Controller\ControllerInterface;
 
 final class App
 {
-  public readonly static $CFG;
+  public readonly static array|false $CFG;
 
   public function __construct()
   {
