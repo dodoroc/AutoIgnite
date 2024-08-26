@@ -22,11 +22,9 @@ use Server\Router\{SimpleRouter, HttpMethods};
 use Server\Controller\ControllerInterface;
 
 define('CFG', parse_ini_file('../../.secrets/.ini'));
-//
 
 final class App
 {
-  public readonly static array|false $CFG;
 
   public function __construct()
   {
