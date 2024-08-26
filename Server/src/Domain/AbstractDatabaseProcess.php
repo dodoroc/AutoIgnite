@@ -19,9 +19,9 @@ abstract class AbstractDatabaseProcess extends AbstractProcess
     // SET search_path TO tracker
 
     // $db = \Server\App::$config['db'];
-    $dsn = $_ENV['AUTOIGNITE_DB_DSN'];
-    $usr = $_ENV['AUTOIGNITE_DB_USER'];
-    $pwd = $_ENV['AUTOIGNITE_DB_PASS'];
+    $dsn = CFG['DB_DSN'];
+    $usr = CFG['DB_USER'];
+    $pwd = CFG['DB_PASS'];
 
     $this->dbc = new PDO($dsn, $usr, $pwd, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 
