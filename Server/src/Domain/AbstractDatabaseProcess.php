@@ -19,6 +19,7 @@ abstract class AbstractDatabaseProcess extends AbstractProcess
     // SET search_path TO tracker
 
     // $db = \Server\App::$config['db'];
+    print_r(CFG);
     $dsn = CFG['DB_DSN'];
     $usr = CFG['DB_USER'];
     $pwd = CFG['DB_PASS'];
