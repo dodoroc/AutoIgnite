@@ -22,6 +22,9 @@ abstract class AbstractDatabaseProcess extends AbstractProcess
     $dsn = CFG['DB_DSN'];
     $usr = CFG['DB_USER'];
     $pwd = CFG['DB_PASS'];
+    $dsn="pgsql:dbname=projects;options='--client_encoding=UTF8'";
+    $usr="projects_user";
+    $pwd="655321";
 
     $this->dbc = new PDO($dsn, $usr, $pwd, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 
