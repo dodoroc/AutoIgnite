@@ -23,11 +23,11 @@ use Server\Controller\ControllerInterface;
 
 final class App
 {
-  public static $config = [];
+  public readonly static $CFG;
 
   public function __construct()
   {
-    // self::$config['db'] = parse_ini_file('../../.secrets/projects.db.ini');
+    self::$CFG = parse_ini_file('../../.secrets/.ini');
   }
 
   public function run() : ControllerInterface
