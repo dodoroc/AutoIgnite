@@ -27,7 +27,7 @@ final class App
 
   public function __construct()
   {
-    self::$config['db'] = parse_ini_file('../../.secrets/projects.db.ini');
+    // self::$config['db'] = parse_ini_file('../../.secrets/projects.db.ini');
   }
 
   public function run() : ControllerInterface
