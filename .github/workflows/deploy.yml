@@ -23,7 +23,7 @@ jobs:
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSHKEY }}
           source: "."
-          target: "/home/projects/AuthIgnite"
+          target: "/home/projects/AutoIgnite"
 
       - name: executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@v1.0.3
