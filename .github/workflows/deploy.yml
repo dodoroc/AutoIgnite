@@ -2,8 +2,8 @@ name: Deploy on Tag
 
 on:
   push:
-    tags:
-      - '*'
+#    tags:
+#      - '*'
 
 jobs:
   deploy:
