@@ -377,7 +377,7 @@ snow  #fffafa
       <datalist id="series-select">
         <option v-for="series in store.series" :key="series.seriesId">{{series.name}}</option>
       </datalist>
-      <select>
+      <select name="series-select">
         <option v-for="series in store.series" :value="series.seriesId">{{series.name}}</option>
       </select>
     </section>
