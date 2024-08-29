@@ -355,6 +355,9 @@ snow  #fffafa
       <datalist id="series-select">
         <option v-for="series in store.series" :key="series.seriesId">{{series.name}}</option>
       </datalist>
+      <select>
+        <option v-for="series in store.series" :key="series.seriesId">{{series.name}}</option>
+      </select>
     </section>
 
     <section id="search-results" class="col-mode compact">
