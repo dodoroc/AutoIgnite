@@ -344,20 +344,6 @@ snow  #fffafa
 
 
 
-
-
-
-
-
-
-
-      .bar {
-        position: absolute;
-        left: 0;
-        height: 9px;
-        background-color: red;
-        _display: none;
-      }
     </style>
 
     <script type="module" src="/assets/app.mjs"></script>
@@ -365,16 +351,6 @@ snow  #fffafa
   <body>
     <h1>a big test</h1>
     <div id="app"></div>
-
-    <div class="bar" style="top:20px; width: 100%"></div>
-    <div class="bar" style="top:30px; width: 100vw"></div>
-    <div class="bar" style="top:40px; width: 100cqw"></div>
-    <div class="bar" style="top:50px; width: 100dvw"></div>
-    <div class="bar" style="top:60px; width: 100svw"></div>
-    <div class="bar" style="top:70px; width: 100lvw"></div>
-    <div class="bar" style="top:80px; width: var(--scrollbar-width)"></div>
-    <div class="bar" style="top:90px; width: var(--scrollbar-width2)"></div>
-    <h1>XTV Automation</h1>
 
     <section id="search-criteria" class="col-mode compact">
       <h1>Search criteria</h1>
@@ -407,153 +383,9 @@ snow  #fffafa
         </tbody>
       </table>
 
-      <div class="results bordered" style="display:none">
-        <b>Type</b><b>Aired</b><b>Name</b><b>SeriesId</b><b>ProgramId</b>
-
-        <i>TVEpisode</i><i>2023-01-20</i><i>Shark Tank</i><i>6002411599924498112</i><i>8658458051096153112</i>
-        <i>TVEpisode</i><i>2023-08-18</i><i>Sterling and Nina Agdal XXIX</i><i>6774048176174390112</i><i>6172130161654098112</i>
-        <i>TVEpisode</i><i>2023-08-20</i><i>Sterling and Karrueche Tran XXX</i><i>6774048176174390112</i><i>7801826431566720112</i>
-        <i>TVEpisode</i><i>2012-08-02</i><i>Tennesse Whiskey; Nightvision; Saunas</i><i>7112240447450524112</i><i>6547604797065576112</i>
-        <i>Movie</i><i>2012-09-21</i><i>Killing Them Softly</i><i></i><i>8048556452672444112</i>
-        <i>TVEpisode</i><i>2023-08-20</i><i>Sterling and Karrueche Tran XXXI</i><i>6774048176174390112</i><i>8290092203831893112</i>
-        <i>TVEpisode</i><i>2023-08-21</i><i>Sterling and Nina Agdal XXIV</i><i>6774048176174390112</i><i>7266398624249641112</i>
-        <i>TVEpisode</i><i>2023-08-21</i><i>Sterling and Nina Agdal XXV</i><i>6774048176174390112</i><i>8584569423922991112</i>
-        <i>TVEpisode</i><i>2023-07-24</i><i>Treacherous Traps</i><i>7729739501004532112</i><i>8797242375665200112</i>
-        <i>TVEpisode</i><i>2023-08-21</i><i>Sterling and Nina Agdal XXVI</i><i>6774048176174390112</i><i>5811296174373918112</i>
-        <i>TVEpisode</i><i>1998-08-21</i><i>Secrets</i><i>7188923726922774112</i><i>5388176746986532112</i>
-        <i>TVEpisode</i><i>1998-10-02</i><i>Tok'ra</i><i>7188923726922774112</i><i>6681529170682150112</i>
-        <i>TVEpisode</i><i>1998-10-09</i><i>Tok'ra</i><i>7188923726922774112</i><i>5057079380111127112</i>
-        <i>TVEpisode</i><i>2023-08-25</i><i>Sterling and Karrueche Tran XXIV</i><i>6774048176174390112</i><i>5058058243291516112</i>
-        <i>TVEpisode</i><i>2023-08-25</i><i>Sterling and Karrueche Tran XXVII</i><i>6774048176174390112</i><i>8284438922385304112</i>
-        <i>TVEpisode</i><i>2023-08-25</i><i>Sterling and Karrueche Tran XXVIII</i><i>6774048176174390112</i><i>5295298421207199112</i>
-        <i>TVEpisode</i><i>1981-04-09</i><i>J. "Digger" Doyle</i><i>5828688862497145112</i><i>5092174447233528112</i>
-        <i>TVEpisode</i><i>1998-10-30</i><i>Touchstone</i><i>7188923726922774112</i><i>4719357757209583112</i>
-        <i>TVEpisode</i><i>2021-11-21</i><i>Battle of the Bridges</i><i>5950084733441793112</i><i>8546304172932659112</i>
-        <i>TVEpisode</i><i>2023-06-10</i><i>Where There's Smoke</i><i>6509213195746878112</i><i>9105068369302727112</i>
-        <i>TVEpisode</i><i>1999-01-22</i><i>The Fifth Race</i><i>7188923726922774112</i><i>6692038891038376112</i>
-        <i>TVEpisode</i><i>1999-02-19</i><i>One False Step</i><i>7188923726922774112</i><i>5014294670509689112</i>
-        <i>TVEpisode</i><i>2015-05-11</i><i>Kolcheck, A.</i><i>4642913327036075112</i><i>9202534157242311112</i>
-        <i>TVEpisode</i><i>2015-05-18</i><i>Chernoff, K.</i><i>4642913327036075112</i><i>6716411536380264112</i>
-        <i>TVEpisode</i><i>2022-08-07</i><i>Big Rig</i><i>8682464520245237112</i><i>6514433111765879112</i>
-        <i>TVEpisode</i><i></i><i>Dragons' Den</i><i>8720544592473937112</i><i>4958903557604183112</i>
-        <i>TVEpisode</i><i>2023-09-01</i><i>From Chicken to Caribbean</i><i>4791200799030182112</i><i>8504379768943646112</i>
-        <i>TVEpisode</i><i>2023-08-27</i><i>Sterling and Carly Aquilino XXVIII</i><i>6774048176174390112</i><i>7056608314784464112</i>
-        <i>TVEpisode</i><i>2023-08-27</i><i>Sterling and Carly Aquilino XXIX</i><i>6774048176174390112</i><i>6141013778182795112</i>
-        <i>TVEpisode</i><i>2023-09-23</i><i>Japan Grand Prix, Qualifying</i><i>5584345400977409112</i><i>7902181501440860112</i>
-        <i>TVEpisode</i><i>1981-10-08</i><i>Billy Joe Bob</i><i>5828688862497145112</i><i>5305488893264404112</i>
-        <i>TVEpisode</i><i>2023-09-24</i><i>Japan Grand Prix</i><i>5584345400977409112</i><i>5610610821624130112</i>
-        <i>TVEpisode</i><i>2023-08-28</i><i>Sterling and Karrueche Tran XXV</i><i>6774048176174390112</i><i>5248768646158879112</i>
-        <i>TVEpisode</i><i>2023-08-28</i><i>Sterling and Karrueche Tran XXVI</i><i>6774048176174390112</i><i>6392091052645652112</i>
-        <i>TVEpisode</i><i>2023-08-28</i><i>Sterling and Karrueche Tran XXIX</i><i>6774048176174390112</i><i>8521997415065327112</i>
-        <i>TVEpisode</i><i>2023-09-01</i><i>Sterling and Carly Aquilino XXIV</i><i>6774048176174390112</i><i>5350205463926347112</i>
-        <i>TVEpisode</i><i>2023-09-17</i><i>Brawl Out</i><i>8930118108881286112</i><i>7316704668422250112</i>
-        <i>TVEpisode</i><i>2023-09-11</i><i>A Little Mystery</i><i>7225479914576293112</i><i>9013482730128139112</i>
-        <i>Movie</i><i>2019-06-06</i><i>Push</i><i></i><i>8934521146273832112</i>
-        <i>TVEpisode</i><i>1997-12-16</i><i>Perspectives on Christmas</i><i>8135854751464083112</i><i>6849402135998008112</i>
-        <i>TVEpisode</i><i>1999-07-02</i><i>Seth</i><i>7188923726922774112</i><i>7172729946510035112</i>
-        <i>TVEpisode</i><i></i><i>True Survivors</i><i>4758191019189134112</i><i>5191091097290290112</i>
-        <i>TVEpisode</i><i>2023-09-01</i><i>Sterling and Carly Aquilino XXV</i><i>6774048176174390112</i><i>8219428546024013112</i>
-        <i>TVEpisode</i><i>2023-09-01</i><i>Sterling and Carly Aquilino XXVII</i><i>6774048176174390112</i><i>5921280684776295112</i>
-        <i>TVEpisode</i><i>2023-09-03</i><i>Sterling and Arielle Vandenberg</i><i>6774048176174390112</i><i>6135253492255868112</i>
-        <i>TVEpisode</i><i>2023-09-08</i><i>Variety of Flavor</i><i>4791200799030182112</i><i>6321454150258247112</i>
-        <i>TVEpisode</i><i>2023-09-04</i><i>Sterling and Nina Agdal XXVIII</i><i>6774048176174390112</i><i>7589881347302854112</i>
-        <i>TVEpisode</i><i>2023-09-18</i><i>Don't You Be My Neighbor</i><i>7225479914576293112</i><i>4909773060861797112</i>
-        <i>TVEpisode</i><i>1999-08-13</i><i>Demons</i><i>7188923726922774112</i><i>5735563187129523112</i>
-        <i>TVEpisode</i><i>1999-08-20</i><i>Rules of Engagement</i><i>7188923726922774112</i><i>8613677064020607112</i>
-        <i>TVEpisode</i><i>1999-10-08</i><i>Forever in a Day</i><i>7188923726922774112</i><i>7533531919090233112</i>
-        <i>TVEpisode</i><i>1998-02-24</i><i>The Ski Lodge</i><i>8135854751464083112</i><i>7338215875687123112</i>
-        <i>TVEpisode</i><i>2023-09-04</i><i>Sterling and Nina Agdal XXX</i><i>6774048176174390112</i><i>5477875567116147112</i>
-        <i>TVEpisode</i><i>2023-09-03</i><i>Sterling and Arielle Vandenberg II</i><i>6774048176174390112</i><i>5473024731829191112</i>
-        <i>TVEpisode</i><i>1999-10-22</i><i>Jolinar's Memories</i><i>7188923726922774112</i><i>7193785230700234112</i>
-        <i>TVEpisode</i><i>1999-10-29</i><i>The Devil You Know</i><i>7188923726922774112</i><i>9155288484340405112</i>
-        <i>TVEpisode</i><i>2023-01-27</i><i>Shark Tank</i><i>6002411599924498112</i><i>8557272215653694112</i>
-        <i>TVEpisode</i><i>2023-09-04</i><i>Sterling and Nina Agdal XXXIII</i><i>6774048176174390112</i><i>6767560614241689112</i>
-        <i>TVEpisode</i><i>2023-09-08</i><i>Sterling and Karrueche Tran XXXII</i><i>6774048176174390112</i><i>8466284301618149112</i>
-        <i>TVEpisode</i><i>2023-09-08</i><i>Sterling and Karrueche Tran XXXIII</i><i>6774048176174390112</i><i>7938709646040977112</i>
-        <i>TVEpisode</i><i>2023-09-08</i><i>Sterling and Karrueche Tran XXXIV</i><i>6774048176174390112</i><i>6710948848766826112</i>
-        <i>TVEpisode</i><i>2023-09-10</i><i>Sterling and Rocsi Diaz</i><i>6774048176174390112</i><i>9094653187419635112</i>
-        <i>TVEpisode</i><i>1999-11-12</i><i>Pretense</i><i>7188923726922774112</i><i>8053389041408292112</i>
-        <i>TVEpisode</i><i>2000-02-18</i><i>New Ground</i><i>7188923726922774112</i><i>6229133029524653112</i>
-        <i>TVEpisode</i><i>2000-02-11</i><i>Shades of Grey</i><i>7188923726922774112</i><i>8236698319931365112</i>
-        <i>TVEpisode</i><i>2023-09-11</i><i>Sterling and Carly Aquilino XXX</i><i>6774048176174390112</i><i>4994375513692896112</i>
-        <i>TVEpisode</i><i>2023-09-11</i><i>Sterling and Carly Aquilino XXXI</i><i>6774048176174390112</i><i>8880080605460966112</i>
-        <i>TVEpisode</i><i>2023-09-11</i><i>Sterling and Carly Aquilino XXXII</i><i>6774048176174390112</i><i>7178250463783335112</i>
-        <i>TVEpisode</i><i>2023-09-15</i><i>Sterling and Karrueche Tran XXXIX</i><i>6774048176174390112</i><i>7314341700959738112</i>
-        <i>TVEpisode</i><i>2023-09-10</i><i>Sterling and Rocsi Diaz II</i><i>6774048176174390112</i><i>5465691774507012112</i>
-        <i>TVEpisode</i><i>2023-09-15</i><i>Champion Chefs</i><i>4791200799030182112</i><i>8483544570301759112</i>
-        <i>TVEpisode</i><i>1981-11-05</i><i>Memories Are Forever</i><i>5828688862497145112</i><i>8686119211549405112</i>
-        <i>TVEpisode</i><i>1981-11-05</i><i>Memories Are Forever</i><i>5828688862497145112</i><i>8374648741742424112</i>
-        <i>TVEpisode</i><i>2000-02-25</i><i>Maternal Instinct</i><i>7188923726922774112</i><i>7193362052655415112</i>
-        <i>TVEpisode</i><i>2023-09-15</i><i>Sterling and Karrueche Tran XXXV</i><i>6774048176174390112</i><i>7868897392271246112</i>
-        <i>TVEpisode</i><i>2023-09-15</i><i>Sterling and Karrueche Tran XL</i><i>6774048176174390112</i><i>5645515628431160112</i>
-        <i>TVEpisode</i><i>1981-11-12</i><i>Tropical Madness</i><i>5828688862497145112</i><i>7692194224617068112</i>
-        <i>TVEpisode</i><i>2000-03-03</i><i>Crystal Skull</i><i>7188923726922774112</i><i>7984852525804066112</i>
-        <i>TVEpisode</i><i>2000-03-10</i><i>Nemesis</i><i>7188923726922774112</i><i>5692802772064851112</i>
-        <i>TVEpisode</i><i>2000-07-07</i><i>The Other Side</i><i>7188923726922774112</i><i>8761431396981794112</i>
-        <i>TVEpisode</i><i>2000-07-14</i><i>Upgrades</i><i>7188923726922774112</i><i>7199523989987169112</i>
-        <i>TVEpisode</i><i>1981-12-17</i><i>The Sixth Position</i><i>5828688862497145112</i><i>5911024071990545112</i>
-        <i>TVEpisode</i><i>2000-08-04</i><i>Window of Opportunity</i><i>7188923726922774112</i><i>6437889704512964112</i>
-        <i>TVEpisode</i><i>2000-08-11</i><i>Watergate</i><i>7188923726922774112</i><i>8369752946788107112</i>
-        <i>TVEpisode</i><i>2000-08-25</i><i>Scorched Earth</i><i>7188923726922774112</i><i>4691643517044261112</i>
-        <i>TVEpisode</i><i>1981-11-19</i><i>Wave Goodbye</i><i>5828688862497145112</i><i>5497450741728515112</i>
-        <i>TVEpisode</i><i></i><i>FCP Euro Northeast Grand Prix</i><i>5058915465242102112</i><i>5420492422060861112</i>
-        <i>TVEpisode</i><i>2023-09-17</i><i>Sterling and Nina Agdal XXXIV</i><i>6774048176174390112</i><i>7754736827496214112</i>
-        <i>TVEpisode</i><i>2023-09-17</i><i>Sterling and Nina Agdal XXXV</i><i>6774048176174390112</i><i>5380198182643369112</i>
-        <i>TVEpisode</i><i>2023-09-18</i><i>Sterling and Karrueche Tran XXXVI</i><i>6774048176174390112</i><i>7855296553923699112</i>
-        <i>TVEpisode</i><i>2023-09-18</i><i>Sterling and Karrueche Tran XXXVII</i><i>6774048176174390112</i><i>6765534085169020112</i>
-        <i>TVEpisode</i><i>2023-09-18</i><i>Sterling and Karrueche Tran XXXVIII</i><i>6774048176174390112</i><i>6367590532071876112</i>
-        <i>TVEpisode</i><i>2023-09-22</i><i>Sterling and Carly Aquilino XXXIII</i><i>6774048176174390112</i><i>8190105153117734112</i>
-        <i>CreativeWork</i><i></i><i>On the Line: The Race of Champions</i><i></i><i>4698089067999478112</i>
-        <i>TVEpisode</i><i>2000-09-22</i><i>The Curse</i><i>7188923726922774112</i><i>8995020068025822112</i>
-        <i>TVEpisode</i><i>2000-09-29</i><i>Serpent's Venom</i><i>7188923726922774112</i><i>8023504206036031112</i>
-        <i>TVEpisode</i><i>2001-01-05</i><i>Chain Reaction</i><i>7188923726922774112</i><i>4664402834261118112</i>
-        <i>TVEpisode</i><i>2023-09-22</i><i>Sterling and Carly Aquilino XXXIV</i><i>6774048176174390112</i><i>6804319822038397112</i>
-        <i>TVEpisode</i><i>2023-09-22</i><i>Sterling and Carly Aquilino XXXVI</i><i>6774048176174390112</i><i>7334581157447583112</i>
-        <i>TVEpisode</i><i>2023-09-22</i><i>Food Trucks and Family Feasts</i><i>8290899894231225112</i><i>6686433244884668112</i>
-        <i>TVEpisode</i><i>2023-07-14</i><i>Triple D Nation: Mexi-Cali Meals</i><i>4791200799030182112</i><i>7551868396506698112</i>
-        <i>TVEpisode</i><i>2023-07-07</i><i>Sloppy, Saucy and Stuffed</i><i>4791200799030182112</i><i>4851938189432841112</i>
-        <i>TVEpisode</i><i>2001-01-19</i><i>Absolute Power</i><i>7188923726922774112</i><i>6375332789320385112</i>
-        <i>TVEpisode</i><i>2001-02-02</i><i>Prodigy</i><i>7188923726922774112</i><i>5708028800912637112</i>
-        <i>TVEpisode</i><i>1981-12-24</i><i>Ghost Writer</i><i>5828688862497145112</i><i>7262327173858874112</i>
-        <i>TVEpisode</i><i></i><i>Child's Play</i><i>7188923726922774112</i><i>7204156896037899112</i>
-        <i>TVEpisode</i><i>2001-02-09</i><i>Double Jeopardy</i><i>7188923726922774112</i><i>7776899475939219112</i>
-        <i>TVEpisode</i><i>2023-09-25</i><i>Sterling and Carly Aquilino XXXV</i><i>6774048176174390112</i><i>8860295698457390112</i>
-        <i>TVEpisode</i><i>2023-10-23</i><i>Sterling and Nina Agdal XXXVII</i><i>6774048176174390112</i><i>9093086405790205112</i>
-        <i>TVEpisode</i><i>2001-01-12</i><i>2010</i><i>7188923726922774112</i><i>5424800740569636112</i>
-        <i>TVEpisode</i><i>2023-10-23</i><i>Sterling and Nina Agdal XXXVIII</i><i>6774048176174390112</i><i>7543941142196653112</i>
-        <i>TVEpisode</i><i>2023-09-25</i><i>Sterling and Carly Aquilino XXXVII</i><i>6774048176174390112</i><i>7040480175438978112</i>
-        <i>Movie</i><i>1989-02-17</i><i>The 'Burbs</i><i></i><i>8484013806128655112</i>
-        <i>TVEpisode</i><i>2001-02-16</i><i>Exodus</i><i>7188923726922774112</i><i>4715087710434796112</i>
-        <i>TVEpisode</i><i>2023-09-29</i><i>Triple D Nation: Chicken, Cheese and Chili Paste</i><i>4791200799030182112</i><i>6629901561421111112</i>
-        <i>TVEpisode</i><i>2023-09-25</i><i>Sterling and Carly Aquilino XXXVIII</i><i>6774048176174390112</i><i>6244423604741495112</i>
-        <i>TVEpisode</i><i>2023-09-29</i><i>Sterling and Nina Agdal XXXIX</i><i>6774048176174390112</i><i>4811516916484876112</i>
-        <i>TVEpisode</i><i>2023-09-29</i><i>Sterling and Nina Agdal XL</i><i>6774048176174390112</i><i>7109875769425680112</i>
-        <i>TVEpisode</i><i>1982-01-14</i><i>Computer Date</i><i>5828688862497145112</i><i>7088460472244590112</i>
-        <i>TVEpisode</i><i>1982-01-07</i><i>The Jororo Kill</i><i>5828688862497145112</i><i>6649745786460344112</i>
-        <i>TVEpisode</i><i>2001-07-20</i><i>The Fifth Man</i><i>7188923726922774112</i><i>8918506374119668112</i>
-        <i>Movie</i><i>2000-08-11</i><i>Autumn in New York</i><i></i><i>4798897386090891112</i>
-        <i>TVEpisode</i><i>2001-07-27</i><i>Red Sky</i><i>7188923726922774112</i><i>4797307242947168112</i>
-        <i>TVEpisode</i><i>2001-08-24</i><i>Between Two Fires</i><i>7188923726922774112</i><i>6820315046007820112</i>
-        <i>TVEpisode</i><i>2001-08-31</i><i>2001</i><i>7188923726922774112</i><i>6732161009329897112</i>
-        <i>TVEpisode</i><i>1982-01-28</i><i>Try to Remember</i><i>5828688862497145112</i><i>6319074084211740112</i>
-        <i>TVEpisode</i><i>1982-02-04</i><i>Italian Ice</i><i>5828688862497145112</i><i>7120082971684458112</i>
-        <i>TVEpisode</i><i>1982-02-18</i><i>Texas Lightning</i><i>5828688862497145112</i><i>4976565242009173112</i>
-        <i>TVEpisode</i><i>2023-02-08</i><i>Star Chasers of Senegal</i><i>8954551503237514112</i><i>7299714526531665112</i>
-        <i>TVEpisode</i><i>2021-12-19</i><i>Board Game Empires</i><i>6685567252992161112</i><i>6103842155857123112</i>
-        <i>TVEpisode</i><i>1982-02-25</i><i>Double Jeopardy</i><i>5828688862497145112</i><i>6756183078170613112</i>
-        <i>TVEpisode</i><i>1982-03-04</i><i>The Last Page</i><i>5828688862497145112</i><i>5344758745298710112</i>
-        <i>TVEpisode</i><i>1982-04-01</i><i>Three Minus Two</i><i>5828688862497145112</i><i>9090420171288733112</i>
-        <i>CreativeWork</i><i>2023-10-01</i><i>Stingray Arena Anthems</i><i></i><i>4725593583048439112</i>
-        <i>TVEpisode</i><i>2023-10-22</i><i>United States Grand Prix</i><i>5584345400977409112</i><i>8913575175934539112</i>
-        <i>TVEpisode</i><i>2023-10-02</i><i>Sterling and Nina Agdal XLII</i><i>6774048176174390112</i><i>4632288018036706112</i>
-        <i>TVEpisode</i><i>2023-09-29</i><i>Sterling and Nina Agdal XXXVI</i><i>6774048176174390112</i><i>5180674477971171112</i>
-      </div>
     </section>
 
 
 
   </body>
-  <script type="module" setup>
-
-  </script>
 </html>
