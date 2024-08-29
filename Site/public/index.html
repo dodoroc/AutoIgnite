@@ -349,21 +349,25 @@ snow  #fffafa
     <script type="module" src="/assets/app.mjs"></script>
   </head>
   <body>
-    <input type="text" v-model="series" list="series-select">
-    <datalist id="series-select">
-      <option v-for="series in series-list" :key="series.series_id">{{series.name}}</option>
-    </datalist>
 
+    <section id="search-criteria" class="col-mode compact">
+      <input type="text" v-model="series" list="series-select">
+      <datalist id="series-select">
+        <option v-for="series in series-list" :key="series.series_id">{{series.name}}</option>
+      </datalist>
+    </section>
 
-    <table>
-      <colgroup><col class="a"><col class="b"><col class="c"><col class="d"><col class="e"></colgroup>
+    <section id="search-results" class="col-mode compact">
+      <table>
+        <colgroup><col class="a"><col class="b"><col class="c"><col class="d"><col class="e"></colgroup>
 
-      <thead>
-        <tr><td>Type</td><td>Aired</td><td>Name</td><td>SeriesId</td><td>ProgramId</td></tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
+        <thead>
+          <tr><td>Type</td><td>Aired</td><td>Name</td><td>SeriesId</td><td>ProgramId</td></tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </section>
 
 
   </body>
