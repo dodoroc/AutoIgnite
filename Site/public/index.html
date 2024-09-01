@@ -201,22 +201,22 @@ snow  #fffafa
 */
       select {
         appearance: none;
-        background-color: lightcyan;
 
-/*        background-image: conic-gradient(at 50% 83%, currentColor 6%, transparent 9%, transparent 91%, currentColor 94%);*/
-
-  background-image: conic-gradient(from 180deg at 50% 99%, #0000 145deg, currentColor 145deg, currentColor 215deg, #0000 215deg);
-  background-position: calc(100% - 1px) calc(50% + 1px);
-  background-size: 12px 9px;
-
+        background-image: conic-gradient(from 180deg at 50% 99%, #0000 145deg, currentColor 145deg, currentColor 215deg, #0000 215deg);
+        background-position: calc(100% - 1px) calc(50% + 1px);
+        background-size: 12px 9px;
         background-origin: content-box;
         background-repeat: no-repeat;
       }
 
+      select:active {
+        background-image: conic-gradient(from 0deg at 50% 1%, #0000 145deg, currentColor 145deg, currentColor 215deg, #0000 215deg);
+      }
+      select:focus {
+        background-image: conic-gradient(from 0deg at 50% 1%, #0000 145deg, currentColor 145deg, currentColor 215deg, #0000 215deg);
+      }
       select:focus-within {
-        background-color: lightyellow;
-  background-image: conic-gradient(from 0deg at 50% 1%, #0000 145deg, currentColor 145deg, currentColor 215deg, #0000 215deg);
-
+        background-image: conic-gradient(from 0deg at 50% 1%, #0000 145deg, currentColor 145deg, currentColor 215deg, #0000 215deg);
       }
 
 
