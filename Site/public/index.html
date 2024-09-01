@@ -201,15 +201,17 @@ snow  #fffafa
 */
       select {
         position: relative;
+        -moz-appearance: none;
+        -webkit-appearance: none;
         appearance: none;
-        background-color: darkcyan;
+        background-color: lightcyan;
       }
 
       select::after {
         display: block;
         position: absolute;
         height: 28px;
-        line-height: 28px;
+        _line-height: 28px;
         padding: 0 5px;
 
         content: "X";
