@@ -176,7 +176,7 @@ snow  #fffafa
       label > input:is([type="checkbox"], [type="radio"]) {
         margin-right: 1ch;
       }
-
+/*
       input[type="text"][list] ::marker {
         height: auto;
         padding: 0;
@@ -187,10 +187,22 @@ snow  #fffafa
       input[type="text"][list] div[pseudo]::marker {
         background-color: cyan !important;
       }
+      datalist {
+        width: 100%;
+        font: inherit;
+        border-radius: 0;
+        appearance: none;
+        background-color: cyan;
 
+      }
+
+
+
+*/
       select {
         position: relative;
         appearance: none;
+        background-color: darkcyan;
       }
 
       select::after {
@@ -211,15 +223,6 @@ snow  #fffafa
 /*        clip-path: polygon(100% 0%, 0 0%, 50% 100%);*/
 
       }
-      datalist {
-        width: 100%;
-        font: inherit;
-        border-radius: 0;
-        appearance: none;
-        background-color: cyan;
-
-      }
-
 
 
 
@@ -442,10 +445,10 @@ img {
       <datalist id="series-data">
         <option v-for="series in store.series" :key="series.seriesId">{{series.name}}</option>
       </datalist>
-      <select id="series-select" name="series-select" title="---">
+      <select name="series-select1">
         <option v-for="series in store.series" :value="series.seriesId">{{series.name}}</option>
       </select>
-      <select id="series-select2" name="series-select" title="---">
+      <select name="series-select2">
         <option>aaaaa</option>
         <option>bbbbb</option>
         <option>ccccc</option>
