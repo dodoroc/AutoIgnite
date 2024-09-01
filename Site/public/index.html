@@ -436,11 +436,11 @@ img {
  -->
 
     <section id="search-criteria" class="col-mode compact">
-      <input type="text" list="series-select">
-      <datalist id="series-select">
+      <input type="text" list="series-data">
+      <datalist id="series-data">
         <option v-for="series in store.series" :key="series.seriesId">{{series.name}}</option>
       </datalist>
-      <select id="series-select2">
+      <select id="series-select" name="series-select" title="">
         <option v-for="series in store.series" :value="series.seriesId">{{series.name}}</option>
       </select>
     </section>
