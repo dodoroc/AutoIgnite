@@ -189,7 +189,20 @@ snow  #fffafa
       }
 
       select {
-        background-color: darkred !important;
+        appearance: none;
+
+        color: var(--clr-darker);
+        background-color: var(--clr-lighter);
+        border: solid 1px var(--clr-lighter);
+        outline: none;
+      }
+
+      select::after {
+        content: "";
+        width: 0.8em;
+        height: 0.5em;
+        background-color: var(--select-arrow);
+        clip-path: polygon(100% 0%, 0 0%, 50% 100%);
       }
       datalist {
         width: 100%;
@@ -197,6 +210,7 @@ snow  #fffafa
         border-radius: 0;
         appearance: none;
         background-color: cyan;
+
       }
 
 
