@@ -440,7 +440,7 @@ img {
       <datalist id="series-data">
         <option v-for="series in store.series" :key="series.seriesId">{{series.name}}</option>
       </datalist>
-      <select id="series-select" name="series-select" title="">
+      <select id="series-select" name="series-select" title="---">
         <option v-for="series in store.series" :value="series.seriesId">{{series.name}}</option>
       </select>
     </section>
