@@ -206,7 +206,7 @@ snow  #fffafa
       }
 
       select::after {
-        display: inline-block;
+        display: block;
         position: absolute;
         height: 28px;
         line-height: 28px;
@@ -214,10 +214,10 @@ snow  #fffafa
 
         content: "X";
         width: 18px;
-        right: 0;
+        _right: 0;
         top: 0;
-        bottom: 0;
-        background-color: var(--select-arrow);
+        left: 0;
+        _bottom: 0;
         background-color: darkred;
         color: yellow;
 /*        clip-path: polygon(100% 0%, 0 0%, 50% 100%);*/
@@ -441,6 +441,7 @@ img {
  -->
 
     <section id="search-criteria" class="col-mode compact">
+      <!--
       <input type="text" list="series-data">
       <datalist id="series-data">
         <option v-for="series in store.series" :key="series.seriesId">{{series.name}}</option>
@@ -448,6 +449,7 @@ img {
       <select name="series-select1">
         <option v-for="series in store.series" :value="series.seriesId">{{series.name}}</option>
       </select>
+    -->
       <select name="series-select2">
         <option>aaaaa</option>
         <option>bbbbb</option>
