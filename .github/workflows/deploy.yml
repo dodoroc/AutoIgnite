@@ -26,11 +26,11 @@ jobs:
           source: "."
           target: "/home/projects/AutoIgnite"
 
-      - name: executing remote ssh commands using ssh key
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSHKEY }}
-          port: ${{ secrets.PORT }}
-          script: ls
+      # - name: executing remote ssh commands using ssh key
+      #   uses: appleboy/ssh-action@v1.0.3
+      #   with:
+      #     host: ${{ secrets.HOST }}
+      #     username: ${{ secrets.USERNAME }}
+      #     key: ${{ secrets.SSHKEY }}
+      #     port: ${{ secrets.PORT }}
+      #     script: ls
