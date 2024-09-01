@@ -205,6 +205,7 @@ snow  #fffafa
         top: 0;
         background-color: var(--select-arrow);
         background-color: darkred;
+        color: yellow;
 /*        clip-path: polygon(100% 0%, 0 0%, 50% 100%);*/
 
       }
@@ -439,7 +440,7 @@ img {
       <datalist id="series-select">
         <option v-for="series in store.series" :key="series.seriesId">{{series.name}}</option>
       </datalist>
-      <select name="series-select">
+      <select id="series-select">
         <option v-for="series in store.series" :value="series.seriesId">{{series.name}}</option>
       </select>
     </section>
