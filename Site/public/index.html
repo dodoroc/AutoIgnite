@@ -384,9 +384,10 @@ img {
   <body>
 
 <hr>
-<svg xmlns="http://www.w3.org/2000/svg"/>
-<img onerror="console.log(this.src)" src="data:image/svg+xml,%3csvg xmlns="http://www.w3.org/2000/svg"/%3e">
+<!-- <svg xmlns="http://www.w3.org/2000/svg"/> -->
+<img onerror="console.log(this.src)" src="data:image/svg+xml,%3csvg xmlns=%22http://www.w3.org/2000/svg%22/%3e">
 <img onerror="console.log(this.src)" src="data:image/svg+xml,%3csvg /%3e">
+<img onerror="console.log(this.src)" src="data:image/svg+xml,%3csvg%3e%3c/svg%3e">
 <img onerror="console.log(this.src)" src="data:,">
 <img onerror="console.log(this.src)" src="data:text/plain,">
 <img onerror="console.log(this.src)" src="data:image,">
