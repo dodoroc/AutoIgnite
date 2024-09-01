@@ -16,10 +16,10 @@ rows.forEach(s => {
 console.log(`
 INSERT INTO tracker.episode (series_id, name, air_date, source) VALUES
 ${vals.join(',\n')}
-ON CONFLICT (series_id, name) DO UPDATE SET
-air_date=EXCLUDED.air_date WHERE episode.air_date IS NULL
+ON CONFLICT (series_id, name) DO NOTHING
 ;
 `);
+// UPDATE SET air_date=EXCLUDED.air_date WHERE episode.air_date IS NULL
 
 
 
@@ -42,10 +42,10 @@ rows.forEach(s => {
 console.log(`
 INSERT INTO tracker.episode (series_id, name, air_date, source) VALUES
 ${vals.join(',\n')}
-ON CONFLICT (series_id, name) DO UPDATE SET
-air_date=EXCLUDED.air_date WHERE episode.air_date IS NULL
+ON CONFLICT (series_id, name) DO NOTHING
 ;
 `);
+// UPDATE SET air_date=EXCLUDED.air_date WHERE episode.air_date IS NULL
 
 
 
@@ -65,7 +65,7 @@ rows.forEach(s => {
 console.log(`
 INSERT INTO tracker.episode (series_id, name, air_date, source) VALUES
 ${vals.join(',\n')}
-ON CONFLICT (series_id, name) DO UPDATE SET
-air_date=EXCLUDED.air_date WHERE episode.air_date IS NULL
+ON CONFLICT (series_id, name) DO NOTHING
 ;
 `);
+// UPDATE SET air_date=EXCLUDED.air_date WHERE episode.air_date IS NULL
