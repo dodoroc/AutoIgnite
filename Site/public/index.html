@@ -200,36 +200,11 @@ snow  #fffafa
 
 */
       select {
-        position: relative;
         appearance: none;
         background-color: lightcyan;
-        padding-right: 30px;
-      }
-      select div {
-        background-color: orange !important;
-      }
+        _padding-right: 30px;
 
-
-      select::before {
-        content: 'ZZ';
-      }
-      select::after {
-        display: block;
-        position: absolute;
-        height: 28px;
-        _line-height: 28px;
-        padding: 0 5px;
-
-        content: "X";
-        width: 18px;
-        _right: 0;
-        top: 0;
-        left: 0;
-        _bottom: 0;
-        background-color: darkred;
-        color: #000 !important;
-/*        clip-path: polygon(100% 0%, 0 0%, 50% 100%);*/
-
+        background-image: conic-gradient(at 50% 83%, currentColor 6%, transparent 9%, transparent 91%, currentColor 94%);
       }
 
 
