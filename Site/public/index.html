@@ -176,30 +176,8 @@ snow  #fffafa
       label > input:is([type="checkbox"], [type="radio"]) {
         margin-right: 1ch;
       }
-/*
-      input[type="text"][list] ::marker {
-        height: auto;
-        padding: 0;
-        line-height: 1rlh;
-  background-color: red !important;
-  height: auto;
-      }
-      input[type="text"][list] div[pseudo]::marker {
-        background-color: cyan !important;
-      }
-      datalist {
-        width: 100%;
-        font: inherit;
-        border-radius: 0;
-        appearance: none;
-        background-color: cyan;
 
-      }
-
-
-
-*/
-      select {
+      select2 {
         appearance: none;
 
         background-image: conic-gradient(from 180deg at 50% 99%, #0000 145deg, currentColor 145deg, currentColor 215deg, #0000 215deg);
@@ -207,16 +185,6 @@ snow  #fffafa
         background-size: 12px 9px;
         background-origin: content-box;
         background-repeat: no-repeat;
-      }
-
-      select2:active {
-        background-image: conic-gradient(from 0deg at 50% 1%, #0000 145deg, currentColor 145deg, currentColor 215deg, #0000 215deg);
-      }
-      select:focus {
-        background-image: conic-gradient(from 0deg at 50% 1%, #0000 145deg, currentColor 145deg, currentColor 215deg, #0000 215deg);
-      }
-      select2:focus-within {
-        background-image: conic-gradient(from 0deg at 50% 1%, #0000 145deg, currentColor 145deg, currentColor 215deg, #0000 215deg);
       }
 
 
@@ -389,13 +357,6 @@ snow  #fffafa
         background-color: rgba(255,255,255, 0.2);
       }
 
-
-img {
-  display: inline-block;
-  border: solid 1px darkred;
-  width: 64px;
-  height: 64px;
-}
     </style>
 
     <script type="module" src="/assets/app.mjs"></script>
@@ -408,53 +369,20 @@ img {
 <img onerror="console.log(this.src)" src="data:image/svg+xml,%3csvg xmlns=%22http://www.w3.org/2000/svg%22/%3e">
 <img onerror="console.log(this.src)" src="data:image/bmp;base64,Qk0eAAAAAAAAABoAAAAMAAAAAQABAAEAGAAAAP8A">
 <img onerror="console.log(this.src)" src="data:image/gif;base64,R0lGODlhASABICAgIDs=">
-
-
-
-<img onerror="console.log(this.src)" src="data:;base64,iVBORw0KGgo=">
-<img onerror="console.log(this.src)" src="data:;base64,iVBORw0KGgo=" type="text/png">
-<img onerror="console.log(this.src)" src="data:image/png;base64,iVBORw0KGgo=">
-<img onerror="console.log(this.src)" src="data:;base64,=">
-
-<img onerror="console.log(this.src)" src="data:image/svg+xml,<svg xmlns=%22%22/>">
-<img onerror="console.log(this.src)" src="data:image/svg+xml,%3csvg xmlns=%22%22/%3e">
-<img onerror="console.log(this.src)" src="data:image/svg+xml,<svg />">
-<img onerror="console.log(this.src)" src="data:image/svg+xml,%3csvg /%3e">
-<img onerror="console.log(this.src)" src="data:image/svg+xml,<svg></svg>">
-<img onerror="console.log(this.src)" src="data:image/svg+xml,%3csvg%3e%3c/svg%3e">
-<img onerror="console.log(this.src)" src="data:,">
-<img onerror="console.log(this.src)" src="data:">
-<img onerror="console.log(this.src)" src="data:image,">
-<img onerror="console.log(this.src)" src="data:image">
-<img onerror="console.log(this.src)" src="data:image;base64,AA">
-<img onerror="console.log(this.src)" src="data:image/x-icon;base64,AA">
-<img onerror="console.log(this.src)" src="data:image/x-icon;base64,AAAAAQAA">
-<hr>
-<hr>
 <hr>
  -->
 
     <section id="search-criteria" class="col-mode compact">
-      <input type="text" list="series-data">
-      <datalist id="series-data">
-      <!--
-        <option v-for="series in store.series" :key="series.seriesId">{{series.name}}</option>
-      -->
-        <option>aaaaa</option>
-        <option>bbbbb</option>
-        <option>ccccc</option>
-      </datalist>
-
-      <!--
       <select name="series-select1">
         <option v-for="series in store.series" :value="series.seriesId">{{series.name}}</option>
       </select>
-      -->
+      <!--
       <select name="series-select2">
         <option>aaaaa</option>
         <option>bbbbb</option>
         <option>ccccc</option>
       </select>
+      -->
 
     </section>
 
