@@ -374,7 +374,7 @@ snow  #fffafa
 
     <section id="search-criteria" class="col-mode compact">
       <select name="series-select1">
-        <option v-for="series in store.series" :value="series.seriesId" :key="1">{{series.name}}</option>
+        <option v-for="series in store.series" :value="series.seriesId" :key="series.seriesId">{{series.name}}</option>
       </select>
       <!--
       <select name="series-select2">
