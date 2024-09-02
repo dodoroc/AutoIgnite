@@ -18,10 +18,7 @@ final class SimpleRouter extends AbstractRouter
   public function __construct(
     public readonly array $routes = [
 
-      'episode' => [
-        '.' => new Routing('\Server\Controller\EpisodeController', [HttpMethods::PUT]),
-        '^(?<programId>\d{19})$' => new Routing('\Server\Controller\EpisodeDetailController', [HttpMethods::GET])
-      ],
+      'episode' => new Routing('\Server\Controller\EpisodeController', [HttpMethods::PUT]),
 
       'watched' => new Routing('\Server\Controller\WatchedController', [HttpMethods::GET, HttpMethods::PUT]),
 
@@ -34,8 +31,6 @@ final class SimpleRouter extends AbstractRouter
         ]
       ],
 
-      '.' => new Routing('\Server\Controller\HomeController', [HttpMethods::GET]),
-      'info' => new Routing('\Server\Controller\InfoController', [HttpMethods::GET]),
       'teapot' => new Routing('\Server\Controller\TeapotController', [HttpMethods::GET])
     ]
   ) {}

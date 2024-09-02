@@ -11,9 +11,9 @@ const store = reactive({
       "seasonMax": 999
     }
   ],
-  selected: 0,
-  episodes: null
-})
+  selectedNdx: 0,
+  programs: null
+});
 
 // manipulate it here
 // store.inc()
@@ -21,4 +21,4 @@ const store = reactive({
 createApp({
   // share it with app scopes
   store
-}).mount()
+}).mount();

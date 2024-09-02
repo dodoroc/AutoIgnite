@@ -21,10 +21,9 @@ final class EpisodePutSomeProcess extends AbstractDatabaseProcess
   private function createQuery() : string
   {
     $sql = <<<'SQL'
-      INSERT INTO tracker.episode (series_id, name, air_date, program_id)
-      VALUES (:seriesId, :name, :airDate, :programId)
-      ON CONFLICT (series_id, name) DO UPDATE SET
-      program_id=excluded.program_id;
+      INSERT INTO tracker.episode (series_id, name, air_date)
+      VALUES (:seriesId, :name, :airDate)
+      ON CONFLICT (series_id, name) DO NOTHING;
       SQL;
 
     return $sql;
@@ -45,7 +44,6 @@ final class EpisodePutSomeProcess extends AbstractDatabaseProcess
         $stm->bindParam(':seriesId',  $obj->seriesId, PDO::PARAM_STR);
         $stm->bindParam(':name',      $obj->name, PDO::PARAM_STR);
         $stm->bindParam(':airDate',   $obj->airedDate, PDO::PARAM_STR);
-        $stm->bindParam(':programId', $obj->programId, PDO::PARAM_STR);
 
         $stm->execute();
       }

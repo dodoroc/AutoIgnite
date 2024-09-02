@@ -373,17 +373,11 @@ snow  #fffafa
  -->
 
     <section id="search-criteria" class="col-mode compact">
-      <select name="series-select1">
-        <option v-for="series in store.series" :value="series.seriesId" :key="series.seriesId">{{series.name}}</option>
+      <select name="series-select" @change="seriesChanged">
+        <option v-for="series in store.series" :value="series.seriesId" :key="series.seriesId">
+          {{series.name}} ({{series.releaseYear}})
+        </option>
       </select>
-      <!--
-      <select name="series-select2">
-        <option>aaaaa</option>
-        <option>bbbbb</option>
-        <option>ccccc</option>
-      </select>
-      -->
-
     </section>
 
     <section id="search-results" class="col-mode compact">
@@ -393,7 +387,15 @@ snow  #fffafa
         <thead>
           <tr><td>Type</td><td>Aired</td><td>Name</td><td>SeriesId</td><td>ProgramId</td></tr>
         </thead>
+
         <tbody>
+          <tr v-for="program in store.programs" :key="program.programId">
+            <td>{{program.type}}</td>
+            <td>{{program.airedOn}}</td>
+            <td>{{program.name}}</td>
+            <td>{{program.seriesId}}</td>
+            <td>{{program.programId}}</td>
+          </tr>
         </tbody>
       </table>
     </section>
