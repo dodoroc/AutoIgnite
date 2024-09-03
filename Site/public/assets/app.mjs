@@ -13,8 +13,6 @@ const store = reactive({
   ],
   selectedNdx: 0,
   programs: null,
-  temp:0,
-  t2:0
 });
 
 // manipulate it here
