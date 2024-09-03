@@ -17,6 +17,9 @@ const store = reactive({
 
 // manipulate it here
 // store.inc()
+seriesChanged(itm) {
+  console.dir(itm);
+}
 
 createApp({
   // share it with app scopes
