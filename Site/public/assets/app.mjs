@@ -30,10 +30,12 @@ const app = createApp({
     return {
     }
   },
+  onMounted() {
+    console.dir(selectedValue);
+  },
   mounted() {
-  console.dir(store);
-  console.dir(selectedValue);
-
+    console.dir(store);
+    console.dir(selectedValue);
   }
 }).mount();
 store.series = await loadSeries();
