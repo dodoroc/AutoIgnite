@@ -17,7 +17,7 @@ const store = reactive({
 
 // manipulate it here
 // store.inc()
-seriesChanged(itm) {
+function seriesChanged(itm) {
   console.dir(itm);
 }
 
