@@ -7,7 +7,7 @@
 
 namespace Server\Domain;
 
-use Server\Entity\{SeriesId, ProgramId, Episode};
+use Server\Entity\{SeriesId, ProgramId, WatchedEpisode};
 use \PDO;
 
 final class WatchedEpisodesBySeriesIdProcess extends AbstractDatabaseProcess
