@@ -5,11 +5,11 @@ const store = reactive({
   selectedSeries: null,
   programs: null,
   loadSeries() {
-    series = await fetch(`http://192.168.50.200:9080/series`)
+    series = fetch(`http://192.168.50.200:9080/series`)
     .then(data => data.json());
   },
   loadPrograms(seriesId) {
-    programs = await fetch(`http://192.168.50.200:9080/series/${seriesId}/watched-episodes`)
+    programs = fetch(`http://192.168.50.200:9080/series/${seriesId}/watched-episodes`)
     .then(data => data.json());
   }
 });
