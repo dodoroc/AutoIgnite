@@ -3,6 +3,7 @@ import { createApp, reactive } from 'https://unpkg.com/petite-vue@0.4.1/dist/pet
 const store = reactive({
   series: null,
   selectedSeries: null,
+  selectedValue: null,
   programs: null,
 });
 
@@ -31,4 +32,8 @@ createApp({
   }
 }).mount();
 store.series = await loadSeries();
+setTimeout(() => {
+  console.dir(store);
+}, 1000);
+
 
