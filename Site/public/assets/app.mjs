@@ -12,12 +12,13 @@ async function loadSeries() {
 }
 // manipulate it here
 // store.inc()
-function seriesChanged(itm) {
-  console.dir(itm);
-}
 createApp({
   // share it with app scopes
   store,
+  seriesChanged(itm) {
+    console.dir(itm, $el);
+  },
+
   setup() {
     console.log('setup');
     return {
