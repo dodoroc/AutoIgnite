@@ -15,8 +15,8 @@ async function loadSeries() {
 createApp({
   // share it with app scopes
   store,
-  seriesChanged(itm) {
-    console.dir(itm);
+  seriesChanged(ev) {
+    console.dir(ev);
   },
 
   setup() {
