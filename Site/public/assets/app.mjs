@@ -24,8 +24,8 @@ async function loadSeries() {
 function seriesChanged(itm) {
   console.dir(itm);
 }
-loadSeries();
 createApp({
   // share it with app scopes
   store
 }).mount();
+loadSeries();
