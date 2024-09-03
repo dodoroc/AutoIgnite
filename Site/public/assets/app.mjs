@@ -17,6 +17,9 @@ function seriesChanged(itm) {
 }
 createApp({
   // share it with app scopes
-  store
+  store,
+  data() {
+    console.log('data');
+  }
 }).mount();
 store.series = await loadSeries();
