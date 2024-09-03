@@ -37,8 +37,8 @@ const app = createApp({
     console.dir(selectedValue);
   },
   mounted() {
-    console.dir(store);
-    console.dir(selectedValue);
+    console.dir(store.selectedSeries);
+    console.dir(this.selectedValue);
   }
 }).mount();
 store.series = await loadSeries();
