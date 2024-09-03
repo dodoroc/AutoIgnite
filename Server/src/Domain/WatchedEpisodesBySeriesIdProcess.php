@@ -31,7 +31,7 @@ final class WatchedEpisodesBySeriesIdProcess extends AbstractDatabaseProcess
     $stm = $this->dbc->query($sql, PDO::FETCH_OBJ);
 
     foreach ($stm as $r) {
-      $o = new WatchedEpisode($r->name, $r->aired_on, $r->watched_on, new ProgramId($r->program_id));
+      $o = new WatchedEpisode($r->name, $r->aired_on, $r->watched_on, new ProgramId($r->program_id ?? ''));
       array_push($this->results, $o);
     }
   }
