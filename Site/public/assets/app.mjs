@@ -12,7 +12,7 @@ async function loadSeries() {
 }
 // manipulate it here
 // store.inc()
-createApp({
+const app = createApp({
   // share it with app scopes
   store,
   selectedValue: null,
@@ -29,12 +29,12 @@ createApp({
     console.log('data');
     return {
     }
+  },
+  mounted() {
+  console.dir(store);
+  console.dir(selectedValue);
+
   }
 }).mount();
 store.series = await loadSeries();
-setTimeout(() => {
-  console.dir(store);
-  console.dir(selectedValue);
-}, 1000);
-
 
