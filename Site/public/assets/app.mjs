@@ -4,11 +4,18 @@ const store = reactive({
   series: null,
   selectedSeries: null,
   programs: null,
+  loadSeries() {
+    series = await fetch(`http://192.168.50.200:9080/series`)
+    .then(data => data.json());
+  },
+  loadPrograms(seriesId) {
+    programs = await fetch(`http://192.168.50.200:9080/series/${seriesId}/watched-episodes`)
+    .then(data => data.json());
+  }
 });
 
 async function loadSeries() {
-  return fetch('http://192.168.50.200:9080/series')
-  .then(data => data.json());
+  return
 }
 // manipulate it here
 // store.inc()
@@ -33,13 +40,10 @@ const app = createApp({
     return {
     }
   },
-  onMounted() {
-    console.dir(selectedValue);
-  },
   mounted() {
-    console.dir(store.selectedSeries);
-    console.dir(this.selectedValue);
+    store.loadSeries();
+    // console.dir(store.selectedSeries);
+    // console.dir(this.selectedValue);
   }
 }).mount();
-store.series = await loadSeries();
 
