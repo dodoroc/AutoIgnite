@@ -10,15 +10,16 @@ namespace Server\Domain;
 use Server\Entity\{SeriesId, ProgramId, Episode};
 use \PDO;
 
-final class EpisodeGetAllProcess extends AbstractDatabaseProcess
+final class WatchedEpisodesBySeriesIdProcess extends AbstractDatabaseProcess
 {
+  public function __construct(private SeriesId $seriesId)
+  {
+    parent::__construct();
+  }
+
   private function createQuery() : string
   {
-    $sql = <<<'SQL'
-      SELECT series_id, name, aired_on
-      FROM tracker.episode
-      SQL;
-
+    $sql = 'SELECT name,air_date,watched_on,program_id FROM tracker.series_'.$this->seriesId;
     return $sql;
   }
 
@@ -30,7 +31,7 @@ final class EpisodeGetAllProcess extends AbstractDatabaseProcess
     $stm = $this->dbc->query($sql, PDO::FETCH_OBJ);
 
     foreach ($stm as $r) {
-      $o = new Episode(new SeriesId($r->series_id), $r->name, $r->air_date);
+      $o = new WatchedEpisode($r->name, $r->aired_on, $r->watched_on, new ProgramId($r->program_id));
       array_push($this->results, $o);
     }
   }

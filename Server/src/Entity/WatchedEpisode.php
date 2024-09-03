@@ -6,12 +6,13 @@
 
 namespace Server\Entity;
 
-final class Episode extends AbstractEntity
+final class WatchedEpisode extends AbstractEntity
 {
   public function __construct(
-    public readonly SeriesId $seriesId,
     public readonly string $name,
     public readonly string|null $airedOn,
+    public readonly string|null $watchedOn,
+    public readonly ProgramId $programId,
   ) {}
 
   public function isValid() : bool

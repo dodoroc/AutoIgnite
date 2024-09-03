@@ -28,6 +28,7 @@ final class SimpleRouter extends AbstractRouter
         '^(?<seriesId>\d{19})$' => [
           '.' => new Routing('\Server\Controller\SeriesDetailController', [HttpMethods::GET]),
           'episodes' => new Routing('\Server\Controller\SeriesEpisodesController', [HttpMethods::GET]),
+          'watched-episodes' => new Routing('\Server\Controller\WatchedEpisodesController', [HttpMethods::GET]),
         ]
       ],
 
