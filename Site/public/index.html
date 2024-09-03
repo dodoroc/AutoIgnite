@@ -369,6 +369,7 @@
 
     <section id="search-criteria" class="col-mode compact">
       <select name="series-select" @change="seriesChanged()">
+        <option value="">sel</option>
         <option v-for="series in store.series" :value="series.seriesId" :key="series.seriesId">
           {{series.name}} ({{series.releaseYear}})
         </option>
