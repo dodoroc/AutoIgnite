@@ -1,8 +1,8 @@
 import { createApp, reactive } from 'https://unpkg.com/petite-vue@0.4.1/dist/petite-vue.es.js?module'//https://unpkg.com/petite-vue?module'
 
 const store = reactive({
-  series: [],
-  selectedNdx: 0,
+  series: null,
+  selectedSeries: null,
   programs: null,
 });
 
@@ -30,3 +30,4 @@ createApp({
   }
 }).mount();
 store.series = await loadSeries();
+
