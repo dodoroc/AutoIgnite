@@ -35,10 +35,11 @@ Tech: HTML, CSS, JS/ES, Petite VUE, nginx
 - GitHub Actions 
 - Linux server (Rocky 9)
 
+
 ### References
-https://docs.developer.comcast.com/docs/120-core-entertainment-schema
-https://stackoverflow.com/questions/9515704/access-variables-and-functions-defined-in-page-context-from-an-extension
-https://patrickdesjardins.com/blog/how-to-communicate-from-your-website-to-a-chrome-extension
-https://duo.com/labs/tech-notes/message-passing-and-security-considerations-in-chrome-extensions
-https://www.freecodecamp.org/news/chrome-extension-message-passing-essentials/
-https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/Port
+- https://docs.developer.comcast.com/docs/120-core-entertainment-schema
+- https://stackoverflow.com/questions/9515704/access-variables-and-functions-defined-in-page-context-from-an-extension
+- https://patrickdesjardins.com/blog/how-to-communicate-from-your-website-to-a-chrome-extension
+- https://duo.com/labs/tech-notes/message-passing-and-security-considerations-in-chrome-extensions
+- https://www.freecodecamp.org/news/chrome-extension-message-passing-essentials/
+- https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/Port
