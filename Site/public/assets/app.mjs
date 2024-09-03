@@ -16,7 +16,7 @@ createApp({
   // share it with app scopes
   store,
   seriesChanged(itm) {
-    console.dir(itm, $el);
+    console.dir(itm);
   },
 
   setup() {
