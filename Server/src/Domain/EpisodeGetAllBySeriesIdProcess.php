@@ -20,7 +20,7 @@ final class EpisodeGetAllBySeriesIdProcess extends AbstractDatabaseProcess
   private function createQuery() : string
   {
     $sql = <<<'SQL'
-      SELECT series_id, name, air_date
+      SELECT series_id, name, aired_on
       FROM tracker.episode
       WHERE series_id = :seriesId
       SQL;
@@ -38,7 +38,7 @@ final class EpisodeGetAllBySeriesIdProcess extends AbstractDatabaseProcess
     $stm->execute(['seriesId' => $this->seriesId]);
 
     foreach ($stm as $r) {
-      $o = new Episode(new SeriesId($r->series_id), $r->name, $r->air_date);
+      $o = new Episode(new SeriesId($r->series_id), $r->name, $r->aired_on);
       array_push($this->results, $o);
     }
   }
