@@ -19,7 +19,7 @@ final class WatchedEpisodesBySeriesIdProcess extends AbstractDatabaseProcess
 
   private function createQuery() : string
   {
-    $sql = 'SELECT name,air_date,watched_on,program_id FROM tracker.series_'.$this->seriesId;
+    $sql = 'SELECT name,aired_on,watched_on,program_id FROM tracker.series_'.$this->seriesId;
     return $sql;
   }
 
