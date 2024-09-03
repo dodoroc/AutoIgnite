@@ -22,7 +22,7 @@ const app = createApp({
 
   init() {
     console.log('init');
-  }
+  },
   setup() {
     console.log('setup');
     return {
