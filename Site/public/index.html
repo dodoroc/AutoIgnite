@@ -30,31 +30,25 @@
         --font-size-sm: 0.937rem;
         --font-size-xs: 0.878rem;
 
-        --width-full: 415px;
-        --width: 400px;
+        --width-max: 1050px;
 
         --width-scrollbar: calc(100vw - 100%);
         --width-available: calc(100vw - (100vw - 100%));
       }
-      /*
+
       @media (prefers-color-scheme: light) {
         :root {
-          --clr-darkest:  hsl(0, 0%,  90%);
-          --clr-darker:   hsl(0, 0%,  75%);
-          --clr-median:   hsl(0, 0%,  50%);
-          --clr-lighter:  hsl(0, 0%,  25%);
-          --clr-lightest: hsl(0, 0%,  10%);
         }
       }
+
+      /*
+      firebrick #b22222
+      floralwhite #fffaf0
+      ivory #fffff0
+      maroon  #800000
+      papayawhip  #ffefd5
+      snow  #fffafa
       */
-/*
-firebrick #b22222
-floralwhite #fffaf0
-ivory #fffff0
-maroon  #800000
-papayawhip  #ffefd5
-snow  #fffafa
-*/
 
       html {
         overflow: hidden auto;
@@ -82,7 +76,7 @@ snow  #fffafa
         box-sizing: border-box;
         overflow: hidden;
 
-        max-width: 1050px;
+        max-width: var(--width-max);
         margin: 0 auto;
 
         display: flex;
@@ -177,7 +171,8 @@ snow  #fffafa
         margin-right: 1ch;
       }
 
-      select2 {
+      /*
+      select {
         appearance: none;
 
         background-image: conic-gradient(from 180deg at 50% 99%, #0000 145deg, currentColor 145deg, currentColor 215deg, #0000 215deg);
@@ -186,6 +181,7 @@ snow  #fffafa
         background-origin: content-box;
         background-repeat: no-repeat;
       }
+      */
 
 
 
@@ -195,8 +191,6 @@ snow  #fffafa
         justify-content: flex-start;
         align-items: stretch;
         gap: 10px;
-/*        max-width: 100%;*/
-/*        width: var(--width);*/
       }
       .col-mode.compact {
         gap: 5px;
@@ -371,6 +365,7 @@ snow  #fffafa
 <img onerror="console.log(this.src)" src="data:image/gif;base64,R0lGODlhASABICAgIDs=">
 <hr>
  -->
+    <h1>AutoIgnite Dash</h1>
 
     <section id="search-criteria" class="col-mode compact">
       <select name="series-select" @change="seriesChanged">
@@ -378,22 +373,22 @@ snow  #fffafa
           {{series.name}} ({{series.releaseYear}})
         </option>
       </select>
+
     </section>
 
     <section id="search-results" class="col-mode compact">
       <table>
-        <colgroup><col class="a"><col class="b"><col class="c"><col class="d"><col class="e"></colgroup>
+        <colgroup><col class="nm"><col class="ao"><col class="wo"></colgroup>
 
         <thead>
-          <tr><td>Type</td><td>Aired</td><td>Name</td><td>SeriesId</td><td>ProgramId</td></tr>
+          <tr><td>Name</td><td>Aired On</td><td>Watched On</td></tr>
         </thead>
 
         <tbody>
           <tr v-for="program in store.programs" :key="program.programId">
-            <td>{{program.type}}</td>
-            <td>{{program.airedOn}}</td>
             <td>{{program.name}}</td>
-            <td>{{program.seriesId}}</td>
+            <td>{{program.airedOn}}</td>
+            <td>{{program.watchedOn}}</td>
             <td>{{program.programId}}</td>
           </tr>
         </tbody>
