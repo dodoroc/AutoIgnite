@@ -32,7 +32,7 @@ const app = createApp({
   store,
   seriesChanged(ev) {
     console.dir(ev);
-    console.dir(store.series);
+    console.dir(store.series.value);
     console.log(store.selectedSeriesId);
   },
 
