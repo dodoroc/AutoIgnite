@@ -2,14 +2,21 @@ import { createApp, reactive } from 'https://unpkg.com/petite-vue@0.4.1/dist/pet
 
 const store = reactive({
   series: null,
-  selectedSeries: null,
+  selectedSeriesId: null,
   programs: null,
   loadSeries() {
+    console.log('loadSeries called');
     fetch(`http://192.168.50.200:9080/series`)
     .then(data => data.json())
-    .then(json => this.series = json);
+    .then(json => {
+      if (json?.length) {
+        this.series = json;
+        this.selectedSeriesId = this.series[0].seriesId;
+      }
+    });
   },
   loadPrograms(seriesId) {
+    console.log('loadPrograms called');
     programs = fetch(`http://192.168.50.200:9080/series/${seriesId}/watched-episodes`)
     .then(data => data.json());
   }
