@@ -4,6 +4,7 @@ const store = reactive({
   series: null,
   selectedSeriesId: null,
   programs: null,
+
   loadSeries() {
     console.log('loadSeries called');
     fetch(`http://192.168.50.200:9080/series`)
@@ -15,6 +16,7 @@ const store = reactive({
       }
     });
   },
+
   loadPrograms(seriesId) {
     console.log('loadPrograms called');
     programs = fetch(`http://192.168.50.200:9080/series/${seriesId}/watched-episodes`)
@@ -22,9 +24,6 @@ const store = reactive({
   }
 });
 
-async function loadSeries() {
-  return
-}
 // manipulate it here
 // store.inc()
 const app = createApp({
@@ -32,7 +31,7 @@ const app = createApp({
   store,
   seriesChanged(ev) {
     console.dir(ev);
-    console.dir(store.series.value);
+    console.dir(store.series);
     console.log(store.selectedSeriesId);
   },
 
