@@ -387,7 +387,7 @@
           <tr><td>Name</td><td>Aired On</td><td>Watched On</td></tr>
         </thead>
 
-        <tbody v-effect="store.selectedSeriesId;console.dir($el)">
+        <tbody v-effect="store.selectedSeriesId && console.dir($el)">
           <tr v-for="program in store.programs" :key="program.programId">
             <td>{{program.name}}</td>
             <td>{{program.airedOn}}</td>
