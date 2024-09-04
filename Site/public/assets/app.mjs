@@ -5,8 +5,9 @@ const store = reactive({
   selectedSeries: null,
   programs: null,
   loadSeries() {
-    series = fetch(`http://192.168.50.200:9080/series`)
-    .then(data => data.json());
+    fetch(`http://192.168.50.200:9080/series`)
+    .then(data => data.json())
+    .then(json => this.series = json);
   },
   loadPrograms(seriesId) {
     programs = fetch(`http://192.168.50.200:9080/series/${seriesId}/watched-episodes`)
@@ -41,7 +42,7 @@ const app = createApp({
     }
   },
   mounted() {
-    store.loadSeries();
+    // store.loadSeries();
     // console.dir(store.selectedSeries);
     // console.dir(this.selectedValue);
   }
