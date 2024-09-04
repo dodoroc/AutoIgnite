@@ -368,8 +368,8 @@
     <h1>AutoIgnite Dash</h1>
 
     <section id="search-criteria" class="col-mode compact" v-effect="store.loadSeries()">
-      <!-- <select name="series-select" @change="seriesChanged" v-model="store.series" :value="store.selectedSeriesId"> -->
-      <select name="series-select" @change="seriesChanged" :value="store.selectedSeriesId">
+      <select name="series-select" @change="seriesChanged" v-model="store.series" :value="store.selectedSeriesId">
+      <!-- <select name="series-select" @change="seriesChanged" :value="store.selectedSeriesId"> -->
         <option value="">None selected</option>
         <option v-for="series in store.series" :value="series.seriesId" :key="series.seriesId">
           {{series.name}} ({{series.releaseYear}})
