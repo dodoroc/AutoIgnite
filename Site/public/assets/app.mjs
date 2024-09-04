@@ -30,9 +30,10 @@ async function loadSeries() {
 const app = createApp({
   // share it with app scopes
   store,
-  selectedValue: null,
   seriesChanged(ev) {
     console.dir(ev);
+    console.dir(store.series);
+    console.log(store.selectedSeriesId);
   },
 
   init() {
