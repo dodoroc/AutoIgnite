@@ -32,6 +32,8 @@ const app = createApp({
   seriesChanged(ev) {
     console.dir(ev);
     console.dir(store.series);
+    console.dir(store.series.length);
+    console.dir(store.series[0]);
     console.log(store.selectedSeriesId);
   },
 
