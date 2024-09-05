@@ -7,6 +7,7 @@ const store = reactive({
 
   loadSeries() {
     console.log('loadSeries called');
+
     fetch(`http://192.168.50.200:9080/series`)
     .then(data => data.json())
     .then(json => {
@@ -18,8 +19,9 @@ const store = reactive({
   },
 
   loadPrograms(seriesId) {
-    if (!seriesId) return;
     console.log('loadPrograms called', seriesId);
+
+    if (!seriesId) return;
     fetch(`http://192.168.50.200:9080/series/${seriesId}/watched-episodes`)
     .then(data => data.json())
     .then(json => {
@@ -36,31 +38,17 @@ const app = createApp({
   // share it with app scopes
   store,
   seriesChanged(ev) {
+    console.log('[[ ----------------------------');
     console.dir(ev);
     console.dir(store.series);
     console.dir(store.series.length);
     console.dir(store.series[0]);
-
     console.log(store.selectedSeriesId);
+    console.log('---------------------------- ]]');
   },
 
-  init() {
-    console.log('init');
-  },
-  setup() {
-    console.log('setup');
-    return {
-    }
-  },
-  data() {
-    console.log('data');
-    return {
-    }
-  },
   mounted() {
-    // store.loadSeries();
-    // console.dir(store.selectedSeries);
-    // console.dir(this.selectedValue);
+    console.log('mounted called');
   }
 }).mount();
 
