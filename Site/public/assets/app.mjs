@@ -11,7 +11,7 @@ const store = reactive({
     fetch(`http://192.168.50.200:9080/series`)
     .then(data => data.json())
     .then(json => {
-      if (json?.length) {
+      if (Array.isArray(json)) {
         this.series = json;
         this.selectedSeriesId = this.series[0].seriesId;
       }
@@ -20,12 +20,12 @@ const store = reactive({
 
   loadPrograms(seriesId) {
     console.log('loadPrograms called', seriesId);
-this.programs = null;
+// this.programs = null;
     if (!seriesId) return;
     fetch(`http://192.168.50.200:9080/series/${seriesId}/watched-episodes`)
     .then(data => data.json())
     .then(json => {
-      if (json?.length) {
+      if (Array.isArray(json)) {
         this.programs = json;
         console.dir(json);
       }
