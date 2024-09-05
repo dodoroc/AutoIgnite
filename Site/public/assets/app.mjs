@@ -20,7 +20,12 @@ const store = reactive({
   loadPrograms(seriesId) {
     console.log('loadPrograms called');
     programs = fetch(`http://192.168.50.200:9080/series/${seriesId}/watched-episodes`)
-    .then(data => data.json());
+    .then(data => data.json())
+    .then(json => {
+      if (json?.length) {
+        this.programs = json;
+      }
+    });
   }
 });
 

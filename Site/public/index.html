@@ -371,7 +371,6 @@
       <!-- <select name="series-select" @change="seriesChanged" v-model="store.selectedSeriesId" :value="store.selectedSeriesId"> -->
       <select name="series-select" @change="seriesChanged" v-model="store.selectedSeriesId">
       <!-- <select name="series-select" @change="seriesChanged" :value="store.selectedSeriesId"> -->
-        <option value="">None selected</option>
         <option v-for="series in store.series" :value="series.seriesId" :key="series.seriesId">
           {{series.name}} ({{series.releaseYear}})
         </option>
@@ -387,7 +386,7 @@
           <tr><td>Name</td><td>Aired On</td><td>Watched On</td></tr>
         </thead>
 
-        <tbody v-effect="store.selectedSeriesId && console.dir($el)">
+        <tbody v-effect="store.loadPrograms(store.selectedSeriesId)">
           <tr v-for="program in store.programs" :key="program.programId">
             <td>{{program.name}}</td>
             <td>{{program.airedOn}}</td>
