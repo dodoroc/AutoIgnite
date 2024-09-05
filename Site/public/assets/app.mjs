@@ -27,6 +27,7 @@ const store = reactive({
     .then(json => {
       if (json?.length) {
         this.programs = json;
+        console.dir(json);
       }
     });
   }
