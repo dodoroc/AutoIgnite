@@ -6,7 +6,7 @@ const rows = document.querySelectorAll('table:is(.wikitable,.plainrowheaders):ha
 rows.forEach(s => {
   const n = parseInt(s.children[0].innerText.trim(), 10);
   if (n >= 1079) {
-    const name = s.children[2].innerText.trim();
+    const name = s.children[2].innerText.trim().replace(/'/g, "''");
     const aired = s.children[3].children[0]?.children[0].innerText ?? s.children[3].innerText;
 
     vals.push(`('6774048176174390112', '${name}', '${aired}', 'en.wikipedia.org')`);
@@ -14,7 +14,7 @@ rows.forEach(s => {
 });
 
 console.log(`
-INSERT INTO tracker.episode (series_id, name, air_date, source) VALUES
+INSERT INTO tracker.episode (series_id, name, aired_on, source) VALUES
 ${vals.join(',\n')}
 ON CONFLICT (series_id, name) DO NOTHING
 ;
@@ -27,11 +27,11 @@ ON CONFLICT (series_id, name) DO NOTHING
 // https://epguides.com/Ridiculousness/
 
 const vals = [];
-const rows = document.querySelectorAll('div#eplist table tr:has(:not(td[colspan]))');
+const rows = document.querySelectorAll('div#eplist table tr:has(td.epinfo)');
 rows.forEach(s => {
   const n = parseInt(s.children[0].innerText.trim(), 10);
   if (n >= 1077) {
-    const name = s.children[3].innerText.trim();
+    const name = s.children[3].innerText.trim().replace(/'/g, "''");
     const tmp = s.children[2].innerText.trim();
     const aired = new Date(tmp).toISOString().slice(0, 10);
 
@@ -40,12 +40,15 @@ rows.forEach(s => {
 });
 
 console.log(`
-INSERT INTO tracker.episode (series_id, name, air_date, source) VALUES
+INSERT INTO tracker.episode (series_id, name, aired_on, source) VALUES
 ${vals.join(',\n')}
 ON CONFLICT (series_id, name) DO NOTHING
 ;
 `);
 // UPDATE SET air_date=EXCLUDED.air_date WHERE episode.air_date IS NULL
+
+
+
 
 
 
@@ -55,7 +58,7 @@ ON CONFLICT (series_id, name) DO NOTHING
 const vals = [];
 const rows = document.querySelectorAll('div.card div.episode_title');
 rows.forEach(s => {
-  const name = s.children[0].children[0].innerText.trim();
+  const name = s.children[0].children[0].innerText.trim().replace(/'/g, "''");
   const tmp = s.children[1].lastElementChild.children[0].innerText.trim();
   const aired = new Date(tmp).toISOString().slice(0, 10);
 
@@ -63,7 +66,7 @@ rows.forEach(s => {
 });
 
 console.log(`
-INSERT INTO tracker.episode (series_id, name, air_date, source) VALUES
+INSERT INTO tracker.episode (series_id, name, aired_on, source) VALUES
 ${vals.join(',\n')}
 ON CONFLICT (series_id, name) DO NOTHING
 ;
