@@ -16,6 +16,7 @@ const store = reactive({
         this.series = json;
         this.selectedSeriesId = this.series[0].seriesId;
         console.log($el);
+        this.filtered = this.programs;
       }
     });
   },
