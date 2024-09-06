@@ -385,7 +385,8 @@
           <tr><td>Name</td><td>Aired On</td><td>Watched On</td></tr>
         </thead>
 
-        <tbody v-effect="store.loadPrograms(store.selectedSeriesId)">
+        <!-- <tbody v-effect="store.loadPrograms(store.selectedSeriesId)"> -->
+        <tbody>
           <tr v-for="program in store.programs" :key="program.programId">
             <td>{{program.name}}</td>
             <td>{{program.airedOn}}</td>
