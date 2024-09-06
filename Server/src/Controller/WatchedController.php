@@ -15,6 +15,7 @@ use Server\Domain\{WatchedGetAllProcess, WatchedPutSomeProcess};
 
 final class WatchedController extends AbstractController
 {
+  // return an object with programIds as keys that were watched
   private function doGet() : ResponseInterface
   {
     $proc = new WatchedGetAllProcess;

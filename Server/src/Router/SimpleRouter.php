@@ -18,17 +18,17 @@ final class SimpleRouter extends AbstractRouter
   public function __construct(
     public readonly array $routes = [
 
-      'episode' => new Routing('\Server\Controller\EpisodeController', [HttpMethods::PUT]),
-
+      // get: object of keys(programId) -> null
+      // put: array of objects containing various episode properties
       'watched' => new Routing('\Server\Controller\WatchedController', [HttpMethods::GET, HttpMethods::PUT]),
 
       'series' => [
+        // get: array of all series objects
         '.' => new Routing('\Server\Controller\SeriesController', [HttpMethods::GET]),
 
         '^(?<seriesId>\d{19})$' => [
-          '.' => new Routing('\Server\Controller\SeriesDetailController', [HttpMethods::GET]),
-          'episodes' => new Routing('\Server\Controller\SeriesEpisodesController', [HttpMethods::GET]),
-          'watched-episodes' => new Routing('\Server\Controller\WatchedEpisodesController', [HttpMethods::GET]),
+          // get: array of tracked episodes which are pulled from per series materialized views
+          'tracked' => new Routing('\Server\Controller\TrackedController', [HttpMethods::GET]),
         ]
       ],
 

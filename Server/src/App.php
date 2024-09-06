@@ -28,17 +28,14 @@ final class App
 
   public function __construct()
   {
-    //self::$CFG = parse_ini_file('../../.secrets/.ini');
   }
 
   public function run() : ControllerInterface
   {
     $method = $_SERVER['REQUEST_METHOD'];
 
-    // CHECK Which server var is most correct (SCRIPT_NAME PHP_SELF apache/php)(DOCUMENt_URI nginx)
+    // CHECK Which server var is most correct (SCRIPT_NAME PHP_SELF apache/php)(DOCUMENT_URI nginx)
     // TEST Confirm UTF-8 isn't mangled in any way
-    // There is a bug in filter_input with INPUT_SERVER
-    $path = filter_var($_SERVER['DOCUMENT_URI'], FILTER_SANITIZE_URL); //
     $path = trim(urldecode($path ?: ''), '/');
     $path = $path === '' ? [] : explode('/', $path);
 

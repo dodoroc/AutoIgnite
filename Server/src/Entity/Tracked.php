@@ -6,7 +6,7 @@
 
 namespace Server\Entity;
 
-final class WatchedEpisode extends AbstractEntity
+final class Tracked extends AbstractEntity
 {
   public function __construct(
     public readonly string $name,

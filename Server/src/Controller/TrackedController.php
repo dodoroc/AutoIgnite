@@ -9,20 +9,19 @@ namespace Server\Controller;
 
 use Server\Router\HttpMethods;
 use Server\Response\{ResponseInterface, ResponseSuccess, ResponseMisdirected};
-use Server\Domain\EpisodeGetOneProcess;
-use Server\Entity\ProgramId;
+use Server\Domain\TrackedGetAllBySeriesIdProcess;
+use Server\Entity\SeriesId;
 
-final class EpisodeDetailController extends AbstractController
+final class TrackedController extends AbstractController
 {
   private function doGet() : ResponseInterface
   {
-    $proc = new EpisodeGetOneProcess(new ProgramId($this->pathData['programId']));
+    $proc = new TrackedGetAllBySeriesIdProcess(new SeriesId($this->pathData['seriesId']));
     $proc->execute();
 
     $resp = new ResponseSuccess;
-    $resp->body = json_encode($proc);
     $resp->setHeader('Content-Type', 'application/json');
-    $resp->setHeader('Content-Length', (string)strlen($resp->body));
+    $resp->body = json_encode($proc);
 
     return $resp;
   }

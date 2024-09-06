@@ -18,11 +18,11 @@ const store = reactive({
     });
   },
 
-  loadPrograms(seriesId) {
+  loadTracked(seriesId) {
     console.log('loadPrograms called', seriesId);
 // this.programs = null;
     if (!seriesId) return;
-    fetch(`http://192.168.50.200:9080/series/${seriesId}/watched-episodes`)
+    fetch(`http://192.168.50.200:9080/series/${seriesId}/tracked`)
     .then(data => data.json())
     .then(json => {
       if (Array.isArray(json)) {

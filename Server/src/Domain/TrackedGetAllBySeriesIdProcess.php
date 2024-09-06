@@ -7,10 +7,10 @@
 
 namespace Server\Domain;
 
-use Server\Entity\{SeriesId, ProgramId, WatchedEpisode};
+use Server\Entity\{SeriesId, ProgramId, Episode};
 use \PDO;
 
-final class WatchedEpisodesBySeriesIdProcess extends AbstractDatabaseProcess
+final class TrackedGetAllBySeriesIdProcess extends AbstractDatabaseProcess
 {
   public function __construct(private SeriesId $seriesId)
   {
@@ -31,7 +31,7 @@ final class WatchedEpisodesBySeriesIdProcess extends AbstractDatabaseProcess
     $stm = $this->dbc->query($sql, PDO::FETCH_OBJ);
 
     foreach ($stm as $r) {
-      $o = new WatchedEpisode($r->name, $r->aired_on, $r->watched_on, new ProgramId($r->program_id ?? ''));
+      $o = new Tracked($r->name, $r->aired_on, $r->watched_on, new ProgramId($r->program_id ?? ''));
       array_push($this->results, $o);
     }
   }
