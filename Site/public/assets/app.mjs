@@ -47,7 +47,9 @@ const app = createApp({
     console.log(store.selectedSeriesId);
     console.log('---------------------------- ]]');
   },
-
+  test() {
+    console.log('test');
+  },
   mounted() {
     console.log('mounted called');
   }
