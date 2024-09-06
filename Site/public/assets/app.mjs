@@ -38,7 +38,7 @@ const store = reactive({
 const app = createApp({
   // share it with app scopes
   store,
-  test: 0,
+  num: 0,
   seriesChanged(ev) {
     console.log('[[ ----------------------------');
     console.dir(ev);
@@ -50,11 +50,11 @@ const app = createApp({
   },
   test() {
     console.log('test');
-    setTimeout(() => { this.test++ }, 2000);
+    setTimeout(() => { this.num++ }, 2000);
   },
   mounted() {
     console.log('mounted called');
-    setTimeout(() => { this.test++ }, 5000);
+    setTimeout(() => { this.num++ }, 5000);
   }
 }).mount();
 
