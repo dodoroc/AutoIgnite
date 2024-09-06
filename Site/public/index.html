@@ -367,34 +367,33 @@
  -->
     <h1>AutoIgnite Dash</h1>
 
-    <section id="search-criteria" class="col-mode compact">
+    <form id="filters" class="col-mode compact" @submit="" v-scope>
       <!-- <select name="series-select" @change="seriesChanged" v-model="store.selectedSeriesId" v-effect="store.loadSeries()"> -->
-      <select name="series-select" @change="seriesChanged" v-model="store.selectedSeriesId" v-scope="store.series" v-effect="test()">
+      <select name="series-select" @change="seriesChanged" v-model="store.selectedSeriesId" v-scope v-effect="test()">
         <option v-for="series in store.series" :value="series.seriesId">
           {{series.name}} ({{series.releaseYear}})
         </option>
       </select>
 
-    </section>
+    </form>
 
-    <section id="search-results" class="col-mode compact">
-      <table>
-        <colgroup><col class="nm"><col class="ao"><col class="wo"></colgroup>
+    <table id="results">
+      <colgroup><col class="nm"><col class="ao"><col class="wo"></colgroup>
 
-        <thead>
-          <tr><td>Name</td><td>Aired On</td><td>Watched On</td></tr>
-        </thead>
+      <thead>
+        <tr><td>Name</td><td>Aired On</td><td>Watched On</td></tr>
+      </thead>
 
-        <!-- <tbody v-effect="store.loadPrograms(store.selectedSeriesId)"> -->
-        <tbody>
-          <tr v-for="program in store.programs" :key="program.programId">
-            <td>{{program.name}}</td>
-            <td>{{program.airedOn}}</td>
-            <td>{{program.watchedOn}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+      <!-- <tbody v-effect="store.loadPrograms(store.selectedSeriesId)"> -->
+      <tbody v-scope v-if="store.filtered.length">
+        <tr v-for="program in store.programs" :key="program.programId">
+          <td>{{program.name}}</td>
+          <td>{{program.airedOn}}</td>
+          <td>{{program.watchedOn}}</td>
+        </tr>
+      </tbody>
+      <caption v-else>nothing</caption>
+    </table>
 
   </body>
 </html>

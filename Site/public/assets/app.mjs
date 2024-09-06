@@ -1,9 +1,10 @@
 import { createApp, reactive } from 'https://unpkg.com/petite-vue@0.4.1/dist/petite-vue.es.js?module'//https://unpkg.com/petite-vue?module'
 
 const store = reactive({
-  series: null,
+  series: [],
   selectedSeriesId: null,
-  programs: null,
+  programs: [],
+  filtered: [],
 
   loadSeries() {
     console.log('loadSeries called');
@@ -14,6 +15,7 @@ const store = reactive({
       if (Array.isArray(json)) {
         this.series = json;
         this.selectedSeriesId = this.series[0].seriesId;
+        console.log($el);
       }
     });
   },
