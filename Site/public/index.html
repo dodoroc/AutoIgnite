@@ -386,7 +386,7 @@
       </thead>
 
       <!-- <tbody v-effect="store.loadPrograms(store.selectedSeriesId)"> -->
-      <tbody v-scope v-if="store.filtered.length">
+      <tbody v-if="store.filtered.length">
         <tr v-for="program in store.programs" :key="program.programId">
           <td>{{program.name}}</td>
           <td>{{program.airedOn}}</td>
