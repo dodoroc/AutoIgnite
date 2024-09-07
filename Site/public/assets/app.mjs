@@ -13,14 +13,14 @@ function sel() {
 
 const store = reactive({
   series: [],
-  _selectedSeriesId: null,
+  seriesId: '',
   set selectedSeriesId(v) {
-    this._selectedSeriesId = v;
-    console.log('set', this._selectedSeriesId);
+    this.seriesId = v;
+    console.log('set', this.seriesId);
   },
   get selectedSeriesId() {
-    this._selectedSeriesId;
-    console.log('get', this._selectedSeriesId);
+    this.seriesId;
+    console.log('get', this.seriesId);
   },
   programs: [],
   filtered: [],
@@ -32,20 +32,19 @@ const store = reactive({
     .then(data => data.json())
     .then(json => {
       if (Array.isArray(json)) {
-        sel();
         this.series = json;
-        this.selectedSeriesId = this.series[0].seriesId;
-        setTimeout(() => {document.querySelector('select').value = this.series[0].seriesId}, 2000);
-        setTimeout(sel, 2100);
+        if (this.series.length) {
+          this.seriesId = this.series[0].seriesId;
+        }
       }
     });
   },
 
-  loadTracked(seriesId) {
-    console.log('loadPrograms called', seriesId);
-// this.programs = null;
-    if (!seriesId) return;
-    fetch(`http://192.168.50.200:9080/series/${seriesId}/tracked`)
+  loadTracked(el) {
+    console.log('loadPrograms called', this.seriesId);
+    if (this.seriesId == el.value) return;
+
+    fetch(`http://192.168.50.200:9080/series/${this.seriesId}/tracked`)
     .then(data => data.json())
     .then(json => {
       if (Array.isArray(json)) {
