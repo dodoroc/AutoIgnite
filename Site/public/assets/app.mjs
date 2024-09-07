@@ -24,7 +24,10 @@ const store = reactive({
   },
   programs: [],
   filtered: [],
-  textFilter: '',
+  filter: {
+    name: '',
+    unwatched: false,
+  },
 
   loadSeries() {
     console.log('loadSeries called');
