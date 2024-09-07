@@ -5,7 +5,6 @@ function sel() {
   console.log('sel val',
     el.value,
     el.selectedIndex,
-    el.options[el.selectedIndex].text,
     el.options[el.selectedIndex].textContent,
     el.selectedOptions[0].value
   );
