@@ -52,8 +52,8 @@ const app = createApp({
   test() {
     console.log('test');
   },
-  mounted() {
-    console.log('mounted called', $el);
+  mounted(el) {
+    console.log('mounted called', el);
     store.loadSeries();
   }
 }).mount();
