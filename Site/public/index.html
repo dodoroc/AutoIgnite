@@ -370,7 +370,7 @@
 
     <form id="aid-filters" class="col-mode compact" @submit="" v-scope>
       <!-- <select name="series-select" @change="seriesChanged" v-model="store.selectedSeriesId" v-effect="store.loadSeries()"> -->
-      <select name="series-select" @change="seriesChanged" :value="store.selectedSeriesId" v-model="store.selectedSeriesId" v-scope v-effect="test()">
+      <select name="series-select" @change="seriesChanged" :value="store.selectedSeriesId" v-model="store.selectedSeriesId" v-effect="test()">
         <option v-for="series in store.series" :value="series.seriesId">
           {{series.name}} ({{series.releaseYear}})
         </option>
