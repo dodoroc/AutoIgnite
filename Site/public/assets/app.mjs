@@ -16,9 +16,11 @@ const store = reactive({
   _selectedSeriesId: null,
   set selectedSeriesId(v) {
     this._selectedSeriesId = v;
+    console.log('set', this._selectedSeriesId);
   },
   get selectedSeriesId() {
     this._selectedSeriesId;
+    console.log('get', this._selectedSeriesId);
   },
   programs: [],
   filtered: [],
