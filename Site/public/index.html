@@ -356,7 +356,7 @@
 
     <script type="module" src="/assets/app.mjs"></script>
   </head>
-  <body @vue:mounted="mounted()">
+  <body @vue:mounted="mounted">
 
 <!-- <svg xmlns="http://www.w3.org/2000/svg"/>
 <hr>
@@ -368,7 +368,7 @@
  -->
     <h1>AutoIgnite Dash</h1>
 
-    <form id="aid-filters" class="col-mode compact" @submit="" v-scope>
+    <form id="aid-filters" class="col-mode compact" @submit="">
       <!-- <select name="series-select" @change="seriesChanged" v-model="store.selectedSeriesId" v-effect="store.loadSeries()"> -->
       <select name="series-select" @change="seriesChanged" :value="store.selectedSeriesId" v-model="store.selectedSeriesId" v-effect="test()">
         <option v-for="series in store.series" :value="series.seriesId">
