@@ -51,7 +51,7 @@ const store = reactive({
     .then(json => {
       if (Array.isArray(json)) {
         this.programs = json;
-        this.filtered = this.programs;
+        this.filtered = this.programs.slice();
       }
     });
   },
