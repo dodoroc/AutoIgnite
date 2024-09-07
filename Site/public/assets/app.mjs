@@ -19,7 +19,7 @@ const store = reactive({
     console.log('set', this.seriesId);
   },
   get selectedSeriesId() {
-    this.seriesId;
+    return this.seriesId;
     console.log('get', this.seriesId);
   },
   programs: [],
@@ -37,9 +37,7 @@ const store = reactive({
     .then(json => {
       if (Array.isArray(json)) {
         this.series = json;
-        if (this.series.length) {
-          this.seriesId = this.series[0].seriesId;
-        }
+        this.seriesId = this.series?.length ? this.series[0].seriesId : '';
       }
     });
   },
