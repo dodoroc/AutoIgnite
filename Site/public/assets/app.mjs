@@ -15,6 +15,7 @@ const store = reactive({
       if (Array.isArray(json)) {
         this.series = json;
         this.selectedSeriesId = this.series[0].seriesId;
+        console.dir(json);
       }
     });
   },
