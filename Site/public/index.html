@@ -262,10 +262,10 @@
       }
 
 
-      #search-results {
+      {
       }
 
-      #search-results .results {
+      .results {
         display: grid;
         gap: 1px 0;
         grid-template-columns: fit-content(4rem) min-content 1fr 4rem 4rem;
@@ -273,10 +273,10 @@
         background-color: var(--clr-darker);
 /*        background-color: var(--clr-median);*/
       }
-      #search-results .results b {
+      .results b {
         font-weight: bold;
       }
-      #search-results .results :is(b,i) {
+      .results :is(b,i) {
         font-size: 12px;
         line-height: 22px;
         height: 22px;
@@ -290,21 +290,21 @@
         background-color: pink;
 
       }
-      #search-results .results :nth-child(5n + 1) {
+      .results :nth-child(5n + 1) {
         border-left: 0;
         background-color: orange;
       }
-      #search-results .results :nth-child(5n + 5) {
+      .results :nth-child(5n + 5) {
         border-right: 0;
       }
 
-      #search-results table {
+      table {
         box-sizing: border-box;
         max-width: 100%;
         width: 100%;
         overflow: hidden;
 
-        table-layout: fixed;
+/*        table-layout: fixed;*/
         empty-cells: show;
 
         border-spacing: 10px 5px;
@@ -315,40 +315,43 @@
         outline-offset: -1px;
       }
 
-      #search-results table thead td {
+      table thead td {
         font-weight: 600;
+        font-size: 14px;
+        line-height: 20px;
+        height: 20px;
       }
 
-      #search-results table td {
+      table td {
         margin: 0;
-        padding: 0;
+        padding: 0 5px;
         white-space: nowrap;
         overflow: hidden;
 
         font-size: 13px;
-        line-height: 13px;
-        height: 18px;
+        line-height: 20px;
         height: 20px;
-        width: auto;
 
 
-        _background-color: rgba(255,0,0, 0.2);
         border: solid transparent;
         border-width: 6px 8px;
       }
 
-      #search-results table tr :first-child { border-left-width: 6px }
-      #search-results table tr :last-child { border-right-width: 6px }
+/*      table tr :first-child { border-left-width: 6px }*/
+/*      table tr :last-child { border-right-width: 6px }*/
 
 
-      #search-results table .a { width: 10ch }
-      #search-results table .b { width: 10ch }
-/*      #search-results table .c { width: auto }*/
-      #search-results table .d { width: 10ch }
-      #search-results table .e { width: 10ch }
+/*      table .a { width: 10ch }*/
+/*      table .b { width: 10ch }*/
+/*      table .c { width: auto }*/
+/*      table .d { width: 10ch }*/
+/*      table .e { width: 10ch }*/
 
-      #search-results table tr {
-        background-color: rgba(255,255,255, 0.2);
+      table tr {
+/*        background-color: rgba(255,255,255, 0.2);*/
+      }
+      table tr[colspan="0"] td {
+        text-align: center;
       }
 
     </style>

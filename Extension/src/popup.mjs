@@ -282,4 +282,4 @@ setTimeout(async () => {
 
   await ext.init(url);
   await ext.run();
-}, 6100);
+}, 100);
