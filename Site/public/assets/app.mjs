@@ -14,6 +14,10 @@ function sel() {
 const store = reactive({
   series: [],
   selectedSeriesId: null,
+  set selectedSeriesId(v) {
+    this.selectedSeriesId = v;
+
+  }
   programs: [],
   filtered: [],
 
