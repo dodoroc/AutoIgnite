@@ -44,7 +44,7 @@ const store = reactive({
 
   loadTracked(el) {
     console.log('loadPrograms called', this.seriesId);
-    if (this.seriesId == el.value) return;
+    // if (this.seriesId) return;
 
     fetch(`http://192.168.50.200:9080/series/${this.seriesId}/tracked`)
     .then(data => data.json())
