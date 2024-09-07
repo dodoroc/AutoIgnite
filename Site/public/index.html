@@ -349,7 +349,7 @@
 
     <script type="module" src="/assets/app.mjs"></script>
   </head>
-  <body @vue:mounted="mounted" v-effect="store.series, test">
+  <body @vue:mounted="mounted" v-effect="store.series, test($el)">
 
 <!-- <svg xmlns="http://www.w3.org/2000/svg"/>
 <hr>
