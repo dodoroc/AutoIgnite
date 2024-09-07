@@ -361,7 +361,7 @@
  -->
     <h1>AutoIgnite Dash</h1>
 
-    <form id="aid-filters" class="col-mode compact" @submit="" v-effect="store.seriesId && test($el, $event, $ev)">
+    <form id="aid-filters" class="col-mode compact" @submit="" v-effect="store.seriesId && test($el, $e ?? null, $ev ?? null)">
       <!-- <select name="series-select" @change="seriesChanged" v-model="store.selectedSeriesId" v-effect="store.loadSeries()"> -->
       <select name="series-select" @in2put="alert($el)" @change="seriesChanged" v-model="store.selectedSeriesId" v-effect2="store.loadPrograms">
         <option v-for="series in store.series" :value="series.seriesId">
