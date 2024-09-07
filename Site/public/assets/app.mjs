@@ -13,8 +13,10 @@ const store = reactive({
     .then(data => data.json())
     .then(json => {
       if (Array.isArray(json)) {
+        console.log('sel val', document.querySelector('select').value);
         this.series = json;
         this.selectedSeriesId = this.series[0].seriesId;
+        console.log('sel val', document.querySelector('select').value);
       }
     });
   },
