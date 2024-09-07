@@ -12,7 +12,6 @@ const store = reactive({
     fetch(`http://192.168.50.200:9080/series`)
     .then(data => data.json())
     .then(json => {
-        console.dir(json);
       if (Array.isArray(json)) {
         this.series = json;
         this.selectedSeriesId = this.series[0].seriesId;
@@ -52,8 +51,8 @@ const app = createApp({
   test() {
     console.log('test');
   },
-  mounted(el) {
-    console.log('mounted called', el);
+  mounted() {
+    console.log('mounted called');
     store.loadSeries();
   }
 }).mount();
