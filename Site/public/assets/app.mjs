@@ -27,7 +27,7 @@ const store = reactive({
         sel();
         this.series = json;
         this.selectedSeriesId = this.series[0].seriesId;
-        sel();
+        setTimeout(sel, 2000);
       }
     });
   },
