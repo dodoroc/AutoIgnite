@@ -1,5 +1,11 @@
 import { createApp, reactive } from 'https://unpkg.com/petite-vue@0.4.1/dist/petite-vue.es.js?module'//https://unpkg.com/petite-vue?module'
 
+function sel() {
+  const el = document.querySelector('select');
+  e.options[e.selectedIndex].text;
+  console.log('sel val', el.value, el.selectedIndex, el.options[el.selectedIndex].text, , el.options[el.selectedIndex].textContent);
+}
+
 const store = reactive({
   series: [],
   selectedSeriesId: null,
@@ -13,10 +19,10 @@ const store = reactive({
     .then(data => data.json())
     .then(json => {
       if (Array.isArray(json)) {
-        console.log('sel val', document.querySelector('select').value);
+        sel();
         this.series = json;
         this.selectedSeriesId = this.series[0].seriesId;
-        console.log('sel val', document.querySelector('select').value);
+        sel();
       }
     });
   },
