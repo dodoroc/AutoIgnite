@@ -333,6 +333,7 @@
       table .nm { width: auto }
       table .ao { width: 12ch }
       table .wo { width: 12ch }
+      table .pi { width: 30ch }
 
       table td[colspan] {
         text-align: center;
@@ -367,7 +368,7 @@
     </form>
 
     <table id="aid-results">
-      <colgroup><col class="nm"><col class="ao"><col class="wo"></colgroup>
+      <colgroup><col class="nm"><col class="ao"><col class="wo"><col class="pi"></colgroup>
 
       <thead>
         <tr><td>Name</td><td>Aired On</td><td>Watched On</td></tr>
@@ -379,6 +380,7 @@
           <td>{{program.name}}</td>
           <td>{{program.airedOn}}</td>
           <td>{{program.watchedOn}}</td>
+          <td>{{program.programId}}</td>
         </tr>
       </tbody>
       <tbody v-else>
