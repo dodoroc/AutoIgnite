@@ -7,7 +7,7 @@
 
 namespace Server\Domain;
 
-use Server\Entity\{SeriesId, ProgramId, Episode};
+use Server\Entity\{SeriesId, ProgramId, Tracked};
 use \PDO;
 
 final class TrackedGetAllBySeriesIdProcess extends AbstractDatabaseProcess
