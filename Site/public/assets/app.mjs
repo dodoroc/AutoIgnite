@@ -2,7 +2,13 @@ import { createApp, reactive } from 'https://unpkg.com/petite-vue@0.4.1/dist/pet
 
 function sel() {
   const el = document.querySelector('select');
-  console.log('sel val', el.value, el.selectedIndex, el.options[el.selectedIndex].text, el.options[el.selectedIndex].textContent, el.selectedOptions[0].value);
+  console.log('sel val',
+    el.value,
+    el.selectedIndex,
+    el.options[el.selectedIndex].text,
+    el.options[el.selectedIndex].textContent,
+    el.selectedOptions[0].value
+  );
 }
 
 const store = reactive({
