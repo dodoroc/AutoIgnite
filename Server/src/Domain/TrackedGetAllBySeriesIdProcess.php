@@ -19,7 +19,7 @@ final class TrackedGetAllBySeriesIdProcess extends AbstractDatabaseProcess
 
   private function createQuery() : string
   {
-    $sql = 'SELECT name,aired_on,watched_on,program_id FROM tracker.series_'.$this->seriesId;
+    $sql = 'SELECT name,aired_on,watched_on,program_id,ndx FROM tracker.series_'.$this->seriesId;
     return $sql;
   }
 
@@ -31,7 +31,7 @@ final class TrackedGetAllBySeriesIdProcess extends AbstractDatabaseProcess
     $stm = $this->dbc->query($sql, PDO::FETCH_OBJ);
 
     foreach ($stm as $r) {
-      $o = new Tracked($r->name, $r->aired_on, $r->watched_on, new ProgramId($r->program_id ?? ''));
+      $o = new Tracked($r->name, $r->aired_on, $r->watched_on, new ProgramId($r->program_id ?? ''), $r->ndx);
       array_push($this->results, $o);
     }
   }
