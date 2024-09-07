@@ -53,7 +53,7 @@ const app = createApp({
     console.log('test');
   },
   mounted() {
-    console.log('mounted called');
+    console.log('mounted called', $el);
     store.loadSeries();
   }
 }).mount();
