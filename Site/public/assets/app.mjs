@@ -13,12 +13,12 @@ function sel() {
 
 const store = reactive({
   series: [],
-  #selectedSeriesId: null,
+  _selectedSeriesId: null,
   set selectedSeriesId(v) {
-    this.#selectedSeriesId = v;
+    this._selectedSeriesId = v;
   },
   get selectedSeriesId() {
-    this.#selectedSeriesId;
+    this._selectedSeriesId;
   },
   programs: [],
   filtered: [],
