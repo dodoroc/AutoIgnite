@@ -16,10 +16,10 @@ const store = reactive({
   #selectedSeriesId: null,
   set selectedSeriesId(v) {
     this.#selectedSeriesId = v;
-  }
+  },
   get selectedSeriesId() {
     this.#selectedSeriesId;
-  }
+  },
   programs: [],
   filtered: [],
 
