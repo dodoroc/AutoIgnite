@@ -6,8 +6,9 @@ function sel() {
     el.value,
     el.selectedIndex,
     // el.options[el.selectedIndex].textContent,
-    el.selectedOptions[0].value
+    // el.selectedOptions[0].value
   );
+  console.dir(el);
 }
 
 const store = reactive({
