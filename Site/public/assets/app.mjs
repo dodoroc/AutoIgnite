@@ -67,6 +67,7 @@ const app = createApp({
     console.dir(store.series.length);
     console.dir(store.series[0]);
     console.log(store.selectedSeriesId);
+    console.log(ev.target.value);
     console.log('---------------------------- ]]');
   },
   test(p1, p2, p3) {
