@@ -15,8 +15,6 @@ const store = reactive({
       if (Array.isArray(json)) {
         this.series = json;
         this.selectedSeriesId = this.series[0].seriesId;
-        console.log($el);
-        this.filtered = this.programs;
       }
     });
   },
@@ -30,7 +28,7 @@ const store = reactive({
     .then(json => {
       if (Array.isArray(json)) {
         this.programs = json;
-        console.dir(json);
+        this.filtered = this.programs;
       }
     });
   }
