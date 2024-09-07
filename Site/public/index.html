@@ -262,8 +262,6 @@
       }
 
 
-      {
-      }
 
       .results {
         display: grid;
@@ -369,7 +367,7 @@
  -->
     <h1>AutoIgnite Dash</h1>
 
-    <form id="filters" class="col-mode compact" @submit="" v-scope>
+    <form id="aid-filters" class="col-mode compact" @submit="" v-scope>
       <!-- <select name="series-select" @change="seriesChanged" v-model="store.selectedSeriesId" v-effect="store.loadSeries()"> -->
       <select name="series-select" @change="seriesChanged" v-model="store.selectedSeriesId" v-scope v-effect="test()">
         <option v-for="series in store.series" :value="series.seriesId">
@@ -379,7 +377,7 @@
 
     </form>
 
-    <table id="results">
+    <table id="aid-results">
       <colgroup><col class="nm"><col class="ao"><col class="wo"></colgroup>
 
       <thead>
