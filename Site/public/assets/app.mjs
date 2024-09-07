@@ -56,7 +56,13 @@ const store = reactive({
         this.filtered = this.programs;
       }
     });
-  }
+  },
+
+  paramsChanged(ev) {
+    console.log('[[ ----------------------------');
+    console.dir(ev);
+    console.log('---------------------------- ]]');
+  },
 });
 
 // manipulate it here
@@ -64,22 +70,7 @@ const store = reactive({
 const app = createApp({
   // share it with app scopes
   store,
-  seriesChanged(ev) {
-    console.log('[[ ----------------------------');
-    console.dir(ev);
-    console.dir(store.series);
-    console.dir(store.series.length);
-    console.dir(store.series[0]);
-    console.log(store.selectedSeriesId);
-    console.log(ev.target.value);
-    console.log('---------------------------- ]]');
-  },
-  test(p1, p2, p3) {
-    console.log('test');
-    console.dir(p1);
-    console.dir(p2);
-    console.dir(p3);
-  },
+
   mounted() {
     console.log('mounted called');
     store.loadSeries();
