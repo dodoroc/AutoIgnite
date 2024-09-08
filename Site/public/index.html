@@ -234,7 +234,7 @@
         line-height: 23px;
         height: 23px;
         text-underline-offset: 2.5px;
-        text-decoration: underline var(--clr-light);
+        text-decoration: underline var(--clr-median);
       }
 
       table td {
@@ -262,16 +262,15 @@
 
       #spinner {
         display: grid;
-/*        width: calc(100dvw - 10px);*/
         height: calc(100dvh - 10px);
         place-content: center;
         color: var(--clr-lighter);
         font-size: clamp(12px, 10dvmin, 56px);
 
         background: no-repeat radial-gradient(#666,#555,#222,#111,#000);
-/*        background-color: yellow;*/
         background-size: 100cqmin 100cqmin;
         background-position: 50% 50%;
+        filter: blur(0.5rem);
       }
 
       [v-cloak] > :not(#spinner) {
