@@ -257,20 +257,21 @@
       }
 
       #spinner {
-        position: sticky;
-        left: 0; right: 0; top: 0; bottom: 0;
+/*        position: sticky;*/
+/*        left: 0; right: 0; top: 0; bottom: 0;*/
         display: grid;
 /*        min-width: 500px;*/
 /*        min-height: 500px;*/
-        width: 100dvw;
-        height: 100dvh;
+        margin-left: var(--width-scrollbar);
+        width: 90dvw;
+        height: 90dvh;
         place-content: center;
         color: var(--clr-lighter);
         font-size: clamp(12px, 10dvmin, 56px);
 
-        background: no-repeat radial-gradient(#666,#555,#333,#000);
+        background: no-repeat radial-gradient(#666,#555,#111,#000);
         background-color: yellow;
-        background-size: 100vmax 100vmax;
+        background-size: 70vmax 70vmax;
         background-position: 50% 50%;
       }
 
