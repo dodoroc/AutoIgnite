@@ -259,7 +259,7 @@
       #spinner {
         position: absolute;
         left: 0; right: 0; top: 0; bottom: 0;
-        display: none;
+        display: grid;
         min-width: 100dvw;
         min-height: 100dvh;
         place-content: center;
@@ -269,8 +269,8 @@
         background-position: 50% 50%;
       }
 
-      [v-cloak] #spinner {
-        display: grid;
+      :not([v-cloak]) #spinner {
+        display: none;
       }
       [v-cloak] > * {
         display: none;
