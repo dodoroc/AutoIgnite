@@ -43,6 +43,10 @@ const model = reactive({
       name: '',
       unwatched: false,
     },
+    actions: [],
+    compile(ev) {
+
+    },
     apply() {
       this.results = model.source.programs[model.source.seriesId];
     }
@@ -58,19 +62,23 @@ const app = createApp({
     console.log('[[ ----------------------------');
     console.dir(ev);
     console.log('---------------------------- ]]');
+
+    model.filter.compile(ev);
     model.source.loadTracked().then(() => {
       model.filter.apply();
     });
-
   },
 
   mounted() {
     console.log('mounted called');
+
+    model.filter.compile();
     model.source.loadSeries().then(() => {
       model.source.loadTracked().then(() => {
         model.filter.apply();
       });
     });
   }
-}).mount();
+});//.mount();
+setTimeout(() => {app.mount()}, 2000);
 
