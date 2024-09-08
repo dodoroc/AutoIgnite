@@ -273,10 +273,10 @@
         background-position: 50% 50%;
       }
 
-      [v-cloak] > * {
+      [v-cloak] > :not(#spinner) {
         display: none;
       }
-      :not([v-cloak]) #spinner {
+      :not([v-cloak]) > #spinner {
         display: none !important;
       }
     </style>
