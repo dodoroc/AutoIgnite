@@ -257,18 +257,16 @@
       }
 
       #spinner {
-        position: absolute;
+        position: sticky;
         left: 0; right: 0; top: 0; bottom: 0;
         display: grid;
-        min-width: 500px;
-        min-height: 500px;
-        width: 100vw;
-        height: 100vh;
-/*        place-content: center;*/
-        place-items: center;
-        color: red;
-        font-size: 20dvmin;
-        font-size: 40px;
+/*        min-width: 500px;*/
+/*        min-height: 500px;*/
+/*        width: 100vw;*/
+/*        height: 100vh;*/
+        place-content: center;
+        color: var(--clr-lighter);
+        font-size: clamp(12px, 10dvmin, 56px);
 
         background: no-repeat radial-gradient(#666,#555,#333,#000);
         background-color: yellow;
