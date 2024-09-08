@@ -11,20 +11,13 @@ function sel() {
   console.dir(el);
 }
 
-const store = reactive({
+const model = reactive({
   series: [],
   seriesId: '',
-  set selectedSeriesId(v) {
-    this.seriesId = v;
-    console.log('set', this.seriesId);
-  },
-  get selectedSeriesId() {
-    return this.seriesId;
-    console.log('get', this.seriesId);
-  },
-  programs: [],
+  programs: {},
   filtered: [],
-  filter: {
+
+  filters: {
     name: '',
     unwatched: false,
   },
@@ -32,7 +25,7 @@ const store = reactive({
   loadSeries() {
     console.log('loadSeries called');
 
-    fetch(`http://192.168.50.200:9080/series`)
+    return fetch(`http://192.168.50.200:9080/series`)
     .then(data => data.json())
     .then(json => {
       if (Array.isArray(json)) {
@@ -42,36 +35,41 @@ const store = reactive({
     });
   },
 
-  loadTracked(el) {
+  loadTracked() {
     console.log('loadPrograms called', this.seriesId);
-    // if (this.seriesId) return;
+
+    if (this.programs[this.seriesId] && Array.isArray(this.programs[this.seriesId])) {
+      this.filtered = this.filter();
+      return;
+    }
 
     fetch(`http://192.168.50.200:9080/series/${this.seriesId}/tracked`)
     .then(data => data.json())
     .then(json => {
       if (Array.isArray(json)) {
-        this.programs = json;
-        this.filtered = this.programs.slice();
+        this.programs[this.seriesId] = json;
+        this.filtered = this.filter();
       }
     });
   },
 
-  paramsChanged(ev) {
+  filtersChanged(ev) {
     console.log('[[ ----------------------------');
     console.dir(ev);
     console.log('---------------------------- ]]');
+    this.filtered = this.filter();
+
   },
 });
 
-// manipulate it here
-// store.inc()
 const app = createApp({
-  // share it with app scopes
-  store,
+  model,
 
   mounted() {
     console.log('mounted called');
-    store.loadSeries();
+    model.loadSeries().then(() => {
+      model.loadTracked();
+    });
   }
 }).mount();
 
