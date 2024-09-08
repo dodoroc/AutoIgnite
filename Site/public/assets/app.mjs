@@ -22,6 +22,10 @@ const model = reactive({
     unwatched: false,
   },
 
+  filter() {
+
+  }
+
   loadSeries() {
     console.log('loadSeries called');
 
