@@ -44,7 +44,7 @@ const model = reactive({
       unwatched: false,
     },
     apply() {
-      this.results = source.programs[this.seriesId];
+      this.results = source.programs[source.seriesId];
     }
   },
 
@@ -58,8 +58,8 @@ const app = createApp({
     console.log('[[ ----------------------------');
     console.dir(ev);
     console.log('---------------------------- ]]');
-    this.loadTracked().then(() => {
-      this.filter();
+    model.source.loadTracked().then(() => {
+      model.filter.apply();
     });
 
   },
@@ -68,7 +68,7 @@ const app = createApp({
     console.log('mounted called');
     model.source.loadSeries().then(() => {
       model.source.loadTracked().then(() => {
-        this.model.filter();
+        model.filter.apply();
       });
     });
   }
