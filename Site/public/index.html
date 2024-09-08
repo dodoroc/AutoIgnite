@@ -267,10 +267,11 @@
         color: var(--clr-lighter);
         font-size: clamp(12px, 10dvmin, 56px);
 
-        background: no-repeat radial-gradient(#666,#555,#222,#111,#000);
+        background: no-repeat radial-gradient(#666 0px,#555 100px,#222 50px,#111 50px,#000);
         background-size: 100cqmin 100cqmin;
         background-position: 50% 50%;
-        filter: blur(0.5rem);
+        filter: blur(0.66px);
+        opacity: 0.667;
       }
 
       [v-cloak] > :not(#spinner) {
