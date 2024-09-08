@@ -23,7 +23,7 @@ const model = reactive({
   },
 
   filter() {
-    this.model.filtered = this.programs[this.seriesId];
+    this.filtered = this.programs[this.seriesId];
   },
 
   loadSeries() {
