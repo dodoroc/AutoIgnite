@@ -23,7 +23,7 @@ const model = reactive({
   },
 
   filter() {
-
+    this.model.filtered = this.programs[this.seriesId];
   },
 
   loadSeries() {
@@ -72,7 +72,9 @@ const app = createApp({
   mounted() {
     console.log('mounted called');
     model.loadSeries().then(() => {
-      model.loadTracked();
+      model.loadTracked().then(() => {
+        this.model.filter();
+      });
     });
   }
 }).mount();
