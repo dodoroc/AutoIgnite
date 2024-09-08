@@ -34,7 +34,7 @@
 
         --width-max: 1050px;
 
-        --width-scrollbar: calc(100dvw - 100%);
+        --width-scrollbar: calc(100vw - 100%);
         --width-available: calc(100vw - (100vw - 100%));
       }
 
@@ -58,7 +58,7 @@
 
         scrollbar-gutter: stable;
         scrollbar-width: thin;
-        scrollbar-color: var(--clr-median) var(--clr-darkest);
+        _scrollbar-color: var(--clr-median) var(--clr-darkest);
       }
 
       html, body {
@@ -263,7 +263,7 @@
 /*        min-width: 500px;*/
 /*        min-height: 500px;*/
         margin-left: var(--width-scrollbar);
-        width: calc(100dvw - --width-scrollbar - 10px);
+        width: calc(100dvw - 10px);
         height: calc(100dvh - 10px);
         place-content: center;
         color: var(--clr-lighter);
@@ -272,6 +272,7 @@
         background: no-repeat radial-gradient(#666,#555,#111,#000);
         background-color: yellow;
         background-size: 70vmax 70vmax;
+        background-size: 100cqmin 100cqmin;
         background-position: 50% 50%;
       }
 
