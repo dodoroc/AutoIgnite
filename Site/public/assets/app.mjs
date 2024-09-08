@@ -43,16 +43,16 @@ const model = reactive({
     console.log('loadPrograms called', this.seriesId);
 
     if (this.programs[this.seriesId] && Array.isArray(this.programs[this.seriesId])) {
-      this.filtered = this.filter();
-      return;
+      // this.filtered = this.filter();
+      return Promise.resolve();
     }
 
-    fetch(`http://192.168.50.200:9080/series/${this.seriesId}/tracked`)
+    return fetch(`http://192.168.50.200:9080/series/${this.seriesId}/tracked`)
     .then(data => data.json())
     .then(json => {
       if (Array.isArray(json)) {
         this.programs[this.seriesId] = json;
-        this.filtered = this.filter();
+        // this.filtered = this.filter();
       }
     });
   },
