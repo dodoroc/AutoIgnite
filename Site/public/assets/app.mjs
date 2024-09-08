@@ -80,5 +80,5 @@ const app = createApp({
     });
   }
 });//.mount();
-setTimeout(() => {app.mount()}, 2000);
+setTimeout(() => {app.mount()}, 4000);
 
