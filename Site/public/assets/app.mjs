@@ -61,7 +61,9 @@ const model = reactive({
     console.log('[[ ----------------------------');
     console.dir(ev);
     console.log('---------------------------- ]]');
-    this.filtered = this.filter();
+    this.loadTracked().then(() => {
+      this.filter();
+    });
 
   },
 });
