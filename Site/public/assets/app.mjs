@@ -24,7 +24,7 @@ const model = reactive({
 
   filter() {
 
-  }
+  },
 
   loadSeries() {
     console.log('loadSeries called');
