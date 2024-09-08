@@ -375,7 +375,6 @@
       </thead>
 
       <tbody v-if="store.filtered.length">
-      <!-- <tbody v-if="store.filtered.length"> -->
         <tr v-for="program in store.filtered" :key="store.seriesId+'-'+program.ndx">
           <td>{{program.name}}</td>
           <td>{{program.airedOn}}</td>
