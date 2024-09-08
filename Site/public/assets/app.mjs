@@ -79,6 +79,6 @@ const app = createApp({
       });
     });
   }
-});//.mount();
+}).mount();
 // setTimeout(() => {app.mount()}, 4000);
 
