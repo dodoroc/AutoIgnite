@@ -44,7 +44,7 @@ const model = reactive({
       unwatched: false,
     },
     apply() {
-      this.results = model.source.programs[source.seriesId];
+      this.results = model.source.programs[model.source.seriesId];
     }
   },
 
