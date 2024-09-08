@@ -272,14 +272,14 @@
  -->
     <h1>AutoIgnite Dash</h1>
 
-    <form id="aid-filters" class="col-mode compact" @submit.prevent @change="model.filtersChanged">
-      <select name="seriesid" v-model="model.seriesId" v-effe2ct="model.seriesId && model.loadTracked()">
-        <option v-for="series in model.series" :value="series.seriesId">
+    <form id="aid-filters" class="col-mode compact" @submit.prevent @change="model.filterParamsChanged">
+      <select name="seriesid" v-model="model.source.seriesId" v-effe2ct="model.source.seriesId && model.source.loadTracked()">
+        <option v-for="series in model.source.series" :value="series.seriesId">
           {{series.name}} ({{series.releaseYear}})
         </option>
       </select>
-      <input type="text" name="filter-name" v-model="model.filters.name">
-      <label><input type="checkbox" name="filter-unwatched" v-model="model.filters.unwatched"> Unwatched only</label>
+      <input type="text" name="filter-name" v-model="model.filter.params.name">
+      <label><input type="checkbox" name="filter-unwatched" v-model="model.filter.params.unwatched"> Unwatched only</label>
 
     </form>
 
@@ -290,8 +290,8 @@
         <tr><td>Name</td><td>Aired On</td><td>Watched On</td></tr>
       </thead>
 
-      <tbody v-if="model.filtered.length">
-        <tr v-for="program in model.filtered" :key="model.seriesId+'-'+program.ndx">
+      <tbody v-if="model.filter.results.length">
+        <tr v-for="program in model.filter.results" :key="model.source.seriesId+'-'+program.ndx">
           <td>{{program.name}}</td>
           <td>{{program.airedOn}}</td>
           <td>{{program.watchedOn}}</td>

@@ -1,63 +1,60 @@
 import { createApp, reactive } from 'https://unpkg.com/petite-vue@0.4.1/dist/petite-vue.es.js?module'//https://unpkg.com/petite-vue?module'
 
-function sel() {
-  const el = document.querySelector('select');
-  console.log('sel val',
-    new String(el.value),
-    new String(el.selectedIndex),
-    // el.options[el.selectedIndex].textContent,
-    // el.selectedOptions[0].value
-  );
-  console.dir(el);
-}
-
+// const source = {};
 const model = reactive({
-  series: [],
-  seriesId: '',
-  programs: {},
-  filtered: [],
+  source: {
+    series: [],
+    seriesId: '',
+    programs: {},
 
-  filters: {
-    name: '',
-    unwatched: false,
-  },
+    loadSeries() {
+      console.log('loadSeries called');
 
-  filter() {
-    this.filtered = this.programs[this.seriesId];
-  },
+      return fetch(`http://192.168.50.200:9080/series`)
+      .then(data => data.json())
+      .then(json => {
+        if (Array.isArray(json)) {
+          this.series = json;
+          this.seriesId = this.series?.length ? this.series[0].seriesId : '';
+        }
+      });
+    },
 
-  loadSeries() {
-    console.log('loadSeries called');
+    loadTracked() {
+      console.log('loadPrograms called', this.seriesId);
 
-    return fetch(`http://192.168.50.200:9080/series`)
-    .then(data => data.json())
-    .then(json => {
-      if (Array.isArray(json)) {
-        this.series = json;
-        this.seriesId = this.series?.length ? this.series[0].seriesId : '';
+      if (this.programs[this.seriesId] && Array.isArray(this.programs[this.seriesId])) {
+        return Promise.resolve();
       }
-    });
+
+      return fetch(`http://192.168.50.200:9080/series/${this.seriesId}/tracked`)
+      .then(data => data.json())
+      .then(json => {
+        if (Array.isArray(json)) {
+          this.programs[this.seriesId] = json;
+        }
+      });
+    },
   },
 
-  loadTracked() {
-    console.log('loadPrograms called', this.seriesId);
-
-    if (this.programs[this.seriesId] && Array.isArray(this.programs[this.seriesId])) {
-      // this.filtered = this.filter();
-      return Promise.resolve();
+  filter: {
+    results: [],
+    params: {
+      name: '',
+      unwatched: false,
+    },
+    apply() {
+      this.results = source.programs[this.seriesId];
     }
-
-    return fetch(`http://192.168.50.200:9080/series/${this.seriesId}/tracked`)
-    .then(data => data.json())
-    .then(json => {
-      if (Array.isArray(json)) {
-        this.programs[this.seriesId] = json;
-        // this.filtered = this.filter();
-      }
-    });
   },
 
-  filtersChanged(ev) {
+
+});
+
+const app = createApp({
+  model,
+
+  filterParamsChanged(ev) {
     console.log('[[ ----------------------------');
     console.dir(ev);
     console.log('---------------------------- ]]');
@@ -66,15 +63,11 @@ const model = reactive({
     });
 
   },
-});
-
-const app = createApp({
-  model,
 
   mounted() {
     console.log('mounted called');
-    model.loadSeries().then(() => {
-      model.loadTracked().then(() => {
+    model.source.loadSeries().then(() => {
+      model.source.loadTracked().then(() => {
         this.model.filter();
       });
     });
