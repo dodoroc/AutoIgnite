@@ -256,6 +256,20 @@
         text-align: center;
       }
 
+      #spinner {
+        width: 100%;
+        height: 100%;
+        background: no-repeat radial-gradient(#666,#555,#333,#000);
+        background-size: 100vmax 100vmax;
+        background-position: 50% 50%;
+      }
+
+      [v-cloak] :is(:not(#spinner)) {
+        display: initial;
+      }
+      [v-cloak] * {
+        display: none;
+      }
     </style>
 
     <script type="module" src="/assets/app.mjs"></script>
@@ -301,6 +315,8 @@
         <tr><td colspan="10">Nothing to show</td></tr>
       </tbody>
     </table>
+
+    <div id="spinner">LOADING</div>
 
   </body>
 </html>
