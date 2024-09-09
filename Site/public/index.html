@@ -195,14 +195,18 @@
 
 
 
-      form {
+      form.aute {
         display: grid;
         grid-template: auto auto / auto min-content;
         gap: 5px;
       }
 
-      form select {
+      form.aute select[name="filters-seriesid"] {
         grid-column: 1 / -1;
+      }
+
+      form.aute label[name="filters-name"] {
+        white-space: nowrap;
       }
 
 
@@ -316,14 +320,14 @@
     <h1>AutoIgnite Dashboard</h1>
 
     <form class="aute" id="aute-filters" @submit.prevent @change="model.filterParamsChanged">
-      <select name="seriesid" v-model="model.source.seriesId" v-effe2ct="model.source.seriesId && model.source.loadTracked()">
+      <select name="filter-seriesid" v-model="model.source.seriesId">
         <option v-for="series in model.source.series" :value="series.seriesId">
           {{series.name}} ({{series.releaseYear}})
         </option>
       </select>
-      <input type="text" name="filter-name" placeholder="Filter by title" v-model="model.filter.params.name">
+      <input type="text" name="filter-name" placeholder="Filter by program name" v-model="model.filter.params.name">
       <label><input type="checkbox" name="filter-unwatched" v-model="model.filter.params.unwatched"> Unwatched only</label>
-      <label><input type="radio" name="filter-x"> xxxxxxx</label>
+      <!-- <label><input type="radio" name="filter-x"> xxxxxxx</label> -->
     </form>
 
     <table class="aute" id="aute-results">
