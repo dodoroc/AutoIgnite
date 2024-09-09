@@ -147,8 +147,7 @@
       input:is([type="checkbox"], [type="radio"]):disabled {
         background-color: var(--clr-median) !important;
       }
-/*      input:is([type="checkbox"], [type="radio"]):disabled:checked {*/
-      input:is([type="checkbox"], [type="radio"]):checked {
+      input:is([type="checkbox"], [type="radio"]):checked:not(:disabled) {
         background-color: var(--clr-lighter);
       }
 
@@ -160,11 +159,9 @@
         column-gap: 0.8ch;
       }
       label:has(+ [type="checkbox"], + [type="radio"]) {
-/*        width: auto;*/
         margin-right: 0.8ch;
       }
       input:is([type="checkbox"], [type="radio"]) + label {
-/*        width: auto;*/
         margin-left: 0.8ch;
       }
 
@@ -198,33 +195,15 @@
 
 
 
-      .col-mode {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: stretch;
-        gap: 10px;
-      }
-      .col-mode.compact {
-        gap: 5px;
-      }
-      .row-mode {
-        display: flex;
-        flex-direction: row;
-        gap: 10px;
-      }
-      .row-mode.compact {
+      form {
+        display: grid;
+        grid-template: auto auto / auto auto;
         gap: 5px;
       }
 
-      .bordered {
-        padding: 5px;
-        margin: 0;
-        border: solid 1px var(--clr-lighter);
+      form select {
+        grid-column: 1 / -1;
       }
-
-
-
 
 
       table {
@@ -276,6 +255,7 @@
 
         font-size: clamp(24px, 9dvmin, 56px);
         color: #0000;
+
         background: no-repeat radial-gradient(var(--clr-lighter) 0px, var(--clr-darker) 100px, var(--clr-darkest) 250px);
         background-clip: text;
         background-size: 80cqmin 80cqmin;
@@ -335,7 +315,7 @@
 
     <h1>AutoIgnite Dashboard</h1>
 
-    <form id="aid-filters" class="col-mode compact" @submit.prevent @change="model.filterParamsChanged">
+    <form class="aute" id="aute-filters" @submit.prevent @change="model.filterParamsChanged">
       <select name="seriesid" v-model="model.source.seriesId" v-effe2ct="model.source.seriesId && model.source.loadTracked()">
         <option v-for="series in model.source.series" :value="series.seriesId">
           {{series.name}} ({{series.releaseYear}})
@@ -344,11 +324,9 @@
       <input type="text" name="filter-name" v-model="model.filter.params.name">
       <label><input type="checkbox" name="filter-unwatched" v-model="model.filter.params.unwatched"> Unwatched only</label>
       <label><input type="radio" name="filter-x"> xxxxxxx</label>
-      <div><label for="inp1">asdf</label><input type="checkbox" id="inp1"></div>
-      <div><input type="checkbox" id="inp2"><label for="inp2">asdf</label></div>
     </form>
 
-    <table id="aid-results">
+    <table class="aute" id="aute-results">
       <colgroup><col class="nm"><col class="ao"><col class="wo"></colgroup>
 
       <thead>
