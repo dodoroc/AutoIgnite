@@ -122,7 +122,7 @@
         background-color: var(--clr-lightest);
         border-color: var(--clr-lightest);
       }
-      input:is([type="checkbox"], [type="radio"]) {
+      input2:is([type="checkbox"], [type="radio"]) {
         appearance: none;
         transform: scale(1);
         zoom: 1;
@@ -138,22 +138,21 @@
 
       }
       input:is([type="checkbox"], [type="radio"]) {
-        box-sizing: content-box;
-
         appearance: none;
         transform: scale(1);
         zoom: 1;
 
-        width: 10px;
-        height: 10px;
+        width: 16px;
+        height: 16px;
         margin: 0;
         padding: 0;
+        outline: solid 1px var(--clr-lighter);
+        outline-offset: -1px;
+        border: solid 4px transparent;
+
         color: var(--clr-lighter);
         background-color: transparent;
         background-clip: content-box;
-        outline: solid 1px var(--clr-lighter);
-        outline-offset: -1px;
-        border: solid 3.5px transparent;
       }
       input:is([type="checkbox"], [type="radio"]):enabled {
         cursor: pointer;
