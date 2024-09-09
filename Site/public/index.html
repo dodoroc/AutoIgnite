@@ -136,8 +136,9 @@
         zoom: 0.999;
       }
       input:is([type="checkbox"], [type="radio"]) {
-        width: 16px;
-        height: 16px;
+        box-sizing: content-box;
+        width: 12px;
+        height: 12px;
         margin: 1px;
         padding: 0;
         color: var(--clr-lighter);
@@ -145,9 +146,7 @@
         background-clip: content-box;
         outline: solid 1px var(--clr-lighter);
         outline-offset: -1px;
-        border: solid 1px transparent;
-
-
+        border: solid 4px transparent;
         appearance: none;
         zoom: 1;
       }
@@ -340,6 +339,7 @@
       </select>
       <input type="text" name="filter-name" v-model="model.filter.params.name">
       <label><input type="checkbox" name="filter-unwatched" v-model="model.filter.params.unwatched"> Unwatched only</label>
+      <label><input type="radio" name="filter-x"> xxxxxxx</label>
 
     </form>
 
