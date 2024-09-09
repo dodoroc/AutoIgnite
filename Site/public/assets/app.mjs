@@ -78,7 +78,7 @@ const app = createApp({
   mounted() {
     console.log('mounted called');
 
-    const t = -Date.now()
+    const t = -Date.now();
     const sleep = ms => new Promise(r => setTimeout(r, ms));
 
     model.filter.compile();
@@ -86,7 +86,7 @@ const app = createApp({
       model.source.loadTracked().then(() => {
         model.filter.apply();
         const rem = Math.max(0, 2000 - Date.now() + t);
-        sleep(2000).then(this.show);
+        sleep(rem).then(this.show);
 
       });
     });
