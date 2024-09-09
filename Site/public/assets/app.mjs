@@ -79,14 +79,13 @@ const app = createApp({
 
     const t = -Date.now()
     const sleep = ms => new Promise(r => setTimeout(r, ms));
-    sleep(2000).then(() => { this.mount() });
 
     model.filter.compile();
     model.source.loadSeries().then(() => {
       model.source.loadTracked().then(() => {
         model.filter.apply();
         const rem = Math.max(0, 2000 - Date.now() + t);
-        sleep(rem).then(show);
+        sleep(rem).then(this.show);
 
       });
     });
