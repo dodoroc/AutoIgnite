@@ -264,14 +264,15 @@
         display: grid;
         height: calc(100dvh - 10px);
         place-content: center;
-        color: var(--clr-lighter);
-        font-size: clamp(12px, 10dvmin, 56px);
 
-        background: no-repeat radial-gradient(#666 0px, #555 50px, #222 250px, #000);
-        background-size: 100cqmin 100cqmin;
+        font-size: clamp(12px, 16dvmin, 56px);
+        color: var(--clr-lighter);
+        background: no-repeat radial-gradient(var(--clr-darker) 0px, var(--clr-darker) 100px, var(--clr-darkest) 250px);
+        background-size: 80cqmin 80cqmin;
         background-position: 50% 50%;
         filter: blur(0.66px);
         opacity: 0.75;
+
 
         animation: 1s infinite spinner;
       }
