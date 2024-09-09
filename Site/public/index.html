@@ -267,11 +267,35 @@
         color: var(--clr-lighter);
         font-size: clamp(12px, 10dvmin, 56px);
 
-        background: no-repeat radial-gradient(#666 0px,#555 100px,#222 50px,#111 50px,#000);
+        background: no-repeat radial-gradient(#666 0px, #555 50px, #222 250px, #000);
         background-size: 100cqmin 100cqmin;
         background-position: 50% 50%;
         filter: blur(0.66px);
-        opacity: 0.667;
+        opacity: 0.75;
+
+        animation: 1s infinite alternate spinner;
+      }
+      @keyframes spinner {
+          0% { background-position: 60.00% 50.00% }
+         18% { background-position: 59.51% 53.09% }
+         36% { background-position: 58.09% 55.88% }
+         54% { background-position: 55.88% 58.09% }
+         72% { background-position: 53.09% 59.51% }
+         90% { background-position: 50.00% 60.00% }
+        108% { background-position: 46.91% 59.51% }
+        126% { background-position: 44.12% 58.09% }
+        144% { background-position: 41.91% 55.88% }
+        162% { background-position: 40.49% 53.09% }
+        180% { background-position: 40.00% 50.00% }
+        198% { background-position: 40.49% 46.91% }
+        216% { background-position: 41.91% 44.12% }
+        234% { background-position: 44.12% 41.91% }
+        252% { background-position: 46.91% 40.49% }
+        270% { background-position: 50.00% 40.00% }
+        288% { background-position: 53.09% 40.49% }
+        306% { background-position: 55.88% 41.91% }
+        324% { background-position: 58.09% 44.12% }
+        342% { background-position: 59.51% 46.91% }
       }
 
       [v-cloak] > :not(#spinner) {
@@ -280,6 +304,18 @@
       :not([v-cloak]) > #spinner {
         display: none !important;
       }
+/*
+let x,y, str = '';
+let A = Math.PI / 180 * 18;
+for (let i = 0; i < 20; i++) {
+  x = 50 + 10 * Math.cos(i*A);
+  y = 50 + 10 * Math.sin(i*A);
+  x = x.toFixed(2);
+  y = y.toFixed(2);
+  str += `  ${(i*18)}% { background-position: ${x}% ${y}% }\n`;
+}
+console.log(str);
+*/
     </style>
 
     <script type="module" src="/assets/app.mjs"></script>
