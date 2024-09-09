@@ -70,8 +70,7 @@ const app = createApp({
   },
 
 
-  // mounted() {
-  start() {
+  mounted() {
     console.log('mounted called');
 
     const t = -Date.now()
@@ -84,7 +83,13 @@ const app = createApp({
         model.filter.apply();
       });
     });
-  }
-}).start();//.mount();
+  },
+  beforeCreate() {
+    console.log('beforeCreate');
+  },
+  create() {
+    console.log('create');
+  },
+}).mount();
 // setTimeout(() => {app.mount()}, 4000);
 
