@@ -69,8 +69,11 @@ const app = createApp({
     });
   },
 
-  mounted() {
+
+  // mounted() {
+  start() {
     console.log('mounted called');
+    const t = -Date.now()
 
     model.filter.compile();
     model.source.loadSeries().then(() => {
@@ -81,7 +84,7 @@ const app = createApp({
     let state = true;
     const sleep = ms => new Promise(r => setTimeout(r, ms));
     sleep(2000).then(() => { state = false });
-    while (state);
+    while (state) yield;
   }
 }).mount();
 // setTimeout(() => {app.mount()}, 4000);
