@@ -85,7 +85,7 @@ const app = createApp({
     model.source.loadSeries().then(() => {
       model.source.loadTracked().then(() => {
         model.filter.apply();
-        const rem = Math.max(0, 2000 - Date.now() + t);
+        const rem = Math.max(0, 2000 - (Date.now() + t));
         sleep(rem).then(this.show);
 
       });
