@@ -135,6 +135,22 @@
         appearance: none;
         zoom: 0.999;
       }
+      input:is([type="checkbox"], [type="radio"]) {
+        width: 16px;
+        height: 16px;
+        margin: 1px;
+        padding: 0;
+        color: var(--clr-lighter);
+        background-color: transparent;
+        background-clip: content-box;
+        outline: solid 1px var(--clr-lighter);
+        outline-offset: -1px;
+        border: solid 1px transparent;
+
+
+        appearance: none;
+        zoom: 1;
+      }
       input:is([type="checkbox"], [type="radio"]):enabled {
         cursor: pointer;
       }
