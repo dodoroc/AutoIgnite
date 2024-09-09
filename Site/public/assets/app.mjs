@@ -70,8 +70,9 @@ const app = createApp({
   },
 
   show() {
-    const at = document.body.getAttribute('cloak');
-    if (at) document.body.removeAttribute('cloak');
+    // const at = document.body.getAttribute('cloak');
+    // if (at)
+    document.body.removeAttribute('cloak');
   },
 
   mounted() {
