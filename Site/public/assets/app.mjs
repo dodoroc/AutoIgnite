@@ -1,5 +1,7 @@
 import { createApp, reactive } from 'https://unpkg.com/petite-vue@0.4.1/dist/petite-vue.es.js?module'//https://unpkg.com/petite-vue?module'
 
+const appStart_ms = Date.now();
+
 // const source = {};
 const model = reactive({
   source: {
@@ -69,24 +71,24 @@ const app = createApp({
     });
   },
 
-  show() {
-    // const at = document.body.getAttribute('cloak');
-    // if (at)
+  after(delta_ms) {
+    const ms = Math.max(0, delta_ms - (Date.now() - appStart_ms));
+    return new Promise(r => setTimeout(r, ms));
+  },
+  uncloak() {
     document.body.removeAttribute('cloak');
   },
 
   mounted() {
     console.log('mounted called');
 
-    const t = -Date.now();
-    const sleep = ms => new Promise(r => setTimeout(r, ms));
+    const uncloak = this.uncloak();
 
     model.filter.compile();
     model.source.loadSeries().then(() => {
       model.source.loadTracked().then(() => {
         model.filter.apply();
-        const rem = Math.max(0, 2000 - (Date.now() + t));
-        sleep(rem).then(this.show);
+        after(2000).then(uncloak);
 
       });
     });
