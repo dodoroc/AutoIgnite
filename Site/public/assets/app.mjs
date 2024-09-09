@@ -82,8 +82,6 @@ const app = createApp({
   mounted() {
     console.log('mounted called');
 
-    const uncloak = this.uncloak();
-
     model.filter.compile();
     model.source.loadSeries().then(() => {
       model.source.loadTracked().then(() => {
