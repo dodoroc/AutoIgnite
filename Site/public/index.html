@@ -139,9 +139,6 @@
         background-color: transparent;
         background-clip: content-box;
       }
-      input:is([type="checkbox"], [type="radio"])::after {
-        _content: ' ';
-      }
 
       input:is([type="checkbox"], [type="radio"]):enabled {
         cursor: pointer;
@@ -149,13 +146,27 @@
       input:is([type="checkbox"], [type="radio"]):disabled {
         background-color: var(--clr-median) !important;
       }
+/*      input:is([type="checkbox"], [type="radio"]):disabled:checked {*/
+      input:is([type="checkbox"], [type="radio"]):checked {
+        background-color: var(--clr-lighter);
+      }
 
       input[type="radio"] {
         border-radius: 50%;
       }
-      input:is([type="checkbox"], [type="radio"]):checked {
-        background-color: var(--clr-lighter);
+
+      label:has([type="checkbox"], [type="radio"]) {
+        column-gap: 0.8ch;
       }
+      label:has(+ [type="checkbox"], + [type="radio"]) {
+        margin-right: 0.8ch;
+      }
+      input:is([type="checkbox"], [type="radio"]) + label {
+        margin-left: 0.8ch;
+      }
+
+
+
       input:is([type="text"], [type="date"]),
       button,
       select {
@@ -168,9 +179,6 @@
         align-items: center;
         height: 28px;
         line-height: 28px;
-      }
-      label > input:is([type="checkbox"], [type="radio"])::after {
-        content: ' ';
       }
 
       /*
@@ -333,7 +341,8 @@
       <input type="text" name="filter-name" v-model="model.filter.params.name">
       <label><input type="checkbox" name="filter-unwatched" v-model="model.filter.params.unwatched"> Unwatched only</label>
       <label><input type="radio" name="filter-x"> xxxxxxx</label>
-
+      <div><label>asdf</label><input type="checkbox"></div>
+      <div><input type="checkbox"><label>asdf</label></div>
     </form>
 
     <table id="aid-results">
