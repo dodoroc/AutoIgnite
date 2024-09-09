@@ -61,9 +61,9 @@ const app = createApp({
   model,
 
   filterParamsChanged(ev) {
-    console.log('[[ ----------------------------');
+    console.log('--- [[');
     console.dir(ev);
-    console.log('---------------------------- ]]');
+    console.log(']]');
 
     model.filter.compile(ev);
     model.source.loadTracked().then(() => {
@@ -86,11 +86,9 @@ const app = createApp({
     model.source.loadSeries().then(() => {
       model.source.loadTracked().then(() => {
         model.filter.apply();
-        this.after(2000).then(this.uncloak);
-
+        this.after(1500).then(this.uncloak);
       });
     });
   },
 }).mount();
-// setTimeout(() => {app.mount()}, 4000);
 
