@@ -69,6 +69,10 @@ const app = createApp({
     });
   },
 
+  show() {
+    const at = document.body.getAttribute('cloak');
+    if (at) document.body.removeAttribute('cloak');
+  },
 
   mounted() {
     console.log('mounted called');
@@ -81,14 +85,11 @@ const app = createApp({
     model.source.loadSeries().then(() => {
       model.source.loadTracked().then(() => {
         model.filter.apply();
+        const rem = Math.max(0, 2000 - Date.now() + t);
+        sleep(rem).then(show);
+
       });
     });
-  },
-  beforeCreate() {
-    console.log('beforeCreate');
-  },
-  create() {
-    console.log('create');
   },
 }).mount();
 // setTimeout(() => {app.mount()}, 4000);

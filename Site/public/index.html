@@ -299,10 +299,10 @@
         100% { background-position: calc(50% +  80.0px) calc(50% +   0.0px) }
       }
 
-      [v-cloak] > :not(#spinner) {
+      [cloak] > :not(#spinner) {
         display: none;
       }
-      :not([v-cloak]) > #spinner {
+      :not([cloak]) > #spinner {
         display: none !important;
       }
 /*
@@ -333,7 +333,7 @@ console.log(str);
 
     <script type="module" src="/assets/app.mjs"></script>
   </head>
-  <body @vue:mounted="mounted" v-cloak>
+  <body @vue:mounted="mounted" cloak>
 
 <!-- <svg xmlns="http://www.w3.org/2000/svg"/>
 <hr>
