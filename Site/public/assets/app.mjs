@@ -78,9 +78,10 @@ const app = createApp({
         model.filter.apply();
       });
     });
-    // const sleep = ms => new Promise(r => setTimeout(r, ms));
-    // sleep(2000);
-    (async () => await new Promise(resolve => setTimeout(resolve, 2500)))();
+    let state = true;
+    const sleep = ms => new Promise(r => setTimeout(r, ms));
+    sleep(2000).then(() => { state = false });
+    while (state);
   }
 }).mount();
 // setTimeout(() => {app.mount()}, 4000);
