@@ -70,8 +70,8 @@ const app = createApp({
   },
 
 
-  // mounted() {
-  start() {
+  mounted() {
+  // start() {
     console.log('mounted called');
     const t = -Date.now()
 
