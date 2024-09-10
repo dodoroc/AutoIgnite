@@ -85,7 +85,7 @@ const app = createApp({
     model.source.loadSeries().then(() => {
       model.source.loadTracked().then(() => {
         model.filter.apply();
-        this.after(1500).then(this.uncloak);
+        this.after(1100).then(this.uncloak);
       });
     });
   },
