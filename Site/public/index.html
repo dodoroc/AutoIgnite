@@ -331,7 +331,10 @@
           {{series.name}} ({{series.releaseYear}})
         </option>
       </select>
-      <input type="text" name="filter-name" placeholder="Filter by program name" v-model="model.filter.params.name">
+      <input type="text" placeholder="Filter by program name" maxlength="50" spellcheck="false" autocorrect="off"
+        name="filter-name"
+        v-model="model.filter.params.name"
+      >
       <label><input type="checkbox" name="filter-unwatched" v-model="model.filter.params.unwatched"> Unwatched only</label>
       <!-- <label><input type="radio" name="filter-x"> xxxxxxx</label> -->
     </form>
