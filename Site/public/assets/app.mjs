@@ -59,7 +59,7 @@ const model = reactive({
 const app = createApp({
   model,
 
-  changedDebounceId = 0,
+  changedDebounceId: 0,
   filterParamsChanged(ev) {
     console.log('--- [[');
     console.dir(ev);
