@@ -80,7 +80,7 @@ const app = createApp({
       case (ev.target.name === 'filter-name'):
         console.log('changed', ev.target.value);
         clearTimeout(this.changedDebounceId);
-        this.changedDebounceId = setTimeout(() => this.filterParamsChanged, 333);
+        this.changedDebounceId = setTimeout(() => this.filterParamsChanged.apply(this), 333);
       break;
 
       default:
