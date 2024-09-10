@@ -63,6 +63,7 @@ const app = createApp({
     console.log('--- [[');
     console.dir(ev);
     console.log(']]');
+    return;
 
     model.filter.compile(ev);
     model.source.loadTracked().then(() => {
