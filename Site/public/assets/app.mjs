@@ -70,6 +70,12 @@ const app = createApp({
     });
   },
 
+  seep(str) {
+    if (str && str.length == 7) {
+      return str.replace(/^(\d{4})(\d{3})$/, '$1.$2')
+    }
+    return str;
+  },
   after(delta_ms) {
     const ms = Math.max(0, delta_ms - (Date.now() - appStart_ms));
     return new Promise(r => setTimeout(r, ms));
