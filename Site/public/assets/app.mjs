@@ -45,8 +45,8 @@ const model = reactive({
       unwatched: false,
     },
     actions: [],
-    compile(ev) {
-      console.log(ev, typeof ev);
+    compile() {
+      console.dir(this.params);
     },
     apply() {
       this.results = model.source.programs[model.source.seriesId];
@@ -78,7 +78,6 @@ const app = createApp({
       break;
 
       case (ev.target.name === 'filter-name'):
-        console.log('changed', ev.target.value);
         clearTimeout(this.changedDebounceId);
         this.changedDebounceId = setTimeout(this.filterParamsChanged, 500);
       break;
