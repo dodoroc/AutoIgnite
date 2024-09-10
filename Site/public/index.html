@@ -246,7 +246,7 @@
       table .nm { width: auto }
       table .ao { width: 12ch }
       table .wo { width: 12ch }
-      table .pi { width: 20ch }
+      table .sk { width: 8ch }
 
       table td[colspan] {
         text-align: center;
@@ -331,10 +331,10 @@
     </form>
 
     <table class="aute" id="aute-results">
-      <colgroup><col class="nm"><col class="ao"><col class="wo"></colgroup>
+      <colgroup><col class="nm"><col class="ao"><col class="wo"><col class="sk"></colgroup>
 
       <thead>
-        <tr><td>Name</td><td>Aired On</td><td>Watched On</td></tr>
+        <tr><td>Name</td><td>Aired On</td><td>Watched On</td><td>Key</td></tr>
       </thead>
 
       <tbody v-if="model.filter.results.length">
@@ -342,6 +342,7 @@
           <td>{{program.name}}</td>
           <td>{{program.airedOn}}</td>
           <td>{{program.watchedOn}}</td>
+          <td>{{program.seepKey}}</td>
         </tr>
       </tbody>
 
