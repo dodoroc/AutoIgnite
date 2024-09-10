@@ -46,7 +46,7 @@ const model = reactive({
     },
     actions: [],
     compile() {
-
+      console.log(ev, typeof ev);
     },
     apply() {
       this.results = model.source.programs[model.source.seriesId];
@@ -64,33 +64,28 @@ const app = createApp({
     console.log('--- [[');
     console.dir(ev);
     console.log(']]');
-    return;
+    // return;
 
-    if (ev) {
-      switch (ev.target.name) {
-        case 'filter-seriesid':
-        case 'filter-unwatched':
-        break;
+    // ev.type -> input, select, checkbox
+    switch (true) {
+      case (ev == null): /* explicit == */
+      case (ev.target.name == 'filter-seriesid'):
+      case (ev.target.name == 'filter-unwatched'):
+        model.filter.compile(ev);
+        model.source.loadTracked().then(() => {
+          model.filter.apply();
+        });
+      break;
 
-        case 'filter-name':
-          if (this.changedDebounceId) {
-            clearTimeout(this.changedDebounceId);
-            this.changedDebounceId = setTimeout(() => {
-              this.changedDebounceId = 0;
-              this.filterParamsChanged();
-            }, 333);
-            return;
-          }
-        break;
-      }
+      case (ev.target.name == 'filter-name'):
+        clearTimeout(this.changedDebounceId);
+        this.changedDebounceId = setTimeout(() => this.filterParamsChanged, 333);
+      break;
+
+      default:
+        alert('filterParamsChanged switch default should not be chosen');
+        console.assert(false, 'filterParamsChanged switch default should not be chosen');
     }
-
-    const name = ev.target.name;
-    const type = ev.type; //input, select, checkbox
-    model.filter.compile();
-    model.source.loadTracked().then(() => {
-      model.filter.apply();
-    });
   },
 
   seep(str) {
