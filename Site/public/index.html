@@ -242,9 +242,8 @@
         border: 1px solid var(--clr-darker);
       }
 
-      table tbody tr:hover { background-color: pink }
-      table tbody tr:active { background-color: cyan }
-      table tbody tr:focus-within { background-color: yellowgreen }
+      table tbody tr:hover { border-top-color: var(--clr-lighter); border-bottom-color: var(--clr-lighter);}
+      table tbody tr:hover td { border-top-color: red}
 
       table .nm { width: 100% }
       table .ao { width: auto }

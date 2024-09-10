@@ -76,6 +76,7 @@ const app = createApp({
     }
     return str;
   },
+
   after(delta_ms) {
     const ms = Math.max(0, delta_ms - (Date.now() - appStart_ms));
     return new Promise(r => setTimeout(r, ms));
