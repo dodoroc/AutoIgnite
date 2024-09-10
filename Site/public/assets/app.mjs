@@ -69,7 +69,7 @@ const app = createApp({
     // ev.type -> input, select, checkbox
     switch (true) {
       case (ev == null): /* explicit == */
-      case (ev.target.name == 'filter-seriesid'):
+      case (ev.target.name === 'filter-seriesid'):
       case (ev.target.name == 'filter-unwatched'):
         model.filter.compile(ev);
         model.source.loadTracked().then(() => {
@@ -77,7 +77,8 @@ const app = createApp({
         });
       break;
 
-      case (ev.target.name == 'filter-name'):
+      case (ev.target.name === 'filter-name'):
+        console.log('changed', ev.target.value);
         clearTimeout(this.changedDebounceId);
         this.changedDebounceId = setTimeout(() => this.filterParamsChanged, 333);
       break;
