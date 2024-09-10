@@ -46,7 +46,8 @@ const model = reactive({
     },
     actions: [],
     compile() {
-      console.dir(this.params);
+      console.log(this.params.name);
+      console.log(this.params.unwatched);
     },
     apply() {
       this.results = model.source.programs[model.source.seriesId];
