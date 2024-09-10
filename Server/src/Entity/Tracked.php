@@ -13,7 +13,7 @@ final class Tracked extends AbstractEntity
     public readonly string|null $airedOn,
     public readonly string|null $watchedOn,
     public readonly ProgramId $programId,
-    public readonly int $ndx,
+    public readonly string|null $seepKey,
   ) {}
 
   public function isValid() : bool

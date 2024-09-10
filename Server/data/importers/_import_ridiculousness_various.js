@@ -14,7 +14,7 @@ rows.forEach(s => {
 });
 
 console.log(`
-INSERT INTO tracker.episode (series_id, name, aired_on, source) VALUES
+INSERT INTO tracker.tracked (series_id, name, aired_on, source) VALUES
 ${vals.join(',\n')}
 ON CONFLICT (series_id, name) DO NOTHING
 ;
@@ -40,7 +40,7 @@ rows.forEach(s => {
 });
 
 console.log(`
-INSERT INTO tracker.episode (series_id, name, aired_on, source) VALUES
+INSERT INTO tracker.tracked (series_id, name, aired_on, source) VALUES
 ${vals.join(',\n')}
 ON CONFLICT (series_id, name) DO NOTHING
 ;
@@ -66,9 +66,48 @@ rows.forEach(s => {
 });
 
 console.log(`
-INSERT INTO tracker.episode (series_id, name, aired_on, source) VALUES
+INSERT INTO tracker.tracked (series_id, name, aired_on, source) VALUES
 ${vals.join(',\n')}
 ON CONFLICT (series_id, name) DO NOTHING
 ;
 `);
 // UPDATE SET air_date=EXCLUDED.air_date WHERE episode.air_date IS NULL
+
+
+
+
+
+
+
+// -------------------------------------------------------------------
+// https://thetvdb.com/series/ridiculousness/allseasons/official
+
+const vals = [];
+const rows = document.querySelectorAll('li.list-group-item');
+rows.forEach(s => {
+  const name = s.children[0].children[1].innerText.replace(/"/g, '').trim();
+  if (name.toLowercase() == 'tba') return;
+
+  const tmp1 = s.children[1].children[0].innerText.trim();
+  const aired = new Date(tmp1).toISOString().slice(0, 10);
+  const seep = s.children[0].children[0].innerText.trim();
+  const tmp2 = seep.match(/^[Ss](\d+)[Ee](\d+)$/);
+  if (!tmp2 || tmp2.length != 3) return;
+
+  const se = new String(parseInt(tmp2[1], 10)).padStart(4, '0');
+  const ep = new String(parseInt(tmp2[2], 10)).padStart(3, '0');
+  if (parseInt(tmp2[1], 10) < 31) return;
+
+  vals.push(`('6774048176174390112', '${name}', '${aired}', '${se+ep}', 'thetvdb.com')`);
+});
+
+console.log(`
+INSERT INTO tracker.tracked (series_id, name, aired_on, seep_key, source) VALUES
+${vals.join(',\n')}
+ON CONFLICT (series_id, name) DO --NOTHING
+UPDATE SET aired_on = EXCLUDED.aired_on, seep_key = EXCLUDED.seep_key
+WHERE tracked.aired_on IS NULL OR tracked.seep_key IS NULL
+;
+`);
+// DO UPDATE SET aired_on=EXCLUDED.aired_on, seep=EXCLUDED.seep
+// DO NOTHING
