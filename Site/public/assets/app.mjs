@@ -45,7 +45,7 @@ const model = reactive({
       unwatched: false,
     },
     actions: [],
-    compile(ev) {
+    compile() {
 
     },
     apply() {
@@ -59,13 +59,35 @@ const model = reactive({
 const app = createApp({
   model,
 
+  changedDebounceId = 0,
   filterParamsChanged(ev) {
     console.log('--- [[');
     console.dir(ev);
     console.log(']]');
     return;
 
-    model.filter.compile(ev);
+    if (ev) {
+      switch (ev.target.name) {
+        case 'filter-seriesid':
+        case 'filter-unwatched':
+        break;
+
+        case 'filter-name':
+          if (this.changedDebounceId) {
+            clearTimeout(this.changedDebounceId);
+            this.changedDebounceId = setTimeout(() => {
+              this.changedDebounceId = 0;
+              this.filterParamsChanged();
+            }, 333);
+            return;
+          }
+        break;
+      }
+    }
+
+    const name = ev.target.name;
+    const type = ev.type; //input, select, checkbox
+    model.filter.compile();
     model.source.loadTracked().then(() => {
       model.filter.apply();
     });
