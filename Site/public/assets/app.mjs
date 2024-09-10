@@ -45,7 +45,7 @@ const model = reactive({
       unwatched: false,
     },
     actions: [],
-    compile() {
+    compile(ev) {
       console.log(ev, typeof ev);
     },
     apply() {
