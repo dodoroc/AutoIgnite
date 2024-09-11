@@ -197,10 +197,11 @@
 
       form.aute {
         display: grid;
-        grid-template: auto auto / auto min-content;
+        grid-template: auto auto auto / auto min-content;
         gap: 5px;
       }
 
+      form.aute span,
       form.aute select[name="filter-seriesid"] {
         grid-column: 1 / -1;
       }
@@ -337,6 +338,7 @@
         v-model="model.filter.params.name"
       >
       <label><input type="checkbox" name="filter-unwatched" v-model="model.filter.params.unwatched">Unwatched only</label>
+      <span>Found: {{model.source.programs[model.source.seriesId].length}}; Filtered: {{model.filter.results.length}}</span>
       <!-- <label><input type="radio" name="filter-x"> xxxxxxx</label> -->
     </form>
 
