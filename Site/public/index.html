@@ -104,7 +104,7 @@
       button, input, textarea, select, datalist {
         color: var(--clr-darker);
         background-color: var(--clr-darker);
-        border: solid 1px var(--clr-lighter);
+        border: solid 1px var(--clr-median);
         outline: none;
         transition: 200ms linear;
         transition-property: border-color, background-color, color;
@@ -117,10 +117,12 @@
         color: var(--clr-darkest);
         background-color: var(--clr-lightest);
         border-color: var(--clr-lightest);
+        border-color: red;
       }
       :is(:not(button, input[type="button"], [type="checkbox"], [type="radio"])):focus {
         background-color: var(--clr-lightest);
         border-color: var(--clr-lightest);
+        border-color: lightpink;
       }
       input:is([type="checkbox"], [type="radio"]) {
         appearance: none;
@@ -131,7 +133,7 @@
         height: 16px;
         margin: 0;
         padding: 0;
-        outline: solid 1px var(--clr-lighter);
+        outline: solid 1px var(--clr-median);
         outline-offset: -1px;
         border: solid 4px transparent;
         vertical-align: text-bottom;
@@ -240,12 +242,12 @@
         line-height: 21px;
         height: 21px;
         color: var(--clr-light);
-        border: 1px solid var(--clr-dark);
+        border: solid 1px var(--clr-median);
       }
 
       table tbody tr:hover td {
-        color: var(--clr-lightest);
-        color: antiquewhite;
+        color: var(--clr-light);
+/*        color: antiquewhite;*/
       }
 
       table .nm { width: 100% }
