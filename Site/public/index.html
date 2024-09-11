@@ -40,7 +40,7 @@
         --width-scrollbar: calc(100vw - 100%);
         --width-available: calc(100vw - (100vw - 100%));
 
-        --ctl-base-size: 24px;
+        --ctl-base-size: 26px;
         --ctl-ckrd-size: 18px;
       }
 
@@ -118,7 +118,7 @@
         border: solid 1px var(--clr-median);
         outline: none;
         transition: 200ms linear;
-        transition-property: border-color, background-color, color, box-shadow;
+        transition-property: border-color, background-color, color, box-shadow, scale;
       }
       button, input:is([type="button"], [type="submit"], [type="clear"]) {
         text-align: center;
@@ -194,8 +194,6 @@
         vertical-align: text-bottom;
 
         color: var(--clr-lighter);
-/*        background-color: transparent;*/
-/*        background-clip: content-box;*/
       }
 
       input:is([type="checkbox"], [type="radio"])::before {
@@ -275,38 +273,6 @@
         background-repeat: no-repeat;
       }
       */
-
-
-input.sp[type="checkbox"] {
-  unset: all;
-  appearance: none;
-  background-color: #fff;
-  margin: 0;
-  font: inherit;
-  color: currentColor;
-  width: 1.15em;
-  height: 1.15em;
-  border: 0.15em solid currentColor;
-  border-radius: 0.15em;
-  transform: translateY(-0.075em);
-/*        border: solid 1px var(--clr-median);*/
-
-  display: grid;
-  place-content: center;
-}
-
-input.sp[type="checkbox"]::before {
-  content: '';
-  width: 0.65em;
-  height: 0.65em;
-  transform: scale(0);
-  transition: 120ms transform ease-in-out;
-  box-shadow: inset 1em 1em var(--clr-median);
-}
-
-input.sp[type="checkbox"]:checked::before {
-  transform: scale(1);
-}
 
 
 
