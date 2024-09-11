@@ -45,31 +45,17 @@ const model = reactive({
       unwatched: false,
     },
     actions: [],
-    act_unwatched: o => !o.watchedOn,
-    // act_name: o => o.name.includes(this.params.name),
-    act_name: o => String.prototype.includes.bind(o, this.params.name),
 
     compile() {
       this.actions = [];
       if (this.params.unwatched) this.actions.push(o => !o.watchedOn);
       if (this.params.name.length) this.actions.push(o => o.name.includes(this.params.name));
-      //nextTick(() => {
-      // Promise.resolve().then(() => {
-        console.log(this.params.name);
-        console.log(this.params.unwatched);
-      // });
+      if (this.params.name.length) this.actions.push(o => o.name.search(/`${this.params.name}`/i));
     },
     apply() {
       let res = model.source.programs[model.source.seriesId];
 
-      // if (this.actions.length) res = this.actions[0](res);
-      // console.dir(this.actions);
-      // const f = arr => Array.prototype.filter.bind(arr, o => !!!o.watchedOn);
-      // res = f(res)();
-      // if (this.params.unwatched) res = res.filter(o => !o.watchedOn);
-
       for (const fnc of this.actions) {
-        // console.dir(fnc);
         res = res.filter(fnc);
       }
 
