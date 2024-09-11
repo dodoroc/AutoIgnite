@@ -53,8 +53,8 @@ const model = reactive({
       if (this.params.name.length) this.actions.push(this.act_name);
       //nextTick(() => {
       // Promise.resolve().then(() => {
-        // console.log(this.params.name);
-        // console.log(this.params.unwatched);
+        console.log(this.params.name);
+        console.log(this.params.unwatched);
       // });
     },
     apply() {
