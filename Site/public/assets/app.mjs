@@ -51,8 +51,10 @@ const model = reactive({
       if (this.params.unwatched) this.actions.push(o => !o.watchedOn);
       // if (this.params.name.length) this.actions.push(o => o.name.includes(this.params.name));
       if (this.params.name.length) {
-        const rex = new RegExp(this.params.name, 'i');
-        this.actions.push(o => -1 < o.name.search(rex));
+        try {
+          const rex = new RegExp(this.params.name, 'i');
+          this.actions.push(o => -1 < o.name.search(rex));
+        } catch (err) {}
       }
     },
     apply() {
