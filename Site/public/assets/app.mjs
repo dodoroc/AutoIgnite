@@ -65,9 +65,8 @@ const app = createApp({
 
   changedDebounceId: 0,
   filterParamsChanged(ev) {
-    console.log('--- [[');
+    if (ev) console.log('[[', ev.type, ev.target.type, ev.target.value);
     console.dir(ev);
-    console.log(']]');
     // return;
 
     // ev.type -> input, select, checkbox
