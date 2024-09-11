@@ -213,6 +213,10 @@
       /*  _transition: 120ms transform ease-in-out;*/
       }
 
+      input:is([type="checkbox"], [type="radio"]):checked::before {
+        transform: scale(1);
+      }
+
       input[type="radio"] {
         border-radius: 50%;
       }
