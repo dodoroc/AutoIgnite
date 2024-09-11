@@ -45,12 +45,12 @@ const model = reactive({
       unwatched: false,
     },
     actions: [],
-    compile() {
+    async compile() {
       //nextTick(() => {
-      Promise.resolve().then(() => {
+      // Promise.resolve().then(() => {
         console.log(this.params.name);
         console.log(this.params.unwatched);
-      });
+      // });
     },
     apply() {
       this.results = model.source.programs[model.source.seriesId];
@@ -88,7 +88,7 @@ const app = createApp({
 
       default:
         alert('filterParamsChanged switch default should not be chosen');
-        console.assert(false, 'filterParamsChanged switch default should not be chosen');
+        console.error('filterParamsChanged switch default should not be chosen');
     }
   },
 
