@@ -46,7 +46,9 @@ const model = reactive({
     },
     actions: [],
     act_unwatched: o => !o.watchedOn,
-    act_name: o => o.name.includes(this.params.name),
+    // act_name: o => o.name.includes(this.params.name),
+    act_name: o => String.includes.bind(o, this.params.name),
+
     compile() {
       this.actions = [];
       if (this.params.unwatched) this.actions.push(this.act_unwatched);
