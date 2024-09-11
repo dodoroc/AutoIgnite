@@ -183,7 +183,7 @@
 */
 
       input:is([type="checkbox"], [type="radio"]) {
-        display: grid;
+        display: inline-grid;
         place-content: center;
 
         width: var(--ctl-ckrd-size);
@@ -459,7 +459,7 @@ input.sp[type="checkbox"]:checked::before {
       <span>Found: {{model.source.count}} │ Filtered: {{model.filter.count}}</span>
       <button>asdf</button>
       <!-- <label><input type="radio" name="filter-x"> xxxxxxx</label> -->
-      <div><input type="checkbox">asdf<input type="radio"></div>
+      <div><input type="checkbox" checked>asdf<input type="radio" checked></div>
     </form>
 
     <table class="aute" id="aute-results">
