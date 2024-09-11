@@ -49,8 +49,9 @@ const model = reactive({
     compile() {
       this.actions = [];
       if (this.params.unwatched) this.actions.push(o => !o.watchedOn);
-      if (this.params.name.length) this.actions.push(o => o.name.includes(this.params.name));
-      if (this.params.name.length) this.actions.push(o => o.name.search(new RegExp(this.params.name, 'i')));
+      // if (this.params.name.length) this.actions.push(o => o.name.includes(this.params.name));
+      // if (this.params.name.length) this.actions.push(o => (1+o.name.search(new RegExp(this.params.name, 'i'))));
+      if (this.params.name.length) this.actions.push(o => (1+o.name.search(/`${this.params.name}`/i)));
     },
     apply() {
       let res = model.source.programs[model.source.seriesId];
