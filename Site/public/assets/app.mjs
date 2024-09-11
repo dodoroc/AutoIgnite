@@ -64,7 +64,7 @@ const model = reactive({
 
       for (const fnc in this.actions) {
         console.dir(fnc);
-        // res = fnc(res);
+        res = fnc(res);
       }
 
       this.results =res;
