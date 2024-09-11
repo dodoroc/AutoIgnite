@@ -66,7 +66,7 @@ const model = reactive({
       // res = f(res)();
       // if (this.params.unwatched) res = res.filter(o => !o.watchedOn);
 
-      for (const fnc in this.actions) {
+      for (const fnc of this.actions) {
         // console.dir(fnc);
         res = fnc(res)();
       }
