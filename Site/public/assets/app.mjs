@@ -45,9 +45,8 @@ const model = reactive({
       unwatched: false,
     },
     actions: [],
-    act_unwatched: arr => Array.prototype.filter.bind(arr, o => !o.watchedOn),
-    // act_name: arr => Array.prototype.filter.bind(arr, o => o.name.includes(model.filter.params.name)),
-    act_name: arr => Array.prototype.filter.bind(arr, o => console.log(app, this)),
+    act_unwatched: o => !o.watchedOn,
+    act_name: o => o.name.includes(this.params.name),
     compile() {
       this.actions = [];
       if (this.params.unwatched) this.actions.push(this.act_unwatched);
@@ -69,7 +68,7 @@ const model = reactive({
 
       for (const fnc of this.actions) {
         // console.dir(fnc);
-        res = fnc(res)();
+        res = res.filter(fnc);
       }
 
       this.results =res;
