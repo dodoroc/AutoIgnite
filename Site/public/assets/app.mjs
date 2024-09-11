@@ -51,8 +51,8 @@ const model = reactive({
 
     compile() {
       this.actions = [];
-      if (this.params.unwatched) this.actions.push(this.act_unwatched);
-      if (this.params.name.length) this.actions.push(this.act_name);
+      if (this.params.unwatched) this.actions.push(o => !o.watchedOn);
+      if (this.params.name.length) this.actions.push(o => o.name.includes(this.params.name));
       //nextTick(() => {
       // Promise.resolve().then(() => {
         console.log(this.params.name);
