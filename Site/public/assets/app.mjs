@@ -50,7 +50,7 @@ const model = reactive({
       this.actions = [];
       if (this.params.unwatched) this.actions.push(o => !o.watchedOn);
       // if (this.params.name.length) this.actions.push(o => o.name.includes(this.params.name));
-      if (this.params.name.length) this.actions.push(o => (1+o.name.search(new RegExp(this.params.name, 'i'))));
+      if (this.params.name.length) this.actions.push(o => { const rex = new RegExp(this.params.name, 'i'); return -1 < o.name.search(rex) });
     },
     apply() {
       let res = model.source.programs[model.source.seriesId];
