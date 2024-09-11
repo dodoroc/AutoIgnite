@@ -64,11 +64,11 @@ const model = reactive({
       // console.dir(this.actions);
       // const f = arr => Array.prototype.filter.bind(arr, o => !!!o.watchedOn);
       // res = f(res)();
-      if (this.params.unwatched) res = res.filter(o => !o.watchedOn);
+      // if (this.params.unwatched) res = res.filter(o => !o.watchedOn);
 
       for (const fnc in this.actions) {
         // console.dir(fnc);
-        // res = fnc(res)();
+        res = fnc(res)();
       }
 
       this.results =res;
