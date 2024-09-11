@@ -119,6 +119,11 @@
         text-align: center;
         cursor: pointer;
       }
+      :is(:not(button, input[type="button"], [type="checkbox"], [type="radio"])):focus {
+        background-color: var(--clr-darkest);
+        border-color: var(--clr-lighter);
+        border-color: lightpink;
+      }
       button:active, input:is([type="button"], [type="submit"], [type="clear"]):active {
         color: var(--clr-darkest);
         background-color: var(--clr-lightest);
@@ -174,7 +179,6 @@
       }
 
 
-
       input:is([type="text"], [type="date"]),
       button,
       select {
@@ -200,6 +204,41 @@
         background-repeat: no-repeat;
       }
       */
+
+
+input.sp[type="checkbox"] {
+  unset: all;
+  /* ...existing styles */
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
+
+  display: grid;
+  place-content: center;
+}
+
+input.sp[type="checkbox"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--clr-median);
+}
+
+input.sp[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+
+
 
 
 
