@@ -107,13 +107,15 @@
         font-size: var(--font-size-h1);
       }
 
-      button, input, textarea, select, datalist {
+      button, input, textarea, select {
+        appearance: none;
+        display: ;
         color: var(--clr-lighter);
         background-color: var(--clr-darker);
         border: solid 1px var(--clr-median);
         outline: none;
         transition: 200ms linear;
-        transition-property: border-color, background-color, color;
+        transition-property: border-color, background-color, color, box-shadow;
       }
       button, input:is([type="button"], [type="submit"], [type="clear"]) {
         text-align: center;
@@ -225,7 +227,7 @@ input.sp[type="checkbox"] {
 }
 
 input.sp[type="checkbox"]::before {
-  content: "";
+  content: '';
   width: 0.65em;
   height: 0.65em;
   transform: scale(0);
