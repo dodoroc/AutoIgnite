@@ -50,7 +50,7 @@ const model = reactive({
     compile() {
       this.actions = [];
       if (this.params.unwatched) this.actions.push(this.act_unwatched);
-      // if (this.params.name.length) this.actions.push(this.act_name);
+      if (this.params.name.length) this.actions.push(this.act_name);
       //nextTick(() => {
       // Promise.resolve().then(() => {
         console.log(this.params.name);
@@ -62,12 +62,12 @@ const model = reactive({
 
       // if (this.actions.length) res = this.actions[0](res);
       // console.dir(this.actions);
-      const f = arr => Array.prototype.filter.bind(arr, o => !o.watchedOn);
-      res = f(res)();
+      // const f = arr => Array.prototype.filter.bind(arr, o => !o.watchedOn);
+      // res = f(res)();
 
       for (const fnc in this.actions) {
         // console.dir(fnc);
-        // res = fnc(res);
+        res = fnc(res)();
       }
 
       this.results =res;
