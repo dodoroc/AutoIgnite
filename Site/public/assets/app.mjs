@@ -72,21 +72,21 @@ const app = createApp({
     // ev.type -> input, select, checkbox
     switch (true) {
       case (ev == null): /* explicit == */
-      case (ev.target.name === 'filter-seriesid'):
-      case (ev.target.name == 'filter-unwatched'):
+      case (ev.type == 'change' && ev.target.name === 'filter-seriesid'):
+      case (ev.type == 'change' && ev.target.name == 'filter-unwatched'):
         model.filter.compile(ev);
         model.source.loadTracked().then(() => {
           model.filter.apply();
         });
       break;
 
-      case (ev.target.name === 'filter-name'):
+      case (ev.type == 'input' && ev.target.name === 'filter-name'):
         clearTimeout(this.changedDebounceId);
         this.changedDebounceId = setTimeout(this.filterParamsChanged, 500);
       break;
 
       default:
-        alert('filterParamsChanged switch default should not be chosen');
+        // alert('filterParamsChanged switch default should not be chosen');
         console.error('filterParamsChanged switch default should not be chosen');
     }
   },
