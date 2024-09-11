@@ -331,7 +331,8 @@
           {{series.name}} ({{series.releaseYear}})
         </option>
       </select>
-      <input type="text" placeholder="Filter by program name" maxlength="50" spellcheck="false" autocorrect="off"
+      <input
+        type="text" placeholder="Filter program name (regex allowed)" maxlength="50" spellcheck="false" autocorrect="off"
         name="filter-name"
         v-model="model.filter.params.name"
       >
