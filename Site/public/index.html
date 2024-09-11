@@ -200,7 +200,7 @@
 /*        background-clip: content-box;*/
       }
 
-      input[type="checkbox"]::before {
+      input:is([type="checkbox"], [type="radio"])::before {
 /*        transition: inherit;*/
         display: inline-block;
         content: '';
@@ -460,7 +460,7 @@ input.sp[type="checkbox"]:checked::before {
       <span>Found: {{model.source.count}} │ Filtered: {{model.filter.count}}</span>
       <button>asdf</button>
       <!-- <label><input type="radio" name="filter-x"> xxxxxxx</label> -->
-      <div><input class="sp" type="checkbox">asdf</div>
+      <div><input type="checkbox">asdf<input type="radio"></div>
     </form>
 
     <table class="aute" id="aute-results">
