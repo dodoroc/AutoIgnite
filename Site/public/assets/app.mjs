@@ -46,7 +46,8 @@ const model = reactive({
     },
     actions: [],
     compile() {
-      nextTick(() => {
+      //nextTick(() => {
+      Promise.resolve().then(() => {
         console.log(this.params.name);
         console.log(this.params.unwatched);
       });
