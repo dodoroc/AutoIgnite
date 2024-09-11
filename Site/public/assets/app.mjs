@@ -1,4 +1,4 @@
-import { createApp, reactive, nextTick } from 'https://unpkg.com/petite-vue@0.4.1/dist/petite-vue.es.js?module'//https://unpkg.com/petite-vue?module'
+import { createApp, reactive } from 'https://unpkg.com/petite-vue@0.4.1/dist/petite-vue.es.js?module';//https://unpkg.com/petite-vue?module'
 
 const appStart_ms = Date.now();
 
@@ -45,15 +45,26 @@ const model = reactive({
       unwatched: false,
     },
     actions: [],
-    async compile() {
+    act_unwatched: arr => Array.prototype.filter.bind(arr, o => !o.watchedOn);
+    act_name: arr => Array.prototype.filter.bind(arr, o => o.name.includes(this.params.name));
+    compile() {
+      this.actions = [];
+      if (this.params.unwatched) this.actions.push(this.act_unwatched);
+      if (this.params.name.length) this.actions.push(this.act_name);
       //nextTick(() => {
       // Promise.resolve().then(() => {
-        console.log(this.params.name);
-        console.log(this.params.unwatched);
+        // console.log(this.params.name);
+        // console.log(this.params.unwatched);
       // });
     },
     apply() {
-      this.results = model.source.programs[model.source.seriesId];
+      let res = model.source.programs[model.source.seriesId];
+
+      for (const fnc in this.actions) {
+        res = fnc(res);
+      }
+
+      this.results =res;
     }
   },
 
@@ -72,22 +83,22 @@ const app = createApp({
     // ev.type -> input, select, checkbox
     switch (true) {
       case (ev == null): /* explicit == */
-      case (ev.type == 'change' && ev.target.name === 'filter-seriesid'):
-      case (ev.type == 'change' && ev.target.name == 'filter-unwatched'):
+      case (ev.type === 'change' && ev.target.name === 'filter-seriesid'):
+      case (ev.type === 'change' && ev.target.name === 'filter-unwatched'):
         model.filter.compile(ev);
         model.source.loadTracked().then(() => {
           model.filter.apply();
         });
       break;
 
-      case (ev.type == 'input' && ev.target.name === 'filter-name'):
+      case (ev.type === 'input' && ev.target.name === 'filter-name'):
         clearTimeout(this.changedDebounceId);
         this.changedDebounceId = setTimeout(this.filterParamsChanged, 500);
       break;
 
       default:
         // alert('filterParamsChanged switch default should not be chosen');
-        console.error('filterParamsChanged switch default should not be chosen');
+        // console.error('filterParamsChanged switch default should not be chosen');
     }
   },
 
