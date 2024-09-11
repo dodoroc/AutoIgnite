@@ -7,6 +7,7 @@ const model = reactive({
     series: [],
     seriesId: '',
     programs: {},
+    count: 0,
 
     loadSeries() {
       console.log('loadSeries called');
@@ -33,6 +34,7 @@ const model = reactive({
       .then(json => {
         if (Array.isArray(json)) {
           this.programs[this.seriesId] = json;
+          this.count = json.length;
         }
       });
     },
@@ -45,6 +47,7 @@ const model = reactive({
       unwatched: false,
     },
     actions: [],
+    count: 0,
 
     compile() {
       this.actions = [];
@@ -65,6 +68,7 @@ const model = reactive({
       }
 
       this.results = res;
+      this.count = res.length;
     }
   },
 
