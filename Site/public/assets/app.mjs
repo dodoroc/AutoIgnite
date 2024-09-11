@@ -61,7 +61,8 @@ const model = reactive({
       let res = model.source.programs[model.source.seriesId];
 
       for (const fnc in this.actions) {
-        res = fnc(res);
+        console.dir(fnc);
+        // res = fnc(res);
       }
 
       this.results =res;
