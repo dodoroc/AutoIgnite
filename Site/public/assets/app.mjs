@@ -62,8 +62,8 @@ const model = reactive({
 
       // if (this.actions.length) res = this.actions[0](res);
       // console.dir(this.actions);
-      const f = Array.prototype.filter.bind(arr, o => !o.watchedOn);
-      f();
+      const f = arr => Array.prototype.filter.bind(arr, o => !o.watchedOn);
+      res = f(res);
 
       for (const fnc in this.actions) {
         // console.dir(fnc);
