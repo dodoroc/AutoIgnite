@@ -219,17 +219,24 @@
 
       select {
         background-image: conic-gradient(from 180deg at 50% 100%, #0000 145deg, currentColor 145deg, currentColor 215deg, #0000 215deg);
-        background-position: calc(100% - 5px) 52%;
+        background-position: 99.8% 52%;
         background-size: 10px 7px;
         background-origin: content-box;
         background-repeat: no-repeat;
       }
+      select::after {
+        display: inline-block;
+        width: var(--ctl-base-size);
+        height: var(--ctl-base-size);
+        content: 'xxxxx';
+      }
+
 
       /*
       */
       .tri {
         background-image: conic-gradient(from 180deg at 50% 100%, #0000 145deg, currentColor 145deg, currentColor 215deg, #0000 215deg);
-        background-position: calc(100% - 5px) 52%;
+        background-position: 99.8% 52%;
         background-size: 10px 7px;
         background-origin: content-box;
         background-repeat: no-repeat;
