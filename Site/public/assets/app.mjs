@@ -56,7 +56,8 @@ const model = reactive({
       if (this.params.name.length) {
         try {
           const rex = new RegExp(this.params.name, 'i');
-          this.actions.push(o => -1 < o.name.search(rex));
+          // this.actions.push(o => -1 < o.name.search(rex));
+          this.actions.push(o => rex.test(o.name));
         } catch (err) {}
       }
     },
