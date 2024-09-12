@@ -167,7 +167,6 @@
         vertical-align: text-bottom;
 
         color: var(--clr-lighter);
-        cursor: pointer;
       }
 
       input:is([type="checkbox"], [type="radio"])::before {
@@ -198,24 +197,15 @@
         background-color: var(--clr-median) !important;
       }
       input:is([type="checkbox"], [type="radio"]):checked:not(:disabled) {
-        background-color: var(--clr-lighter);
+/*        background-color: var(--clr-lighter);*/
       }
 
 
 /*
-      input:is([type="checkbox"], [type="radio"]):enabled {
-        cursor: pointer;
-      }
-      input:is([type="checkbox"], [type="radio"]):disabled {
-        background-color: var(--clr-median) !important;
-      }
       input:is([type="checkbox"], [type="radio"]):checked:not(:disabled) {
         background-color: var(--clr-lighter);
       }
 
-      input[type="radio"] {
-        border-radius: 50%;
-      }
 
       label:has([type="checkbox"], [type="radio"]) {
         column-gap: 0.8ch;
@@ -409,7 +399,7 @@
       <button>asdf</button>
       <!-- <label><input type="radio" name="filter-x"> xxxxxxx</label> -->
       <div><input type="checkbox" checked>asdf<input type="radio" checked></div>
-      <textare></textare>
+      <textarea></textarea>
     </form>
 
     <table class="aute" id="aute-results">
