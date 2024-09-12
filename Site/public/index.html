@@ -140,20 +140,6 @@
         border-color: var(--clr-lightest);
         border-color: darkmagenta;
       }
-/*
-
-
-
-      label:has([type="checkbox"], [type="radio"]) {
-        column-gap: 0.8ch;
-      }
-      label:has(+ [type="checkbox"], + [type="radio"]) {
-        margin-right: 0.8ch;
-      }
-      input:is([type="checkbox"], [type="radio"]) + label {
-        margin-left: 0.8ch;
-      }
-*/
 
       input:is([type="checkbox"], [type="radio"]) {
         display: inline-grid;
@@ -202,10 +188,6 @@
 
 
 /*
-      input:is([type="checkbox"], [type="radio"]):checked:not(:disabled) {
-        background-color: var(--clr-lighter);
-      }
-
 
       label:has([type="checkbox"], [type="radio"]) {
         column-gap: 0.8ch;
@@ -398,7 +380,7 @@
       <span>Found: {{model.source.count}} │ Filtered: {{model.filter.count}}</span>
       <button>asdf</button>
       <!-- <label><input type="radio" name="filter-x"> xxxxxxx</label> -->
-      <div><input type="checkbox" checked>asdf<input type="radio" checked></div>
+      <label><input type="checkbox" checked>asdf<input type="radio" checked>dd<input type="radio" checked>ee</label>
       <textarea></textarea>
     </form>
 
