@@ -380,9 +380,6 @@
         height: auto;
 
         /*
-        color: var(--clr-lighter);
-        background-color: var(--clr-darker);
-        border: solid 1px var(--clr-median);
         outline: none;
         */
 
@@ -392,31 +389,35 @@
       .select-box:focus-within {
       }
 
-      .select-box label {
+      .select-box input {
         position: sticky;
-        height: calc(var(--ctl-base-size) - 2px);
-        line-height: calc(var(--ctl-base-size) - 2px);
+        height: var(--ctl-base-size);
+        line-height: var(--ctl-base-size);
         padding: 0 5px;
-/*        border: 0;*/
       }
-      .select-box label input {
+      .select-box lab2el input {
         position: absolute;
         _visibility: hidden;
         appearance: none;
         _height: 0;
         _width: 0;
+
+        color: var(--clr-lighter);
+        background-color: var(--clr-darker);
+        border: solid 1px var(--clr-median);
+
       }
-      .select-box label input::after {
+      .select-box lab2el input::after {
         display: inline-block;
         content: attr(title);
         text-indent: 2ch;
       }
 
 
-      .select-box label:has(input:checked) {
+      .select-box lab2el:has(input:checked) {
         background-color: darkmagenta;
       }
-      .select-box label:has(input:not(:checked)) {
+      .select-box labe2l:has(input:not(:checked)) {
 /*        display: none;*/
       }
       .select-box:focus-within label {
@@ -464,11 +465,11 @@
       <label><input type="checkbox" checked>asdf<input type="radio" name="xx" value="1" checked>dd<input type="radio" name="xx" value="2">ee</label>
       <textarea></textarea>
       <div class="select-box">
-        <label><input type="radio" name="rads" value="" checked title="Select a series"></label>
-        <label><input type="radio" name="rads" value="a" title="aaaa"></label>
-        <label><input type="radio" name="rads" value="b" title="bbbb"></label>
-        <label><input type="radio" name="rads" value="c" title="cccc"></label>
-        <label><input type="radio" name="rads" value="d" title="dddd"></label>
+        <input type="radio" name="rads" value="" checked title="Select a series">
+        <input type="radio" name="rads" value="a" title="aaaa">
+        <input type="radio" name="rads" value="b" title="bbbb">
+        <input type="radio" name="rads" value="c" title="cccc">
+        <input type="radio" name="rads" value="d" title="dddd">
       </div>
     </form>
 
