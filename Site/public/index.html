@@ -389,24 +389,18 @@
         padding: 5px;
       }
       .select-box label input {
-        display: inline;
-        overflow: hidden;
+        position: absolute;
+        visibility: hidden;
         appearance: none;
-        height: 0;
-        width: 0;
-        margin: 0;
-        padding: 0;
-        border: 0;
-        outline: 0;
       }
       .select-box label:has(input:checked) {
         background-color: darkmagenta;
       }
       .select-box label:has(input:not(:checked)) {
-        display: none;
+/*        display: none;*/
       }
       .select-box:focus-within label {
-        display: initial;
+/*        display: initial;*/
       }
 
       .select-box:has(:active) {
