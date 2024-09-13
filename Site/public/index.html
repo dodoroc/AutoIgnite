@@ -406,6 +406,11 @@
         _height: 0;
         _width: 0;
       }
+      .select-box label input::after {
+        content: attr(value);
+      }
+
+
       .select-box label:has(input:checked) {
         background-color: darkmagenta;
       }
