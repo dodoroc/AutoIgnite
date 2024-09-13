@@ -396,6 +396,18 @@
         line-height: var(--ctl-base-size);
         padding: 0 5px;
       }
+      .select-box input::after {
+        display: inline-block;
+        content: attr(title);
+        text-indent: 2ch;
+
+        color: var(--clr-lighter);
+        background-color: var(--clr-darker);
+        border: solid 1px var(--clr-median);
+      }
+
+
+
       .select-box lab2el input {
         position: absolute;
         _visibility: hidden;
@@ -407,11 +419,6 @@
         background-color: var(--clr-darker);
         border: solid 1px var(--clr-median);
 
-      }
-      .select-box lab2el input::after {
-        display: inline-block;
-        content: attr(title);
-        text-indent: 2ch;
       }
 
 
