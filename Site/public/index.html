@@ -385,8 +385,11 @@
         transition: 200ms linear;
         transition-property: border-color, background-color, color, transform;
       }
+      .select-box:focus-within {
+        position: absolute;
+      }
+
       .select-box label {
-        position: sticky;
         padding: 5px;
       }
       .select-box label input {
@@ -398,7 +401,7 @@
         background-color: darkmagenta;
       }
       .select-box label:has(input:not(:checked)) {
-/*        display: none;*/
+        display: none;
       }
       .select-box:focus-within label {
 /*        display: initial;*/
@@ -408,10 +411,6 @@
         outline: solid 3px lightgreen
       }
 /*      .select-box:focus { background-color: #f004 }*/
-      .select-box:focus-within {
-/*        background-color: #0f04*/
-
-      }
       .select-box:has(:focus) {
         background-color: #0ff4
       }
