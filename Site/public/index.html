@@ -391,10 +391,8 @@
 
       .select-box input {
         appearance: none;
-        position: sticky;
-        height: var(--ctl-base-size);
-        line-height: var(--ctl-base-size);
-        padding: 0 5px;
+/*        position: sticky;*/
+        display: none;
       }
       .select-box input::after {
         display: inline-block;
@@ -404,6 +402,9 @@
         color: var(--clr-lighter);
         background-color: var(--clr-darker);
         border: solid 1px var(--clr-median);
+        height: var(--ctl-base-size);
+        line-height: var(--ctl-base-size);
+        padding: 0 5px;
       }
 
 
