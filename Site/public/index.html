@@ -408,7 +408,7 @@
       }
       .select-box label input::after {
         display: inline-block;
-        content: attr(value);
+        content: attr(title);
         text-indent: 2ch;
       }
 
@@ -464,11 +464,11 @@
       <label><input type="checkbox" checked>asdf<input type="radio" name="xx" value="1" checked>dd<input type="radio" name="xx" value="2">ee</label>
       <textarea></textarea>
       <div class="select-box">
-        <label><input type="radio" name="rads" value="" checked>Select a series</label>
-        <label><input type="radio" name="rads" value="a">aaa</label>
-        <label><input type="radio" name="rads" value="b">bbb</label>
-        <label><input type="radio" name="rads" value="c">ccc</label>
-        <label><input type="radio" name="rads" value="d">ddd</label>
+        <label><input type="radio" name="rads" value="" checked title="Select a series"></label>
+        <label><input type="radio" name="rads" value="a" title="aaaa"></label>
+        <label><input type="radio" name="rads" value="b" title="bbbb"></label>
+        <label><input type="radio" name="rads" value="c" title="cccc"></label>
+        <label><input type="radio" name="rads" value="d" title="dddd"></label>
       </div>
     </form>
 
