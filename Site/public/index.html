@@ -378,7 +378,11 @@
         align-items: stretch;
         background-color: #4444;
       }
-      .select-box {
+      .select-box:active {
+        background-color: #7704;
+      }
+      .select-box:has(:active) {
+        background-color: #7074;
       }
       .select-box:focus { background-color: #f004 }
       .select-box:focus-within { background-color: #0f04 }
