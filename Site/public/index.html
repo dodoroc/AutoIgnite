@@ -372,7 +372,6 @@
 
       .select-box {
         position: relative;
-/*        position: absolute;*/
         display: inline-flex;
         flex-flow: column nowrap;
         justify-content: flex-start;
@@ -390,16 +389,13 @@
       }
 
       .select-box input {
-        appearance: none;
 /*        position: sticky;*/
-/*        display: none;*/
-/*        visibility: hidden;*/
+        position: absolute;
+        opacity: 1;
+        appearance: none;
       }
-      .select-box input::after {
-        display: inline-block;
-        content: attr(title);
-        text-indent: 2ch;
 
+      .select-box label {
         color: var(--clr-lighter);
         background-color: var(--clr-darker);
         border: solid 1px var(--clr-median);
@@ -474,12 +470,12 @@
       <!-- <label><input type="radio" name="filter-x"> xxxxxxx</label> -->
       <label><input type="checkbox" checked>asdf<input type="radio" name="xx" value="1" checked>dd<input type="radio" name="xx" value="2">ee</label>
       <textarea></textarea>
-      <div class="select-box">
-        <input type="radio" name="rads" value="" checked title="Select a series">
-        <input type="radio" name="rads" value="a" title="aaaa">
-        <input type="radio" name="rads" value="b" title="bbbb">
-        <input type="radio" name="rads" value="c" title="cccc">
-        <input type="radio" name="rads" value="d" title="dddd">
+      <div class="select-box" tabindex="1">
+        <label><input type="radio" name="rads" value="" checked>Select a series</label>
+        <label><input type="radio" name="rads" value="a">aaaa</label>
+        <label><input type="radio" name="rads" value="b">bbbb</label>
+        <label><input type="radio" name="rads" value="c">cccc</label>
+        <label><input type="radio" name="rads" value="d">dddd</label>
       </div>
     </form>
 
