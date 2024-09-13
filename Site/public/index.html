@@ -200,11 +200,8 @@
       }
 
       input[type="radio"]:focus {
-        outline: solid 2px orange;
       }
-      input[type="radio"]:active {
-        outline: solid 2px red;
-      }
+
 /*
 */
 
@@ -371,6 +368,24 @@
   }
   console.log(str);
 */
+
+
+      .select-box {
+        position: relative;
+        display: inline-flex;
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        align-items: stretch;
+      }
+      .select-box {
+      }
+      .select-box:focus { background-color: #f004 }
+      .select-box:focus-within { background-color: #0f04 }
+      .select-box:focus-visible { background-color: #00f4 }
+      .select-box input[type="radio"]:focus {
+      }
+
+
     </style>
 
     <script type="module" src="/assets/app.mjs"></script>
@@ -399,6 +414,13 @@
       <!-- <label><input type="radio" name="filter-x"> xxxxxxx</label> -->
       <label><input type="checkbox" checked>asdf<input type="radio" name="xx" value="1" checked>dd<input type="radio" name="xx" value="2">ee</label>
       <textarea></textarea>
+      <div class="select-box">
+        <label><input type="radio" name="rads" value="">Select a series</label>
+        <label><input type="radio" name="rads" value="a">Select a series</label>
+        <label><input type="radio" name="rads" value="b">Select a series</label>
+        <label><input type="radio" name="rads" value="c">Select a series</label>
+        <label><input type="radio" name="rads" value="d">Select a series</label>
+      </div>
     </form>
 
     <table class="aute" id="aute-results">

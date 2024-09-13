@@ -3,6 +3,7 @@ import { createApp, reactive } from 'https://unpkg.com/petite-vue@0.4.1/dist/pet
 const appStart_ms = Date.now();
 
 const model = reactive({
+  test_select: 'test',
   source: {
     series: [],
     seriesId: '',
