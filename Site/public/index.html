@@ -376,14 +376,31 @@
         flex-flow: column nowrap;
         justify-content: flex-start;
         align-items: stretch;
-        background-color: #4444;
+        padding: 5px;
+
+        color: var(--clr-lighter);
+        background-color: var(--clr-darker);
+        border: solid 1px var(--clr-median);
+        outline: none;
+
+        transition: 200ms linear;
+        transition-property: border-color, background-color, color, transform;
+      }
+      .select-box label {}
+      .select-box label:not(:checked) {
+        display: none;
       }
       .select-box:has(:active) {
         outline: solid 3px lightgreen
       }
 /*      .select-box:focus { background-color: #f004 }*/
-      .select-box:focus-within { background-color: #0f04 }
-      .select-box:has(:focus) { background-color: #0ff4 }
+      .select-box:focus-within {
+/*        background-color: #0f04*/
+
+      }
+      .select-box:has(:focus) {
+        background-color: #0ff4
+      }
 /*      .select-box label:focus-visible { background-color: #00f4 }*/
       .select-box input[type="radio"]:focus {
       }
@@ -419,10 +436,10 @@
       <textarea></textarea>
       <div class="select-box">
         <label><input type="radio" name="rads" value="">Select a series</label>
-        <label><input type="radio" name="rads" value="a">Select a series</label>
-        <label><input type="radio" name="rads" value="b">Select a series</label>
-        <label><input type="radio" name="rads" value="c">Select a series</label>
-        <label><input type="radio" name="rads" value="d">Select a series</label>
+        <label><input type="radio" name="rads" value="a">aaa</label>
+        <label><input type="radio" name="rads" value="b">bbb</label>
+        <label><input type="radio" name="rads" value="c">ccc</label>
+        <label><input type="radio" name="rads" value="d">ddd</label>
       </div>
     </form>
 
