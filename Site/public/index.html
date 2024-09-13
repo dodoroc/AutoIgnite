@@ -198,6 +198,13 @@
       input:is([type="checkbox"], [type="radio"]) + label {
         margin-left: 0.8ch;
       }
+
+      input[type="radio"]:active {
+        outline: solid 2px red;
+      }
+      input[type="radio"]:focus {
+        outline: solid 2px orange;
+      }
 /*
 */
 
@@ -224,13 +231,6 @@
         background-size: 10px 7px;
         background-origin: content-box;
         background-repeat: no-repeat;
-      }
-      select * {
-        appearance: none !important;
-        border-radius: 0 !important;
-      }
-      select option {
-        background-color: red;
       }
 
 
