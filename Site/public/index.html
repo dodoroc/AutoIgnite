@@ -372,17 +372,19 @@
 
       .select-box {
         position: relative;
-        position: absolute;
+/*        position: absolute;*/
         display: inline-flex;
         flex-flow: column nowrap;
         justify-content: flex-start;
         align-items: stretch;
         height: auto;
 
+        /*
         color: var(--clr-lighter);
         background-color: var(--clr-darker);
         border: solid 1px var(--clr-median);
         outline: none;
+        */
 
         transition: 200ms linear;
         transition-property: border-color, background-color, color, transform;
@@ -391,6 +393,7 @@
       }
 
       .select-box label {
+        position: sticky;
         height: calc(var(--ctl-base-size) - 2px);
         line-height: calc(var(--ctl-base-size) - 2px);
         padding: 0 5px;
