@@ -392,11 +392,14 @@
         display: none;
         appearance: none;
       }
+      .select-box label:has(input:checked) {
+        background-color: darkmagenta;
+      }
       .select-box label:has(input:not(:checked)) {
         display: none;
       }
-      .select-box label:has(input:checked) {
-        background-color: paleturquoise;
+      .select-box:focus-within label {
+        display: initial;
       }
 
       .select-box:has(:active) {
