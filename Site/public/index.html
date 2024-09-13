@@ -419,6 +419,9 @@
 
       }
 
+      .select-box label:has(input[value=""]:not(:checked)) {
+        display: none;
+      }
 
       .select-box label:has(input:checked) {
         background-color: darkmagenta;
