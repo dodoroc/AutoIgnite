@@ -372,6 +372,7 @@
 
       .select-box {
         position: relative;
+        position: absolute;
         display: inline-flex;
         flex-flow: column nowrap;
         justify-content: flex-start;
@@ -386,7 +387,6 @@
         transition-property: border-color, background-color, color, transform;
       }
       .select-box:focus-within {
-        position: absolute;
       }
 
       .select-box label {
@@ -404,7 +404,7 @@
         display: none;
       }
       .select-box:focus-within label {
-/*        display: initial;*/
+        display: initial;
       }
 
       .select-box:has(:active) {
