@@ -416,6 +416,10 @@
       .select-box:focus label {
         pointer-events: auto;
       }
+      .select-box:focus label + label {
+        border-top: 0;
+      }
+
 
       /* hide default select something box */
       .select-box label:has(input[value=""]:not(:checked)) {
@@ -425,7 +429,6 @@
         background-color: darkmagenta;
       }
       .select-box:not(:focus) label:has(:not(:checked)) {
-/*      .select-box:not(:focus-within) label:has(:not(:checked)) {*/
         display: none;
       }
 
