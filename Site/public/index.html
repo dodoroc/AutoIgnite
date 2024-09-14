@@ -395,6 +395,7 @@
       }
 
       .select-box input {
+        pointer-events: inherit;
         position: absolute;
         opacity: 0;
         appearance: none;
@@ -427,6 +428,7 @@
 
 
       .select-box label:has(input[value=""]:not(:checked)) {
+        display: none;
       }
 
 
