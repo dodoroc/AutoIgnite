@@ -380,6 +380,15 @@
         transition: 200ms linear;
         transition-property: border-color, background-color, color, transform;
       }
+      .select-box__drop {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        align-items: stretch;
+      }
+      .select-box:focus .select-box__drop {
+        position: absolute;
+      }
 
       .select-box input {
         position: absolute;
@@ -459,11 +468,13 @@
       <label><input type="checkbox" checked>asdf<input type="radio" name="xx" value="1" checked>dd<input type="radio" name="xx" value="2">ee</label>
       <textarea></textarea>
       <div class="select-box" tabindex="1">
-        <label><input type="radio" name="rads" value="" checked>Select a series</label>
-        <label><input type="radio" name="rads" value="a">aaaa</label>
-        <label><input type="radio" name="rads" value="b">bbbb</label>
-        <label><input type="radio" name="rads" value="c">cccc</label>
-        <label><input type="radio" name="rads" value="d">dddd</label>
+        <div class="select-box__drop">
+          <label><input type="radio" name="rads" value="" checked>Select a series</label>
+          <label><input type="radio" name="rads" value="a">aaaa</label>
+          <label><input type="radio" name="rads" value="b">bbbb</label>
+          <label><input type="radio" name="rads" value="c">cccc</label>
+          <label><input type="radio" name="rads" value="d">dddd</label>
+        </div>
       </div>
     </form>
 
