@@ -412,6 +412,10 @@
         line-height: var(--ctl-base-size);
         padding: 0 5px;
       }
+
+      .select-box label:has(input[value=""]:not(:checked)) {
+        display: none;
+      }
       .select-box label:has(input:checked) {
         background-color: darkmagenta;
       }
@@ -421,18 +425,7 @@
       }
 
       .select-box:not(:focus-within) label:has(:not(:checked)) {
-        height: 0;
-        border: 0;
       }
-
-
-
-
-      .select-box label:has(input[value=""]:not(:checked)) {
-        display: none;
-      }
-
-
 
       .select-box labe2l:has(input:not(:checked)) {
       }
