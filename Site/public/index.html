@@ -380,9 +380,6 @@
         transition: 200ms linear;
         transition-property: border-color, background-color, color, transform;
       }
-      .select-box:focus-within {
-        position: sticky;
-      }
 
       .select-box input {
         position: absolute;
@@ -391,6 +388,7 @@
       }
 
       .select-box label {
+        overflow: hidden;
         color: var(--clr-lighter);
         background-color: var(--clr-darker);
         border: solid 1px var(--clr-median);
@@ -399,47 +397,33 @@
         padding: 0 5px;
       }
 
-
-
-      .select-box lab2el input {
-        position: absolute;
-        _visibility: hidden;
-        appearance: none;
-        _height: 0;
-        _width: 0;
-
-        color: var(--clr-lighter);
-        background-color: var(--clr-darker);
-        border: solid 1px var(--clr-median);
-
+      .select-box:focus-within {
+        position: sticky;
       }
 
+      .select-box:not(:focus-within) label {
+        height: 0;
+      }
+
+
+
+
       .select-box label:has(input[value=""]:not(:checked)) {
-        display: none;
+/*        display: none;*/
       }
 
       .select-box label:has(input:checked) {
         background-color: darkmagenta;
-        order: -1;
+/*        order: -1;*/
       }
 
 
       .select-box labe2l:has(input:not(:checked)) {
-/*        display: none;*/
       }
       .select-box:focus-within label {
-/*        display: initial !important;*/
       }
 
-      .select-box:has(:active) {
-        outline: solid 3px lightgreen
-      }
-/*      .select-box:focus { background-color: #f004 }*/
       .select-box:has(:focus) {
-        background-color: #0ff4
-      }
-/*      .select-box label:focus-visible { background-color: #00f4 }*/
-      .select-box input[type="radio"]:focus {
       }
 
 
