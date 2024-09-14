@@ -400,9 +400,6 @@
         appearance: none;
       }
 
-      .select-box:focus-within {
-      }
-
       .select-box label {
         overflow: hidden;
         color: var(--clr-lighter);
@@ -426,9 +423,11 @@
       .select-box label:has(input:checked) {
         background-color: darkmagenta;
       }
-      .select-box:not(:focus) label:has(:not(:checked)) {
+/*      .select-box:not(:focus) label:has(:not(:checked)) {*/
+      .select-box:not(:focus-within) label:has(:not(:checked)) {
         display: none;
       }
+
 
 
 
@@ -468,7 +467,7 @@
       <!-- <label><input type="radio" name="filter-x"> xxxxxxx</label> -->
       <label><input type="checkbox" checked>asdf<input type="radio" name="xx" value="1" checked>dd<input type="radio" name="xx" value="2">ee</label>
       <textarea></textarea>
-      <div class="select-box" tabindex="1">
+      <div class="select-box" tabi2ndex="1">
         <div class="select-box__drop">
           <label><input type="radio" name="rads" value="" checked>Select a series</label>
           <label><input type="radio" name="rads" value="a">aaaa</label>
