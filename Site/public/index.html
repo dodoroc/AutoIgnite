@@ -381,12 +381,13 @@
         transition-property: border-color, background-color, color, transform;
       }
       .select-box__drop {
+        pointer-events: none;
         display: flex;
         flex-flow: column nowrap;
         justify-content: flex-start;
         align-items: stretch;
       }
-      .select-box:focus-within .select-box__drop {
+      .select-box:focus .select-box__drop {
         position: absolute;
         left: 0;
         right: 0;
