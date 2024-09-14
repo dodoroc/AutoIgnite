@@ -394,6 +394,9 @@
         color: var(--clr-lighter);
         background-color: var(--clr-darker);
       }
+      .select-box > span {
+        z-index: 2;
+      }
 
       .select-box .select-box__items {
 /*        top: var(--ctl-base-size);*/
@@ -417,7 +420,7 @@
         appearance: none;
       }
 
-      .select-box span,
+      .select-box > span,
       .select-box label {
         overflow: hidden;
         height: var(--ctl-base-size);
