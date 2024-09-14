@@ -381,7 +381,7 @@
         transition-property: border-color, background-color, color, transform;
       }
       .select-box__drop {
-        position: relative;
+/*        position: relative;*/
         pointer-events: none;
         display: flex;
         flex-flow: column nowrap;
@@ -402,7 +402,7 @@
       }
 
       .select-box label {
-        pointer-events: none;
+        _pointer-events: none;
         overflow: hidden;
         color: var(--clr-lighter);
         background-color: var(--clr-darker);
@@ -412,22 +412,24 @@
         padding: 0 5px;
       }
       .select-box:focus label {
-        pointer-events: all;
+        _pointer-events: all;
       }
 
+      /* hide default select something box */
       .select-box label:has(input[value=""]:not(:checked)) {
         display: none;
       }
       .select-box label:has(input:checked) {
         background-color: darkmagenta;
       }
+      .select-box:not(:focus-within) label:has(:not(:checked)) {
+        display: none;
+      }
 
 
       .select-box:focus-within {
       }
 
-      .select-box:not(:focus-within) label:has(:not(:checked)) {
-      }
 
       .select-box:focus-within label {
       }
