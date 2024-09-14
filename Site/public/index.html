@@ -402,8 +402,6 @@
       }
 
       .select-box label {
-        pointer-events: revert;
-        pointer-events: auto;
         pointer-events: none;
         overflow: hidden;
         color: var(--clr-lighter);
@@ -412,6 +410,9 @@
         height: var(--ctl-base-size);
         line-height: var(--ctl-base-size);
         padding: 0 5px;
+      }
+      .select-box:focus label {
+        pointer-events: all;
       }
 
       .select-box label:has(input[value=""]:not(:checked)) {
