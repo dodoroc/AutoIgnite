@@ -382,7 +382,6 @@
         transition-property: border-color, background-color, color, transform;
       }
       .select-box .select-box__drop {
-/*      .select-box:focus .select-box__drop {*/
         pointer-events: none;
         position: absolute;
         left: 0;
@@ -395,12 +394,6 @@
         align-items: stretch;
       }
 
-      .select-box input {
-        position: absolute;
-        opacity: 0;
-        appearance: none;
-      }
-
       .select-box label {
         overflow: hidden;
         color: var(--clr-lighter);
@@ -410,12 +403,21 @@
         line-height: var(--ctl-base-size);
         padding: 0 5px;
       }
+
+      .select-box input {
+        position: absolute;
+        opacity: 0;
+        appearance: none;
+      }
+
       .select-box:focus {
 /*        outline: salmon 2px solid;*/
       }
+
       .select-box:focus label {
         pointer-events: auto;
       }
+
       .select-box:focus label + label {
         border-top: 0;
       }
@@ -473,7 +475,7 @@
       <label><input type="checkbox" checked>asdf<input type="radio" name="xx" value="1" checked>dd<input type="radio" name="xx" value="2">ee</label>
       <div class="select-box" tabindex="1">
         <div class="select-box__drop">
-          <label><input type="radio" name="rads" value="" checked>Select a series</label>
+          <label><input type="radio" name="rads" value="" checke2d>Select a series</label>
           <label><input type="radio" name="rads" value="a">aaaa</label>
           <label><input type="radio" name="rads" value="b">bbbb</label>
           <label><input type="radio" name="rads" value="c">cccc</label>
