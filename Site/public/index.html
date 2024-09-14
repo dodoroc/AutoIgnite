@@ -381,6 +381,7 @@
         transition: 200ms linear;
         transition-property: border-color, background-color, color, transform;
       }
+
       .select-box .select-box__items {
         pointer-events: none;
         position: absolute;
@@ -411,10 +412,6 @@
         appearance: none;
       }
 
-      .select-box:focus {
-/*        outline: salmon 2px solid;*/
-      }
-
       .select-box:focus label {
         pointer-events: auto;
       }
@@ -423,29 +420,18 @@
         border-top: 0;
       }
 
+      .select-box:focus label:has(input:checked) {
+        color: var(--clr-darker);
+        background-color: var(--clr-lighter);
+      }
 
       /* hide default select something box */
       .select-box:has(:checked) > span {
         display: none;
       }
-      .select-box:focus label:has(input:checked) {
-        color: var(--clr-darker);
-        background-color: var(--clr-lighter);
-      }
       .select-box:not(:focus) label:has(:not(:checked)) {
         display: none;
       }
-
-
-
-
-
-      .select-box:focus-within label {
-      }
-
-      .select-box:has(:focus) {
-      }
-
 
     </style>
 
