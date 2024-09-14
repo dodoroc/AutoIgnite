@@ -377,10 +377,6 @@
         justify-content: flex-start;
         align-items: stretch;
 
-        /*
-        outline: none;
-        */
-
         transition: 200ms linear;
         transition-property: border-color, background-color, color, transform;
       }
@@ -388,14 +384,13 @@
       }
 
       .select-box input {
-/*        position: sticky;*/
         position: absolute;
         opacity: 0;
         appearance: none;
       }
 
       .select-box label {
-/*        position: absolute;*/
+        position: absolute;
         color: var(--clr-lighter);
         background-color: var(--clr-darker);
         border: solid 1px var(--clr-median);
@@ -427,6 +422,8 @@
         background-color: darkmagenta;
         order: -1;
       }
+
+
       .select-box labe2l:has(input:not(:checked)) {
 /*        display: none;*/
       }
