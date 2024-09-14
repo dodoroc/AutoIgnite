@@ -391,7 +391,6 @@
         top: 0;
 /*        top: var(--ctl-base-size);*/
 /*        min-height: var(--ctl-base-size);*/
-        padding-top: var(--ctl-base-size);
 
         display: flex;
         flex-flow: column nowrap;
@@ -401,6 +400,10 @@
         color: var(--clr-lighter);
         background-color: var(--clr-darker);
         border: solid 1px var(--clr-median);
+      }
+      .select-box:focus .select-box__items,
+      .select-box:has(:not(:focus), :not(:checked)) .select-box__items {
+        padding-top: var(--ctl-base-size);
       }
 
       .select-box input {
