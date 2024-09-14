@@ -376,39 +376,41 @@
         flex-flow: column nowrap;
         justify-content: flex-start;
         align-items: stretch;
-        min-height: var(--ctl-base-size);
+/*        min-height: var(--ctl-base-size);*/
 
         transition: 200ms linear;
         transition-property: border-color, background-color, color, transform;
-
+      }
+      .select-box * {
       }
 
-      .select-box > span,
+      .select-box .select-box__message {
+        pointer-events: none;
+        color: var(--clr-lighter);
+        background-color: var(--clr-darker);
+        border: solid 1px transparent;
+        border: solid 1px red;
+      }
       .select-box .select-box__items {
         pointer-events: none;
         position: absolute;
         left: 0;
         right: 0;
         top: 0;
+        min-height: var(--ctl-base-size);
 
         color: var(--clr-lighter);
         background-color: var(--clr-darker);
+        border: solid 1px var(--clr-median);
       }
-      .select-box > span {
-        z-index: 2;
-      }
-
       .select-box .select-box__items {
-/*        top: var(--ctl-base-size);*/
-/*        min-height: var(--ctl-base-size);*/
-
         display: flex;
         flex-flow: column nowrap;
         justify-content: flex-start;
         align-items: stretch;
-
-        border: solid 1px var(--clr-median);
       }
+
+
       .select-box:focus .select-box__items,
       .select-box:not(:focus):has(:not(:checked)) .select-box__items {
         padding-top: var(--ctl-base-size);
@@ -420,7 +422,7 @@
         appearance: none;
       }
 
-      .select-box > span,
+      .select-box span,
       .select-box label {
         overflow: hidden;
         height: var(--ctl-base-size);
@@ -480,7 +482,7 @@
       <!-- <label><input type="radio" name="filter-x"> xxxxxxx</label> -->
       <label><input type="checkbox" checked>asdf<input type="radio" name="xx" value="1" checked>dd<input type="radio" name="xx" value="2">ee</label>
       <div class="select-box" tabindex="1">
-        <span>Select a series</span>
+        <span class="select-box__message">Select a series</span>
         <div class="select-box__items">
           <label><input type="radio" name="rads" value="a">aaaa</label>
           <label><input type="radio" name="rads" value="b">bbbb</label>
