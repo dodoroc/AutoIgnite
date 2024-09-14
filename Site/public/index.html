@@ -397,7 +397,7 @@
 
       .select-box input {
         position: absolute;
-        _opacity: 0;
+        opacity: 0;
         appearance: none;
       }
 
@@ -411,7 +411,7 @@
         padding: 0 5px;
       }
       .select-box:focus {
-        outline: salmon 2px solid;
+/*        outline: salmon 2px solid;*/
       }
       .select-box:focus label {
         pointer-events: auto;
@@ -426,7 +426,8 @@
         display: none;
       }
       .select-box label:has(input:checked) {
-        background-color: darkmagenta;
+        color: var(--clr-darker);
+        background-color: var(--clr-lighter);
       }
       .select-box:not(:focus) label:has(:not(:checked)) {
         display: none;
