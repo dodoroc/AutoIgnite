@@ -392,18 +392,17 @@
         border: solid 1px red;
       }
       .select-box .select-box__items {
-        pointer-events: none;
         position: absolute;
         left: 0;
         right: 0;
         top: 0;
         min-height: var(--ctl-base-size);
 
+        pointer-events: none;
         color: var(--clr-lighter);
-        background-color: var(--clr-darker);
+/*        background-color: var(--clr-darker);*/
         border: solid 1px var(--clr-median);
-      }
-      .select-box .select-box__items {
+
         display: flex;
         flex-flow: column nowrap;
         justify-content: flex-start;
