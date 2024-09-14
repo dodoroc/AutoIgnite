@@ -380,20 +380,17 @@
         transition: 200ms linear;
         transition-property: border-color, background-color, color, transform;
       }
-      .select-box__drop {
-/*        position: relative;*/
-/*        pointer-events: none;*/
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: flex-start;
-        align-items: stretch;
-      }
       .select-box .select-box__drop {
 /*      .select-box:focus .select-box__drop {*/
         position: absolute;
         left: 0;
         right: 0;
         top: 0;
+
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        align-items: stretch;
       }
 
       .select-box input {
