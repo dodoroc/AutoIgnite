@@ -383,12 +383,19 @@
 
       }
 
+      .select-box > span,
       .select-box .select-box__items {
         pointer-events: none;
         position: absolute;
         left: 0;
         right: 0;
         top: 0;
+
+        color: var(--clr-lighter);
+        background-color: var(--clr-darker);
+      }
+
+      .select-box .select-box__items {
 /*        top: var(--ctl-base-size);*/
 /*        min-height: var(--ctl-base-size);*/
 
@@ -397,12 +404,10 @@
         justify-content: flex-start;
         align-items: stretch;
 
-        color: var(--clr-lighter);
-        background-color: var(--clr-darker);
         border: solid 1px var(--clr-median);
       }
       .select-box:focus .select-box__items,
-      .select-box:has(:not(:focus), :not(:checked)) .select-box__items {
+      .select-box:not(:focus):has(:not(:checked)) .select-box__items {
         padding-top: var(--ctl-base-size);
       }
 
