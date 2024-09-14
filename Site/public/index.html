@@ -432,8 +432,8 @@
       }
 
       /* hide default select something box */
-      .select-box:has(:checked) > span {
-/*        display: none;*/
+      .select-box:not(:focus):has(:checked) > span {
+        display: none;
       }
       .select-box:not(:focus) label:has(:not(:checked)) {
 /*        display: none;*/
