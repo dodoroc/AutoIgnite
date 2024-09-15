@@ -404,7 +404,6 @@
 
         pointer-events: none;
         color: var(--clr-lighter);
-/*        background-color: var(--clr-darker);*/
         border: solid 1px var(--clr-median);
 
         display: flex;
@@ -426,14 +425,12 @@
 
       .select-box .select-box__message,
       .select-box .select-box__items {
-        overflow: hidden;
-        height: var(--ctl-base-size);
-        line-height: var(--ctl-base-size);
-        padding: 0 5px;
       }
 
-
-      .s1elect-box:focus label {
+      .select-box .select-box__items label {
+        background-color: var(--clr-darker);
+      }
+      .select-box:focus .select-box__items label {
         pointer-events: auto;
       }
 
