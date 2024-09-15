@@ -41,6 +41,7 @@
         --width-available: calc(100vw - (100vw - 100%));
 
         --ctl-base-size: 28px;
+        --ctl-line-size: 26px;
         --ctl-ckrd-size: 16px;
       }
 
@@ -379,6 +380,7 @@
 
         transition: 200ms linear;
         transition-property: border-color, background-color, color, transform;
+        --ctl-line-size: calc(var(--ctl-base-size) - 2px);
       }
       .select-box * {
         pointer-events: none;
@@ -391,7 +393,7 @@
         left: 0;
         right: 0;
         top: 0;
-        padding-top: calc(var(--ctl-base-size) - 2px);
+        padding-top: var(--ctl-line-size);
 
         pointer-events: none;
         color: var(--clr-lighter);
@@ -410,8 +412,9 @@
       }
       .select-box .select-box__message,
       .select-box .select-box__items label {
-        height: var(--ctl-base-size);
-        line-height: var(--ctl-base-size);
+        height: var(--ctl-line-size);
+        line-height: var(--ctl-line-size);
+
         padding: 0 5px;
 
 
