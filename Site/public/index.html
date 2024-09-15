@@ -414,9 +414,7 @@
       }
       .select-box .select-box__message,
       .select-box .select-box__items label {
-
         padding: 0 5px;
-
 
         color: var(--clr-lighter);
         background-color: var(--clr-darker);
@@ -431,6 +429,9 @@
         height: var(--ctl-line-size);
         line-height: var(--ctl-line-size);
         border-top: solid 1px lightgreen;
+      }
+      .select-box:focus label:has(input:checked) {
+        background-color: rgba(0,255,255, 0.3);
       }
 
 
