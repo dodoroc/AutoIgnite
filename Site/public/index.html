@@ -376,23 +376,14 @@
         flex-flow: column nowrap;
         justify-content: flex-start;
         align-items: stretch;
-/*        min-height: var(--ctl-base-size);*/
 
         transition: 200ms linear;
         transition-property: border-color, background-color, color, transform;
       }
       .select-box * {
-      }
-
-      .select-box .select-box__message {
-        min-height: var(--ctl-base-size);
-
         pointer-events: none;
-        color: var(--clr-lighter);
-        background-color: var(--clr-darker);
-        border: solid 1px transparent;
-        border: solid 1px red;
       }
+
       .select-box .select-box__items {
         min-height: var(--ctl-base-size);
 
@@ -411,6 +402,27 @@
         justify-content: flex-start;
         align-items: stretch;
       }
+
+
+      .select-box .select-box__message {
+        border: solid 1px transparent;
+        border: solid 1px red;
+      }
+      .select-box .select-box__message,
+      .select-box .select-box__items label {
+        height: var(--ctl-base-size);
+        line-height: var(--ctl-base-size);
+
+        color: var(--clr-lighter);
+        background-color: var(--clr-darker);
+        cursor: pointer;
+
+        border: solid 1px var(--clr-median);
+        border: solid 1px transparent;
+        border: solid 1px lightgreen;
+
+      }
+
 
 
       .select-box:focus .select-box__items,
