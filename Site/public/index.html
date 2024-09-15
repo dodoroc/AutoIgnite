@@ -427,18 +427,27 @@
         height: var(--ctl-line-size);
         line-height: var(--ctl-line-size);
         border: 0;
+      }
 
+
+      .select-box:focus .select-box__items label {
         pointer-events: auto;
       }
+      .select-box:focus .select-box__items label:has(input:checked) {
+        color: var(--clr-darker);
+        background-color: var(--clr-lighter);
+      }
+      .select-box:not(:focus) .select-box__items label:has(:not(:checked)) {
+        height: 0;
+        border: 0;
+      }
+
+
       .select-box .select-box__items label:first-child {
         _border-top: 1px lightgreen;
       }
 
 
-      .select-box:focus label:has(input:checked) {
-        color: var(--clr-darker);
-        background-color: var(--clr-lighter);
-      }
 
 
       .select-box:focus .select-box__items,
