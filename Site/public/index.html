@@ -380,14 +380,13 @@
 
         transition: 200ms linear;
         transition-property: border-color, background-color, color, transform;
-        --ctl-line-size: calc(var(--ctl-base-size) - 2px);
       }
       .select-box * {
         pointer-events: none;
       }
 
       .select-box .select-box__items {
-        min-height: var(--ctl-base-size);
+        _min-height: var(--ctl-base-size);
 
         position: absolute;
         left: 0;
@@ -403,6 +402,7 @@
         flex-flow: column nowrap;
         justify-content: flex-start;
         align-items: stretch;
+        display: none;
       }
 
 
