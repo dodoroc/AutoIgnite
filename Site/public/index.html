@@ -386,13 +386,11 @@
       }
 
       .select-box .select-box__items {
-        _min-height: var(--ctl-base-size);
-
         position: absolute;
         left: 0;
         right: 0;
         top: 0;
-        padding-top: var(--ctl-line-size);
+        padding-top: calc(var(--ctl-line-size) - 0px);
 
         pointer-events: none;
         color: var(--clr-lighter);
@@ -429,13 +427,17 @@
         height: var(--ctl-line-size);
         line-height: var(--ctl-line-size);
         border: 0;
+
+        pointer-events: auto;
       }
       .select-box .select-box__items label:first-child {
-        border-top: 1px lightgreen;
+        _border-top: 1px lightgreen;
       }
 
-      .select-box label:has(input:checked) {
-        background-color: rgba(0,255,255, 1);
+
+      .select-box:focus label:has(input:checked) {
+        color: var(--clr-darker);
+        background-color: var(--clr-lighter);
       }
 
 
@@ -449,24 +451,15 @@
         appearance: none;
       }
 
-      .select-box .select-box__message,
-      .select-box .select-box__items {
-      }
 
       .select-box .select-box__items label {
-        background-color: var(--clr-darker);
+/*        background-color: var(--clr-darker);*/
       }
       .select-box:focus .select-box__items label {
-        pointer-events: auto;
       }
 
       .s1elect-box:focus label + label {
-        border-top: 0;
-      }
-
-      .s1elect-box:focus label:has(input:checked) {
-        color: var(--clr-darker);
-        background-color: var(--clr-lighter);
+/*        border-top: 0;*/
       }
 
       /* hide default select something box */
