@@ -438,6 +438,9 @@
         color: var(--clr-darker);
         background-color: var(--clr-lighter);
       }
+      .select-box:not(:focus) .select-box__items {
+        padding-top: 0;
+      }
       .select-box:not(:focus) .select-box__items label:has(:not(:checked)) {
         height: 0;
         border: 0;
