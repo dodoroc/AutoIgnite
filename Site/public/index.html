@@ -381,6 +381,7 @@
         transition: 200ms linear;
         transition-property: border-color, background-color, color, transform;
       }
+
       .select-box * {
         pointer-events: none;
       }
@@ -390,9 +391,8 @@
         left: 0;
         right: 0;
         top: 0;
-        padding-top: calc(var(--ctl-line-size) - 1.5px);
+        padding-top: calc(var(--ctl-line-size) + 1.5px);
         min-height: var(--ctl-base-size);
-
 
         pointer-events: none;
         color: var(--clr-lighter);
@@ -408,9 +408,10 @@
       .select-box .select-box__message {
         height: var(--ctl-base-size);
         line-height: var(--ctl-base-size);
-        border: solid 1px transparent;
-        border: solid 1px red;
+        border: solid 1px var(--clr-median);
+/*        border: solid 1px red;*/
       }
+
       .select-box .select-box__message,
       .select-box .select-box__items label {
         padding: 0 5px;
@@ -418,12 +419,8 @@
         color: var(--clr-lighter);
         background-color: var(--clr-darker);
         cursor: pointer;
-
-/*        border: solid 1px var(--clr-median);*/
-/*        border: solid 1px transparent;*/
-/*        border: solid 1px lightgreen;*/
-
       }
+
       .select-box .select-box__items label {
         height: var(--ctl-line-size);
         line-height: var(--ctl-line-size);
