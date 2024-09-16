@@ -506,7 +506,7 @@
         <span class="select-box__message" tabindex="1">Select a series</span>
         <div class="select-box__items">
 
-          <label v-for="series in model.source.series"><input type="radio" name="filter-seriesid" v-model="model.source.seriesId">{{series.name}} ({{series.releaseYear}})</label>
+          <label v-for="series in model.source.series"><input type="radio" name="filter-seriesid" :value="series.seriesId" v-model="model.source.seriesId">{{series.name}} ({{series.releaseYear}})</label>
         </div>
       </div>
     </form>
