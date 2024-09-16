@@ -383,15 +383,17 @@
       }
       .select-box::after {
         position: absolute;
+        z-index: 10;
         right: 0;
         display: inline-grid;
         place-content: center;
         height: var(--ctl-outer-size);
         width: 2ch;
-        content: ▼;
+        content: '▼';
+
       }
       .select-box:focus::after {
-        content: ▲;
+        content: '▲';
       }
 
 
