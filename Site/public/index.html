@@ -413,8 +413,7 @@
         top: 0;
         bottom: auto;
         margin-top: calc(var(--ctl-outer-size) - 1px);
-/*        margin-top: calc(var(--ctl-outer-size) + 3px);*/
-/*        min-height: var(--ctl-outer-size);*/
+        min-height: var(--ctl-outer-size);
 
         pointer-events: none;
         color: var(--clr-lighter);
@@ -444,13 +443,9 @@
 
       .select-box .select-box__items label {
         display: block;
-        height: calc(var(--ctl-outer-size) - 2px);
         line-height: var(--ctl-outer-size);
         border: 0;
         overflow: hidden;
-      }
-      .select-box .select-box__items label:nth-child(odd) {
-/*        background-color: lightcyan;*/
       }
 
 
@@ -467,7 +462,6 @@
       }
 
       .select-box:not(:focus) .select-box__items {
-/*        padding-top: 0;*/
         margin-top: 0;
       }
       .select-box:not(:focus) .select-box__items label:has(:not(:checked)) {
@@ -482,22 +476,10 @@
 
 
       .select-box .select-box__items label {
-/*        background-color: var(--clr-darker);*/
       }
       .select-box:focus .select-box__items label {
       }
-
       .s1elect-box:focus label + label {
-/*        border-top: 0;*/
-      }
-
-      /* hide default select something box */
-      .s1elect-box:not(:focus):has(:checked) > span {
-        display: none;
-      }
-      .s1elect-box:not(:focus) label:has(:not(:checked)) {
-        height: 0;
-        border: 0;
       }
 
     </style>
