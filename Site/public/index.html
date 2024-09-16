@@ -441,10 +441,15 @@
       }
 
       .select-box .select-box__items label {
-        height: var(--ctl-inner-size);
+        display: inline-block;
+        height: calc(var(--ctl-outer-size) - 1px);
+        height: calc(var(--ctl-outer-size) - 0px);
         line-height: var(--ctl-outer-size);
         border: 0;
         overflow: hidden;
+      }
+      .select-box .select-box__items label:nth-child(odd) {
+        background-color: lightcyan;
       }
 
 
