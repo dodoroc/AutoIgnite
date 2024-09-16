@@ -392,7 +392,7 @@
         left: 0;
         right: 0;
         top: 0;
-/*        padding-top: calc(var(--ctl-inner-size) + 1.5px);*/
+        padding-top: calc(var(--ctl-inner-size) + 1.5px);
         min-height: var(--ctl-outer-size);
 
         pointer-events: none;
@@ -442,23 +442,9 @@
 
       .select-box:not(:focus) .select-box__items {
         padding-top: 0;
-        margin-top: 0;
       }
       .select-box:not(:focus) .select-box__items label:has(:not(:checked)) {
         height: 0;
-/*        border: 0;*/
-      }
-
-
-      .select-box .select-box__items label:first-child {
-        margin-top: calc(var(--ctl-inner-size) + 0px);
-      }
-
-
-
-
-      .select-box:focus .select-box__items,
-      .select-box:not(:focus):has(:not(:checked)) .select-box__items {
       }
 
       .select-box input {
@@ -519,10 +505,8 @@
       <div class="select-box" tabindex="1">
         <span class="select-box__message" tabindex="1">Select a series</span>
         <div class="select-box__items">
-          <label><input type="radio" name="rads" value="a">aaaa</label>
-          <label><input checked type="radio" name="rads" value="b">bbbb</label>
-          <label><input type="radio" name="rads" value="c">cccc</label>
-          <label><input type="radio" name="rads" value="d">dddd</label>
+
+          <label v-for="series in model.source.series"><input type="radio" name="rads" v-model="model.source.seriesId">{{series.name}} ({{series.releaseYear}})</label>
         </div>
       </div>
     </form>
