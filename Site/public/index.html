@@ -381,6 +381,20 @@
         transition: 200ms linear;
         transition-property: border-color, background-color, color, transform;
       }
+      .select-box::after {
+        position: absolute;
+        right: 0;
+        display: inline-grid;
+        place-content: center;
+        height: var(--ctl-outer-size);
+        width: 2ch;
+        content: ▼;
+      }
+      .select-box:focus::after {
+        content: ▲;
+      }
+
+
 
       .select-box * {
         pointer-events: none;
@@ -480,15 +494,24 @@
   <body @vue:mounted="mounted" cloak>
 
     <h1>AutoIgnite Dashboard</h1>
-    <div class="tri" style="background-color: pink; width: 10px; height: 10px"></div>
-    <div class="tri" style="background-color: pink; width: 10px; height: 12px"></div>
 
     <form class="aute" id="aute-filters" @submit.prevent @input="filterParamsChanged" @change="filterParamsChanged">
+      <!--
       <select name="filter-seriesid" v-model="model.source.seriesId">
         <option v-for="series in model.source.series" :value="series.seriesId">
           {{series.name}} ({{series.releaseYear}})
         </option>
       </select>
+      -->
+      <div class="select-box" tabindex="1">
+        <span class="select-box__message" tabindex="1">Select a series</span>
+        <div class="select-box__items">
+          <label v-for="series in model.source.series">
+            <input type="radio" name="filter-seriesid" :value="series.seriesId" v-model="model.source.seriesId">{{series.name}} ({{series.releaseYear}})
+          </label>
+        </div>
+      </div>
+
       <input
         type="text" maxlength="30" spellcheck="false" autocorrect="off" autofocus
         placeholder="Filter program name (regex allowed)"
@@ -496,19 +519,7 @@
         v-model="model.filter.params.name"
       >
       <label><input type="checkbox" name="filter-unwatched" v-model="model.filter.params.unwatched">Unwatched only</label>
-      <!--       -->
       <span>Found: {{model.source.count}} │ Filtered: {{model.filter.count}}</span>
-      <button>asdf</button>
-      <!-- <label><input type="radio" name="filter-x"> xxxxxxx</label> -->
-      <label><input type="checkbox" checked>asdf<input type="radio" name="xx" value="1" checked>dd<input type="radio" name="xx" value="2">ee</label>
-
-      <div class="select-box" tabindex="1">
-        <span class="select-box__message" tabindex="1">Select a series</span>
-        <div class="select-box__items">
-
-          <label v-for="series in model.source.series"><input type="radio" name="filter-seriesid" :value="series.seriesId" v-model="model.source.seriesId">{{series.name}} ({{series.releaseYear}})</label>
-        </div>
-      </div>
     </form>
 
     <table class="aute" id="aute-results">
