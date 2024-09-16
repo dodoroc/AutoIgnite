@@ -40,9 +40,9 @@
         --width-scrollbar: calc(100vw - 100%);
         --width-available: calc(100vw - (100vw - 100%));
 
-        --ctl-base-size: 28px;
-        --ctl-line-size: 26px;
-        --ctl-ckrd-size: 16px;
+        --ctl-outer-size: 28px;
+        --ctl-inner-size: 26px;
+        --ctl-ckrd-size:  16px;
       }
 
       @media (prefers-color-scheme: light) {
@@ -213,8 +213,8 @@
       input:is([type="text"], [type="date"]),
       button,
       select {
-        height: var(--ctl-base-size);
-        line-height: var(--ctl-base-size);
+        height: var(--ctl-outer-size);
+        line-height: var(--ctl-outer-size);
         padding: 0 5px;
       }
       label {
@@ -391,8 +391,8 @@
         left: 0;
         right: 0;
         top: 0;
-        padding-top: calc(var(--ctl-line-size) + 1.5px);
-        min-height: var(--ctl-base-size);
+        padding-top: calc(var(--ctl-inner-size) + 1.5px);
+        min-height: var(--ctl-outer-size);
 
         pointer-events: none;
         color: var(--clr-lighter);
@@ -406,10 +406,9 @@
 
 
       .select-box .select-box__message {
-        height: var(--ctl-base-size);
-        line-height: var(--ctl-base-size);
+        height: var(--ctl-outer-size);
+        line-height: var(--ctl-outer-size);
         border: solid 1px var(--clr-median);
-/*        border: solid 1px red;*/
       }
 
       .select-box .select-box__message,
@@ -422,26 +421,31 @@
       }
 
       .select-box .select-box__items label {
-        height: var(--ctl-line-size);
-        line-height: var(--ctl-line-size);
+        height: var(--ctl-inner-size);
+        line-height: var(--ctl-inner-size);
         border: 0;
         overflow: hidden;
       }
 
 
+      .select-box:focus .select-box__message,
       .select-box:focus .select-box__items label {
         pointer-events: auto;
       }
-      .select-box:focus .select-box__items label:has(input:checked) {
+      .select-box:focus .select-box__items label:has(:checked) {
         color: var(--clr-darker);
         background-color: var(--clr-lighter);
       }
+      .select-box:focus .select-box__items label:has(:not(:checked)) {
+        background-color: var(--clr-dark);
+      }
+
       .select-box:not(:focus) .select-box__items {
         padding-top: 0;
       }
       .select-box:not(:focus) .select-box__items label:has(:not(:checked)) {
         height: 0;
-        border: 0;
+/*        border: 0;*/
       }
 
 
