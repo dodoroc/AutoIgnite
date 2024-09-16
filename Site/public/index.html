@@ -492,12 +492,13 @@
     <h1>AutoIgnite Dashboard</h1>
 
     <form class="aute" id="aute-filters" @submit.prevent @input="filterParamsChanged" @change="filterParamsChanged">
+      <!--
       <select name="filter-seriesid" v-model="model.source.seriesId">
         <option v-for="series in model.source.series" :value="series.seriesId">
           {{series.name}} ({{series.releaseYear}})
         </option>
       </select>
-      <!--
+      <button type="button">Select a series</button>
       -->
       <div class="select-box" tabindex="1">
         <span class="select-box__message" tabindex="1">Select a series</span>
@@ -507,7 +508,6 @@
           </label>
         </div>
       </div>
-      <button type="button>">Select a series</button>
 
       <input
         type="text" maxlength="30" spellcheck="false" autocorrect="off" autofocus
