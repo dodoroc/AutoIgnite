@@ -391,13 +391,16 @@
         display: inline-grid;
         place-content: center;
         height: var(--ctl-outer-size);
-        width: 3ch;
-        font-size: 0.75rem;
+        font-size: 0.667rem;
         padding-top: 2px;
+        padding: 2px 5px 0 0;
         content: '▼';
+        font-stretch: 150%;
+        font-width: 150%;
       }
       .select-box:focus::after {
         padding-top: 1px;
+        padding: 1px 5px 0 0;
         content: '▲';
       }
 
