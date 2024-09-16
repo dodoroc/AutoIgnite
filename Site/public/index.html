@@ -392,7 +392,7 @@
         left: 0;
         right: 0;
         top: 0;
-        padding-top: calc(var(--ctl-inner-size) + 1.5px);
+/*        padding-top: calc(var(--ctl-inner-size) + 1.5px);*/
         min-height: var(--ctl-outer-size);
 
         pointer-events: none;
@@ -442,6 +442,7 @@
 
       .select-box:not(:focus) .select-box__items {
         padding-top: 0;
+        margin-top: 0;
       }
       .select-box:not(:focus) .select-box__items label:has(:not(:checked)) {
         height: 0;
@@ -450,7 +451,7 @@
 
 
       .select-box .select-box__items label:first-child {
-        _border-top: 1px lightgreen;
+        margin-top: calc(var(--ctl-inner-size) + 0px);
       }
 
 
@@ -503,7 +504,8 @@
         </option>
       </select>
       <input
-        type="text" placeholder="Filter program name (regex allowed)" maxlength="50" spellcheck="false" autocorrect="off"
+        type="text" maxlength="30" spellcheck="false" autocorrect="off" autofocus
+        placeholder="Filter program name (regex allowed)"
         name="filter-name"
         v-model="model.filter.params.name"
       >
