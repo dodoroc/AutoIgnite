@@ -380,8 +380,10 @@
 
         transition: 200ms linear;
         transition-property: border-color, background-color, color, transform;
+        user-select: none;
       }
       .select-box::after {
+        pointer-events: none;
         position: absolute;
         z-index: 10;
         right: 0;
@@ -390,13 +392,11 @@
         height: var(--ctl-outer-size);
         width: 3ch;
         content: '▼';
-        font-size: 0.8rem;
+        font-size: 0.75rem;
       }
       .select-box:focus::after {
         content: '▲';
       }
-
-
 
       .select-box * {
         pointer-events: none;
