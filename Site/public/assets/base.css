@@ -201,6 +201,16 @@
         background-origin: content-box;
         background-repeat: no-repeat;
       }
+      /*
+      .tri {
+        background-image: conic-gradient(from 180deg at 50% 100%, #0000 145deg, currentColor 145deg, currentColor 215deg, #0000 215deg);
+        background-position: 99.8% 52%;
+        background-size: 10px 7px;
+        background-origin: content-box;
+        background-repeat: no-repeat;
+      }
+      */
+
 
 
       /* Fully styled custom select box */
