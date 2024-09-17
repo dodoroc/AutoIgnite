@@ -1,4 +1,5 @@
-import { createApp, reactive } from 'https://unpkg.com/petite-vue@0.4.1/dist/petite-vue.es.js?module';//https://unpkg.com/petite-vue?module'
+// import { createApp, reactive } from 'https://unpkg.com/petite-vue@0.4.1/dist/petite-vue.es.js?module';
+import { createApp, reactive } from 'https://unpkg.com/petite-vue?module';
 
 const appStart_ms = Date.now();
 
