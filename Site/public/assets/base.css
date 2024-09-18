@@ -167,7 +167,9 @@ input:is([type="checkbox"], [type="radio"]):disabled {
 input:is([type="checkbox"], [type="radio"]):checked:not(:disabled) {
 }
 
-
+label {
+  white-space: nowrap;
+}
 label:has([type="checkbox"], [type="radio"]) {
   column-gap: 0.8ch;
 }
