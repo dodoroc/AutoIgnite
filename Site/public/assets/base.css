@@ -113,19 +113,18 @@ textarea {
   padding: var(--char-pad);
 }
 
-button, input:is([type="button"], [type="submit"], [type="clear"]) {
+button, input:is([type="button"], [type="submit"], [type="reset"]) {
   text-align: center;
 }
 
-:is(:not(button, input[type="button"], [type="checkbox"], [type="radio"])):focus {
+textarea:focus, select:focus, input:is([type="text"], [type="search"]):focus {
   background-color: var(--clr-darkest);
   border-color: var(--clr-lighter);
 }
 
-button:active, input:is([type="button"], [type="submit"], [type="clear"]):active {
-  color: var(--clr-darkest);
-  background-color: var(--clr-lightest);
-  border-color: var(--clr-lightest);
+button:active, input:is([type="button"], [type="submit"], [type="reset"]):active {
+  color: var(--clr-darker);
+  background-color: var(--clr-lighter);
 }
 
 input:is([type="checkbox"], [type="radio"]) {
@@ -140,7 +139,6 @@ input:is([type="checkbox"], [type="radio"]) {
 
   color: var(--clr-lighter);
 }
-
 input:is([type="checkbox"], [type="radio"])::before {
   transition: inherit;
   display: inline-block;
@@ -223,10 +221,12 @@ select {
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: stretch;
+  user-select: none;
+  cursor: default;
+
 
   transition: 200ms linear;
-  transition-property: border-color, background-color, color, transform;
-  user-select: none;
+  transition-property: border-color, background-color, color, transform, height;
 }
 .select-box::after {
   pointer-events: none;
@@ -249,7 +249,6 @@ select {
 
 .select-box * {
   pointer-events: none;
-  cursor: default;
 }
 
 .select-box .select-box__items {
@@ -259,7 +258,6 @@ select {
   top: 0;
   bottom: auto;
   margin-top: calc(var(--ctl-vert-size) - 1px);
-/*        min-height: var(--ctl-vert-size);*/
 
   pointer-events: none;
   color: var(--clr-lighter);
@@ -378,6 +376,7 @@ select {
   console.log(str);
 */
 
+/* Cloak is controlled by Vue in the mounted event */
 [cloak] > :not(#spinner) {
   display: none;
 }
