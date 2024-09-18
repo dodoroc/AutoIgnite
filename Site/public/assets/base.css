@@ -267,7 +267,7 @@ select {
   align-items: stretch;
 
   transition: 200ms linear;
-  transition-property: top;
+  transition-property: margin-top;
 }
 
 
@@ -292,7 +292,7 @@ select {
   border: 0;
   overflow: hidden;
 
-  transition: 200ms linear;
+/*  transition: 200ms linear;*/
   transition-property: height;
 }
 
