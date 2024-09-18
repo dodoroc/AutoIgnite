@@ -118,7 +118,7 @@ button, input:is([type="button"], [type="submit"], [type="reset"]) {
   text-align: center;
 }
 
-textarea:focus, select:focus, input:is([type="text"], [type="search"]):focus {
+textarea:focus, select:focus, input:is([type="text"]):focus {
   background-color: var(--clr-darkest);
   border-color: var(--clr-lighter);
 }
@@ -167,6 +167,8 @@ input:is([type="checkbox"], [type="radio"]):disabled {
 input:is([type="checkbox"], [type="radio"]):checked:not(:disabled) {
 }
 
+
+
 label {
   white-space: nowrap;
 }
@@ -180,19 +182,16 @@ input:is([type="checkbox"], [type="radio"]) + label {
   margin-left: 0.8ch;
 }
 
-input[type="radio"]:focus {
-}
 
 
-label,
-input:is([type="text"], [type="search"]),
+input:is([type="text"]),
 button,
 select {
   height: var(--ctl-vert-size);
   line-height: var(--ctl-vert-size);
   padding: 0 var(--char-pad);
 }
-label {
+label2 {
   display: inline-flex;
   align-items: center;
 }
