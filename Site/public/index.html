@@ -107,10 +107,14 @@
 
 
 
-      form.aute > div:last-child {
+      form.aute div.aa,
+      form.aute div.bb {
         height: var(--ctl-vert-size);
         line-height: var(--ctl-vert-size);
         border: solid 1px var(--clr-median);
+      }
+      form.aute div.bb {
+        border: 0;
       }
     </style>
 
@@ -146,7 +150,8 @@
       >
       <label><input type="checkbox" name="filter-unwatched" v-model="model.filter.params.unwatched">Unwatched only</label>
       <span>Found: {{model.source.count}} │ Filtered: {{model.filter.count}}</span>
-      <div>aasdfRid</div>
+      <div class="aa">aasdfRid</div><div>aRidg</div>
+      <div class="bb">aasdfRid</div>
     </form>
 
     <table class="aute" id="aute-results">
