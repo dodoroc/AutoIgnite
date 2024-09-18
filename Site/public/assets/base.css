@@ -225,8 +225,6 @@ select {
   cursor: default;
 
 
-  transition: 200ms linear;
-  transition-property: border-color, background-color, color, transform, height;
 }
 .select-box::after {
   pointer-events: none;
@@ -280,17 +278,20 @@ select {
 .select-box .select-box__items label {
   padding: 0 var(--char-pad);
 
-
   color: var(--clr-lighter);
   background-color: var(--clr-darker);
 }
 
 .select-box .select-box__items label {
-  display: block;
+/*  display: block;*/
   height: calc(var(--ctl-vert-size) - 2px);
   line-height: var(--ctl-vert-size);
   border: 0;
   overflow: hidden;
+
+
+  transition: 200ms linear;
+  transition-property: height;
 }
 
 
