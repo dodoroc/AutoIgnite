@@ -189,7 +189,7 @@ button,
 select {
   height: var(--ctl-vert-size);
   line-height: var(--ctl-vert-size);
-  padding: 0 5px;
+  padding: 0 var(--char-pad);
 }
 label {
   display: inline-flex;
@@ -280,7 +280,8 @@ select {
 
 .select-box .select-box__message,
 .select-box .select-box__items label {
-  padding: 0 5px;
+  padding: 0 var(--char-pad);
+
 
   color: var(--clr-lighter);
   background-color: var(--clr-darker);
