@@ -265,6 +265,9 @@ select {
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: stretch;
+
+  transition: 200ms linear;
+  transition-property: top, height;
 }
 
 
@@ -290,8 +293,6 @@ select {
   overflow: hidden;
 
 
-  transition: 200ms linear;
-  transition-property: height;
 }
 
 
