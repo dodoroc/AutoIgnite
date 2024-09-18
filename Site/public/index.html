@@ -81,17 +81,22 @@
 /*        height: 22px;*/
         border: solid 1px var(--clr-median);
       }
+      table tbody tr td {
+        font-size: var(--font-size-sm);
+      }
+      table tbody tr td:first-of-type {
+        font-size: inherit;
+      }
 
       table tbody tr:hover td {
         background-color: var(--clr-light);
         color: var(--clr-darkest);
-
       }
 
       table .nm { width: 100% }
-      table .ao { width: auto; font-size: var(--font-size-sm) }
-      table .wo { width: auto; font-size: var(--font-size-sm) }
-      table .sk { width: auto; font-size: var(--font-size-sm) }
+      table .ao { width: auto }
+      table .wo { width: auto }
+      table .sk { width: auto }
       table tr td:last-of-type { text-align: right }
 
 
