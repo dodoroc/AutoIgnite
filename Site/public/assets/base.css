@@ -104,6 +104,7 @@ button, input, textarea, select {
   background-color: var(--clr-darker);
   border: solid 1px var(--clr-median);
   outline: none;
+  accent-color: var(--clr-median);
 
   transition: 200ms linear;
   transition-property: border-color, background-color, color, transform, height;
