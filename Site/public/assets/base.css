@@ -185,7 +185,7 @@ input[type="radio"]:focus {
 
 
 label,
-input:is([type="text"], [type="date"]),
+input:is([type="text"], [type="search"]),
 button,
 select {
   height: var(--ctl-vert-size);
@@ -256,7 +256,7 @@ select {
   left: 0;
   right: 0;
   top: 0;
-  bottom: auto;
+/*  bottom: auto;*/
   margin-top: calc(var(--ctl-vert-size) - 1px);
 
   pointer-events: none;
