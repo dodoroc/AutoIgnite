@@ -292,7 +292,7 @@ select {
   border: 0;
   overflow: hidden;
 
-/*  transition: 200ms linear;*/
+  transition: 200ms linear;
   transition-property: height;
 }
 
