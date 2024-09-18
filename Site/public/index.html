@@ -116,6 +116,26 @@
       form.aute div.bb {
         border: 0;
       }
+      div.testh {
+
+        * {
+          box-sizing: border-box;
+          display: inline-block;
+          appearance: none;
+          height: 30px;
+          line-height: 30px;
+        }
+
+        .aa, .cc {
+          background-color: darkred;
+          border: solid 1px lightblue;
+        }
+        .bb, .dd {
+          background-color: darkorange;
+        }
+
+
+      }
     </style>
 
     <script type="module" src="/assets/app.mjs"></script>
@@ -150,9 +170,12 @@
       >
       <label><input type="checkbox" name="filter-unwatched" v-model="model.filter.params.unwatched">Unwatched only</label>
       <span>Found: {{model.source.count}} │ Filtered: {{model.filter.count}}</span>
-      <div class="aa">aasdfRid</div><div>aRidg</div>
-      <div class="bb">aasdfRid</div>
+
     </form>
+
+    <div class="testh">
+      <div class="aa">agsdfRid</div><div class="bb">agsdfRid</div><input class="cc" type="text" value="agsdfRid"><input class="dd" type="search" value="agsdfRid">
+    </div>
 
     <table class="aute" id="aute-results">
       <colgroup><col class="nm"><col class="ao"><col class="wo"><col class="sk"></colgroup>
