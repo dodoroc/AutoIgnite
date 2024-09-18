@@ -223,9 +223,8 @@ select {
   align-items: stretch;
   user-select: none;
   cursor: default;
-
-
 }
+
 .select-box::after {
   pointer-events: none;
   position: absolute;
@@ -286,7 +285,7 @@ select {
 }
 
 .select-box .select-box__items label {
-  display: block;
+/*  display: block;*/
   height: calc(var(--ctl-vert-size) - 2px);
   line-height: var(--ctl-vert-size);
   border: 0;
