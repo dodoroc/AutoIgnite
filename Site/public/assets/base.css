@@ -289,7 +289,7 @@ select {
 .select-box .select-box__items label {
 /*  display: block;*/
   height: calc(var(--ctl-vert-size) - 2px);
-  line-height: var(--ctl-vert-size);
+  line-height: calc(var(--ctl-vert-size) - 2px);
   border: 0;
   overflow: hidden;
 
