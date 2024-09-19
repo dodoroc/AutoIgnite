@@ -325,7 +325,7 @@ select {
 .select-box:focus .select-box__items label:has(:checked) {
   color: var(--clr-darker);
   background-color: var(--clr-lighter);
-  transition: background-color 100ms 100ms;
+  transition: background-color 100ms 50ms;
 }
 .select-box:focus .select-box__items label:has(:not(:checked)):hover {
   background-color: var(--clr-dark);
