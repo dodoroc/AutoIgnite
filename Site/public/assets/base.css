@@ -332,6 +332,49 @@ select {
 
 
 
+/* == BASIC/SIMPLE TABLE STYLES ===================================== */
+
+table {
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+
+  border-spacing: 2px;
+  border-collapse: collapse;
+  empty-cells: show;
+
+  color: var(--clr-lighter);
+}
+
+table thead td {
+  font-weight: 800;
+  text-underline-offset: 1px;
+  text-decoration: underline var(--clr-median);
+}
+
+table td {
+  margin: 0;
+  padding: 0 5px;
+  white-space: nowrap;
+  overflow: hidden;
+
+  line-height: 1.667rem;
+  border: solid 1px var(--clr-median);
+}
+table tbody tr td {
+  font-size: var(--font-size-sm);
+}
+table tbody tr td:first-of-type {
+  font-size: inherit;
+}
+
+table tbody tr:hover td {
+  background-color: var(--clr-light);
+  color: var(--clr-darkest);
+}
+
+
+
 /* == FULL PAGE LOADING SPINNER ===================================== */
 
 #spinner {

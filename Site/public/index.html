@@ -55,112 +55,19 @@
       }
 
 
-      table {
-        overflow: hidden;
-        padding: 0;
-        margin: 0;
 
-        border-spacing: 2px;
-        border-collapse: collapse;
-        empty-cells: show;
 
-        color: var(--clr-lighter);
+      table.aute .nm { width: 100% }
+      table.aute .ao { width: auto }
+      table.aute .wo { width: auto }
+      table.aute .sk { width: auto }
+
+      table.aute tr td:last-of-type {
+        text-align: right ;
       }
 
-      table thead td {
-        font-weight: 800;
-        text-underline-offset: 1px;
-        text-decoration: underline var(--clr-median);
-      }
-
-      table td {
-        margin: 0;
-        padding: 0 5px;
-        white-space: nowrap;
-        overflow: hidden;
-
-        line-height: 1.667rem;
-        border: solid 1px var(--clr-median);
-      }
-      table tbody tr td {
-        font-size: var(--font-size-sm);
-      }
-      table tbody tr td:first-of-type {
-        font-size: inherit;
-      }
-
-      table tbody tr:hover td {
-        background-color: var(--clr-light);
-        color: var(--clr-darkest);
-      }
-
-      table .nm { width: 100% }
-      table .ao { width: auto }
-      table .wo { width: auto }
-      table .sk { width: auto }
-      table tr td:last-of-type { text-align: right }
-
-
-      table td[colspan] {
+      table.aute td[colspan] {
         text-align: center !important;
-      }
-
-
-
-      form.aute div.aa,
-      form.aute div.bb {
-        height: var(--ctl-vert-size);
-        line-height: var(--ctl-vert-size);
-        border: solid 1px var(--clr-median);
-      }
-      form.aute div.bb {
-        border: 0;
-      }
-      div.testh {
-        display: flex;
-        justify-content: start;
-/*        align-items: stretch;*/
-        gap: 5px;
-
-        background-color: darkviolet;
-
-
-        * {
-          box-sizing: border-box;
-          display: inline-block;
-          appearance: none;
-          height: 30px;
-          line-height: 30px;
-          min-width: 0;
-          width: 80px;
-          padding: 0;
-          margin: 0;
-          color: white;
-          vertical-align: baseline;
-          line-height: 1;
-        }
-
-        .aa, .cc {
-          background-color: #733;
-          border: solid 1px lightblue;
-        }
-        .bb, .dd {
-          background-color: #373;
-          border: solid 1px transparent;
-/*          border: 0;*/
-        }
-
-        .ee, .ff {
-          background-color: #337;
-          display: inline-flex;
-          align-items: center;
-          justify-content: start;
-        }
-        .ff {
-          border: solid 1px transparent;
-
-        }
-
       }
     </style>
 
@@ -172,13 +79,13 @@
 
     <form class="aute" id="aute-filters" @submit.prevent @input="filterParamsChanged" @change="filterParamsChanged">
       <!--
+      -->
       <select name="filter-seriesid" v-model="model.source.seriesId">
         <option v-for="series in model.source.series" :value="series.seriesId">
           {{series.name}} ({{series.releaseYear}})
         </option>
       </select>
       <button type="button">Select a series</button>
-      -->
       <div class="select-box" tabindex="1">
         <span class="select-box__message" tabindex="1">Select a series</span>
         <div class="select-box__items">
@@ -198,15 +105,6 @@
       <span>Found: {{model.source.count}} │ Filtered: {{model.filter.count}}</span>
 
     </form>
-
-    <div class="testh">
-      <div class="aa">agsdfRid</div>
-      <div class="bb">agsdfRid</div>
-      <input class="cc" type="text" value="agsdfRid">
-      <input class="dd" type="search" value="agsdfRid">
-      <div class="ee">agsdfRid</div>
-      <div class="ff">agsdfRid</div>
-    </div>
 
     <table class="aute" id="aute-results">
       <colgroup><col class="nm"><col class="ao"><col class="wo"><col class="sk"></colgroup>
