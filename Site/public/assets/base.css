@@ -95,7 +95,10 @@ body {
 /* == SIMPLE STYLED CONTROLS ======================================== */
 
 button, input, textarea, select {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: start;
+
   margin: 0;
   padding: 0 var(--char-pad);
 
@@ -112,10 +115,13 @@ button, input, textarea, select {
 
 textarea {
   padding: var(--char-pad);
+  align-items: start;
 }
 
 button, input:is([type="button"], [type="submit"], [type="reset"]) {
-  text-align: center;
+/*  text-align: center;*/
+  justify-content: center;
+
 }
 
 textarea:focus, select:focus, input:is([type="text"]):focus {
@@ -191,9 +197,10 @@ select {
   line-height: var(--ctl-vert-size);
   padding: 0 var(--char-pad);
 }
-label2 {
+label {
   display: inline-flex;
   align-items: center;
+  justify-content: start;
 }
 
 select {
@@ -220,8 +227,8 @@ select {
 .select-box {
   position: relative;
   display: inline-flex;
-  flex-flow: column nowrap;
-  justify-content: flex-start;
+  flex-flow: column;
+  justify-content: start;
   align-items: stretch;
   user-select: none;
   cursor: default;
@@ -263,8 +270,8 @@ select {
   border: solid 1px var(--clr-median);
 
   display: flex;
-  flex-flow: column nowrap;
-  justify-content: flex-start;
+  flex-flow: column;
+  justify-content: start;
   align-items: stretch;
 
   transition: 200ms linear;
@@ -280,6 +287,10 @@ select {
 
 .select-box .select-box__message,
 .select-box .select-box__items label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: start;
+
   padding: 0 var(--char-pad);
 
   color: var(--clr-lighter);
@@ -289,6 +300,7 @@ select {
 .select-box .select-box__items label {
 /*  display: block;*/
   height: calc(var(--ctl-vert-size) - 2px);
+  height: var(--ctl-vert-size);
   line-height: calc(var(--ctl-vert-size) - 2px);
   border: 0;
   overflow: hidden;
