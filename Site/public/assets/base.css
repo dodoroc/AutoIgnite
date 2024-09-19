@@ -309,7 +309,7 @@ select {
   overflow: hidden;
 
 /*  transition: height 200ms linear, background-color 100ms cubic-bezier(0.618, 0.000, 1.000, 1.000) 200ms;*/
-  transition: height, background-color 50ms 0ms;
+  transition: height, background-color 100ms 0ms;
 }
 
 
@@ -325,7 +325,7 @@ select {
 .select-box:focus .select-box__items label:has(:checked) {
   color: var(--clr-darker);
   background-color: var(--clr-lighter);
-  transition: background-color 50ms 200ms;
+  transition: background-color 100ms 200ms;
 }
 .select-box:focus .select-box__items label:has(:not(:checked)):hover {
   background-color: var(--clr-dark);
