@@ -109,12 +109,11 @@ button, input, textarea, select {
   background-color: var(--clr-darker);
   border: solid 1px var(--clr-median);
   outline: none;
-  accent-color: var(--clr-median);
+/*  accent-color: var(--clr-median);*/
 
   transition: 200ms linear;
 /*  transition-property: border-color, background-color, color, transform, height;*/
 /*  transition-property: border-color, background-color, color, transform;*/
-  transition-property: border-color, background-color, color;
 }
 
 textarea {
@@ -132,8 +131,9 @@ textarea:focus, select:focus, input:is([type="text"]):focus {
 }
 
 button:active, input:is([type="button"], [type="submit"], [type="reset"]):active {
-  color: var(--clr-darker);
-  background-color: var(--clr-lighter);
+/*  color: var(--clr-darker);*/
+/*  background-color: var(--clr-lighter);*/
+  outline: solid 1px var(--clr-lighter);
 }
 
 input:is([type="checkbox"], [type="radio"]) {
@@ -149,7 +149,9 @@ input:is([type="checkbox"], [type="radio"]) {
   color: var(--clr-lighter);
 }
 input:is([type="checkbox"], [type="radio"])::before {
-  transition: inherit;
+  transition-property: border-color, background-color, color, transform;
+/*  transition: inherit;*/
+
   display: inline-block;
   content: '';
 
