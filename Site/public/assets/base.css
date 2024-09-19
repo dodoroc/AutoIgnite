@@ -114,6 +114,7 @@ button, input, textarea, select {
   transition: 200ms linear;
 /*  transition-property: border-color, background-color, color, transform, height;*/
 /*  transition-property: border-color, background-color, color, transform;*/
+  transition-property: border-color, background-color, color;
 }
 
 textarea {
@@ -133,7 +134,7 @@ textarea:focus, select:focus, input:is([type="text"]):focus {
 button:active, input:is([type="button"], [type="submit"], [type="reset"]):active {
 /*  color: var(--clr-darker);*/
 /*  background-color: var(--clr-lighter);*/
-  outline: solid 1px var(--clr-lighter);
+  outline: solid 1px var(--clr-median);
 }
 
 input:is([type="checkbox"], [type="radio"]) {
@@ -144,12 +145,12 @@ input:is([type="checkbox"], [type="radio"]) {
   width: var(--ctl-ckrd-outer-size);
   height: var(--ctl-ckrd-outer-size);
   border: solid 1px var(--clr-median);
-  vertical-align: text-bottom;
+/*  vertical-align: text-bottom;*/
 
-  color: var(--clr-lighter);
+/*  color: var(--clr-lighter);*/
 }
 input:is([type="checkbox"], [type="radio"])::before {
-  transition-property: border-color, background-color, color, transform;
+  transition-property: transform;
 /*  transition: inherit;*/
 
   display: inline-block;
@@ -279,6 +280,8 @@ select {
 
   transition: 200ms linear;
   transition-property: margin-top;
+/*  transition-property: border-color, background-color, color, transform;*/
+
 }
 
 
@@ -306,7 +309,7 @@ select {
   border: 0;
   overflow: hidden;
 
-  transition: height 200ms linear, background-color 150ms cubic-bezier(0.618, 0.000, 1.000, 1.000) 50ms;
+  transition: height 200ms linear, background-color 50ms cubic-bezier(0.618, 0.000, 1.000, 1.000) 150ms;
 }
 
 
