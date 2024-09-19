@@ -54,7 +54,9 @@ html {
 
   scrollbar-gutter: stable;
   scrollbar-width: thin;
-  _scrollbar-color: var(--clr-median) var(--clr-darkest);
+/*  scrollbar-color: var(--clr-median) var(--clr-darkest);*/
+
+  text-size-adjust: none;
 }
 
 html, body {
