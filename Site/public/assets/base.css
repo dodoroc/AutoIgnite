@@ -278,7 +278,7 @@ select {
   align-items: stretch;
 
   transition: 200ms linear;
-  transition-property: margin-top;
+  transition-property: margin-top, border-color;
 /*  transition-property: border-color, background-color, color, transform;*/
 
 }
@@ -312,6 +312,11 @@ select {
   transition: height 200ms 50ms, background-color 50ms;
 }
 
+
+.select-box:focus .select-box__message,
+.select-box:focus .select-box__items {
+  border-color: var(--clr-lighter);
+}
 
 .select-box:focus .select-box__message,
 .select-box:focus .select-box__items label {
