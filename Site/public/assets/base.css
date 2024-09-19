@@ -150,8 +150,8 @@ input:is([type="checkbox"], [type="radio"]) {
 /*  color: var(--clr-lighter);*/
 }
 input:is([type="checkbox"], [type="radio"])::before {
+  transition: inherit;
   transition-property: transform;
-/*  transition: inherit;*/
 
   display: inline-block;
   content: '';
@@ -309,7 +309,8 @@ select {
   border: 0;
   overflow: hidden;
 
-  transition: height 200ms linear, background-color 50ms cubic-bezier(0.618, 0.000, 1.000, 1.000) 150ms;
+/*  transition: height 200ms linear, background-color 100ms cubic-bezier(0.618, 0.000, 1.000, 1.000) 200ms;*/
+  transition: height, background-color 100ms 200ms;
 }
 
 
