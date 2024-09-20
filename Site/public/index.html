@@ -77,7 +77,7 @@
 
     <h1>AutoIgnite Dashboard</h1>
 
-    <form class="aute" id="aute-filters" @submit.prevent @input="filterParamsChanged" @change="filterParamsChanged">
+    <search class="aute" id="aute-filters" @submit.prevent @input="filterParamsChanged" @change="filterParamsChanged">
       <!--
       -->
       <select name="filter-seriesid" v-model="model.source.seriesId">
@@ -104,7 +104,7 @@
       <label><input type="checkbox" name="filter-unwatched" v-model="model.filter.params.unwatched">Unwatched only</label>
       <span>Found: {{model.source.count}} │ Filtered: {{model.filter.count}}</span>
       <select name="ax"><option value="a">a</option><option value="b">b</option></select>
-    </form>
+    </search>
 
     <table class="aute" id="aute-results">
       <colgroup><col class="nm"><col class="ao"><col class="wo"><col class="sk"></colgroup>
