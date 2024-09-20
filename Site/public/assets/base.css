@@ -37,6 +37,14 @@
   --ctl-vert-size: 30px;
   --ctl-ckrd-outer-size: 18px;
   --ctl-ckrd-inner-size: 8px;
+
+  --ctrl-clr-bgnd: lightgoldenrodyellow;
+  --ctrl-clr-checked: khaki;
+  --ctrl-clr-hovered: lightyellow;
+  --ctrl-clr-brdr: burlywood;
+  --ctrl-clr-text: black;
+  --ctrl-vsize: 30px;
+  --ctrl-hpad: 0.8ch;
 }
 
 @media (prefers-color-scheme: light) {
