@@ -119,8 +119,8 @@ const app = createApp({
     const ms = Math.max(0, delta_ms - (Date.now() - start_ms));
     return new Promise(r => setTimeout(r, ms));
   },
-  uncloak() {
-    document.body.removeAttribute('cloak');
+  unhide() {
+    document.body.removeAttribute('hidden');
   },
 
   mounted() {
@@ -128,7 +128,7 @@ const app = createApp({
     model.source.loadSeries().then(() => {
       model.source.loadTracked().then(() => {
         model.filter.apply();
-        this.after(1100, appStart_ms).then(this.uncloak);
+        this.after(1100, appStart_ms).then(this.unhide);
       });
     });
   },

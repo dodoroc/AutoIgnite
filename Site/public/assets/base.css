@@ -228,7 +228,7 @@ select {
 
 
 /* Fully styled custom select box */
-.select-box {
+.select-box2 {
   position: relative;
   display: inline-flex;
   flex-flow: column;
@@ -238,7 +238,7 @@ select {
   cursor: default;
 }
 
-.select-box::after {
+.select-box2::after {
   pointer-events: none;
   position: absolute;
   z-index: 10;
@@ -252,16 +252,16 @@ select {
   content: '▼';
   transform: scaleX(1.4);
 }
-.select-box:focus::after {
+.select-box2:focus::after {
   padding-top: 1px;
   content: '▲';
 }
 
-.select-box * {
+.select-box2 * {
   pointer-events: none;
 }
 
-.select-box .select-box__items {
+.select-box2 .select-box2__items {
   position: absolute;
   left: 0;
   right: 0;
@@ -284,14 +284,14 @@ select {
 }
 
 
-.select-box .select-box__message {
+.select-box2 .select-box2__message {
   height: var(--ctl-vert-size);
 /*  line-height: var(--ctl-vert-size);*/
   border: solid 1px var(--clr-median);
 }
 
-.select-box .select-box__message,
-.select-box .select-box__items label {
+.select-box2 .select-box2__message,
+.select-box2 .select-box2__items label {
   display: inline-flex;
   align-items: center;
   justify-content: start;
@@ -302,7 +302,7 @@ select {
   background-color: var(--clr-darker);
 }
 
-.select-box .select-box__items label {
+.select-box2 .select-box2__items label {
   height: calc(var(--ctl-vert-size) - 2px);
 /*  line-height: calc(var(--ctl-vert-size) - 2px);*/
   border: 0;
@@ -313,35 +313,114 @@ select {
 }
 
 
-.select-box:focus .select-box__message,
-.select-box:focus .select-box__items {
+.select-box2:focus .select-box2__message,
+.select-box2:focus .select-box2__items {
   border-color: var(--clr-lighter);
 }
 
-.select-box:focus .select-box__message,
-.select-box:focus .select-box__items label {
+.select-box2:focus .select-box2__message,
+.select-box2:focus .select-box2__items label {
   pointer-events: auto;
 }
-.select-box:focus .select-box__items label:has(:checked) {
+.select-box2:focus .select-box2__items label:has(:checked) {
   color: var(--clr-darker);
   background-color: var(--clr-lighter);
   transition: background-color 100ms 50ms;
 }
-.select-box:focus .select-box__items label:has(:not(:checked)):hover {
+.select-box2:focus .select-box2__items label:has(:not(:checked)):hover {
   background-color: var(--clr-dark);
 }
 
-.select-box:not(:focus) .select-box__items {
+.select-box2:not(:focus) .select-box2__items {
   margin-top: 0;
 }
-.select-box:not(:focus) .select-box__items label:has(:not(:checked)) {
+.select-box2:not(:focus) .select-box2__items label:has(:not(:checked)) {
   height: 0;
 }
 
-.select-box input {
+.select-box2 input {
   position: absolute;
   opacity: 0;
   appearance: none;
+}
+
+
+
+
+
+
+
+
+.select-box {
+  position: relative;
+  display: inline-flex;
+  flex-flow: column;
+  justify-content: start;
+  align-items: stretch;
+
+  width: 220px;
+  height: var(--ctrl-vsize);
+
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  user-select: none;
+  cursor: default;
+}
+
+.select-box .items {
+  position: absolute;
+  left: 0; right: 0;
+  z-index: 10;
+
+  display: flex;
+  flex-flow: column;
+  justify-content: start;
+  align-items: stretch;
+  border: solid 1px var(--ctrl-clr-brdr);
+}
+
+.select-box .message {
+  border: solid 1px var(--ctrl-clr-brdr);
+  height: var(--ctrl-vsize);
+}
+
+.select-box .message,
+.select-box .items label {
+  display: inline-flex;
+  flex-flow: row;
+  justify-content: start;
+  align-items: center;
+  padding: 0 var(--ctrl-hpad);
+
+  background-color: var(--ctrl-clr-bgnd);
+  color: var(--ctrl-clr-text);
+}
+.select-box .items label {
+  overflow: hidden;
+  height: 0;
+  white-space: nowrap;
+}
+.select-box .items label:has(:checked) {
+  height: var(--ctrl-vsize);
+  background-color: var(--ctrl-clr-checked);
+}
+.select-box .items label:has(:not(:checked)):hover {
+  background-color: var(--ctrl-clr-hovered);
+}
+
+.select-box .items label input[type="radio"] {
+  position: absolute;
+  transform: scale(0);
+  appearance: none;
+}
+
+.select-box [popover] {
+  display: none;
+}
+.select-box [popover]:popover-open + .items label {
+  height: var(--ctrl-vsize);
 }
 
 
@@ -444,10 +523,10 @@ table tbody tr:hover td {
   console.log(str);
 */
 
-/* Cloak is controlled by Vue in the mounted event */
-[cloak] > :not(#spinner) {
+/* Hidden is controlled by Vue in the mounted event */
+[hidden] > :not(#spinner) {
   display: none;
 }
-:not([cloak]) > #spinner {
+:not([hidden]) > #spinner {
   display: none !important;
 }
