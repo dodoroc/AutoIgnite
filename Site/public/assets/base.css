@@ -358,7 +358,6 @@ select {
 
 
 
-
 .select-box {
   position: relative;
   display: inline-flex;
@@ -379,7 +378,7 @@ select {
 
 .select-box .items {
   position: absolute;
-  left: 0; right: 0;
+  left: 0; right: 0; top: 0;
   z-index: 10;
 
   display: flex;
@@ -387,6 +386,7 @@ select {
   justify-content: start;
   align-items: stretch;
   border: solid 1px var(--ctrl-clr-brdr);
+  transition: margin-top 200ms linear;
 }
 
 .select-box .message {
@@ -404,11 +404,16 @@ select {
 
   background-color: var(--ctrl-clr-bgnd);
   color: var(--ctrl-clr-text);
+
+  transition: border-color 200ms linear, background-color 200ms linear;
 }
 .select-box .items label {
+  border: 0;
   overflow: hidden;
   height: 0;
   white-space: nowrap;
+
+  transition: height 200ms linear;
 }
 .select-box .items label:has(:checked) {
   height: var(--ctrl-vsize);
@@ -430,6 +435,10 @@ select {
 .select-box [popover]:popover-open + .items label {
   height: var(--ctrl-vsize);
 }
+.select-box [popover]:popover-open + .items {
+  margin-top: calc(var(--ctrl-vsize) - 1px);
+}
+
 
 
 
