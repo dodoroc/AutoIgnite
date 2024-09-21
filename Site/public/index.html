@@ -79,14 +79,12 @@
 
     <search class="aute" id="aute-filters" @submit.prevent @input="filterParamsChanged" @change="filterParamsChanged">
       <!--
-      -->
       <select name="filter-seriesid" v-model="model.source.seriesId">
         <option v-for="series in model.source.series" :value="series.seriesId">
           {{series.name}} ({{series.releaseYear}})
         </option>
       </select>
-      <button type="button">Select a series</button>
-
+      -->
 
       <button class="select-box" role="listbox" popovertarget="select-box-popover-sk443f">
         <span popover id="select-box-popover-sk443f"></span>
