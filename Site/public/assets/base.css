@@ -25,16 +25,19 @@
   --font-spc-1_2:  ;
   --font-spc-1_3:  ;
   --font-spc-1_4:  ; /* std width space */
-  --char-pad: 0.65ch;
 
-  --ctl-ckrd-outer-size: 28px;
-  --ctl-ckrd-inner-size: 26px;
-  --ctl-vert-size: 30px;
 
   --width-max: 1050px;
 
   --width-scrollbar: calc(100vw - 100%);
   --width-available: calc(100vw - (100vw - 100%));
+
+
+  --char-pad: 0.65ch;
+  --ctl-ckrd-outer-size: 18px;
+  --ctl-ckrd-inner-size: 16px;
+  --ctl-vert-size: 30px;
+
 
 
   --ctrl-clr-brdr: var(--clr-median); /*median*/
