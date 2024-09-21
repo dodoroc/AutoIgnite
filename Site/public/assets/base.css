@@ -25,8 +25,8 @@
   --font-spc-1_2:  ;
   --font-spc-1_3:  ;
   --font-spc-1_4:  ; /* std width space */
-
   --char-pad: 0.65ch;
+
 
 
   --width-max: 1050px;
@@ -34,17 +34,19 @@
   --width-scrollbar: calc(100vw - 100%);
   --width-available: calc(100vw - (100vw - 100%));
 
-  --ctl-vert-size: 30px;
-  --ctl-ckrd-outer-size: 18px;
-  --ctl-ckrd-inner-size: 8px;
 
-  --ctrl-clr-bgnd: lightgoldenrodyellow;
-  --ctrl-clr-checked: khaki;
-  --ctrl-clr-hovered: lightyellow;
-  --ctrl-clr-brdr: burlywood;
-  --ctrl-clr-text: black;
+  --ctrl-clr-brdr: var(--clr-median); /*median*/
+  --ctrl-clr-bkgd: var(--clr-darker); /*darker*/
+  --ctrl-clr-bkgd-focus: var(--clr-darkest); /*darkest*/
+  --ctrl-clr-text: var(--clr-lighter); /*lighter*/
+
+  --ctrl-clr-bkgd-check: var(--clr-median); /*lighter*/
+  --ctrl-clr-bkgd-hover: var(--clr-darker); /*lightest*/
+  --ctrl-clr-text-inv: var(--clr-darkest); /*darker*/
+
   --ctrl-vsize: 30px;
   --ctrl-hpad: 0.8ch;
+
 }
 
 @media (prefers-color-scheme: light) {
@@ -262,7 +264,8 @@ select {
 }
 .select-box2:focus::after {
   padding-top: 1px;
-  content: '▲';
+/*  content: '▲';*/
+transform: scalescaleX(1.4), rotate(0.5turn);
 }
 
 .select-box2 * {
@@ -366,7 +369,7 @@ select {
   align-items: stretch;
 
   width: 220px;
-  height: var(--ctrl-vsize);
+  height: var(--ctl-vert-size);
 
   margin: 0;
   padding: 0;
@@ -385,13 +388,13 @@ select {
   flex-flow: column;
   justify-content: start;
   align-items: stretch;
-  border: solid 1px var(--ctrl-clr-brdr);
+  border: solid 1px var(--clr-median);
   transition: margin-top 200ms linear;
 }
 
 .select-box .message {
-  border: solid 1px var(--ctrl-clr-brdr);
-  height: var(--ctrl-vsize);
+  border: solid 1px var(--clr-median);
+  height: var(--ctl-vert-size);
 }
 
 .select-box .message,
@@ -402,8 +405,8 @@ select {
   align-items: center;
   padding: 0 var(--ctrl-hpad);
 
-  background-color: var(--ctrl-clr-bgnd);
-  color: var(--ctrl-clr-text);
+  background-color: var(--clr-darker);
+  color: var(--clr-lighter);
 
   transition: border-color 200ms linear, background-color 200ms linear;
 }
@@ -416,7 +419,7 @@ select {
   transition: height 200ms linear;
 }
 .select-box .items label:has(:checked) {
-  height: var(--ctrl-vsize);
+  height: var(--ctl-vert-size);
   background-color: var(--ctrl-clr-checked);
 }
 .select-box .items label:has(:not(:checked)):hover {
@@ -432,11 +435,14 @@ select {
 .select-box [popover] {
   display: none;
 }
-.select-box [popover]:popover-open + .items label {
-  height: var(--ctrl-vsize);
+.select-box [popover]:popover-open ~ .message {
+  background-color: ;
 }
-.select-box [popover]:popover-open + .items {
-  margin-top: calc(var(--ctrl-vsize) - 1px);
+.select-box [popover]:popover-open ~ .items label {
+  height: var(--ctl-vert-size);
+}
+.select-box [popover]:popover-open ~ .items {
+  margin-top: calc(var(--ctl-vert-size) - 1px);
 }
 
 
