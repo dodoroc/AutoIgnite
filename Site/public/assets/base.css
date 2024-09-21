@@ -235,7 +235,6 @@ select {
   justify-content: start;
   align-items: stretch;
 
-  width: 220px;
   height: var(--ctrl-vsize);
 
   margin: 0;
