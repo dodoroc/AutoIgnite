@@ -448,10 +448,8 @@ transform: scalescaleX(1.4), rotate(0.5turn);
   display: none;
 }
 
-
-
-
-.select-box [popover]:popover-open ~ .items label {
+/*.select-box [popover]:popover-open ~ .items label {*/
+.select-box :popover-open ~ .items label {
   &:has(:checked) {
     background-color: var(--ctrl-clr-bkgd-check);
     color: var(--ctrl-clr-text-inv);
@@ -461,7 +459,8 @@ transform: scalescaleX(1.4), rotate(0.5turn);
   }
 }
 
-.select-box [popover]:not(:popover-open) {
+/*.select-box [popover]:not(:popover-open) {*/
+.select-box :not(:popover-open) {
   & ~ .message,
   & ~ .items label:has(:checked) {
     background-color: var(--ctrl-clr-bkgd-hover);
