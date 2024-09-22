@@ -122,7 +122,7 @@ button, input, textarea, select {
   border: solid 1px var(--ctrl-clr-brdr);
   outline: none;
 
-  transition-property: background-color 200ms linear;
+  transition: background-color 200ms linear;
 }
 
 textarea {
