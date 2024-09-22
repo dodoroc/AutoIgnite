@@ -107,7 +107,9 @@
         name="filter-name"
         v-model="model.filter.params.name"
       >
-      <label><input type="checkbox" name="filter-unwatched" v-model="model.filter.params.unwatched">Unwatched only</label>
+
+      <label class="bordered"><input type="checkbox" name="filter-unwatched" v-model="model.filter.params.unwatched">Unwatched only</label>
+
       <span>Found: {{model.source.count}} │ Filtered: {{model.filter.count}}</span>
     </search>
 
