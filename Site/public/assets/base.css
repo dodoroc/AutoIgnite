@@ -243,6 +243,7 @@ input:is([type="checkbox"], .toggle)::before {
   color: var(--clr-darkest);
   font-size: 1rem;
   font-size: var(--ctrl-ckrd-inner-size);
+  font-size: 100cqh;
 
   width: 100cqh;
   height: 100cqh;
