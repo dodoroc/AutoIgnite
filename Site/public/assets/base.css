@@ -48,7 +48,7 @@
   --ctrl-ckrd-color: var(--clr-lighter);
 
   --ctrl-vsize: 30px;
-  --ctrl-pad: 0.65ch;
+  --ctrl-pad: 5px;
 }
 
 @media (prefers-color-scheme: light) {
@@ -122,8 +122,7 @@ button, input, textarea, select {
   border: solid 1px var(--ctrl-clr-brdr);
   outline: none;
 
-  transition: 200ms linear;
-  transition-property: background-color, color;
+  transition-property: background-color 200ms linear;
 }
 
 textarea {
@@ -154,16 +153,15 @@ input:is([type="checkbox"], [type="radio"]) {
   height: var(--ctrl-ckrd-outer-size);
 }
 input:is([type="checkbox"], [type="radio"])::before {
-  transition: inherit;
-  transition-property: transform;
-
   display: inline-block;
   content: '';
 
   width: var(--ctrl-ckrd-inner-size);
   height: var(--ctrl-ckrd-inner-size);
   box-shadow: inset 0 0 0px var(--ctrl-ckrd-inner-size) var(--ctrl-ckrd-color);
+
   transform: scale(0);
+  transition: transform 200ms linear;
 }
 
 input:is([type="checkbox"], [type="radio"]):checked::before {
