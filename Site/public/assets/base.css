@@ -3,9 +3,9 @@
 :root {
   --clr-darkest:  hsl(0, 0%,  10%);
   --clr-darker:   hsl(0, 0%,  25%);
-  --clr-dark:     hsl(0, 0%,  42%);
+  --clr-dark:     hsl(0, 0%,  40%);
   --clr-median:   hsl(0, 0%,  50%);
-  --clr-light:    hsl(0, 0%,  58%);
+  --clr-light:    hsl(0, 0%,  60%);
   --clr-lighter:  hsl(0, 0%,  75%);
   --clr-lightest: hsl(0, 0%,  90%);
 
@@ -45,7 +45,7 @@
   --ctrl-ckrd-gap: 0.75ch;
   --ctrl-ckrd-outer-size: 18px;
   --ctrl-ckrd-inner-size: 10px;
-  --ctrl-ckrd-color: var(--clr-lighter);
+  --ctrl-ckrd-color: var(--clr-light);
 
   --ctrl-vsize: 30px;
   --ctrl-pad: 5px;
