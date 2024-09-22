@@ -202,7 +202,6 @@ input:is([type="text"]),
 button,
 select {
   height: var(--ctrl-vsize);
-  padding: 0 var(--ctrl-pad);
 }
 label {
   display: inline-flex;
