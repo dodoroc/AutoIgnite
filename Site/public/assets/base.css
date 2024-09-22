@@ -198,6 +198,8 @@ input:is([type="checkbox"], [type="radio"]) + label {
 
 label.bordered {
   border: solid 1px var(--ctrl-clr-brdr);
+  background-color: var(--ctrl-clr-bkgd);
+  padding: 0 var(--ctrl-pad);
 
 }
 
