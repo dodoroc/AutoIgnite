@@ -48,7 +48,7 @@
   --ctrl-ckrd-color: var(--clr-lighter);
 
   --ctrl-vsize: 30px;
-  --ctrl-pad: 5px;
+  --ctrl-pad: 0.65ch;
 }
 
 @media (prefers-color-scheme: light) {
