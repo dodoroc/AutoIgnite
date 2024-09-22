@@ -91,7 +91,12 @@
         <span class="message">Select series</span>
         <span class="items">
           <label v-for="series in model.source.series">
-            <input type="radio" name="filter-seriesid" :value="series.seriesId" v-model="model.source.seriesId">{{series.name}} ({{series.releaseYear}})
+            <input
+              type="radio"
+              name="filter-seriesid"
+              :value="series.seriesId"
+              v-model="model.source.seriesId"
+            >{{series.name}} ({{series.releaseYear}})
           </label>
         </span>
       </button>
