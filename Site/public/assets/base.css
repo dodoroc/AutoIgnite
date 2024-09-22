@@ -226,7 +226,7 @@ select {
 
 
 
-input:is([type="checkbox"]) {
+input:is([type="checkbox"], .toggle) {
   display: inline-grid;
   place-content: center start;
 
@@ -238,7 +238,7 @@ input:is([type="checkbox"]) {
 }
 input:is([type="checkbox"]):checked {
 }
-input:is([type="checkbox"])::before {
+input:is([type="checkbox"], .toggle)::before {
   display: inline-block;
   content: 'ο';
   text-align: center;
@@ -254,18 +254,18 @@ input:is([type="checkbox"])::before {
   transition: transform 200ms linear;
 }
 
-input:is([type="checkbox"]):checked::before {
+input:is([type="checkbox"], .toggle):checked::before {
   content: 'ι';
   transform: translateX(100cqh);
 }
 
-
+/*
 label {
   display: inline-flex;
   align-items: center;
   justify-content: start;
 }
-
+*/
 
 
 
