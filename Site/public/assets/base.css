@@ -140,7 +140,12 @@ textarea:focus, select:focus, input:is([type="text"]):focus {
   background-color: var(--ctrl-clr-bkgd-focus);
 }
 
-label:has(input.toggle):active,
+label:has(input.toggle):active {
+  background-color: red;
+}
+label:has(input.toggle:active) {
+  background-color: blue;
+}
 button:active, input:is([type="button"], [type="submit"], [type="reset"]):active {
 /*  color: var(--clr-darker);*/
 /*  background-color: var(--clr-lighter);*/
