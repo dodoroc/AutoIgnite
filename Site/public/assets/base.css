@@ -141,6 +141,7 @@ textarea:focus, select:focus, input:is([type="text"]):focus {
 }
 
 button:active, input:is([type="button"], [type="submit"], [type="reset"]):active {
+  background-color: var(--ctrl-clr-bkgd-focus);
 }
 
 input:is([type="checkbox"], [type="radio"]) {
