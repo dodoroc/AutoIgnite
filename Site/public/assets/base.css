@@ -98,7 +98,7 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  gap: 15px 0;
+  gap: 20px 0;
   padding: 10px;
 
   color: var(--clr-lighter);
@@ -140,6 +140,7 @@ textarea:focus, select:focus, input:is([type="text"]):focus {
   background-color: var(--ctrl-clr-bkgd-focus);
 }
 
+label:has(input.toggle):active,
 button:active, input:is([type="button"], [type="submit"], [type="reset"]):active {
 /*  color: var(--clr-darker);*/
 /*  background-color: var(--clr-lighter);*/
