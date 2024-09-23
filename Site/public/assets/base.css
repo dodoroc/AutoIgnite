@@ -473,10 +473,19 @@ table tbody tr:hover td {
   console.log(str);
 */
 
-/* Hidden is controlled by Vue in the mounted event */
-[hidden] > :not(#spinner) {
+/* Cloak is controlled by Vue in the mounted event */
+[cloak] > :not(#spinner) {
   display: none;
 }
-:not([hidden]) > #spinner {
+:not([cloak]) > #spinner {
   display: none !important;
 }
+
+
+/* == MISC STYLES =================================================== */
+.hscroll-overflow {
+  width: 100%;
+  overflow: hidden auto;
+}
+
+

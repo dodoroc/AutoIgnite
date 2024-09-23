@@ -2,6 +2,8 @@
 import { createApp, reactive } from 'https://unpkg.com/petite-vue?module';
 
 const appStart_ms = Date.now();
+// const after = (delta_ms) => {
+// };
 
 const model = reactive({
   source: {
@@ -119,8 +121,8 @@ const app = createApp({
     const ms = Math.max(0, delta_ms - (Date.now() - start_ms));
     return new Promise(r => setTimeout(r, ms));
   },
-  unhide() {
-    document.body.removeAttribute('hidden');
+  uncloak() {
+    document.body.removeAttribute('cloak');
   },
 
   mounted() {
@@ -128,7 +130,7 @@ const app = createApp({
     model.source.loadSeries().then(() => {
       model.source.loadTracked().then(() => {
         model.filter.apply();
-        this.after(1100, appStart_ms).then(this.unhide);
+        this.after(1100, appStart_ms).then(this.uncloak);
       });
     });
   },
