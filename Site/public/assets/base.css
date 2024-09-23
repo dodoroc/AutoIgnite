@@ -140,19 +140,7 @@ textarea:focus, select:focus, input:is([type="text"]):focus {
   background-color: var(--ctrl-clr-bkgd-focus);
 }
 
-label:has(input.toggle):active {
-  background-color: red;
-}
-label:has(input.toggle:active) {
-/*  background-color: blue;*/
-}
-label:has(input.toggle:focus) {
-/*  background-color: lightblue;*/
-}
 button:active, input:is([type="button"], [type="submit"], [type="reset"]):active {
-/*  color: var(--clr-darker);*/
-/*  background-color: var(--clr-lighter);*/
-/*  outline: solid 1px var(--clr-median);*/
 }
 
 input:is([type="checkbox"], [type="radio"]) {
@@ -185,16 +173,13 @@ input[type="radio"]::before {
 }
 
 input:is([type="checkbox"], [type="radio"]):disabled {
-  box-shadow: var(--clr-dark) !important;
+/*  box-shadow: var(--clr-dark) !important;*/
 }
 input:is([type="checkbox"], [type="radio"]):checked:not(:disabled) {
 }
 
 
 
-label {
-  white-space: nowrap;
-}
 label:has([type="checkbox"], [type="radio"]) {
   column-gap: var(--ctrl-ckrd-gap);
 }
@@ -210,6 +195,7 @@ label.bordered {
   background-color: var(--ctrl-clr-bkgd);
   padding: 0 var(--ctrl-pad);
   height: var(--ctrl-vsize);
+  white-space: nowrap;
 }
 
 
@@ -234,7 +220,7 @@ select {
 }
 
 
-
+/* Toggle + toggle with label */
 input:is([type="checkbox"], .toggle) {
   display: inline-grid;
   place-content: center start;
@@ -268,13 +254,9 @@ input:is([type="checkbox"], .toggle):checked::before {
   transform: translateX(100cqh);
 }
 
-/*
-label {
-  display: inline-flex;
-  align-items: center;
-  justify-content: start;
+label:has(input.toggle):active {
+  background-color: var(--ctrl-clr-bkgd-focus);
 }
-*/
 
 
 
