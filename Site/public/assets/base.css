@@ -144,7 +144,7 @@ label:has(input.toggle):active {
   background-color: red;
 }
 label:has(input.toggle:active) {
-  background-color: blue;
+/*  background-color: blue;*/
 }
 label:has(input.toggle:focus) {
 /*  background-color: lightblue;*/
