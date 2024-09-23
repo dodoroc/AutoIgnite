@@ -149,9 +149,6 @@ label:has(input.toggle:active) {
 label:has(input.toggle:focus) {
   background-color: lightblue;
 }
-label:has(input.toggle):focus {
-  background-color: lightred;
-}
 button:active, input:is([type="button"], [type="submit"], [type="reset"]):active {
 /*  color: var(--clr-darker);*/
 /*  background-color: var(--clr-lighter);*/
