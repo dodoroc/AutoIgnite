@@ -230,7 +230,13 @@ input:is([type="checkbox"], .switch) {
   width: calc(var(--ctrl-ckrd-outer-size) * 2 + 2px);
   height: calc(var(--ctrl-ckrd-outer-size) + 2px);
   container-type: size;
+
+  transition: background-color 0 200ms;
 }
+input:is([type="checkbox"], .switch):checked {
+  background-color: var(--ctrl-clr-bkgd-focus);
+}
+
 input:is([type="checkbox"], .switch)::before {
   content: 'ο';
   display: inline-block;
@@ -243,7 +249,7 @@ input:is([type="checkbox"], .switch)::before {
   height: 100cqh;
   box-shadow: inset 0 0 0px var(--ctrl-ckrd-inner-size) var(--ctrl-ckrd-color);
 
-  transition: transform 200ms linear, background-color 0 200ms;
+  transition: transform 200ms linear;
   transform: translateX(0);
   background-color: var(--ctrl-clr-bkgd);
 }
@@ -251,7 +257,6 @@ input:is([type="checkbox"], .switch)::before {
 input:is([type="checkbox"], .switch):checked::before {
   content: 'ι';
   transform: translateX(100cqh);
-  background-color: var(--ctrl-clr-bkgd-focus);
 }
 
 label:has(input.switch):active {
