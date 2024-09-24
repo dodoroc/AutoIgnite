@@ -231,11 +231,10 @@ input:is([type="checkbox"], .switch) {
   height: calc(var(--ctrl-ckrd-outer-size) + 2px);
   container-type: size;
 
-  transition: background-color 0ms 200ms;
+  background: linear-gradient(90deg, var(--ctrl-clr-bkgd-focus) 50%, var(--ctrl-clr-bkgd) 50%);
 }
 
 input:is([type="checkbox"], .switch):checked {
-  background-color: var(--ctrl-clr-bkgd-focus);
 }
 
 input:is([type="checkbox"], .switch)::before {
