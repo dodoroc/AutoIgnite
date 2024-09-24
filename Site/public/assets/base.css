@@ -231,7 +231,7 @@ input:is([type="checkbox"], .switch) {
   height: calc(var(--ctrl-ckrd-outer-size) + 2px);
   container-type: size;
 
-  transition: background-color 0 200ms;
+  transition: background-color 0ms 200ms;
 }
 
 input:is([type="checkbox"], .switch):checked {
