@@ -71,6 +71,21 @@
       table.aute td[colspan] {
         text-align: center !important;
       }
+
+
+
+      .clr-test {
+      }
+      .clr-test li {
+        width: 100px;
+        height: 100px;
+        font-size: 30px;
+      }
+      .clr-test li:nth-child(1) { background-color: Field; color: FieldText; }
+      .clr-test li:nth-child(2) { background-color: Canvas; color: CanvasText; }
+      .clr-test li:nth-child(3) { background-color: ButtonFace; color: ButtonText; border: solid 5px ButtonBorder; }
+      .clr-test li:nth-child(4) { background-color: AccentColor; color: AccentColorText; }
+
     </style>
 
     <script type="module" src="/assets/app.mjs"></script>
@@ -114,6 +129,15 @@
 
       <span>Found: {{model.source.count}} │ Filtered: {{model.filter.count}}</span>
     </search>
+
+    <ul class="clr-test">
+      <li>Test*</li>
+      <li>Test*</li>
+      <li>Test*</li>
+      <li>Test*</li>
+      <li>Test*</li>
+      <li>Test*</li>
+    </ul>
 
     <div class="hscroll-overflow">
       <table class="aute" id="aute-results">

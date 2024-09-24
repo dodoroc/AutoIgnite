@@ -34,9 +34,9 @@
 
 
   --ctrl-clr-brdr: var(--clr-median);
-  --ctrl-clr-bkgd: Field;/*var(--clr-darker);*/
+  --ctrl-clr-bkgd: var(--clr-darker);
   --ctrl-clr-bkgd-focus: var(--clr-darkest);
-  --ctrl-clr-text: FieldText;/*var(--clr-lighter);*/
+  --ctrl-clr-text: var(--clr-lighter);
 
   --ctrl-clr-bkgd-check: var(--clr-median);
   --ctrl-clr-bkgd-hover: var(--clr-darker);
