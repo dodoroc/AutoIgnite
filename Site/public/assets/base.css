@@ -223,13 +223,13 @@ select {
 
 /* Switch + switch with label */
 input:is([type="checkbox"], .switch) {
+  container-type: size;
   display: inline-grid;
   place-content: center start;
 
   padding: 0;
   width: calc(var(--ctrl-ckrd-outer-size) * 2 + 2px);
   height: calc(var(--ctrl-ckrd-outer-size) + 2px);
-  container-type: size;
 
   background: linear-gradient(90deg, var(--ctrl-clr-bkgd-focus) 50%, var(--ctrl-clr-bkgd) 50%);
 }
