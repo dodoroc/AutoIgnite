@@ -231,7 +231,7 @@ input:is([type="checkbox"], .switch) {
   width: calc(var(--ctrl-ckrd-outer-size) * 2 + 2px);
   height: calc(var(--ctrl-ckrd-outer-size) + 2px);
 
-  background: linear-gradient(90deg, var(--ctrl-clr-bkgd-focus) 50%, var(--ctrl-clr-bkgd) 50%);
+/*  background: linear-gradient(90deg, var(--ctrl-clr-bkgd-focus) 50%, var(--ctrl-clr-bkgd) 50%);*/
 }
 
 input:is([type="checkbox"], .switch):checked {
@@ -241,7 +241,7 @@ input:is([type="checkbox"], .switch)::before {
   content: 'ο';
   display: inline-block;
   text-align: center;
-  color: var(--clr-darkest);
+  color: var(--clr-dark);
   font-size: 88cqh;
   line-height: 88cqh;
 
@@ -256,6 +256,7 @@ input:is([type="checkbox"], .switch)::before {
 
 input:is([type="checkbox"], .switch):checked::before {
   content: 'ι';
+  color: var(--clr-darkest);
   transform: translateX(100cqh);
 }
 
