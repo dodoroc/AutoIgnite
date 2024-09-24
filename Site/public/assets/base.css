@@ -34,9 +34,9 @@
 
 
   --ctrl-clr-brdr: var(--clr-median);
-  --ctrl-clr-bkgd: var(--clr-darker);
+  --ctrl-clr-bkgd: Field;/*var(--clr-darker);*/
   --ctrl-clr-bkgd-focus: var(--clr-darkest);
-  --ctrl-clr-text: var(--clr-lighter);
+  --ctrl-clr-text: FieldText;/*var(--clr-lighter);*/
 
   --ctrl-clr-bkgd-check: var(--clr-median);
   --ctrl-clr-bkgd-hover: var(--clr-darker);
@@ -485,7 +485,7 @@ table tbody tr:hover td {
 /* == MISC STYLES =================================================== */
 .hscroll-overflow {
   width: 100%;
-  overflow: hidden auto;
+  overflow: auto hidden;
 }
 
 
