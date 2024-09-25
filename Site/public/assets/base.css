@@ -299,17 +299,17 @@ input:is([type="checkbox"], .switch)::before {
 
   transition: transform 200ms linear;
   transform: translateX(0);
-  background-color: var(--clr-);
+  background-color: var(--clr-input);
 }
 
 input:is([type="checkbox"], .switch):checked::before {
   content: 'ι';
-  color: var(--clr-darkest);
+/*  color: var(--clr-darkest);*/
   transform: translateX(100cqh);
 }
 
 label:has(input.switch):active {
-  background-color: var(--ctrl-clr-bkgd-focus);
+/*  background-color: var(--ctrl-clr-bkgd-focus);*/
 }
 
 
