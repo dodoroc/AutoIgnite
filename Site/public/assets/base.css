@@ -260,7 +260,7 @@ input[type="checkbox"].switch {
 
 input[type="checkbox"].switch:checked {
 /*  border: solid 1px var(--clr-switch-act-bg);*/
-  background-color: var(--clr-switch-act-bg);
+/*  background-color: var(--clr-switch-act-bg);*/
 }
 
 input[type="checkbox"].switch::before {
