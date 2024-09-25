@@ -383,11 +383,12 @@ label:has(input.switch):active {
 
 .select-box [popover]:popover-open ~ .items label {
   &:has(:checked) {
+    background-color: var(--clr-ctrl-bg);
 /*    background-color: var(--ctrl-clr-bkgd-check);*/
 /*    color: var(--ctrl-clr-text-inv);*/
   }
   &:has(:not(:checked)):hover {
-/*  background-color: var(--clr-ctrl-bg);*/
+    background-color: var(--clr-ctrl-bg);
   }
 }
 
