@@ -28,7 +28,7 @@
   --clr-option-hov-bg: var(--clr-600);
 /*  --clr-option-hov-text: var(--clr-700);*/
 
-  --clr-switch-bg: var(--clr-600);
+  --clr-switch-bg: var(--clr-800);
   --clr-switch-act-bg: var(--clr-400);
   --clr-switch-btn-bg: var(--clr-900);
 
@@ -251,7 +251,7 @@ input[type="checkbox"].switch {
   width: calc(var(--ctrl-ckrd-outer-size) * 2 + 2px);
   height: calc(var(--ctrl-ckrd-outer-size) + 2px);
 
-  background: transparent linear-gradient(90deg, var(--clr-switch-bg) 50%, var(--clr-switch-act-bg) 50%);
+  background: transparent linear-gradient(90deg, var(--clr-switch-act-bg) 50%, var(--clr-switch-act-bg) 50%);
 /*  border: solid 1px var(--clr-switch-bg);*/
   border: solid 1px var(--clr-border);
 /*  background-color: var(--clr-switch-bg);*/
