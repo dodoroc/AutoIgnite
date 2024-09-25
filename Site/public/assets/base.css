@@ -283,13 +283,13 @@ input:is([type="checkbox"], .switch) {
 }
 
 input:is([type="checkbox"], .switch):checked {
+  background-color: var(--clr-pri);
 }
 
 input:is([type="checkbox"], .switch)::before {
   content: 'ο';
   display: inline-block;
   text-align: center;
-/*  color: var(--clr-);*/
   font-size: 88cqh;
   line-height: 88cqh;
 
@@ -304,7 +304,6 @@ input:is([type="checkbox"], .switch)::before {
 
 input:is([type="checkbox"], .switch):checked::before {
   content: 'ι';
-/*  color: var(--clr-darkest);*/
   transform: translateX(100cqh);
 }
 
