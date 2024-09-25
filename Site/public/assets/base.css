@@ -1,7 +1,7 @@
 /* == VARS ONLY ===================================================== */
 
 :root  {
-  --clr-page: hsl(120 10% 10%);
+  --clr-page: hsl(120 20% 18%);
   --clr-page-fg: hsl(120 5% 90%);
   --clr-card: hsl(120 8% 10%);
   --clr-card-fg: hsl(120 5% 90%);
@@ -24,25 +24,6 @@
 
 @media (prefers-color-scheme: light) {
   :root {
-    --clr-page: hsl(120 8% 95%);
-    --clr-page-fg: hsl(120 5% 10%);
-    --clr-card: hsl(120 8% 90%);
-    --clr-card-fg: hsl(120 5% 15%);
-    --clr-popover: hsl(120 8% 95%);
-    --clr-popover-fg: hsl(120 95% 10%);
-    --clr-pri: hsl(120 3% 43%);
-    --clr-pri-fg: hsl(0 0% 100%);
-    --clr-sec: hsl(120 10% 70%);
-    --clr-sec-fg: hsl(0 0% 0%);
-    --clr-muted: hsl(82 10% 85%);
-    --clr-muted-fg: hsl(120 5% 35%);
-    --clr-accent: hsl(82 10% 80%);
-    --clr-accent-fg: hsl(120 5% 15%);
-    --clr-destructive: hsl(0 50% 30%);
-    --clr-destructive-fg: hsl(120 5% 90%);
-    --clr-border: hsl(120 20% 50%);
-    --clr-input: hsl(120 20% 18%);
-    --clr-ring: hsl(120 3% 43%);
   }
 }
 
@@ -362,7 +343,7 @@ label:has(input.switch):active {
   align-items: stretch;
 
   min-height: var(--ctrl-vsize);
-  border: solid 1px var(--ctrl-clr-brdr);
+  border: solid 1px var(--clr-border);
 
   margin-top: calc(var(--ctrl-vsize) - 1px);
   transition: margin-top 200ms linear;
@@ -386,7 +367,7 @@ label:has(input.switch):active {
 
 .select-box .message {
   height: var(--ctrl-vsize);
-  border: solid 1px var(--ctrl-clr-brdr);
+  border: solid 1px var(--clr-border);
 }
 
 .select-box .items label {
