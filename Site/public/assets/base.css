@@ -169,7 +169,7 @@ button, input, select, textarea {
   padding: 0 var(--ctrl-pad);
 
   appearance: none;
-  outline: solid 1px var(--clr-ring);
+/*  outline: solid 1px var(--clr-ring);*/
   border: solid 1px var(--clr-border);
   background-color: var(--clr-card);
   color: var(--clr-card-fg);
