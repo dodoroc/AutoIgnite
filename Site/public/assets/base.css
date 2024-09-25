@@ -1,38 +1,37 @@
 /* == VARS ONLY ===================================================== */
 
-
 :root  {
   --clr-page: hsl(120 10% 10%);
   --clr-page-fg: hsl(120 5% 90%);
-  --clr-card: hsl(120 9% 10%);
+  --clr-card: hsl(120 8% 10%);
   --clr-card-fg: hsl(120 5% 90%);
   --clr-popover: hsl(120 10% 5%);
   --clr-popover-fg: hsl(120 5% 90%);
-  --clr-pri: hsl(120 6% 37%);
+  --clr-pri: hsl(120 3% 43%);
   --clr-pri-fg: hsl(0 0% 100%);
-  --clr-sec: hsl(120 10% 20%);
+  --clr-sec: hsl(120 10% 17%);
   --clr-sec-fg: hsl(0 0% 100%);
-  --clr-muted: hsl(82 10% 25%);
+  --clr-muted: hsl(82 10% 17%);
   --clr-muted-fg: hsl(120 5% 60%);
-  --clr-accent: hsl(82 10% 25%);
+  --clr-accent: hsl(82 10% 17%);
   --clr-accent-fg: hsl(120 5% 90%);
   --clr-destructive: hsl(0 50% 30%);
   --clr-destructive-fg: hsl(120 5% 90%);
-  --clr-border: hsl(120 20% 28%);
-  --clr-input: hsl(120 20% 28%);
-  --clr-ring: hsl(120 6% 37%);
+  --clr-border: hsl(120 20% 18%);
+  --clr-input: hsl(120 20% 18%);
+  --clr-ring: hsl(120 3% 43%);
 }
 
 
 @media (prefers-color-scheme: light) {
   :root {
-    --clr-page: hsl(120 9% 95%);
+    --clr-page: hsl(120 8% 95%);
     --clr-page-fg: hsl(120 5% 10%);
-    --clr-card: hsl(120 9% 90%);
+    --clr-card: hsl(120 8% 90%);
     --clr-card-fg: hsl(120 5% 15%);
-    --clr-popover: hsl(120 9% 95%);
+    --clr-popover: hsl(120 8% 95%);
     --clr-popover-fg: hsl(120 95% 10%);
-    --clr-pri: hsl(120 6% 37%);
+    --clr-pri: hsl(120 3% 43%);
     --clr-pri-fg: hsl(0 0% 100%);
     --clr-sec: hsl(120 10% 70%);
     --clr-sec-fg: hsl(0 0% 0%);
@@ -43,8 +42,8 @@
     --clr-destructive: hsl(0 50% 30%);
     --clr-destructive-fg: hsl(120 5% 90%);
     --clr-border: hsl(120 20% 50%);
-    --clr-input: hsl(120 20% 28%);
-    --clr-ring: hsl(120 6% 37%);
+    --clr-input: hsl(120 20% 18%);
+    --clr-ring: hsl(120 3% 43%);
   }
 }
 
