@@ -328,7 +328,7 @@ label:has(input.switch):active {
   place-content: center;
   font-size: 0.68rem;
   content: '▼';
-/*  color: var(--ctrl-clr-text);*/
+  color: var(--clr-border);
   transform: scaleX(1.4);
   transition: transform 200ms linear;
 }
@@ -402,7 +402,7 @@ label:has(input.switch):active {
 .select-box [popover]:not(:popover-open) {
   & ~ .message,
   & ~ .items label:has(:checked) {
-    background-color: var(--ctrl-clr-bkgd-hover);
+/*    background-color: var(--ctrl-clr-bkgd-hover);*/
   }
   & ~ .items label:has(:not(:checked)) {
     height: 0;
