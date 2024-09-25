@@ -252,7 +252,8 @@ input[type="checkbox"].switch {
   height: calc(var(--ctrl-ckrd-outer-size) + 2px);
 
 /*  background: linear-gradient(90deg, var(--ctrl-clr-bkgd-focus) 50%, var(--ctrl-clr-bkgd) 50%);*/
-  border: solid 1px var(--clr-switch-bg);
+/*  border: solid 1px var(--clr-switch-bg);*/
+  border: solid 1px var(--clr-border);
   background-color: var(--clr-switch-bg);
 /*  color: var(--clr-switch-act-bg);;*/
 }
@@ -464,7 +465,7 @@ table tbody tr:hover td {
   font-size: clamp(24px, 9dvmin, 56px);
   color: #0000;
 
-  background: no-repeat radial-gradient(var(--clr-300) 0px, var(--clr-700) 100px, var(--clr-800) 250px);
+  background: no-repeat radial-gradient(var(--clr-200) 0px, var(--clr-600) 100px, var(--clr-800) 250px);
   background-clip: text;
   background-size: 80cqmin 80cqmin;
   background-position: 50% 50%;
