@@ -374,6 +374,13 @@ label:has(input.switch):active {
   display: none;
 }
 
+.select-box [popover]:popover-open {
+  & ~ .message,
+  & ~ .items {
+    background-color: var(--clr-ctrl-act-bg);
+  }
+}
+
 .select-box [popover]:popover-open ~ .items label {
   &:has(:checked) {
 /*    background-color: var(--ctrl-clr-bkgd-check);*/
