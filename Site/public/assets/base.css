@@ -278,8 +278,9 @@ input:is([type="checkbox"], .switch) {
   height: calc(var(--ctrl-ckrd-outer-size) + 2px);
 
 /*  background: linear-gradient(90deg, var(--ctrl-clr-bkgd-focus) 50%, var(--ctrl-clr-bkgd) 50%);*/
-  color: var(--clr-card-fg);
+  border: solid 1px var(--clr-input);
   background-color: var(--clr-input);
+  color: var(--clr-card-fg);
 }
 
 input:is([type="checkbox"], .switch):checked {
