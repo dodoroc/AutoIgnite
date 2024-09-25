@@ -1,6 +1,8 @@
 /* == VARS ONLY ===================================================== */
 
 :root  {
+  /* =ROW()*100 */
+  /* =ROUND((3*A1^2)/35000 - (13*A1)/70 + 754/7) */
   --clr-100: hsl(120, 5%, 90%);
   --clr-200: hsl(120, 5%, 74%);
   --clr-300: hsl(120, 5%, 60%);
@@ -15,11 +17,11 @@
 
 
   --clr-page-bg: var(--clr-800);
-  --clr-text: var(--clr-300);
-  --clr-border: var(--clr-400);
+  --clr-text: var(--clr-200);
+  --clr-border: var(--clr-300);
   --clr-input-bg: var(--clr-800);
   --clr-input-alt-bg: var(--clr-900);
-  --clr-btn-bg: var(--clr-600);
+  --clr-btn-bg: var(--clr-700);
   --clr-btn-alt-bg: var(--clr-400);
 
 }
