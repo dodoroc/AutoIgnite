@@ -277,7 +277,7 @@ input[type="checkbox"].switch::before {
   transform: translateX(0);
   box-shadow: inset 0 0 0px var(--ctrl-ckrd-inner-size) var(--clr-switch-btn-bg);
   background-color: var(--clr-switch-act-bg);
-  background-color: red;
+  background-color: red!important;
   color: var(--clr-text);
 }
 
