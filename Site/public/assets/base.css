@@ -22,7 +22,6 @@
   --clr-ring: hsl(120 3% 43%);
 }
 
-
 @media (prefers-color-scheme: light) {
   :root {
     --clr-page: hsl(120 8% 95%);
