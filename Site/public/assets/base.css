@@ -280,11 +280,12 @@ input[type="checkbox"].switch::before {
 
   width: 100cqh;
   height: 100cqh;
-  box-shadow: inset 0 0 0px var(--ctrl-ckrd-inner-size) var(--clr-border);
 
   transition: transform 200ms linear;
   transform: translateX(0);
-/*  background-color: var(--clr-input);*/
+  box-shadow: inset 0 0 0px var(--ctrl-ckrd-inner-size) var(--clr-text);
+  background-color: var(--clr-page-bg);
+  color: var(--clr-page-bg);
 }
 
 input[type="checkbox"].switch:checked::before {
