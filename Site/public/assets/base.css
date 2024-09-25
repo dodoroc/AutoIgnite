@@ -16,13 +16,22 @@
 
 
 
-  --clr-page-bg: var(--clr-800);
+  --clr-bkgd: var(--clr-800);
   --clr-text: var(--clr-200);
   --clr-border: var(--clr-400);
-  --clr-input-bg: var(--clr-800);
-  --clr-input-alt-bg: var(--clr-900);
-  --clr-btn-bg: var(--clr-700);
-  --clr-btn-alt-bg: var(--clr-400);
+
+  --clr-ctrl-bg: var(--clr-800);
+  --clr-ctrl-act-bg: var(--clr-900);
+
+/*  --clr-chkrad-bg: var(--clr-800);*/
+/*  --clr-chkrad-alt-bg: var(--clr-900);*/
+
+  --clr-switch-bg: var(--clr-700);
+  --clr-switch-act-bg: var(--clr-600);
+  --clr-switch-btn-bg: var(--clr-900);
+
+  --clr-btn-bg: var(--clr-600);
+  --clr-btn-act-bg: var(--clr-400);
 
 }
 
@@ -34,7 +43,7 @@
 
 
 :root {
-  --radius: 0rem;
+  --radius: 0;
 
   --width-min: 360px;
   --width-max: 1050px;
@@ -57,32 +66,10 @@
   --font-spc-1_4:  ; /* std width space */
 
 
-  --clr-darkest:  hsl(0, 0%,  10%);
-  --clr-darker:   hsl(0, 0%,  25%);
-  --clr-dark:     hsl(0, 0%,  40%);
-  --clr-median:   hsl(0, 0%,  50%);
-  --clr-light:    hsl(0, 0%,  60%);
-  --clr-lighter:  hsl(0, 0%,  75%);
-  --clr-lightest: hsl(0, 0%,  90%); /*not used */
-
-
-
-  --ctrl-clr-brdr: var(--clr-median);
-  --ctrl-clr-bkgd: var(--clr-darker);
-  --ctrl-clr-bkgd-focus: var(--clr-darkest);
-  --ctrl-clr-text: var(--clr-lighter);
-
-  --ctrl-clr-bkgd-check: var(--clr-median);
-  --ctrl-clr-bkgd-hover: var(--clr-darker);
-  --ctrl-clr-text-inv: var(--clr-darkest);
 
   --ctrl-ckrd-gap: 0.62ch;
   --ctrl-ckrd-outer-size: 18px;
   --ctrl-ckrd-inner-size: 10px;
-/*  --ctrl-ckrd-outer-size: 16px;*/
-/*  --ctrl-ckrd-inner-size: 8px;*/
-  --ctrl-ckrd-color: var(--clr-light);
-
   --ctrl-vsize: 30px;
   --ctrl-pad: 5px;
 }
@@ -132,7 +119,7 @@ body {
   gap: 20px 0;
   padding: 10px;
 
-  background: var(--clr-page-bg);
+  background: var(--clr-bkgd);
   color: var(--clr-text);
 
   font-size: var(--font-size-rg);
@@ -154,7 +141,7 @@ button, input, select, textarea {
 /*  outline: solid 1px var(--clr-ring);*/
   outline: 0;
   border: solid 1px var(--clr-border);
-  background-color: var(--clr-card);
+  background-color: var(--clr-ctrl-bg);
   color: var(--clr-text);
 
   transition: background-color 200ms linear;
@@ -167,15 +154,16 @@ textarea {
 
 button, input:is([type="button"], [type="submit"], [type="reset"]) {
   justify-content: center;
+  background-color: var(--clr-btn-bg);
+}
+button:active, input:is([type="button"], [type="submit"], [type="reset"]):active {
+  background-color: var(--clr-btn-act-bg);
 }
 
 select:focus, textarea:focus, input:is([type="text"]):focus {
-/*  background-color: var(--ctrl-clr-bkgd-focus);*/
+  background-color: var(--clr-ctrl-act-bg);
 }
 
-button:active, input:is([type="button"], [type="submit"], [type="reset"]):active {
-/*  background-color: var(--ctrl-clr-bkgd-focus);*/
-}
 
 input:is([type="checkbox"], [type="radio"]) {
   display: inline-grid;
@@ -192,7 +180,6 @@ input:is([type="checkbox"], [type="radio"])::before {
   width: var(--ctrl-ckrd-inner-size);
   height: var(--ctrl-ckrd-inner-size);
   box-shadow: inset 0 0 0px var(--ctrl-ckrd-inner-size) var(--clr-border);
-  background-color: var(--clr-page-bg);
 
   transform: scale(0);
   transition: transform 200ms linear;
@@ -208,7 +195,6 @@ input[type="radio"]::before {
 }
 
 input:is([type="checkbox"], [type="radio"]):disabled {
-/*  box-shadow: var(--clr-dark) !important;*/
 }
 input:is([type="checkbox"], [type="radio"]):checked:not(:disabled) {
 }
@@ -284,8 +270,8 @@ input[type="checkbox"].switch::before {
 
   transition: transform 200ms linear;
   transform: translateX(0);
-  box-shadow: inset 0 0 0px var(--ctrl-ckrd-inner-size) var(--clr-page-bg);
-  background-color: var(--clr-page-bg);
+  box-shadow: inset 0 0 0px var(--ctrl-ckrd-inner-size) var(--clr-bkgd);
+  background-color: var(--clr-bkgd);
   background-color: red;
   color: var(--clr-text);
 }
@@ -314,7 +300,7 @@ label:has(input.switch):active {
   margin: 0;
   padding: 0;
   border: 0;
-  color: red;
+  color: var(--clr-text);
 
   user-select: none;
   cursor: default;
@@ -364,7 +350,7 @@ label:has(input.switch):active {
   overflow: hidden;
   white-space: nowrap;
 
-  background-color: var(--clr-page-bg);
+  background-color: var(--clr-ctrl-bg);
   color: var(--clr-text);
 
   transition: background-color 200ms linear;
@@ -426,15 +412,12 @@ table {
   border-spacing: 2px;
   border-collapse: collapse;
   empty-cells: show;
-
-/*  color: var(--clr-lighter);*/
 }
 
 table thead td {
   font-weight: 800;
   text-underline-offset: 1px;
-/*  text-decoration: underline var(--clr-median);*/
-  text-decoration: underline;
+  text-decoration: underline  var(--clr-border);
 }
 
 table td {
@@ -454,8 +437,8 @@ table tbody tr td:first-of-type {
 }
 
 table tbody tr:hover td {
-  background-color: var(--clr-light);
-  color: var(--clr-darkest);
+  background-color: var(--clr-border);
+  color: var(--clr-800);
 }
 
 
@@ -470,7 +453,7 @@ table tbody tr:hover td {
   font-size: clamp(24px, 9dvmin, 56px);
   color: #0000;
 
-  background: no-repeat radial-gradient(var(--clr-lighter) 0px, var(--clr-darker) 100px, var(--clr-darkest) 250px);
+  background: no-repeat radial-gradient(var(--clr-300) 0px, var(--clr-700) 100px, var(--clr-800) 250px);
   background-clip: text;
   background-size: 80cqmin 80cqmin;
   background-position: 50% 50%;
