@@ -23,6 +23,11 @@
   --clr-ctrl-bg: var(--clr-800);
   --clr-ctrl-act-bg: var(--clr-900);
 
+  --clr-option-sel-bg: var(--clr-400);
+  --clr-option-sel-text: var(--clr-700);
+  --clr-option-hov-bg: var(--clr-500);
+/*  --clr-option-hov-text: var(--clr-700);*/
+
   --clr-switch-bg: var(--clr-600);
   --clr-switch-act-bg: var(--clr-400);
   --clr-switch-btn-bg: var(--clr-900);
@@ -383,12 +388,12 @@ label:has(input.switch):active {
 
 .select-box [popover]:popover-open ~ .items label {
   &:has(:checked) {
-    background-color: var(--clr-ctrl-bg);
-/*    background-color: var(--ctrl-clr-bkgd-check);*/
-/*    color: var(--ctrl-clr-text-inv);*/
+    background-color: var(--clr-option-sel-bg);
+    color: var(--clr-option-sel-text);
   }
   &:has(:not(:checked)):hover {
-    background-color: var(--clr-ctrl-bg);
+    background-color: var(--clr-option-hov-bg);
+/*    background-color: var(--clr-ctrl-bg);*/
   }
 }
 
