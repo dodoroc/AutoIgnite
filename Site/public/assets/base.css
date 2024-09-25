@@ -27,11 +27,11 @@
 /*  --clr-chkrad-alt-bg: var(--clr-900);*/
 
   --clr-switch-bg: var(--clr-700);
-  --clr-switch-act-bg: var(--clr-600);
+  --clr-switch-act-bg: var(--clr-500);
   --clr-switch-btn-bg: var(--clr-900);
 
   --clr-btn-bg: var(--clr-600);
-  --clr-btn-act-bg: var(--clr-400);
+  --clr-btn-act-bg: var(--clr-800);
 
 }
 
@@ -152,20 +152,20 @@ textarea {
   align-items: start;
 }
 
-button, input:is([type="button"], [type="submit"], [type="reset"]) {
+button, input:where([type="button"], [type="submit"], [type="reset"]) {
   justify-content: center;
   background-color: var(--clr-btn-bg);
 }
-button:active, input:is([type="button"], [type="submit"], [type="reset"]):active {
+button:active, input:where([type="button"], [type="submit"], [type="reset"]):active {
   background-color: var(--clr-btn-act-bg);
 }
 
-select:focus, textarea:focus, input:is([type="text"]):focus {
+select:focus, textarea:focus, input:where([type="text"]):focus {
   background-color: var(--clr-ctrl-act-bg);
 }
 
 
-input:is([type="checkbox"], [type="radio"]) {
+input:where([type="checkbox"], [type="radio"]) {
   display: inline-grid;
   place-content: center;
 
@@ -173,7 +173,7 @@ input:is([type="checkbox"], [type="radio"]) {
   width: var(--ctrl-ckrd-outer-size);
   height: var(--ctrl-ckrd-outer-size);
 }
-input:is([type="checkbox"], [type="radio"])::before {
+input:where([type="checkbox"], [type="radio"])::before {
   display: inline-block;
   content: '';
 
@@ -185,7 +185,7 @@ input:is([type="checkbox"], [type="radio"])::before {
   transition: transform 200ms linear;
 }
 
-input:is([type="checkbox"], [type="radio"]):checked::before {
+input:where([type="checkbox"], [type="radio"]):checked::before {
   transform: scale(1);
 }
 
@@ -220,7 +220,7 @@ label.bordered {
 }
 
 
-button, input:is([type="text"]), select {
+button, input:where([type="text"]), select {
   height: var(--ctrl-vsize);
 }
 label {
