@@ -23,11 +23,8 @@
   --clr-ctrl-bg: var(--clr-800);
   --clr-ctrl-act-bg: var(--clr-900);
 
-/*  --clr-chkrad-bg: var(--clr-800);*/
-/*  --clr-chkrad-alt-bg: var(--clr-900);*/
-
-  --clr-switch-bg: var(--clr-700);
-  --clr-switch-act-bg: var(--clr-500);
+  --clr-switch-bg: var(--clr-600);
+  --clr-switch-act-bg: var(--clr-400);
   --clr-switch-btn-bg: var(--clr-900);
 
   --clr-btn-bg: var(--clr-600);
@@ -337,6 +334,7 @@ label:has(input.switch):active {
 
   min-height: var(--ctrl-vsize);
   border: solid 1px var(--clr-border);
+  background-color: var(--clr-ctrl-bg);
 
   margin-top: calc(var(--ctrl-vsize) - 1px);
   transition: margin-top 200ms linear;
@@ -352,15 +350,13 @@ label:has(input.switch):active {
   overflow: hidden;
   white-space: nowrap;
 
-  background-color: var(--clr-ctrl-bg);
-  color: var(--clr-text);
-
   transition: background-color 200ms linear;
 }
 
 .select-box .message {
   height: var(--ctrl-vsize);
   border: solid 1px var(--clr-border);
+  background-color: var(--clr-ctrl-bg);
 }
 
 .select-box .items label {
@@ -380,11 +376,11 @@ label:has(input.switch):active {
 
 .select-box [popover]:popover-open ~ .items label {
   &:has(:checked) {
-    background-color: var(--ctrl-clr-bkgd-check);
-    color: var(--ctrl-clr-text-inv);
+/*    background-color: var(--ctrl-clr-bkgd-check);*/
+/*    color: var(--ctrl-clr-text-inv);*/
   }
   &:has(:not(:checked)):hover {
-    background-color: var(--ctrl-clr-bkgd-hover);
+/*  background-color: var(--clr-ctrl-bg);*/
   }
 }
 
