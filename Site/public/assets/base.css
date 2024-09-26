@@ -322,6 +322,7 @@ input[type="checkbox"].switch:checked::before {
   display: inline-grid;
   place-content: center;
   font-size: 0.68rem;
+  line-height: 40px;
   content: '▼';
   color: var(--clr-border);
   transform: scaleX(1.4);
@@ -402,10 +403,6 @@ input[type="checkbox"].switch:checked::before {
 }
 
 .select-box [popover]:not(:popover-open) {
-  & ~ .message,
-  & ~ .items label:has(:checked) {
-/*    background-color: var(--ctrl-clr-bkgd-hover);*/
-  }
   & ~ .items label:has(:not(:checked)) {
     height: 0;
   }
