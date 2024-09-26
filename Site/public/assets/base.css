@@ -271,15 +271,15 @@ input[type="checkbox"].switch::before {
   font-size: 88cqh;
   line-height: 88cqh;
 
-  width: calc(100cqh - 2px);
-  height: calc(100cqh - 2px);
+  width: 100cqh;
+  height: 100cqh;
 
   transition: transform 200ms linear;
   transform: translateX(0);
 /*  box-shadow: inset 0 0 0px var(--ctrl-ckrd-inner-size) var(--clr-switch-btn-bg);*/
   box-shadow: unset;
   background-color: var(--clr-switch-btn-bg);
-  color: var(--clr-text);
+/*  color: var(--clr-text);*/
 }
 
 input[type="checkbox"].switch:checked::before {
