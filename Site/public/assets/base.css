@@ -259,13 +259,14 @@ input[type="checkbox"].switch {
   width: calc(var(--ctrl-switch-size) * 2 - 2px);
   height: var(--ctrl-switch-size);
 
-  background: transparent linear-gradient(90deg, var(--clr-switch-act-bg) 50%, var(--clr-switch-bg) 50%);
+  background: transparent linear-gradient(90deg, var(--clr-switch-act-bg) 0%, var(--clr-switch-bg) 0%);
   border: solid 1px var(--clr-border);
   border-radius: var(--ctrl-switch-radius);
   color: var(--clr-300);
 }
 
 input[type="checkbox"].switch:checked {
+  background: transparent linear-gradient(90deg, var(--clr-switch-act-bg) 100%, var(--clr-switch-bg) 100%);
 /*  border: solid 1px var(--clr-switch-act-bg);*/
 /*  background-color: var(--clr-switch-act-bg);*/
 }
