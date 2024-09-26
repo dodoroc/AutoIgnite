@@ -291,7 +291,7 @@ input[type="checkbox"].switch::before {
   width: 100cqh;
   height: 100cqh;
 
-  transition: transform 200ms linear;
+  transition: transform 340ms linear;
   transform: translateX(0);
 /*  box-shadow: inset 0 0 0px var(--ctrl-ckrd-inner-size) var(--clr-switch-btn-bg);*/
   box-shadow: unset;
