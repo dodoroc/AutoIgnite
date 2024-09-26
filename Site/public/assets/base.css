@@ -265,7 +265,7 @@ input[type="checkbox"].switch {
 
   padding: 0;
 /*  width: calc(var(--ctrl-switch-size) * 1.724 - 2px);*/
-  width: round(down, calc(var(--ctrl-switch-size) * 1.724 - 2px), 2px);
+  width: round(down, calc(var(--ctrl-switch-size) * 1.724), 2px);
   height: var(--ctrl-switch-size);
 
   background: transparent linear-gradient(90deg, var(--clr-switch-act-bg) var(--switch-offset), var(--clr-switch-bg) var(--switch-offset));
@@ -302,7 +302,7 @@ input[type="checkbox"].switch::before {
 input[type="checkbox"].switch:checked::before {
   content: 'ι';
 /*  transform: translateX(100cqh);*/
-  transform: translateX(calc(100cqw - var(--ctrl-switch-size)));
+  transform: translateX(calc(100cqw - var(--ctrl-switch-size) + 2px));
 /*  transform: translateX(var(--switch-offx));*/
 }
 
