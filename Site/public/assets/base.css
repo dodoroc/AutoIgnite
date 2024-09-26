@@ -244,13 +244,13 @@ select {
 
 /* Switch + switch with label */
 input[type="checkbox"].switch {
-  container-type: inline-size;
+  container-type: size;
   display: inline-grid;
   place-content: center start;
 
   padding: 0;
   width: calc(var(--ctrl-switch-size) * 2);
-  height: calc(var(--ctrl-switch-size) + 0px);
+  height: var(--ctrl-switch-size);
 
   background: transparent linear-gradient(90deg, var(--clr-switch-act-bg) 50%, var(--clr-switch-bg) 50%);
 /*  border: solid 1px var(--clr-switch-bg);*/
@@ -271,8 +271,8 @@ input[type="checkbox"].switch::before {
   font-size: 88cqh;
   line-height: 88cqh;
 
-  width: 100cqh;
-  height: 100cqh;
+  width: calc(100cqh - 2px);
+  height: calc(100cqh - 2px);
 
   transition: transform 200ms linear;
   transform: translateX(0);
