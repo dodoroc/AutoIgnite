@@ -252,13 +252,13 @@ select {
 /* Switch + switch with label */
 @property --switch-offset {
   syntax: '<percentage>';
-  initial-value: 100%;
+  initial-value: 0%;
   inherits: false;
 }
 
 @keyframes switch-offset {
-    0% { --switch-offset: 100% }
-  100% { --switch-offset:   0% }
+    0% { --switch-offset:   0% }
+  100% { --switch-offset: 100% }
 }
 
 input[type="checkbox"].switch {
@@ -282,6 +282,8 @@ input[type="checkbox"].switch {
 
 input[type="checkbox"].switch:checked {
   animation-fill-mode: backwards;
+  animation-play-state: running;
+
 /*  animation-direction: reverse;*/
 /*  animation: 200ms switch-offset;*/
 /*  background-position-x: calc(var(--ctrl-switch-size) * 2);*/
