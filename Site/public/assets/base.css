@@ -260,7 +260,7 @@ input[type="checkbox"].switch {
 
   background: transparent linear-gradient(90deg, var(--clr-switch-act-bg) 50%, var(--clr-switch-bg) 50%);
   border: solid 1px var(--clr-border);
-  border-radius: 34%;
+  border-radius: 10px;
   color: var(--clr-300);
 }
 
