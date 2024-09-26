@@ -257,8 +257,8 @@ select {
 }
 
 @keyframes switch-offset {
-    0% { --switch-offset:   0% }
-  100% { --switch-offset: 100% }
+    0% { --switch-offset: 100% }
+  100% { --switch-offset:   0% }
 }
 
 input[type="checkbox"].switch {
