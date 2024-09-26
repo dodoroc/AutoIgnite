@@ -252,13 +252,11 @@ select {
 /* Switch + switch with label */
 
 /* custome property to allow animation via transition */
-/*
 @property --switch-offset {
   syntax: '<percentage>';
   initial-value: 0%;
   inherits: false;
 }
-*/
 
 input[type="checkbox"].switch {
   container-type: size;
@@ -266,6 +264,7 @@ input[type="checkbox"].switch {
   place-content: center start;
 
   padding: 0;
+/*  width: calc(var(--ctrl-switch-size) * 1.724 - 2px);*/
   width: calc(var(--ctrl-switch-size) * 2 - 2px);
   height: var(--ctrl-switch-size);
 
