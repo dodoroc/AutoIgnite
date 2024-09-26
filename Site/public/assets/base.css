@@ -384,7 +384,7 @@ input[type="checkbox"].switch:checked::before {
 
 .select-box [popover]:popover-open {
   & ~ .message,
-  & ~ .items {
+  & ~ .items label {
     background-color: var(--clr-ctrl-act-bg);
   }
 }
