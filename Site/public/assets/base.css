@@ -273,6 +273,7 @@ input[type="checkbox"].switch {
 /*  transition: background 200ms linear;*/
   animation: ani-switch-offset 200ms linear normal;
 /*  animation-fill-mode: forwards;*/
+  animation-iteration-count: 1;
   animation-play-state: paused;
   background: transparent linear-gradient(90deg, var(--clr-switch-act-bg) var(--switch-offset), var(--clr-switch-bg) var(--switch-offset));
   border: solid 1px var(--clr-border);
