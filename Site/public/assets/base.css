@@ -175,7 +175,8 @@ input:where([type="checkbox"], [type="radio"]) {
   width: var(--ctrl-ckrd-outer-size);
   height: var(--ctrl-ckrd-outer-size);
 }
-input:where([type="checkbox"], [type="radio"])::before {
+/*input:where([type="checkbox"], [type="radio"])::before {*/
+input:is([type="checkbox"], [type="radio"])::before {
   display: inline-block;
   content: '';
 
