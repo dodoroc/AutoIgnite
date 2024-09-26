@@ -322,6 +322,7 @@ input[type="checkbox"].switch:checked::before {
   display: inline-grid;
   place-content: center;
   font-size: 0.68rem;
+  line-height: var(--ctrl-vsize);
   line-height: 40px;
   content: '▼';
   color: var(--clr-border);
