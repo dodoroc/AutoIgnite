@@ -260,14 +260,15 @@ input[type="checkbox"].switch {
   height: var(--ctrl-switch-size);
 
   transition: background 200ms linear;
-  background: transparent linear-gradient(90deg, var(--clr-switch-act-bg) 0%, var(--clr-switch-bg) 0%);
+  background: transparent linear-gradient(90deg, var(--clr-switch-act-bg) 50%, var(--clr-switch-bg) 50%);
+  background-position-x: calc(var(--ctrl-switch-size) * -1);
   border: solid 1px var(--clr-border);
   border-radius: var(--ctrl-switch-radius);
   color: var(--clr-300);
 }
 
 input[type="checkbox"].switch:checked {
-  background: transparent linear-gradient(90deg, var(--clr-switch-act-bg) 100%, var(--clr-switch-bg) 100%);
+  background-position-x: calc(var(--ctrl-switch-size) * 2);
 /*  border: solid 1px var(--clr-switch-act-bg);*/
 /*  background-color: var(--clr-switch-act-bg);*/
 }
@@ -287,7 +288,7 @@ input[type="checkbox"].switch::before {
 /*  box-shadow: inset 0 0 0px var(--ctrl-ckrd-inner-size) var(--clr-switch-btn-bg);*/
   box-shadow: unset;
   background-color: var(--clr-switch-btn-bg);
-  border-radius: calc(var(--ctrl-switch-radius) - 1px);
+  border-radius: var(--ctrl-switch-radius);
 }
 
 input[type="checkbox"].switch:checked::before {
