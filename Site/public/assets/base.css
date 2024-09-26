@@ -250,7 +250,7 @@ input[type="checkbox"].switch {
   padding: 0;
   width: calc(var(--ctrl-ckrd-outer-size) * 2 + 2px);
   height: calc(var(--ctrl-ckrd-outer-size) + 2px);
-  width: calc(var(--ctrl-vsize) * 2);
+  width: round(down, calc(var(--ctrl-vsize) * 1.5));
   height: calc(var(--ctrl-vsize) + 0px);
 
   background: transparent linear-gradient(90deg, var(--clr-switch-act-bg) 50%, var(--clr-switch-bg) 50%);
