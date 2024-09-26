@@ -175,8 +175,7 @@ input:where([type="checkbox"], [type="radio"]) {
   width: var(--ctrl-ckrd-outer-size);
   height: var(--ctrl-ckrd-outer-size);
 }
-/*input:where([type="checkbox"], [type="radio"])::before {*/
-input:is([type="checkbox"], [type="radio"])::before {
+input:where([type="checkbox"], [type="radio"])::before {
   display: inline-block;
   content: '';
 
@@ -277,6 +276,7 @@ input[type="checkbox"].switch::before {
   transition: transform 200ms linear;
   transform: translateX(0);
 /*  box-shadow: inset 0 0 0px var(--ctrl-ckrd-inner-size) var(--clr-switch-btn-bg);*/
+  box-shadow: unset;
   background-color: var(--clr-switch-btn-bg);
   color: var(--clr-text);
 }
