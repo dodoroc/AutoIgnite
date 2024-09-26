@@ -343,7 +343,6 @@ input[type="checkbox"].switch:checked::before {
 
   min-height: var(--ctrl-vsize);
   border: solid 1px var(--clr-border);
-  background-color: var(--clr-ctrl-bg);
 
   margin-top: calc(var(--ctrl-vsize) - 1px);
   transition: margin-top 200ms linear;
@@ -359,13 +358,13 @@ input[type="checkbox"].switch:checked::before {
   overflow: hidden;
   white-space: nowrap;
 
-  transition: background-color 200ms linear;
+  background-color: var(--clr-ctrl-bg);
 }
 
 .select-box .message {
   height: var(--ctrl-vsize);
   border: solid 1px var(--clr-border);
-  background-color: var(--clr-ctrl-bg);
+  transition: background-color 200ms linear;
 }
 
 .select-box .items label {
