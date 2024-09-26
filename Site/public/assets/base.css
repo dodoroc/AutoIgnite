@@ -383,16 +383,17 @@ input[type="checkbox"].switch:checked::before {
 }
 
 .select-box [popover]:popover-open {
-  & ~ .message,
-  & ~ .items label {
+  & ~ .message {
     background-color: var(--clr-ctrl-act-bg);
   }
 }
 
 .select-box [popover]:popover-open ~ .items label {
+  background-color: var(--clr-ctrl-act-bg);
+
   &:has(:checked) {
     background-color: var(--clr-option-sel-bg);
-    color: var(--clr-option-sel-text);
+/*    color: var(--clr-option-sel-text);*/
   }
   &:has(:not(:checked)):hover {
     background-color: var(--clr-option-hov-bg);
