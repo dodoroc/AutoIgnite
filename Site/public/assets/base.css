@@ -257,12 +257,12 @@ select {
 }
 
 @keyframes ani-switch-offset-fwd {
-    0% { --switch-offset:   0% }
-  100% { --switch-offset: 100% }
+  from { --switch-offset:   0% }
+    to { --switch-offset: 100% }
 }
 @keyframes ani-switch-offset-bwd {
-  100% { --switch-offset: 100% }
-    0% { --switch-offset:   0% }
+  from { --switch-offset: 100% }
+    to { --switch-offset:   0% }
 }
 
 input[type="checkbox"].switch {
@@ -275,10 +275,11 @@ input[type="checkbox"].switch {
   height: var(--ctrl-switch-size);
 
 /*  transition: background 200ms linear;*/
-  animation: ani-switch-offset-bwd 200ms linear normal;
+/*  animation: ani-switch-offset-bwd 200ms linear normal;*/
 /*  animation-fill-mode: forwards;*/
 /*  animation-iteration-count: 0;*/
 /*  animation-play-state: paused;*/
+  --switch-offset: 0%;
   background: transparent linear-gradient(90deg, var(--clr-switch-act-bg) var(--switch-offset), var(--clr-switch-bg) var(--switch-offset));
   border: solid 1px var(--clr-border);
   border-radius: var(--ctrl-switch-radius);
@@ -286,7 +287,9 @@ input[type="checkbox"].switch {
 }
 
 input[type="checkbox"].switch:checked {
-  animation: ani-switch-offset-fwd 200ms linear normal;
+  --switch-offset: 100%;
+
+/*  animation: ani-switch-offset-fwd 200ms linear normal;*/
 /*  animation-iteration-count: 1;*/
 /*  animation-fill-mode: backwards;*/
 /*  animation-play-state: running;*/
