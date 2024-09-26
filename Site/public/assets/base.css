@@ -256,7 +256,7 @@ select {
   inherits: false;
 }
 
-@keyframes switch-offset {
+@keyframes ani-switch-offset {
     0% { --switch-offset:   0% }
   100% { --switch-offset: 100% }
 }
@@ -271,8 +271,8 @@ input[type="checkbox"].switch {
   height: var(--ctrl-switch-size);
 
 /*  transition: background 200ms linear;*/
-  animation: switch-offset 200ms linear normal;
-  animation-fill-mode: forwards;
+  animation: ani-switch-offset 200ms linear normal;
+/*  animation-fill-mode: forwards;*/
   animation-play-state: paused;
   background: transparent linear-gradient(90deg, var(--clr-switch-act-bg) var(--switch-offset), var(--clr-switch-bg) var(--switch-offset));
   border: solid 1px var(--clr-border);
@@ -281,7 +281,7 @@ input[type="checkbox"].switch {
 }
 
 input[type="checkbox"].switch:checked {
-  animation-fill-mode: backwards;
+/*  animation-fill-mode: backwards;*/
   animation-play-state: running;
 
 /*  animation-direction: reverse;*/
@@ -494,9 +494,9 @@ table tbody tr:hover td {
   background-position: 50% 50%;
   filter: blur(1.5px);
 
-  animation: 1s infinite spinner;
+  animation: 1s infinite ani-spinner;
 }
-@keyframes spinner {
+@keyframes ani-spinner {
     0% { background-position: calc(50% +  80.0px) calc(50% +   0.0px) }
     5% { background-position: calc(50% +  76.1px) calc(50% +  24.7px) }
    10% { background-position: calc(50% +  64.7px) calc(50% +  47.0px) }
