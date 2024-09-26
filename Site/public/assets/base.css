@@ -302,8 +302,8 @@ input[type="checkbox"].switch::before {
 
 input[type="checkbox"].switch:checked::before {
   content: 'ι';
-  transform: translateX(100cqh);
-  transform: translateX(var(--switch-wide));
+/*  transform: translateX(100cqh);*/
+  transform: translateX(calc(100cqh - var(--switch-wide)));
 }
 
 
