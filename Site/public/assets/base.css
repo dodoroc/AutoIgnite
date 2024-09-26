@@ -272,6 +272,7 @@ input[type="checkbox"].switch {
 
 /*  transition: background 200ms linear;*/
   animation: switch-offset 200ms linear normal;
+  animation-fill-mode: forwards;
   background: transparent linear-gradient(90deg, var(--clr-switch-act-bg) var(--switch-offset), var(--clr-switch-bg) var(--switch-offset));
   border: solid 1px var(--clr-border);
   border-radius: var(--ctrl-switch-radius);
@@ -279,7 +280,8 @@ input[type="checkbox"].switch {
 }
 
 input[type="checkbox"].switch:checked {
-  animation-direction: reverse;
+  animation-fill-mode: backwards;
+/*  animation-direction: reverse;*/
 /*  animation: 200ms switch-offset;*/
 /*  background-position-x: calc(var(--ctrl-switch-size) * 2);*/
 /*  border: solid 1px var(--clr-switch-act-bg);*/
