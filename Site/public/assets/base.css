@@ -229,6 +229,7 @@ label {
   display: inline-flex;
   align-items: center;
   justify-content: start;
+  white-space: nowrap;
 }
 
 select {
