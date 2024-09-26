@@ -316,7 +316,7 @@ input[type="checkbox"].switch:checked::before {
   pointer-events: none;
   position: absolute;
   z-index: 20;
-  right: 6px;
+  right: 8px;
   top: 0; bottom: 0;
   display: inline-grid;
   place-content: center;
