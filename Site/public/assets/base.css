@@ -250,6 +250,16 @@ select {
 
 
 /* Switch + switch with label */
+@property --switch-offset {
+  syntax: '<percentage>';
+  initial-value: 0%;
+  inherits: false;
+}
+
+@keyframes switch-offset {
+  100% { --switch-offset: 100% }
+}
+
 input[type="checkbox"].switch {
   container-type: size;
   display: inline-grid;
@@ -260,15 +270,15 @@ input[type="checkbox"].switch {
   height: var(--ctrl-switch-size);
 
   transition: background 200ms linear;
-  background: transparent linear-gradient(90deg, var(--clr-switch-act-bg) 50%, var(--clr-switch-bg) 50%);
-  background-position-x: calc(var(--ctrl-switch-size) * -1);
+  background: transparent linear-gradient(90deg, var(--clr-switch-act-bg) var(--switch-offset), var(--clr-switch-bg) var(--switch-offset));
   border: solid 1px var(--clr-border);
   border-radius: var(--ctrl-switch-radius);
   color: var(--clr-300);
 }
 
 input[type="checkbox"].switch:checked {
-  background-position-x: calc(var(--ctrl-switch-size) * 2);
+  animation: 200ms switch-offset;
+/*  background-position-x: calc(var(--ctrl-switch-size) * 2);*/
 /*  border: solid 1px var(--clr-switch-act-bg);*/
 /*  background-color: var(--clr-switch-act-bg);*/
 }
