@@ -249,8 +249,8 @@ input[type="checkbox"].switch {
   place-content: center start;
 
   padding: 0;
-  width: calc(var(--ctrl-switch-size) * 2 + 2px);
-  height: calc(var(--ctrl-switch-size) + 2px);
+  width: calc(var(--ctrl-switch-size) * 2);
+  height: calc(var(--ctrl-switch-size) + 0);
 
   background: transparent linear-gradient(90deg, var(--clr-switch-act-bg) 50%, var(--clr-switch-bg) 50%);
 /*  border: solid 1px var(--clr-switch-bg);*/
