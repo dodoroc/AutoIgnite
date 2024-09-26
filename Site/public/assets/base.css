@@ -273,7 +273,7 @@ input[type="checkbox"].switch {
   border-radius: var(--ctrl-switch-radius);
   color: var(--clr-300);
 
-  transition: --switch-offset 200ms linear;
+  transition: --switch-offset 270ms linear;
   --switch-offset: 0%;
 }
 
@@ -291,7 +291,7 @@ input[type="checkbox"].switch::before {
   width: 100cqh;
   height: 100cqh;
 
-  transition: transform 340ms linear;
+  transition: transform 270ms linear;
   transform: translateX(0);
 /*  box-shadow: inset 0 0 0px var(--ctrl-ckrd-inner-size) var(--clr-switch-btn-bg);*/
   box-shadow: unset;
