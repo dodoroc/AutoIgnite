@@ -282,8 +282,9 @@ input[type="checkbox"].switch {
 }
 
 input[type="checkbox"].switch:checked {
+  animation-iteration-count: 1;
 /*  animation-fill-mode: backwards;*/
-  animation-play-state: running;
+/*  animation-play-state: running;*/
 
 /*  animation-direction: reverse;*/
 /*  animation: 200ms switch-offset;*/
