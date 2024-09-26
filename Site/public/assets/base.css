@@ -252,7 +252,7 @@ select {
 /* Switch + switch with label */
 @property --switch-offset {
   syntax: '<percentage>';
-  initial-value: 0%;
+  initial-value: 100%;
   inherits: false;
 }
 
@@ -273,6 +273,7 @@ input[type="checkbox"].switch {
 /*  transition: background 200ms linear;*/
   animation: switch-offset 200ms linear normal;
   animation-fill-mode: forwards;
+  animation-play-state: paused;
   background: transparent linear-gradient(90deg, var(--clr-switch-act-bg) var(--switch-offset), var(--clr-switch-bg) var(--switch-offset));
   border: solid 1px var(--clr-border);
   border-radius: var(--ctrl-switch-radius);
