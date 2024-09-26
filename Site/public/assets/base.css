@@ -250,7 +250,7 @@ input[type="checkbox"].switch {
   padding: 0;
   width: calc(var(--ctrl-ckrd-outer-size) * 2 + 2px);
   height: calc(var(--ctrl-ckrd-outer-size) + 2px);
-  width: 45px;
+  width: 46px;
   height: calc(var(--ctrl-vsize) + 0px);
 
   background: transparent linear-gradient(90deg, var(--clr-switch-act-bg) 50%, var(--clr-switch-bg) 50%);
@@ -271,8 +271,10 @@ input[type="checkbox"].switch::before {
   text-align: center;
   font-size: 88cqh;
   line-height: 88cqh;
+  font-size: 44cqh;
+  line-height: 44cqh;
 
-  width: 100cqh;
+  width: 50cqw;
   height: 100cqh;
 
   transition: transform 200ms linear;
