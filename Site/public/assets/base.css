@@ -4,6 +4,7 @@
   /* =ROW()*100 */
   /* =ROUND((3*A1^2)/35000 - (13*A1)/70 + 754/7) */
   --clr-100: hsl(120, 5%, 90%);
+  --clr-150: hsl(120, 5%, 82%);
   --clr-200: hsl(120, 5%, 74%);
   --clr-300: hsl(120, 5%, 60%);
   --clr-400: hsl(120, 5%, 47%);
@@ -17,7 +18,7 @@
 
 
   --clr-bkgd: var(--clr-800);
-  --clr-text: var(--clr-200);
+  --clr-text: var(--clr-150);
   --clr-border: var(--clr-400);
 
   --clr-ctrl-bg: var(--clr-800);
