@@ -526,7 +526,7 @@ table tbody tr:hover td {
   console.log(str);
 */
 
-/* Cloak is controlled by Vue in the mounted event */
+/* Cloak is controlled in the vue mounted event */
 [cloak] > :not(#spinner) {
   display: none;
 }
