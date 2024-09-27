@@ -544,8 +544,8 @@ table tbody tr:hover td {
 
 .info-abbr {
   display: inline-block;
-  width: 0.8em;
-  height: 0.8em;
+  font-size: 0.86em;
+  line-height: 1lh;
 }
 .info-abbr::after {
   content: 'ⓘ';

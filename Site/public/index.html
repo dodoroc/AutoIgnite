@@ -38,20 +38,22 @@
         display: grid;
         grid-template: auto auto auto / auto min-content;
         gap: 10px;
+
+        & .span-all-columns {
+          grid-column: 1 / -1;
+        }
       }
 
-      :where(form, search).aute .span-all-columns {
-        grid-column: 1 / -1;
+
+      :where(form, search).aute .sorting {
+        display: flex;
+        flex-flow: row nowrap;
+        gap: 10px;
       }
 
-      :where(form, search).aute span,
-      :where(form, search).aute label {
-/*        white-space: nowrap;*/
-      }
-      :where(form, search).aute > span {
+      :where(form, search).aute .counts {
         line-height: 0.77lh;
       }
-
 
 
 
@@ -114,13 +116,13 @@
       <div class="sorting span-all-columns">
         Sort by
         <label><input type="radio" name="sorted" value="df">Default</label>
-        <label><input type="radio" name="sorted" value="ky">Key<i class="info-abbr" title="Season and episode key"></i></label>
+        <label><input type="radio" name="sorted" value="ky">SE Key <i class="info-abbr" title="Season and episode key"></i></label>
         <label><input type="radio" name="sorted" value="da">aired on</label>
         <label><input type="radio" name="sorted" value="dw">watched on</label>
         <label><input type="radio" name="sorted" value="k">Key</label>
       </div>
 
-      <span class="span-all-columns">Found: {{model.source.count}} │ Filtered: {{model.filter.count}}</span>
+      <span class="counts span-all-columns">Found: {{model.source.count}} │ Filtered: {{model.filter.count}}</span>
     </search>
 
 
