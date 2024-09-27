@@ -481,7 +481,7 @@ table tbody tr:hover td {
   color: #0000;
 
 /*  background: no-repeat radial-gradient(var(--clr-100) 0px, var(--clr-500) 100px, var(--clr-800) 250px);*/
-  background: no-repeat radial-gradient(var(--clr-200) 0px, var(--clr-400) 100px, var(--clr-800) 250px);
+  background: no-repeat radial-gradient(var(--clr-200) 0px, var(--clr-600) 100px, var(--clr-800) 250px);
   background-clip: text;
   background-size: 80cqmin 80cqmin;
   background-position: 50% 50%;
