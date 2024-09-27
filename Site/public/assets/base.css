@@ -548,6 +548,6 @@ table tbody tr:hover td {
   height: 0.8em;
 }
 .info-abbr::after {
-  content: ⓘ;
+  content: 'ⓘ';
 }
 
