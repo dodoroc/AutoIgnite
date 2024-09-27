@@ -34,7 +34,7 @@
 
 
 
-      :where(form, search).aute {
+      .aute:where(form, search) {
         display: grid;
 /*        grid-template: repeat(auto-fill, minmax(10px, 1fr)) / auto min-content;*/
         grid-template: auto auto auto / auto min-content;
@@ -42,17 +42,17 @@
         gap: 10px;
       }
 
-      :where(form, search).aute span,
-      :where(form, search).aute select[name="filter-seriesid"],
-      :where(form, search).aute .select-box {
+      .aute:where(form, search) span,
+      .aute:where(form, search) select[name="filter-seriesid"],
+      .aute:where(form, search) .select-box {
         grid-column: 1 / -1;
       }
 
-      :where(form, search).aute span,
-      :where(form, search).aute label {
+      .aute:where(form, search) span,
+      .aute:where(form, search) label {
 /*        white-space: nowrap;*/
       }
-      :where(form, search).aute > span {
+      .aute:where(form, search) > span {
         line-height: 0.77lh;
       }
 
