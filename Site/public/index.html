@@ -42,7 +42,7 @@
         gap: 10px;
       }
 
-      :where(form, search).aute .all-columns {
+      :where(form, search).aute .span-all-columns {
         grid-column: 1 / -1;
       }
 
@@ -82,14 +82,14 @@
 
     <search class="aute" id="aute-filters" @submit.prevent @input="filterParamsChanged" @change="filterParamsChanged">
       <!--
-      <select name="filter-seriesid" v-model="model.source.seriesId">
+      <select class="span-all-clumns" name="filter-seriesid" v-model="model.source.seriesId">
         <option v-for="series in model.source.series" :value="series.seriesId">
           {{series.name}} ({{series.releaseYear}})
         </option>
       </select>
       -->
 
-      <button class="select-box all-columns" role="listbox" popovertarget="select-box-popover-sk443f">
+      <button class="select-box span-all-columns" role="listbox" popovertarget="select-box-popover-sk443f">
         <span popover id="select-box-popover-sk443f"></span>
         <span class="message">Select series</span>
         <span class="items">
@@ -115,7 +115,7 @@
         Unwatched only<input class="switch" type="checkbox" name="filter-unwatched" v-model="model.filter.params.unwatched">
       </label>
 
-      <label class="mleft mright all-columns">
+      <label class="mleft mright span-all-columns">
         Sort by
         <input type="radio" name="sorted" value="df">Default
         <input type="radio" name="sorted" value="ky">Key
@@ -124,7 +124,7 @@
         <input type="radio" name="sorted" value="k">Key
       </label>
 
-      <span class="all-columns">Found: {{model.source.count}} │ Filtered: {{model.filter.count}}</span>
+      <span class="span-all-columns">Found: {{model.source.count}} │ Filtered: {{model.filter.count}}</span>
     </search>
 
 
