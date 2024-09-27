@@ -34,25 +34,23 @@
 
 
 
-      .aute:where(form, search) {
+      :where(form, search).aute {
         display: grid;
 /*        grid-template: repeat(auto-fill, minmax(10px, 1fr)) / auto min-content;*/
-        grid-template: auto auto auto / auto min-content;
+        grid-template: auto auto auto / auto min-content min-content;
 
         gap: 10px;
       }
 
-      .aute:where(form, search) span,
-      .aute:where(form, search) select[name="filter-seriesid"],
-      .aute:where(form, search) .select-box {
+      :where(form, search).aute .all-columns {
         grid-column: 1 / -1;
       }
 
-      .aute:where(form, search) span,
-      .aute:where(form, search) label {
+      :where(form, search).aute span,
+      :where(form, search).aute label {
 /*        white-space: nowrap;*/
       }
-      .aute:where(form, search) > span {
+      :where(form, search).aute > span {
         line-height: 0.77lh;
       }
 
@@ -91,7 +89,7 @@
       </select>
       -->
 
-      <button class="select-box" role="listbox" popovertarget="select-box-popover-sk443f">
+      <button class="select-box all-columns" role="listbox" popovertarget="select-box-popover-sk443f">
         <span popover id="select-box-popover-sk443f"></span>
         <span class="message">Select series</span>
         <span class="items">
@@ -113,9 +111,20 @@
         v-model="model.filter.params.name"
       >
 
-      <label class="mleft">Unwatched only<input class="switch" type="checkbox" name="filter-unwatched" v-model="model.filter.params.unwatched"></label>
+      <label class="mleft">
+        Unwatched only<input class="switch" type="checkbox" name="filter-unwatched" v-model="model.filter.params.unwatched">
+      </label>
 
-      <span>Found: {{model.source.count}} │ Filtered: {{model.filter.count}}</span>
+      <label class="mleft mright all-columns">
+        Sort by
+        <input type="radio" name="sorted" value="df">Default
+        <input type="radio" name="sorted" value="ky">Key
+        <input type="radio" name="sorted" value="da">Aired on
+        <input type="radio" name="sorted" value="dw">Watched on
+        <input type="radio" name="sorted" value="k">Key
+      </label>
+
+      <span class="all-columns">Found: {{model.source.count}} │ Filtered: {{model.filter.count}}</span>
     </search>
 
 
