@@ -165,7 +165,7 @@ button:active, input:where([type="button"], [type="submit"], [type="reset"]):act
   background-color: var(--clr-btn-act-bg);
 }
 
-select:focus, textarea:focus, input:where([type="text"]):focus {
+select:focus, textarea:focus, input:not(:where([type="radio"],[type="checkbox"])):focus {
   background-color: var(--clr-ctrl-act-bg);
 }
 
@@ -230,7 +230,7 @@ label.bordered {
 }
 */
 
-button, input:where([type="text"]), select {
+button, input:not(:where([type="radio"],[type="checkbox"])), select {
   height: var(--ctrl-vsize);
 }
 label {
@@ -542,4 +542,12 @@ table tbody tr:hover td {
   overflow: auto hidden;
 }
 
+.info-abbr {
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+}
+.info-abbr::after {
+  content: ╪;
+}
 
