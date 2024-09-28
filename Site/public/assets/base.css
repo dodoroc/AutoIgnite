@@ -516,75 +516,33 @@ table tbody tr:hover td {
   overflow: auto hidden;
 }
 
-.cs {
-  display: inline-grid;
-  place-content: center;
 
-  width: auto;
-  height: 1.2em;
-  line-height: 1em;
-
-  aspect-ratio: 1;
-  border: solid 1px currentColor;
-  border-radius: 50%;
-}
-.cs::after {
-  content: 'i';
-}
-
-.c1::after {
-  display: inline-grid;
-  place-content: center;
-
-  width: auto;
-  height: 1.2em;
-  line-height: 1em;
-
-  aspect-ratio: 1;
-  border: solid 1px currentColor;
-  border-radius: 50%;
-  content: 'iℹⅈ';
-}
-.c2 {
-  display: inline-grid;
-  place-content: center;
-
-  width: auto;
-  height: 1.2em;
-  line-height: 1em;
-
-  aspect-ratio: 1;
-  border: solid 1px currentColor;
-  border-radius: 50%;
-  &::after {
-    font-size: 0.86em;
-    content: 'i';
-  }
-}
 .circ-sym {
-  &::after {
-    display: inline-block;
-    font-size: 0.86em;
-    /*line-height: 1lh;*/
-    aspect-ratio: 1;
-    border: solid 1px currentColor;
-    border-radius: 50%;
-    text-align: center;
+  display: inline-grid;
+  place-content: center;
+
+  width: auto;
+  height: 1.2em;
+  line-height: 1em;
+
+  aspect-ratio: 1;
+  border: solid 1px currentColor;
+  border-radius: 50%;
+
+  font-size: 0.86em;
+
+
+  &.nfo::after {
+    font-style: italic;
+    content: 'i¡';
   }
 
   &.qst::after {
-    content: '﹖';
-    content: '?';
-    content: '﹖';
-    content: '﹗';
+    content: '??';
   }
 
   &.exc::after {
-    content: 'ⓘ';
-    content: 'i';
-    content: 'ǃ';
-    content: '¡';
-
+    content: '!';
   }
 }
 
