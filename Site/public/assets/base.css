@@ -410,11 +410,9 @@ input[type="checkbox"].switch:checked::before {
 
   &:has(:checked) {
     background-color: var(--clr-option-sel-bg);
-/*    color: var(--clr-option-sel-text);*/
   }
   &:has(:not(:checked)):hover {
     background-color: var(--clr-option-hov-bg);
-/*    background-color: var(--clr-ctrl-bg);*/
   }
 }
 
