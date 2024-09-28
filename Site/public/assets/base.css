@@ -516,6 +516,13 @@ table tbody tr:hover td {
   overflow: auto hidden;
 }
 
+.cs {
+  display: inline-block;
+  aspect-ratio: 1;
+  border: solid 1px currentColor;
+  border-radius: 50%;
+
+}
 .circ-sym {
   &::after {
     display: inline-block;
