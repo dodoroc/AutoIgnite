@@ -516,14 +516,22 @@ table tbody tr:hover td {
   overflow: auto hidden;
 }
 
-.info-abbr {
+.circ-sym {
   display: inline-block;
   font-size: 0.86em;
-  line-height: 1lh;
+/*  line-height: 1lh;*/
+  aspect-ratio: 1;
+  border: solid 1px currentColor;
 }
-.info-abbr::after {
+.info-abbr.qst::after {
+  content: '﹖';
+  content: '?';
+}
+.info-abbr.exc::after {
   content: 'ⓘ';
 }
+
+
 
 
 .ckrd-marg {
