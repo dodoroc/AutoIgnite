@@ -517,22 +517,19 @@ table tbody tr:hover td {
 }
 
 .cs {
-  display: inline-block;
-  aspect-ratio: 1;
-  border: solid 1px currentColor;
-  border-radius: 50%;
-
   display: inline-grid;
   place-content: center;
+
   width: auto;
   height: 1.2em;
   line-height: 1em;
+
   aspect-ratio: 1;
   border: solid 1px currentColor;
   border-radius: 50%;
 }
 .cs::after {
-  content: 'ⓘ';
+  content: 'i';
 }
 .circ-sym {
   &::after {
