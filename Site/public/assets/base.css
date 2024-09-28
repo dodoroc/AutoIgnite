@@ -551,7 +551,7 @@ table tbody tr:hover td {
 .ckrd-marg {
   &.ckrd-left  input:is([type="checkbox"], [type="radio"]) { margin-left: 0.67ch }
   &.ckrd-right input:is([type="checkbox"], [type="radio"]) { margin-right: 0.67ch }
-  &.ckrd-both  input:is([type="checkbox"], [type="radio"]) { margin: inherit 0.67ch }
+  &.ckrd-both  input:is([type="checkbox"], [type="radio"]) { margin-left: 0.67ch; margin-right: 0.67ch }
 }
 
 /*
