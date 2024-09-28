@@ -543,7 +543,7 @@ table tbody tr:hover td {
   aspect-ratio: 1;
   border: solid 1px currentColor;
   border-radius: 50%;
-  content: 'i';
+  content: 'iℹⅈ';
 }
 
 .circ-sym {
