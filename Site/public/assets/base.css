@@ -534,11 +534,11 @@ table tbody tr:hover td {
 
   &.nfo::after {
     font-style: italic;
-    content: 'i¡';
+    content: 'i';
   }
 
   &.qst::after {
-    content: '??';
+    content: '?';
   }
 
   &.exc::after {

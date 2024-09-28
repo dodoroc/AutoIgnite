@@ -54,7 +54,7 @@
         }
       }
 
-      search.aute .sorting .info-abbr::after {
+      search.aute .sorting .circ-sym {
         margin: inherit 0.67ch;
       }
 
@@ -115,8 +115,8 @@
         Sort by
         <label><input type="radio" name="sorted" value="df">default</label>
         <label><input type="radio" name="sorted" value="ky">SE<i class="circ-sym qst" title="Season and episode key"></i>key</label>
-        <label><input type="radio" name="sorted" value="da">aired on <i class="circ-sym exc"></i></label>
-        <label><input type="radio" name="sorted" value="dw">watched on <i class="circ-sym nfo"></i></label>
+        <label><input type="radio" name="sorted" value="da">aired on</label>
+        <label><input type="radio" name="sorted" value="dw">watched on</label>
       </div>
 
       <span class="counts span-all-columns">Found: {{model.source.count}} │ Filtered: {{model.filter.count}}</span>
