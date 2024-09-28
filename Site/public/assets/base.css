@@ -530,11 +530,16 @@ table tbody tr:hover td {
   &.qst::after {
     content: '﹖';
     content: '?';
+    content: '﹖';
+    content: '﹗';
   }
 
   &.exc::after {
     content: 'ⓘ';
     content: 'i';
+    content: 'ǃ';
+    content: '¡';
+
   }
 }
 
