@@ -34,7 +34,7 @@
 
 
 
-      :where(form, search).aute {
+      search.aute {
         display: grid;
         grid-template: auto auto auto / auto min-content;
         gap: 10px;
@@ -42,36 +42,31 @@
         & .span-all-columns {
           grid-column: 1 / -1;
         }
+
+        & .sorting {
+          display: flex;
+          flex-flow: row nowrap;
+          gap: 10px;
+        }
+
+        & .counts {
+          line-height: 0.77lh;
+        }
       }
 
 
-      :where(form, search).aute .sorting {
-        display: flex;
-        flex-flow: row nowrap;
-        gap: 10px;
+      table.aute {
+        & :where(.nm, .ao, .wo, .sk) { width: auto }
+        & .nm { width: 100% }
+
+        & tr td:last-of-type {
+          text-align: right;
+        }
+
+        & td[colspan] {
+          text-align: center !important;
+        }
       }
-
-      :where(form, search).aute .counts {
-        line-height: 0.77lh;
-      }
-
-
-
-      table.aute .nm { width: 100% }
-      table.aute .ao { width: auto }
-      table.aute .wo { width: auto }
-      table.aute .sk { width: auto }
-
-      table.aute tr td:last-of-type {
-        text-align: right ;
-      }
-
-      table.aute td[colspan] {
-        text-align: center !important;
-      }
-
-
-
     </style>
 
     <script type="module" src="/assets/app.mjs"></script>
@@ -111,9 +106,9 @@
         v-model="model.filter.params.name"
       >
 
-      <label class="mleft">Unwatched only<input class="switch" type="checkbox" name="filter-unwatched" v-model="model.filter.params.unwatched"></label>
+      <label class="ckrd-marg.ckrd-left">Unwatched only<input class="switch" type="checkbox" name="filter-unwatched" v-model="model.filter.params.unwatched"></label>
 
-      <div class="sorting span-all-columns mright">
+      <div class="sorting span-all-columns ckrd-marg.ckrd-right">
         Sort by
         <label><input type="radio" name="sorted" value="df">Default</label>
         <label><input type="radio" name="sorted" value="ky">SE Key <i class="info-abbr" title="Season and episode key"></i></label>

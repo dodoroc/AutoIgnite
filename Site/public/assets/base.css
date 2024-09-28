@@ -134,6 +134,13 @@ body {
 
 /* == SIMPLE STYLED CONTROLS ======================================== */
 
+label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: start;
+  white-space: nowrap;
+}
+
 button, input, select, textarea {
   display: inline-flex;
   align-items: center;
@@ -157,20 +164,20 @@ textarea {
   align-items: start;
 }
 
-button, input:where([type="button"], [type="submit"], [type="reset"]) {
+button, input:is([type="button"], [type="submit"], [type="reset"]) {
   justify-content: center;
   background-color: var(--clr-btn-bg);
 }
-button:active, input:where([type="button"], [type="submit"], [type="reset"]):active {
+button:active, input:is([type="button"], [type="submit"], [type="reset"]):active {
   background-color: var(--clr-btn-act-bg);
 }
 
-select:focus, textarea:focus, input:not(:where([type="radio"],[type="checkbox"])):focus {
+select:focus, textarea:focus, input:not(:is([type="radio"],[type="checkbox"])):focus {
   background-color: var(--clr-ctrl-act-bg);
 }
 
 
-input:where([type="checkbox"], [type="radio"]) {
+input:is([type="checkbox"], [type="radio"]) {
   display: inline-grid;
   place-content: center;
 
@@ -178,7 +185,7 @@ input:where([type="checkbox"], [type="radio"]) {
   width: var(--ctrl-ckrd-outer-size);
   height: var(--ctrl-ckrd-outer-size);
 }
-input:where([type="checkbox"], [type="radio"])::before {
+input:is([type="checkbox"], [type="radio"])::before {
   display: inline-block;
   content: '';
 
@@ -190,7 +197,7 @@ input:where([type="checkbox"], [type="radio"])::before {
   transition: transform 200ms linear;
 }
 
-input:where([type="checkbox"], [type="radio"]):checked::before {
+input:is([type="checkbox"], [type="radio"]):checked::before {
   transform: scale(1);
 }
 
@@ -205,39 +212,8 @@ input:is([type="checkbox"], [type="radio"]):checked:not(:disabled) {
 }
 
 
-label.mleft input {
-  margin-left: 0.6ch;
-}
-label.mright input {
-  margin-right: 0.6ch;
-}
-/*
-label:has([type="checkbox"], [type="radio"]) {
-  column-gap: var(--ctrl-ckrd-gap);
-}
-label:has(+ [type="checkbox"], + [type="radio"]) {
-  margin-right: var(--ctrl-ckrd-gap);
-}
-input:is([type="checkbox"], [type="radio"]) + label {
-  margin-left: var(--ctrl-ckrd-gap);
-}
-
-label.bordered {
-  border: solid 1px var(--clr-border);
-  padding: 0 var(--ctrl-pad);
+button, input:not(:is([type="radio"],[type="checkbox"])), select {
   height: var(--ctrl-vsize);
-  white-space: nowrap;
-}
-*/
-
-button, input:not(:where([type="radio"],[type="checkbox"])), select {
-  height: var(--ctrl-vsize);
-}
-label {
-  display: inline-flex;
-  align-items: center;
-  justify-content: start;
-  white-space: nowrap;
 }
 
 select {
@@ -248,6 +224,7 @@ select {
   background-origin: content-box;
   background-repeat: no-repeat;
 }
+
 
 
 /* Switch + switch with label */
@@ -265,7 +242,6 @@ input[type="checkbox"].switch {
   place-content: center start;
 
   padding: 0;
-/*  width: calc(var(--ctrl-switch-size) * 1.724 - 2px);*/
   width: round(down, calc(var(--ctrl-switch-size) * 1.724), 2px);
   height: var(--ctrl-switch-size);
 
@@ -302,9 +278,7 @@ input[type="checkbox"].switch::before {
 
 input[type="checkbox"].switch:checked::before {
   content: 'ι';
-/*  transform: translateX(100cqh);*/
   transform: translateX(calc(100cqw - var(--ctrl-switch-size) + 2px));
-/*  transform: translateX(var(--switch-offx));*/
 }
 
 
@@ -411,6 +385,7 @@ input[type="checkbox"].switch:checked::before {
   &:has(:checked) {
     background-color: var(--clr-option-sel-bg);
   }
+
   &:has(:not(:checked)):hover {
     background-color: var(--clr-option-hov-bg);
   }
@@ -420,6 +395,7 @@ input[type="checkbox"].switch:checked::before {
   & ~ .items label:has(:not(:checked)) {
     height: 0;
   }
+
   & ~ .items {
     margin-top: 0;
   }
@@ -549,3 +525,17 @@ table tbody tr:hover td {
   content: 'ⓘ';
 }
 
+
+.ckrd-marg {
+  &.ckrd-left  input:is([type="checkbox"], [type="radio"]) { margin-left: 0.67ch }
+  &.ckrd-right input:is([type="checkbox"], [type="radio"]) { margin-right: 0.67ch }
+  &.ckrd-both  input:is([type="checkbox"], [type="radio"]) { margin: inherit 0.67ch }
+}
+
+/*
+label.bordered {
+  border: solid 1px var(--clr-border);
+  padding: 0 var(--ctrl-pad);
+  height: var(--ctrl-vsize);
+}
+*/
