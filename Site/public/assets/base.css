@@ -531,6 +531,21 @@ table tbody tr:hover td {
 .cs::after {
   content: 'i';
 }
+
+.c1::after {
+  display: inline-grid;
+  place-content: center;
+
+  width: auto;
+  height: 1.2em;
+  line-height: 1em;
+
+  aspect-ratio: 1;
+  border: solid 1px currentColor;
+  border-radius: 50%;
+  content: 'i';
+}
+
 .circ-sym {
   &::after {
     display: inline-block;
