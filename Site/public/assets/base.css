@@ -517,20 +517,26 @@ table tbody tr:hover td {
 }
 
 .circ-sym {
-  display: inline-block;
-  font-size: 0.86em;
-/*  line-height: 1lh;*/
-  aspect-ratio: 1;
-  border: solid 1px currentColor;
-}
-.info-abbr.qst::after {
-  content: '﹖';
-  content: '?';
-}
-.info-abbr.exc::after {
-  content: 'ⓘ';
-}
+  &::after {
+    display: inline-block;
+    font-size: 0.86em;
+    /*line-height: 1lh;*/
+    aspect-ratio: 1;
+    border: solid 1px currentColor;
+    border-radius: 50%;
+    text-align: center;
+  }
 
+  &.qst::after {
+    content: '﹖';
+    content: '?';
+  }
+
+  &.exc::after {
+    content: 'ⓘ';
+    content: 'i';
+  }
+}
 
 
 
