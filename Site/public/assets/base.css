@@ -529,7 +529,7 @@ table tbody tr:hover td {
   border: solid 1px currentColor;
   border-radius: 50%;
 
-  font-size: 0.86em;
+  font-size: 0.84em;
 
 
   &.nfo::after {
@@ -549,9 +549,10 @@ table tbody tr:hover td {
 
 
 .ckrd-marg {
-  &.ckrd-left  input:is([type="checkbox"], [type="radio"]) { margin-left: 0.67ch }
-  &.ckrd-right input:is([type="checkbox"], [type="radio"]) { margin-right: 0.67ch }
-  &.ckrd-both  input:is([type="checkbox"], [type="radio"]) { margin-left: 0.67ch; margin-right: 0.67ch }
+  --marg-size: var(--marg-size);
+  &.ckrd-left  input:is([type="checkbox"], [type="radio"]) { margin-left: var(--marg-size) }
+  &.ckrd-right input:is([type="checkbox"], [type="radio"]) { margin-right: var(--marg-size) }
+  &.ckrd-both  input:is([type="checkbox"], [type="radio"]) { margin-left: var(--marg-size); margin-right: var(--marg-size) }
 }
 
 /*
