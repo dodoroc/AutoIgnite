@@ -36,7 +36,7 @@
 
       search.aute {
         display: grid;
-        grid-template: auto auto auto / auto min-content;
+        grid-template: auto auto auto / 1fr min-content;
         gap: 10px;
 
         & .span-all-columns {
@@ -106,12 +106,12 @@
         v-model="model.filter.params.name"
       >
 
-      <label class="ckrd-marg.ckrd-left">Unwatched only<input class="switch" type="checkbox" name="filter-unwatched" v-model="model.filter.params.unwatched"></label>
+      <label class="ckrd-marg ckrd-left">Unwatched only<input class="switch" type="checkbox" name="filter-unwatched" v-model="model.filter.params.unwatched"></label>
 
-      <div class="sorting span-all-columns ckrd-marg.ckrd-right">
+      <div class="sorting span-all-columns ckrd-marg ckrd-right">
         Sort by
-        <label><input type="radio" name="sorted" value="df">Default</label>
-        <label><input type="radio" name="sorted" value="ky">SE Key <i class="info-abbr" title="Season and episode key"></i></label>
+        <label><input type="radio" name="sorted" value="df">default</label>
+        <label><input type="radio" name="sorted" value="ky">s.e. key <i class="info-abbr" title="Season and episode key"></i></label>
         <label><input type="radio" name="sorted" value="da">aired on</label>
         <label><input type="radio" name="sorted" value="dw">watched on</label>
       </div>
