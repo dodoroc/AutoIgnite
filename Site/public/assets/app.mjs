@@ -138,7 +138,7 @@ const app = createApp({
       model.source.loadTracked().then(() => {
         model.filter.apply();
         // after(1100).then(this.uncloak);
-        after(1100).then(document.body.removeAttribute('cloak'));
+        after(1100).then(() => document.body.removeAttribute('cloak'));
       });
     });
   },
