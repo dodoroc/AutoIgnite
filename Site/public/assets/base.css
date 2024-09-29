@@ -134,14 +134,6 @@ body {
 
 /* == SIMPLE STYLED CONTROLS ======================================== */
 
-label {
-  display: inline-flex;
-  align-items: center;
-  justify-content: start;
-  white-space: nowrap;
-  line-height: 0;
-}
-
 button, input, select, textarea {
   display: inline-flex;
   align-items: center;
@@ -552,4 +544,13 @@ table tbody tr:hover td {
   &.ckrd-left  input:is([type="checkbox"], [type="radio"]) { margin-left: var(--marg-size) }
   &.ckrd-right input:is([type="checkbox"], [type="radio"]) { margin-right: var(--marg-size) }
   &.ckrd-both  input:is([type="checkbox"], [type="radio"]) { margin-left: var(--marg-size); margin-right: var(--marg-size) }
+}
+
+
+.vert-align {
+  display: inline-flex;
+  align-items: center;
+  justify-content: start;
+  white-space: nowrap;
+  line-height: 0;
 }
