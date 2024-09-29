@@ -139,6 +139,7 @@ label {
   align-items: center;
   justify-content: start;
   white-space: nowrap;
+  line-height: 0;
 }
 
 button, input, select, textarea {
