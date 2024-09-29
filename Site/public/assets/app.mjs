@@ -2,8 +2,17 @@
 import { createApp, reactive } from 'https://unpkg.com/petite-vue?module';
 
 const appStart_ms = Date.now();
-// const after = (delta_ms) => {
-// };
+
+const after = ((start_ms) => {
+  return delta_ms => {
+    const ms = Math.max(0, delta_ms - (Date.now() - start_ms));
+    return new Promise(r => setTimeout(r, ms));
+  };
+})(Date.now());
+
+
+
+
 
 const model = reactive({
   source: {
@@ -13,8 +22,6 @@ const model = reactive({
     count: 0,
 
     loadSeries() {
-      // console.log('loadSeries called');
-
       return fetch(`http://192.168.50.200:9080/series`)
       .then(data => data.json())
       .then(json => {
@@ -26,8 +33,6 @@ const model = reactive({
     },
 
     loadTracked() {
-      // console.log('loadPrograms called', this.seriesId);
-
       if (this.programs[this.seriesId] && Array.isArray(this.programs[this.seriesId])) {
         return Promise.resolve();
       }
@@ -117,10 +122,10 @@ const app = createApp({
     return str;
   },
 
-  after(delta_ms, start_ms) {
-    const ms = Math.max(0, delta_ms - (Date.now() - start_ms));
-    return new Promise(r => setTimeout(r, ms));
-  },
+  // after(delta_ms, start_ms) {
+  //   const ms = Math.max(0, delta_ms - (Date.now() - start_ms));
+  //   return new Promise(r => setTimeout(r, ms));
+  // },
   uncloak() {
     document.body.removeAttribute('cloak');
   },
@@ -130,7 +135,8 @@ const app = createApp({
     model.source.loadSeries().then(() => {
       model.source.loadTracked().then(() => {
         model.filter.apply();
-        this.after(1100, appStart_ms).then(this.uncloak);
+        // this.after(1100, appStart_ms).then(this.uncloak);
+        after(1100).then(this.uncloak);
       });
     });
   },

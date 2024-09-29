@@ -546,19 +546,9 @@ table tbody tr:hover td {
   }
 }
 
-
-
 .ckrd-marg {
   --marg-size: 0.67ch;
   &.ckrd-left  input:is([type="checkbox"], [type="radio"]) { margin-left: var(--marg-size) }
   &.ckrd-right input:is([type="checkbox"], [type="radio"]) { margin-right: var(--marg-size) }
   &.ckrd-both  input:is([type="checkbox"], [type="radio"]) { margin-left: var(--marg-size); margin-right: var(--marg-size) }
 }
-
-/*
-label.bordered {
-  border: solid 1px var(--clr-border);
-  padding: 0 var(--ctrl-pad);
-  height: var(--ctrl-vsize);
-}
-*/
