@@ -1,9 +1,10 @@
-// import { createApp, reactive } from 'https://unpkg.com/petite-vue@0.4.1/dist/petite-vue.es.js?module';
-import { createApp, reactive } from 'https://unpkg.com/petite-vue?module';
+// import { createApp, reactive } from 'https://unpkg.com/petite-vue?module';
+import { createApp, reactive } from 'https://unpkg.com/petite-vue@0.4.1/dist/petite-vue.es.js?module';
 
-const appStart_ms = Date.now();
 
-const after = ((start_ms) => {
+// Return a function that returns a promise after a specified timeout
+// used to hide the loading spinner. Will always resolve after a timeout >= 0ms.
+const after = (start_ms => {
   return delta_ms => {
     const ms = Math.max(0, delta_ms - (Date.now() - start_ms));
     return new Promise(r => setTimeout(r, ms));
@@ -122,10 +123,6 @@ const app = createApp({
     return str;
   },
 
-  // after(delta_ms, start_ms) {
-  //   const ms = Math.max(0, delta_ms - (Date.now() - start_ms));
-  //   return new Promise(r => setTimeout(r, ms));
-  // },
   uncloak() {
     document.body.removeAttribute('cloak');
   },
@@ -135,7 +132,6 @@ const app = createApp({
     model.source.loadSeries().then(() => {
       model.source.loadTracked().then(() => {
         model.filter.apply();
-        // this.after(1100, appStart_ms).then(this.uncloak);
         after(1100).then(this.uncloak);
       });
     });
