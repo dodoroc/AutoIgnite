@@ -134,6 +134,13 @@ body {
 
 /* == SIMPLE STYLED CONTROLS ======================================== */
 
+:where(label) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: start;
+  white-space: nowrap;
+}
+
 button, input, select, textarea {
   display: inline-flex;
   align-items: center;
@@ -546,10 +553,3 @@ table tbody tr:hover td {
   &.ckrd-both  input:is([type="checkbox"], [type="radio"]) { margin-left: var(--marg-size); margin-right: var(--marg-size) }
 }
 
-
-.vert-align {
-  display: inline-flex;
-  align-items: center;
-  justify-content: start;
-  white-space: nowrap;
-}

@@ -44,7 +44,11 @@
         }
 
         & .sorting {
+          display: flex;
+          align-items: center;
+          justify-content: start;
           gap: 0 15px;
+          white-space: nowrap;
         }
 
         & .counts {
@@ -108,15 +112,14 @@
         v-model="model.filter.params.name"
       >
 
-      <label class="ckrd-marg ckrd-left vert-align">Unwatched only<input class="switch" type="checkbox" name="filter-unwatched" v-model="model.filter.params.unwatched"></label>
+      <label class="ckrd-marg ckrd-left">Unwatched only<input class="switch" type="checkbox" name="filter-unwatched" v-model="model.filter.params.unwatched"></label>
 
-      <div class="sorting span-all-columns ckrd-marg ckrd-right vert-align">
+      <div class="sorting span-all-columns ckrd-marg ckrd-right">
         Sort by
         <label><input type="radio" name="sorted" value="df">Default</label>
         <label><input type="radio" name="sorted" value="ky">SE key<i class="circ-sym qst" title="Season and episode key"></i></label>
         <label><input type="radio" name="sorted" value="da">Aired on</label>
         <label><input type="radio" name="sorted" value="dw">Watched on</label>
-        <label><input type="checkbox" name="sorted" value="dw">gggWatched on</label>
       </div>
 
       <span class="counts span-all-columns">Found: {{model.source.count}} │ Filtered: {{model.filter.count}}</span>
