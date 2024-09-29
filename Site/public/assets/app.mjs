@@ -12,9 +12,6 @@ const after = (start_ms => {
 })(Date.now());
 
 
-
-
-
 const model = reactive({
   source: {
     series: [],
@@ -124,10 +121,11 @@ const app = createApp({
   },
 
   seep(str) {
-    if (str && str.length == 7) {
-      return str.replace(/^(\d{4})(\d{3})$/, '$1.$2')
-    }
-    return str;
+    return str.replace(/^(\d{4})(\d{3})$/, '$1.$2')
+    // if (str && str.length == 7) {
+    //   return str.replace(/^(\d{4})(\d{3})$/, '$1.$2')
+    // }
+    // return str;
   },
 
   uncloak() {
@@ -139,7 +137,8 @@ const app = createApp({
     model.source.loadSeries().then(() => {
       model.source.loadTracked().then(() => {
         model.filter.apply();
-        after(1100).then(this.uncloak);
+        // after(1100).then(this.uncloak);
+        after(1100).then(document.body.removeAttribute('cloak'));
       });
     });
   },
