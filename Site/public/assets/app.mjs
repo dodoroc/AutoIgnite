@@ -123,7 +123,7 @@ const app = createApp({
 
   changedDebounceId: 0,
   paramsChanged(ev) {
-
+    console.dir(ev.target);
     // ev.type -> input, select, checkbox
     switch (true) {
       case (ev == null): /* explicit == */
