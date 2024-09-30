@@ -93,7 +93,8 @@ const model = reactive({
     compile() {
       switch (this.params.column) {
         default:
-        case 'df': this.sort_fnc = (a,b) => 0; break;
+        // case 'df': this.sort_fnc = (a,b) => 0; break;
+        case 'df': this.sort_fnc = null; break;
         case 'nm': this.sort_fnc = (a,b) => a.name.localeCompare(b.name, 'ks-base'); break;
         case 'ky': this.sort_fnc = (a,b) => a.seepKey.localeCompare(b.seepKey, 'kn-true'); break;
         case 'da': this.sort_fnc = (a,b) => a.airedOn?.localeCompare(b.airedOn, 'kn-true'); break;
@@ -102,7 +103,9 @@ const model = reactive({
     },
 
     apply() {
-      model.result.values.sort(model.sort.sort_fnc);
+      if (this.sort_fnc) {
+        model.result.values.sort(model.sort.sort_fnc);
+      }
     }
   },
 
