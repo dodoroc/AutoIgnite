@@ -78,8 +78,8 @@ const model = reactive({
         res = res.filter(fnc);
       }
 
-      this.result.values = res;
-      this.result.count = res.length;
+      model.result.values = res;
+      model.result.count = res.length;
     }
   },
 
@@ -102,7 +102,7 @@ const model = reactive({
     },
 
     apply() {
-      this.result.values.sort(this.sort.sort_fnc);
+      model.result.values.sort(this.sort.sort_fnc);
     }
   },
 
@@ -162,9 +162,11 @@ const app = createApp({
 
   mounted() {
     model.filter.compile();
+    model.sort.compile();
     model.source.loadSeries().then(() => {
       model.source.loadTracked().then(() => {
         model.filter.apply();
+        model.sort.apply();
         after(1100).then(this.uncloak);
       });
     });
