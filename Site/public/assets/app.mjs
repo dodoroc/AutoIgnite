@@ -96,8 +96,8 @@ const model = reactive({
         case 'df': this.sort_fnc = (a,b) => 0; break;
         case 'nm': this.sort_fnc = (a,b) => a.name.localeCompare(b.name, 'ks-base'); break;
         case 'ky': this.sort_fnc = (a,b) => a.seepKey.localeCompare(b.seepKey, 'kn-true'); break;
-        case 'da': this.sort_fnc = (a,b) => a.airedOn.localeCompare(b.airedOn, 'kn-true'); break;
-        case 'dw': this.sort_fnc = (a,b) => a.watchedOn.localeCompare(b.watchedOn, 'kn-true'); break;
+        case 'da': this.sort_fnc = (a,b) => a.airedOn?.localeCompare(b.airedOn, 'kn-true'); break;
+        case 'dw': this.sort_fnc = (a,b) => a.watchedOn?.localeCompare(b.watchedOn, 'kn-true'); break;
       }
     },
 
