@@ -49,7 +49,7 @@ const model = reactive({
   result: {
     values: [],
     count: 0,
-  }
+  },
 
   filter: {
     params: {
