@@ -135,8 +135,8 @@
           <tr><td>Name</td><td>Aired On</td><td>Watched</td><td>SE key</td></tr>
         </thead>
 
-        <tbody v-if="model.filter.results.length">
-          <tr v-for="program in model.filter.results" :key="model.source.seriesId+'-'+program.seepKey">
+        <tbody v-if="model.result.values.length">
+          <tr v-for="program in model.result.values" :key="model.source.seriesId+'-'+program.seepKey">
             <td>{{program.name}}</td>
             <td>{{program.airedOn}}</td>
             <td>{{program.watchedOn}}</td>
