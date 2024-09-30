@@ -102,7 +102,7 @@ const model = reactive({
     },
 
     apply() {
-      model.result.values.sort(this.sort.sort_fnc);
+      model.result.values.sort(model.sort.sort_fnc);
     }
   },
 
