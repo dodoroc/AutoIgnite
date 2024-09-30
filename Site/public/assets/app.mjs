@@ -132,7 +132,7 @@ const app = createApp({
         model.filter.compile(ev);
         break;
       case (ev.type === 'change' && ev.target.name === 'sorted' && ev.target.value === 'df'):
-        model.filter.compile(ev);
+        model.filter.apply();
       case (ev.type === 'change' && ev.target.name === 'sorted'):
         model.sort.compile(ev);
         break;
