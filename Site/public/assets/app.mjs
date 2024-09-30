@@ -124,7 +124,7 @@ const app = createApp({
   changedDebounceId: 0,
   paramsChanged(ev) {
     console.dir(ev);
-    console.log(ev.type, ev.target, ev.target.name, ev.target.value, ev.target.checked)
+    console.log(`${ev.type}  n: ${ev.target.name}  v: ${ev.target.value} chk: ${ev.target.checked}`);
     // ev.type -> input, select, checkbox
     switch (true) {
       case (ev == null): /* explicit == */
