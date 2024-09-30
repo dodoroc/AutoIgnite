@@ -132,20 +132,23 @@ const app = createApp({
       case (ev.type === 'change' && ev.target.name === 'filter-seriesid'):
       case (ev.type === 'change' && ev.target.name === 'filter-unwatched'):
         model.filter.compile(ev);
-        model.source.loadTracked().then(() => {
-          model.filter.apply();
-        });
-      break;
+        break;
+      case (ev.type === 'change' && ev.target.name === 'sorted'):
+        model.sort.compile(ev);
+        break;
 
       case (ev.type === 'input' && ev.target.name === 'filter-name'):
         clearTimeout(this.changedDebounceId);
         this.changedDebounceId = setTimeout(this.filterParamsChanged, 500);
       break;
 
-      default:
-        // alert('filterParamsChanged switch default should not be chosen');
-        // console.error('filterParamsChanged switch default should not be chosen');
+      default: return;
     }
+
+    model.source.loadTracked().then(() => {
+      model.filter.apply();
+      model.sort.apply();
+    });
   },
 
   seep(str) {
