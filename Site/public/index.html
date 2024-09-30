@@ -112,14 +112,15 @@
         v-model="model.filter.params.name"
       >
 
-      <label class="ckrd-marg ckrd-left">Unwatched only<input class="switch" type="checkbox" name="filter-unwatched" xv-2model="m2odel.filter.params.unwatched"></label>
+      <label class="ckrd-marg ckrd-left">Unwatched only<input class="switch" type="checkbox" name="filter-unwatched" v-model="model.filter.params.unwatched"></label>
 
       <div class="sorting span-all-columns ckrd-marg ckrd-right">
         Sort by
-        <label><input type="radio" name="sorted" value="df">Default</label>
-        <label><input type="radio" name="sorted" value="ky">SE key<i class="circ-sym qst" title="Season and episode key"></i></label>
-        <label><input type="radio" name="sorted" value="da">Aired on</label>
-        <label><input type="radio" name="sorted" value="dw">Watched on</label>
+        <label><input type="radio" name="sorted" value="df" v-model="model.sort.params.column">Default</label>
+        <label><input type="radio" name="sorted" value="nm" v-model="model.sort.params.column">Name</label>
+        <label><input type="radio" name="sorted" value="ky" v-model="model.sort.params.column">SE key<i class="circ-sym qst" title="Season and episode key"></i></label>
+        <label><input type="radio" name="sorted" value="da" v-model="model.sort.params.column">Aired on</label>
+        <label><input type="radio" name="sorted" value="dw" v-model="model.sort.params.column">Watched on</label>
       </div>
 
       <span class="counts span-all-columns">Found: {{model.source.count}} │ Filtered: {{model.filter.count}}</span>

@@ -46,27 +46,31 @@ const model = reactive({
     },
   },
 
+  result: {
+    values: [],
+    count: 0,
+  }
+
   filter: {
-    results: [],
     params: {
       name: '',
       unwatched: false,
     },
     actions: [],
-    count: 0,
 
     compile() {
       this.actions = [];
+
       if (this.params.unwatched) this.actions.push(o => !o.watchedOn);
-      // if (this.params.name.length) this.actions.push(o => o.name.includes(this.params.name));
+
       if (this.params.name.length) {
         try {
           const rex = new RegExp(this.params.name, 'i');
-          // this.actions.push(o => -1 < o.name.search(rex));
           this.actions.push(o => rex.test(o.name));
         } catch (err) {}
       }
     },
+
     apply() {
       let res = model.source.programs[model.source.seriesId];
 
@@ -74,10 +78,34 @@ const model = reactive({
         res = res.filter(fnc);
       }
 
-      this.results = res;
-      this.count = res.length;
+      this.result.values = res;
+      this.result.count = res.length;
     }
   },
+
+  sort: {
+    // sort_fnc: () => 0,
+    sort_fnc: null,
+    params: {
+      column: 'df',
+    },
+
+    compile() {
+      switch (this.params.column) {
+        default:
+        case 'df': this.sort_fnc = (a,b) => 0; break;
+        case 'nm': this.sort_fnc = (a,b) => a.name.localeCompare(b.name, 'ks-base'); break;
+        case 'ky': this.sort_fnc = (a,b) => a.seepKey.localeCompare(b.seepKey, 'kn-true'); break;
+        case 'da': this.sort_fnc = (a,b) => a.airedOn.localeCompare(b.airedOn, 'ka-true-kn-true'); break;
+        case 'dw': this.sort_fnc = (a,b) => a.watchedOn.localeCompare(b.watchedOn, 'ka-true-kn-true'); break;
+      }
+    },
+
+    apply() {
+      this.result.values.sort(this.sort.sort_fnc);
+    }
+  },
+
 
 
 });
@@ -137,8 +165,7 @@ const app = createApp({
     model.source.loadSeries().then(() => {
       model.source.loadTracked().then(() => {
         model.filter.apply();
-        // after(1100).then(this.uncloak);
-        after(1100).then(() => document.body.removeAttribute('cloak'));
+        after(1100).then(this.uncloak);
       });
     });
   },
