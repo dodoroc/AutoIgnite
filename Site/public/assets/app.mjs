@@ -13,6 +13,11 @@ const after = (start_ms => {
 
 
 const model = reactive({
+  result: {
+    values: [],
+    count: 0,
+  },
+
   source: {
     series: [],
     seriesId: '',
@@ -44,11 +49,6 @@ const model = reactive({
         }
       });
     },
-  },
-
-  result: {
-    values: [],
-    count: 0,
   },
 
   filter: {
@@ -84,7 +84,6 @@ const model = reactive({
   },
 
   sort: {
-    // sort_fnc: () => 0,
     sort_fnc: null,
     params: {
       column: 'df',
@@ -93,7 +92,6 @@ const model = reactive({
     compile() {
       switch (this.params.column) {
         default:
-        // case 'df': this.sort_fnc = (a,b) => 0; break;
         case 'df': this.sort_fnc = null; break;
         case 'nm': this.sort_fnc = (a,b) => a.name.localeCompare(b.name, 'ks-base'); break;
         case 'ky': this.sort_fnc = (a,b) => a.seepKey.localeCompare(b.seepKey, 'kn-true'); break;
@@ -124,7 +122,7 @@ const app = createApp({
   model,
 
   changedDebounceId: 0,
-  filterParamsChanged(ev) {
+  paramsChanged(ev) {
 
     // ev.type -> input, select, checkbox
     switch (true) {
@@ -133,13 +131,15 @@ const app = createApp({
       case (ev.type === 'change' && ev.target.name === 'filter-unwatched'):
         model.filter.compile(ev);
         break;
+      case (ev.type === 'change' && ev.target.name === 'sorted' && ev.target.value === 'df'):
+        model.filter.compile(ev);
       case (ev.type === 'change' && ev.target.name === 'sorted'):
         model.sort.compile(ev);
         break;
 
       case (ev.type === 'input' && ev.target.name === 'filter-name'):
         clearTimeout(this.changedDebounceId);
-        this.changedDebounceId = setTimeout(this.filterParamsChanged, 500);
+        this.changedDebounceId = setTimeout(this.paramsChanged, 500);
       break;
 
       default: return;

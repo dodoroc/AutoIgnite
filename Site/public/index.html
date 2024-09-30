@@ -81,7 +81,7 @@
 
     <h1>AutoIgnite Dashboard</h1>
 
-    <search class="aute" id="aute-filters" @submit.prevent @input="filterParamsChanged" @change="filterParamsChanged">
+    <search class="aute" id="aute-filters" @submit.prevent @input="paramsChanged" @change="paramsChanged">
       <!--
       <select class="span-all-clumns" name="filter-seriesid" v-model="model.source.seriesId">
         <option v-for="series in model.source.series" :value="series.seriesId">
