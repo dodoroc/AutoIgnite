@@ -1,8 +1,8 @@
-// let values = [];
+let values = [];
 let zz = 42;
 
 export default {
-  values: [],
+  // values: [],
 
   get values() {
     return this.values;
