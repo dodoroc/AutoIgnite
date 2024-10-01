@@ -74,7 +74,7 @@ const model = reactive({
         return Promise.resolve();
       }
 
-      return fetch(`http://192.168.50.200:9080/series/${this.seriesId}/tracked`)
+      return fetch(`http://192.168.50.200:9080/series/${this.series.activeId}/tracked`)
       .then(data => data.json())
       .then(json => {
         if (json?.constructor === Array) {
