@@ -1,4 +1,5 @@
-var values = [];
+let values = [];
+let zz = 42;
 
 export default {
   // values: [],
@@ -16,6 +17,7 @@ export default {
   },
 
   get length() {
+    console.log(zz, this.zz, globalThis.zz, window.zz, self.zz);
     // return this.values.length;
     return this.values.length;
   },
