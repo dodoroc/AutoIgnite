@@ -1,5 +1,5 @@
 
-export result {
+export const result = {
   values: [],
 /*
   get values() {
@@ -16,4 +16,4 @@ export result {
   get length() {
     return this.values.length;
   },
-}
+};
