@@ -11,6 +11,6 @@ export default {
   },
 
   test() {
-    console.log(this.zz, global.zz, globalThis.zz, zz);
+    console.log(this.zz, self.zz, globalThis.zz, zz);
   }
 }
