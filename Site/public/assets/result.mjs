@@ -4,19 +4,19 @@ export default {
   // values: [],
 
   get values() {
-    return values;
+    return this.values;
   },
   set values(v) {
-    values = v;
+    this.values = v;
   },
 
   set source(src) {
     // this.values = src;
-    values = src;
+    this.values = src;
   },
 
   get length() {
     // return this.values.length;
-    return values.length;
+    return this.values.length;
   },
 }
