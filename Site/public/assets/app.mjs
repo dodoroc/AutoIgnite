@@ -190,7 +190,6 @@ const app = createApp({
 
   uncloak() {
     document.body.removeAttribute('cloak');
-    model.result.test();
   },
 
   mounted() {

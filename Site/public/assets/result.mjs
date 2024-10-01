@@ -1,16 +1,15 @@
-let zz = 42;
+let values = [];
+
 export default {
-  values: [],
+  // values: [],
 
   set source(src) {
-    this.values = src;
+    // this.values = src;
+    values = src;
   },
 
   get length() {
-    return this.values.length;
+    // return this.values.length;
+    return values.length;
   },
-
-  test() {
-    console.log(this.zz, self.zz, globalThis.zz, zz);
-  }
 }
