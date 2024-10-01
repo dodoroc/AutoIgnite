@@ -142,7 +142,7 @@ const app = createApp({
   paramsChanged(ev) {
     // console.dir(ev);
     console.log(`${ev.type}  n: ${ev.target.name}  v: ${ev.target.value} chk: ${ev.target.checked}`);
-    console.dir(model.source.programs.current);
+    console.dir(model.source.programs.current[0]);
     console.dir(model.result.values[0]);
     // ev.type -> input, select, checkbox
     switch (true) {
