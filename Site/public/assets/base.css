@@ -440,7 +440,7 @@ table tbody tr td:first-of-type {
 
 table tbody tr:hover td {
   background-color: var(--clr-border);
-  color: var(--clr-800);
+  color: var(--clr-900);
 }
 
 
