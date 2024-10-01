@@ -177,9 +177,9 @@ const app = createApp({
       default: return;
     }
 
-    model.result.reset();
 
     model.source.loadTracked().then(() => {
+      model.result.reset();
       model.filter.apply();
       model.sort.apply();
     });
@@ -200,10 +200,10 @@ const app = createApp({
   mounted() {
     model.filter.compile();
     model.sort.compile();
-    model.result.reset();
 
     model.source.loadSeries().then(() => {
       model.source.loadTracked().then(() => {
+        model.result.reset();
         model.filter.apply();
         model.sort.apply();
 
