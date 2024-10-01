@@ -1,7 +1,7 @@
 let values = [];
 
 export default {
-  // values: [],
+  values: [],
 
   set source(src) {
     // this.values = src;
