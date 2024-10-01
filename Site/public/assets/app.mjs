@@ -204,7 +204,7 @@ const app = createApp({
 
     model.source.loadSeries().then(() => {
       model.source.loadTracked().then(() => {
-        model.result.refresh();
+        // model.result.refresh();
         model.filter.apply();
         model.sort.apply();
 
