@@ -165,7 +165,7 @@ const app = createApp({
 
 
     model.source.loadTracked().then(() => {
-      model.result.source = model.source.programs.current;
+      model.result.source = [...model.source.programs.current];
       model.filter.apply();
       model.sort.apply();
     });
@@ -189,7 +189,7 @@ const app = createApp({
 
     model.source.loadSeries().then(() => {
       model.source.loadTracked().then(() => {
-        model.result.source = model.source.programs.current;
+        model.result.source = [...model.source.programs.current];
         model.filter.apply();
         model.sort.apply();
 
