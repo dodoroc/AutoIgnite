@@ -1,6 +1,6 @@
 // import { createApp, reactive } from 'https://unpkg.com/petite-vue?module';
 import { createApp, reactive } from 'https://unpkg.com/petite-vue@0.4.1/dist/petite-vue.es.js?module';
-import result from '/assets/result.mjs';
+import { result } from '/assets/result.mjs';
 
 // Return a function that returns a promise after a specified timeout
 // used to hide the loading spinner. Will always resolve after a timeout >= 0ms.
