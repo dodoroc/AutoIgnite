@@ -140,8 +140,10 @@ const app = createApp({
 
   changedDebounceId: 0,
   paramsChanged(ev) {
-    console.dir(ev);
+    // console.dir(ev);
     console.log(`${ev.type}  n: ${ev.target.name}  v: ${ev.target.value} chk: ${ev.target.checked}`);
+    console.dir(model.source.programs.current);
+    console.dir(model.result.values[0]);
     // ev.type -> input, select, checkbox
     switch (true) {
       case (ev == null): /* explicit == */
@@ -190,8 +192,6 @@ const app = createApp({
         model.result.source = model.source.programs.current;
         model.filter.apply();
         model.sort.apply();
-        console.dir(model.source.programs.values[0]);
-        console.dir(model.result.values[0]);
 
         after(1100).then(this.uncloak);
       });
