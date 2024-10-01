@@ -15,37 +15,70 @@ const after = (start_ms => {
 const model = reactive({
   result: {
     values: [],
-    count: 0,
+    get count() {
+      return this.values.length;
+    }
+    get data() {
+      return this.values;
+    }
+    set data(v) {
+      this.values = v;
+    }
   },
 
   source: {
-    series: [],
-    seriesId: '',
-    programs: {},
-    count: 0,
+
+    series: {
+      activeId: '',
+      values: {},
+      // return object<series> or null
+      get current() {
+        if (this.activeId) {
+          return this.values[this.activeId];
+        }
+        return null;
+      },
+    },
+
+    programs: {
+      values: {},
+      // return array<tracked> or array<>
+      get current() {
+        if (series.activeId) {
+          return this.values[series.activeId];
+        }
+        return [];
+      },
+    },
 
     loadSeries() {
+      this.series.values = {};
+      this.series.activeId = '';
+
       return fetch(`http://192.168.50.200:9080/series`)
       .then(data => data.json())
       .then(json => {
-        if (Array.isArray(json)) {
-          this.series = json;
-          this.seriesId = this.series?.length ? this.series[0].seriesId : '';
+        if (json?.constructor === Object) {
+          const keys = Object.keys(json);
+          if (keys.length) {
+            this.series.activeId = json[keys[0]]?.seriesId ?? '';
+            this.series.values = json;
+          }
         }
       });
     },
 
     loadTracked() {
-      if (this.programs[this.seriesId] && Array.isArray(this.programs[this.seriesId])) {
+      // cached data available then return
+      if (this.programs.values[this.series.activeId]) {
         return Promise.resolve();
       }
 
       return fetch(`http://192.168.50.200:9080/series/${this.seriesId}/tracked`)
       .then(data => data.json())
       .then(json => {
-        if (Array.isArray(json)) {
-          this.programs[this.seriesId] = json;
-          this.count = json.length;
+        if (json?.constructor === Array) {
+          this.programs.values[this.series.activeId] = json;
         }
       });
     },
@@ -145,6 +178,7 @@ const app = createApp({
 
       default: return;
     }
+        model.result.refresh();
 
     model.source.loadTracked().then(() => {
       model.filter.apply();
@@ -167,10 +201,13 @@ const app = createApp({
   mounted() {
     model.filter.compile();
     model.sort.compile();
+
     model.source.loadSeries().then(() => {
       model.source.loadTracked().then(() => {
+        model.result.refresh();
         model.filter.apply();
         model.sort.apply();
+
         after(1100).then(this.uncloak);
       });
     });

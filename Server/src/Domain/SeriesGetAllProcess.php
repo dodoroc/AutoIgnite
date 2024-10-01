@@ -24,14 +24,14 @@ final class SeriesGetAllProcess extends AbstractDatabaseProcess
 
   public function execute() : void
   {
-    $this->results = [];
+    $this->results = new \StdClass;
 
     $sql = $this->createQuery();
     $stm = $this->dbc->query($sql, PDO::FETCH_OBJ);
 
     foreach ($stm as $r) {
       $o = new Series(new SeriesId($r->series_id), $r->name, $r->release_year, $r->season_min, $r->season_max);
-      array_push($this->results, $o);
+      $this->results->{$r->series_id} = $o;
     }
   }
 }

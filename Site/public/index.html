@@ -94,12 +94,12 @@
         <span popover id="select-box-popover-sk443f"></span>
         <span class="message">Select series</span>
         <span class="items">
-          <label v-for="series in model.source.series">
+          <label v-for="series in model.source.series.values">
             <input
               type="radio"
               name="filter-seriesid"
               :value="series.seriesId"
-              v-model="model.source.seriesId"
+              v-model="model.source.series.activeId"
             >{{series.name}} ({{series.releaseYear}})
           </label>
         </span>
@@ -136,7 +136,7 @@
         </thead>
 
         <tbody v-if="model.result.values.length">
-          <tr v-for="program in model.result.values" :key="model.source.seriesId+'-'+program.seepKey">
+          <tr v-for="program in model.result.values" :key="model.source.series.activeId+'-'+program.seepKey">
             <td>{{program.name}}</td>
             <td>{{program.airedOn}}</td>
             <td>{{program.watchedOn}}</td>
