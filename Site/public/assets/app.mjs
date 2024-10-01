@@ -149,8 +149,6 @@ const app = createApp({
       case (ev.type === 'change' && ev.target.name === 'filter-unwatched'):
         model.filter.compile();
         break;
-      // case (ev.type === 'change' && ev.target.name === 'sorted' && ev.target.value === 'df'):
-        // model.filter.apply();
       case (ev.type === 'change' && ev.target.name === 'sorted'):
         model.sort.compile();
         break;
@@ -192,6 +190,8 @@ const app = createApp({
         model.result.source = model.source.programs.current;
         model.filter.apply();
         model.sort.apply();
+        console.dir(model.source.programs.values[0]);
+        console.dir(model.result.values[0]);
 
         after(1100).then(this.uncloak);
       });
