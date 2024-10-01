@@ -1,6 +1,6 @@
 // import { createApp, reactive } from 'https://unpkg.com/petite-vue?module';
 import { createApp, reactive } from 'https://unpkg.com/petite-vue@0.4.1/dist/petite-vue.es.js?module';
-
+import res from '/assets/result.mjs';
 
 // Return a function that returns a promise after a specified timeout
 // used to hide the loading spinner. Will always resolve after a timeout >= 0ms.
@@ -163,8 +163,8 @@ const app = createApp({
       case (ev.type === 'change' && ev.target.name === 'filter-unwatched'):
         model.filter.compile();
         break;
-      case (ev.type === 'change' && ev.target.name === 'sorted' && ev.target.value === 'df'):
-        model.filter.apply();
+      // case (ev.type === 'change' && ev.target.name === 'sorted' && ev.target.value === 'df'):
+        // model.filter.apply();
       case (ev.type === 'change' && ev.target.name === 'sorted'):
         model.sort.compile();
         break;
