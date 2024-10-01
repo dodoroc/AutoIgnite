@@ -17,7 +17,7 @@ export default {
   },
 
   get length() {
-    console.log(zz, this.zz, globalThis.zz, window.zz, self.zz);
+    // console.log(zz, this.zz, globalThis.zz, window.zz, self.zz);
     // return this.values.length;
     return this.values.length;
   },
