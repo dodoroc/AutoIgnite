@@ -17,13 +17,13 @@ const model = reactive({
     values: [],
     get count() {
       return this.values.length;
-    }
+    },
     get data() {
       return this.values;
-    }
+    },
     set data(v) {
       this.values = v;
-    }
+    },
   },
 
   source: {
@@ -163,12 +163,12 @@ const app = createApp({
       case (ev == null): /* explicit == */
       case (ev.type === 'change' && ev.target.name === 'filter-seriesid'):
       case (ev.type === 'change' && ev.target.name === 'filter-unwatched'):
-        model.filter.compile(ev);
+        model.filter.compile();
         break;
       case (ev.type === 'change' && ev.target.name === 'sorted' && ev.target.value === 'df'):
         model.filter.apply();
       case (ev.type === 'change' && ev.target.name === 'sorted'):
-        model.sort.compile(ev);
+        model.sort.compile();
         break;
 
       case (ev.type === 'input' && ev.target.name === 'filter-name'):
