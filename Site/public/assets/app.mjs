@@ -177,9 +177,8 @@ const app = createApp({
       default: return;
     }
 
-
+    model.result.reset();
     model.source.loadTracked().then(() => {
-      model.result.reset();
       model.filter.apply();
       model.sort.apply();
     });
