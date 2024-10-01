@@ -24,6 +24,9 @@ const model = reactive({
     set data(v) {
       this.values = v;
     },
+    reset() {
+      this.values = model.source.programs.current;
+    },
   },
 
   source: {
@@ -105,15 +108,9 @@ const model = reactive({
     },
 
     apply() {
-      // let res = model.source.programs[model.source.seriesId];
-      model.result.values = model.source.programs.current;
-
       for (const fnc of this.actions) {
         model.result.values = model.result.values.filter(fnc);
       }
-
-      // model.result.values = res;
-      // model.result.count = res.length;
     }
   },
 
@@ -179,7 +176,8 @@ const app = createApp({
 
       default: return;
     }
-        model.result.refresh();
+
+    model.result.reset();
 
     model.source.loadTracked().then(() => {
       model.filter.apply();
@@ -202,10 +200,10 @@ const app = createApp({
   mounted() {
     model.filter.compile();
     model.sort.compile();
+    model.result.reset();
 
     model.source.loadSeries().then(() => {
       model.source.loadTracked().then(() => {
-        // model.result.refresh();
         model.filter.apply();
         model.sort.apply();
 
