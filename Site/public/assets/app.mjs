@@ -45,7 +45,7 @@ const model = reactive({
       // return array<tracked> or array<>
       get current() {
         if (model.source.series.activeId) {
-          return this.values[series.activeId];
+          return this.values[model.source.series.activeId];
         }
         return [];
       },
