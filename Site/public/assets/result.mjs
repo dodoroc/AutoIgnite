@@ -1,6 +1,6 @@
 let zz = 42;
 export default {
-  #values: [],
+  values: [],
 
   set source(src) {
     this.values = src;
