@@ -163,8 +163,9 @@ const app = createApp({
       default: return;
     }
 
-    model.result.reset();
+
     model.source.loadTracked().then(() => {
+      model.result.source = model.source.programs.current;
       model.filter.apply();
       model.sort.apply();
     });
@@ -188,7 +189,7 @@ const app = createApp({
 
     model.source.loadSeries().then(() => {
       model.source.loadTracked().then(() => {
-        model.result.reset();
+        model.result.source = model.source.programs.current;
         model.filter.apply();
         model.sort.apply();
 

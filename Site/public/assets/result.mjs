@@ -1,5 +1,8 @@
 export default {
   values: [],
+  set source(src) {
+    this.values = src;
+  },
   get count() {
     return this.values.length;
   },
