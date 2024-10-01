@@ -1,4 +1,4 @@
-let values = [];
+var values = [];
 
 export default {
   // values: [],
