@@ -38,6 +38,13 @@ const model = reactive({
         }
         return [];
       },
+      get length() {
+        let len = 0;
+        if (model.source.series.activeId) {
+          len = this.values[model.source.series.activeId]?.length ?? 0;
+        }
+        return len;
+      },
     },
 
     loadSeries() {
@@ -75,6 +82,7 @@ const model = reactive({
 
   filter: {
     params: {
+      seriesId: '',
       name: '',
       unwatched: false,
     },
@@ -82,6 +90,8 @@ const model = reactive({
 
     compile() {
       this.actions = [];
+
+      // if (this.params.)
 
       if (this.params.unwatched) this.actions.push(o => !o.watchedOn);
 
@@ -141,9 +151,9 @@ const app = createApp({
   changedDebounceId: 0,
   paramsChanged(ev) {
     // console.dir(ev);
-    console.log(`${ev.type}  n: ${ev.target.name}  v: ${ev.target.value} chk: ${ev.target.checked}`);
-    console.dir(model.source.programs.current[0]);
-    console.dir(model.result.values[0]);
+    // if (ev)console.log(`${ev.type}  n: ${ev.target.name}  v: ${ev.target.value} chk: ${ev.target.checked}`);
+    // console.dir(model.source.programs.current[0]);
+    // console.dir(model.result.values[0]);
     // ev.type -> input, select, checkbox
     switch (true) {
       case (ev == null): /* explicit == */
@@ -163,7 +173,6 @@ const app = createApp({
       default: return;
     }
 
-
     model.source.loadTracked().then(() => {
       model.result.source = [...model.source.programs.current];
       model.filter.apply();
@@ -181,6 +190,7 @@ const app = createApp({
 
   uncloak() {
     document.body.removeAttribute('cloak');
+    module.result.test();
   },
 
   mounted() {
