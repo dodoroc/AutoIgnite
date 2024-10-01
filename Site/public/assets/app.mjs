@@ -105,14 +105,15 @@ const model = reactive({
     },
 
     apply() {
-      let res = model.source.programs[model.source.seriesId];
+      // let res = model.source.programs[model.source.seriesId];
+      model.result.values = model.source.programs.current;
 
       for (const fnc of this.actions) {
-        res = res.filter(fnc);
+        model.result.values = model.result.values.filter(fnc);
       }
 
-      model.result.values = res;
-      model.result.count = res.length;
+      // model.result.values = res;
+      // model.result.count = res.length;
     }
   },
 
