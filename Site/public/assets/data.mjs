@@ -21,10 +21,6 @@
 
 export const data = {
   series: null,
-  // length: 0,
-  // get length() {
-  //   return this.rows.length;
-  // },
 
   loadSeries() {
     // cached data available then return
