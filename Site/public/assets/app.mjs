@@ -1,6 +1,7 @@
 // import { createApp, reactive } from 'https://unpkg.com/petite-vue?module';
 import { createApp, reactive } from 'https://unpkg.com/petite-vue@0.4.1/dist/petite-vue.es.js?module';
 import { result } from '/assets/result.mjs';
+import { data } from '/assets/data.mjs';
 
 // Return a function that returns a promise after a specified timeout
 // used to hide the loading spinner. Will always resolve after a timeout >= 0ms.
@@ -11,9 +12,25 @@ const after = (start_ms => {
   };
 })(Date.now());
 
-
+/*
+series: {
+  '<id 19dig...0>': {
+    ...series data
+    programs: []
+  }
+}
+*/
 const model = reactive({
   result,
+  data,
+
+  params: {
+    seriesId: null,
+    unwatched: false,
+    textual: '',
+    sort: 'df',
+  },
+
 
   source: {
 
@@ -45,38 +62,6 @@ const model = reactive({
         }
         return len;
       },
-    },
-
-    loadSeries() {
-      this.series.values = {};
-      this.series.activeId = '';
-
-      return fetch(`http://192.168.50.200:9080/series`)
-      .then(data => data.json())
-      .then(json => {
-        if (json?.constructor === Object) {
-          const keys = Object.keys(json);
-          if (keys.length) {
-            this.series.activeId = json[keys[0]]?.seriesId ?? '';
-            this.series.values = json;
-          }
-        }
-      });
-    },
-
-    loadTracked() {
-      // cached data available then return
-      if (this.programs.values[this.series.activeId]) {
-        return Promise.resolve();
-      }
-
-      return fetch(`http://192.168.50.200:9080/series/${this.series.activeId}/tracked`)
-      .then(data => data.json())
-      .then(json => {
-        if (json?.constructor === Array) {
-          this.programs.values[this.series.activeId] = json;
-        }
-      });
     },
   },
 
@@ -148,36 +133,39 @@ const model = reactive({
 const app = createApp({
   model,
 
-  changedDebounceId: 0,
-  paramsChanged(ev) {
+  textualDebounceId: 0,
+  onInput(ev) {
+
+    if (ev.target.name === 'filter-textual') {
+      clearTimeout(this.textualDebounceId);
+      this.textualDebounceId = setTimeout(this.onInput, 500, 'val');
+    }
+    else if (ev === 'val') {
+      model.result.apply(model.params);
+    }
+  },
+
+  onChanged(ev) {
     // console.dir(ev);
     // if (ev)console.log(`${ev.type}  n: ${ev.target.name}  v: ${ev.target.value} chk: ${ev.target.checked}`);
     // console.dir(model.source.programs.current[0]);
     // console.dir(model.result.values[0]);
     // ev.type -> input, select, checkbox
-    switch (true) {
-      case (ev == null): /* explicit == */
-      case (ev.type === 'change' && ev.target.name === 'filter-seriesid'):
-      case (ev.type === 'change' && ev.target.name === 'filter-unwatched'):
-        model.filter.compile();
-        break;
-      case (ev.type === 'change' && ev.target.name === 'sorted'):
-        model.sort.compile();
+    switch (ev.target.name) {
+      case 'filter-seriesid':
+        model.data.loadTracked(model.params.seriesId).then(() => {
+          const series = model.data.series[model.params.seriesId];
+          model.result.source = series.programs;
+          model.result.apply(model.params);
+        });
         break;
 
-      case (ev.type === 'input' && ev.target.name === 'filter-name'):
-        clearTimeout(this.changedDebounceId);
-        this.changedDebounceId = setTimeout(this.paramsChanged, 500);
-      break;
-
+      case 'filter-unwatched':
+      case 'sorted':
+        model.result.apply(model.params);
+        break;
       default: return;
     }
-
-    model.source.loadTracked().then(() => {
-      model.result.source = [...model.source.programs.current];
-      model.filter.apply();
-      model.sort.apply();
-    });
   },
 
   seep(str) {
@@ -193,17 +181,21 @@ const app = createApp({
   },
 
   mounted() {
-    model.filter.compile();
-    model.sort.compile();
+    model.data.loadSeries().then(() => {
+      const keys = Object.keys(model.data.series);
+      if (keys.length) {
 
-    model.source.loadSeries().then(() => {
-      model.source.loadTracked().then(() => {
-        model.result.source = [...model.source.programs.current];
-        model.filter.apply();
-        model.sort.apply();
+        const seriesId = keys[0];
+        model.params.seriesId = seriesId;
 
-        after(1100).then(this.uncloak);
-      });
+        model.data.loadTracked(seriesId).then(() => {
+          const series = model.data.series[model.params.seriesId];
+          model.result.source = series.programs;
+          model.result.apply(model.params);
+
+          after(1100).then(this.uncloak);
+        });
+      }
     });
   },
 }).mount();

@@ -81,7 +81,7 @@
 
     <h1>AutoIgnite Dashboard</h1>
 
-    <search class="aute" id="aute-filters" @submit.prevent @input="paramsChanged" @change="paramsChanged">
+    <search class="aute" id="aute-filters" @submit.prevent @input="onInput" @change="onChanged">
       <!--
       <select class="span-all-clumns" name="filter-seriesid" v-model="model.source.seriesId">
         <option v-for="series in model.source.series" :value="series.seriesId">
@@ -94,12 +94,12 @@
         <span popover id="select-box-popover-sk443f"></span>
         <span class="message">Select series</span>
         <span class="items">
-          <label v-for="series in model.source.series.values">
+          <label v-for="series in model.data.series.values">
             <input
               type="radio"
               name="filter-seriesid"
               :value="series.seriesId"
-              v-model="model.source.series.activeId"
+              v-model="model.params.seriesId"
             >{{series.name}} ({{series.releaseYear}})
           </label>
         </span>
@@ -108,22 +108,22 @@
       <input
         type="text" maxlength="30" spellcheck="false" autocorrect="off" autofocus
         placeholder="Filter program name (regex allowed)"
-        name="filter-name"
-        v-model="model.filter.params.name"
+        name="filter-textual"
+        v-model="model.params.textual"
       >
 
-      <label class="ckrd-marg ckrd-left">Unwatched only<input class="switch" type="checkbox" name="filter-unwatched" v-model="model.filter.params.unwatched"></label>
+      <label class="ckrd-marg ckrd-left">Unwatched only<input class="switch" type="checkbox" name="filter-unwatched" v-model="model.params.unwatched"></label>
 
       <div class="sorting span-all-columns ckrd-marg ckrd-right">
         Sort by
-        <label><input type="radio" name="sorted" value="df" v-model="model.sort.params.column">Default</label>
-        <label><input type="radio" name="sorted" value="nm" v-model="model.sort.params.column">Name</label>
-        <label><input type="radio" name="sorted" value="ky" v-model="model.sort.params.column">SE key<i class="circ-sym qst" title="Season and episode key"></i></label>
-        <label><input type="radio" name="sorted" value="da" v-model="model.sort.params.column">Aired on</label>
-        <label><input type="radio" name="sorted" value="dw" v-model="model.sort.params.column">Watched on</label>
+        <label><input type="radio" name="sorted" value="df" v-model="model.params.sort">Default</label>
+        <label><input type="radio" name="sorted" value="nm" v-model="model.params.sort">Name</label>
+        <label><input type="radio" name="sorted" value="ky" v-model="model.params.sort">SE key<i class="circ-sym qst" title="Season and episode key"></i></label>
+        <label><input type="radio" name="sorted" value="da" v-model="model.params.sort">Aired on</label>
+        <label><input type="radio" name="sorted" value="dw" v-model="model.params.sort">Watched on</label>
       </div>
 
-      <span class="counts span-all-columns">Found: {{model.source.programs.length}} │ Filtered: {{model.result.length}}</span>
+      <span class="counts span-all-columns">Found: {{model.data.series[model.params.seriesId].programs.length}} │ Filtered: {{model.result.rows.length}}</span>
     </search>
 
 
@@ -135,8 +135,8 @@
           <tr><td>Name</td><td>Aired On</td><td>Watched</td><td>SE key</td></tr>
         </thead>
 
-        <tbody v-if="model.result.values.length">
-          <tr v-for="program in model.result.values" :key="model.source.series.activeId+'-'+program.seepKey">
+        <tbody v-if="model.result.rows.length">
+          <tr v-for="program in model.result.rows" :key="model.params.seriesId+'-'+program.seepKey">
             <td>{{program.name}}</td>
             <td>{{program.airedOn}}</td>
             <td>{{program.watchedOn}}</td>
