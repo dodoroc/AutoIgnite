@@ -1,11 +1,18 @@
 
 export const result = {
   rows: [],
-  source_data: null,
+  rows_source: null,
+  count: {
+    found: 0,
+    filtered: 0,
+  },
 
   set source(src) {
-    this.source_data = src;
+    this.rows_source = src;
+    this.count.items = src.length;
   },
+  get found() { return this.count.found },
+  get filtered() { return this.count.filtered },
 
 
   process_filters(params, actions) {
@@ -37,12 +44,14 @@ export const result = {
   apply(params) {
     const actions = [];
 
-    this.rows = [...this.source_data];
+    this.rows = [...this.rows_source];
     this.process_filters(params, actions);
     this.process_sort(params, actions);
 
     for (const f of actions) {
       this.rows = f();
     }
+
+    this.count.filtered = this.rows.length;
   }
 };
