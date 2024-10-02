@@ -8,16 +8,6 @@ export const result = {
   },
 
 
-
-/*
-
-  params: {
-    seriesId: null,
-    unwatched: false,
-    textual: '',
-    sort: 'df',
-  },
-*/
   process_filters(params, actions) {
     if (params.unwatched) actions.push(() => this.rows.filter(o => !o.watchedOn));
 
