@@ -9,7 +9,7 @@ export const result = {
 
   set source(src) {
     this.rows_source = src;
-    this.count.items = src.length;
+    this.count.found = src.length;
   },
   get found() { return this.count.found },
   get filtered() { return this.count.filtered },
