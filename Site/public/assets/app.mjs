@@ -88,6 +88,8 @@ const app = createApp({
 
         model.data.loadTracked(seriesId).then(() => {
           const series = model.data.series[model.params.seriesId];
+          console.log(model.params.seriesId);
+          console.dir(series);
           model.result.source = series.programs;
           model.result.apply(model.params);
 
