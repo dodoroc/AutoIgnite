@@ -1,10 +1,10 @@
 
 export const result = {
   rows: [],
-  source: null,
+  source_data: null,
 
   set source(src) {
-    this.source = src;
+    this.source_data = src;
   },
 
 
@@ -47,7 +47,7 @@ export const result = {
   apply(params) {
     const actions = [];
 
-    this.rows = [...this.source];
+    this.rows = [...this.source_data];
     // this.process_filters(params, actions);
     // this.process_sort(params, actions);
 
