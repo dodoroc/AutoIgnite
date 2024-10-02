@@ -32,7 +32,7 @@ export const result = {
 
   process_sort(params, actions) {
     let fnc = null;
-    switch (this.params.sort) {
+    switch (params.sort) {
       // case 'df': fnc = null; break;
       case 'nm': fnc = (a,b) => a.name.localeCompare(b.name, 'ks-base'); break;
       case 'ky': fnc = (a,b) => a.seepKey.localeCompare(b.seepKey, 'kn-true'); break;
