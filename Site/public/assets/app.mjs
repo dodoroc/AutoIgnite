@@ -34,18 +34,11 @@ const model = reactive({
 });
 
 
-/*
- name="sorted" value="df
- name="sorted" value="ky
- name="sorted" value="da
- name="sorted" value="dw
-*/
 const app = createApp({
   model,
 
   textualDebounceId: 0,
   onInput(ev) {
-
     if (ev.target.name === 'filter-textual') {
       clearTimeout(this.textualDebounceId);
       this.textualDebounceId = setTimeout(this.onInput, 500, 'val');
@@ -56,11 +49,6 @@ const app = createApp({
   },
 
   onChanged(ev) {
-    // console.dir(ev);
-    // if (ev)console.log(`${ev.type}  n: ${ev.target.name}  v: ${ev.target.value} chk: ${ev.target.checked}`);
-    // console.dir(model.source.programs.current[0]);
-    // console.dir(model.result.values[0]);
-    // ev.type -> input, select, checkbox
     switch (ev.target.name) {
       case 'filter-seriesid':
         model.data.loadTracked(model.params.seriesId).then(() => {
