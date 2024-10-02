@@ -72,7 +72,9 @@ const app = createApp({
   },
 
   mounted() {
+    console.log('a-1');
     model.data.loadSeries().then(() => {
+      console.log('a-2');
       const keys = Object.keys(model.data.series);
       if (keys.length) {
 
@@ -80,6 +82,7 @@ const app = createApp({
         model.params.seriesId = seriesId;
 
         model.data.loadTracked(seriesId).then(() => {
+          console.log('a-3');
           const series = model.data.series[model.params.seriesId];
           model.result.source = series.programs;
           model.result.apply(model.params);
@@ -88,6 +91,7 @@ const app = createApp({
         });
       }
     });
+    console.log('b-1');
   },
 }).mount();
 
