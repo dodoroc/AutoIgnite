@@ -48,11 +48,11 @@ export const result = {
     const actions = [];
 
     this.rows = [...this.source];
-    this.process_filters(params, actions);
-    this.process_sort(params, actions);
+    // this.process_filters(params, actions);
+    // this.process_sort(params, actions);
 
-    for (const f of actions) {
-      this.rows = f();
-    }
+    // for (const f of actions) {
+    //   this.rows = f();
+    // }
   }
 };
