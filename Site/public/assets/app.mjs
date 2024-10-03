@@ -31,12 +31,12 @@ const app = createApp({
 
   textualDebounceId: 0,
   onInput(ev) {
-    if (ev.target.name === 'filter-textual') {
+    if (ev === 'val') {
+      model.result.apply(model.params);
+    }
+    else if (ev.target.name === 'filter-textual') {
       clearTimeout(this.textualDebounceId);
       this.textualDebounceId = setTimeout(this.onInput, 500, 'val');
-    }
-    else if (ev === 'val') {
-      model.result.apply(model.params);
     }
   },
 

@@ -21,7 +21,6 @@ export const result = {
     if (params.textual.length) {
       try {
         const rex = new RegExp(params.textual, 'i');
-        actions.push();
         actions.push(() => this.rows.filter(o => rex.test(o.textual)));
       } catch (err) {}
     }
