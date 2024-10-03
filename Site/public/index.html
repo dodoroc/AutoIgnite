@@ -136,7 +136,8 @@
         </thead>
 
         <tbody v-if="model.result.rows.length">
-          <tr v-for="program in model.result.rows" :key="program.programId">
+          <!-- <tr v-for="program in model.result.rows" :key="program.programId"> -->
+          <tr v-for="program in model.result.rows" :key="index">
             <td>{{program.name}}</td>
             <td>{{program.airedOn}}</td>
             <td>{{program.watchedOn}}</td>
