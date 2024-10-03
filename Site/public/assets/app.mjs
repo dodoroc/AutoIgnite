@@ -26,7 +26,7 @@ const model = reactive({
 
 });
 
-
+model.textual = 'asfd';
 const app = createApp({
   model,
 
