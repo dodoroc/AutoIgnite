@@ -71,7 +71,9 @@ const app = createApp({
   },
 
   mounted() {
-    after(1100).then(this.uncloak);
+    const uncloak = () => void document.body.removeAttribute('cloak');
+    after(1100).then(uncloak);
+    // after(1100).then(this.uncloak);
   },
 });//.mount();
 
