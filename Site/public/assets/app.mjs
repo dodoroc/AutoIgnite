@@ -20,7 +20,7 @@ const model = reactive({
   params: {
     seriesId: null,
     unwatched: false,
-    textual: 'a',
+    textual: '',
     sort: 'un',
   },
 
