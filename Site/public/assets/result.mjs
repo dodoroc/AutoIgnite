@@ -47,6 +47,7 @@ export const result = {
     this.process_filters(params, actions);
     this.process_sort(params, actions);
 
+    console.dir(actions);
     for (const f of actions) {
       this.rows = f();
     }
