@@ -21,7 +21,7 @@ export const result = {
     if (params.textual.length) {
       try {
         const rex = new RegExp(params.textual, 'i');
-        actions.push(() => this.rows.filter(o => rex.test(o.textual)));
+        actions.push(() => this.rows.filter(o => rex.test(o.name)));
       } catch (err) {}
     }
   },
@@ -32,7 +32,7 @@ export const result = {
       // case 'un': fnc = null; break;
       case 'nm': fnc = (a,b) => a.name.localeCompare(b.name, 'ks-base'); break;
       case 'ky': fnc = (a,b) => a.seepKey.localeCompare(b.seepKey, 'kn-true'); break;
-      case 'da': fnc = (a,b) => a.airedOn?.localeCompare(b.airedOn, 'kn-true'); break;
+      case 'da': fnc = (b,a) => a.airedOn?.localeCompare(b.airedOn, 'kn-true'); break;
       case 'dw': fnc = (a,b) => a.watchedOn?.localeCompare(b.watchedOn, 'kn-true'); break;
       default: return;
     }
