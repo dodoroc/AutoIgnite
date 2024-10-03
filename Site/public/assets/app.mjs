@@ -60,22 +60,13 @@ const app = createApp({
 
   seep(str) {
     return str.replace(/^(\d{4})(\d{3})$/, '$1.$2')
-    // if (str && str.length == 7) {
-    //   return str.replace(/^(\d{4})(\d{3})$/, '$1.$2')
-    // }
-    // return str;
-  },
-
-  uncloak() {
-    document.body.removeAttribute('cloak');
   },
 
   mounted() {
     const uncloak = () => void document.body.removeAttribute('cloak');
     after(1100).then(uncloak);
-    // after(1100).then(this.uncloak);
   },
-});//.mount();
+});
 
 
 
