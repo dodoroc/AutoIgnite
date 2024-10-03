@@ -136,7 +136,7 @@
         </thead>
 
         <tbody v-if="model.result.rows.length">
-          <tr v-for="program in model.result.rows" :key="model.params.seriesId+'-'+program.seepKey">
+          <tr v-for="program in model.result.rows" :key="program.programId">
             <td>{{program.name}}</td>
             <td>{{program.airedOn}}</td>
             <td>{{program.watchedOn}}</td>
