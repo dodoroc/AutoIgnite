@@ -1,4 +1,5 @@
 /*
+// series
 {
     "6774048176174390112": {
         "seriesId": "6774048176174390112",
@@ -15,6 +16,24 @@
         "seasonMax": 6
     }
 }
+
+// tracked
+[
+    {
+        "name": "Brooke Schofield",
+        "airedOn": "2024-06-24",
+        "watchedOn": "2024-07-10",
+        "programId": "6899404022541512112",
+        "seepKey": "0039030"
+    },
+    {
+        "name": "Brooke Schofield II",
+        "airedOn": "2024-06-24",
+        "watchedOn": "2024-07-18",
+        "programId": "6913634914419264112",
+        "seepKey": "0039031"
+    },
+]
 */
 
 
@@ -33,7 +52,6 @@ export const data = {
     .then(json => {
       if (json?.constructor === Object) {
         this.series = json;
-        // this.series.length = Object.keys(json).length;
       }
     });
   },
@@ -49,7 +67,6 @@ export const data = {
     .then(json => {
       if (json?.constructor === Array) {
         this.series[seriesId].programs = json;
-        // this.length = json.length;
       }
     });
   },

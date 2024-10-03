@@ -1,14 +1,14 @@
 
 export const result = {
-  rows: [],
-  rows_source: null,
+  programs: [],
+  source_data: null,
   count: {
     found: 0,
     filtered: 0,
   },
 
   set source(src) {
-    this.rows_source = src;
+    this.source_data = src;
     this.count.found = src.length;
   },
   get found() { return this.count.found },
@@ -16,12 +16,12 @@ export const result = {
 
 
   process_filters(params, actions) {
-    if (params.unwatched) actions.push(() => this.rows.filter(o => !o.watchedOn));
+    if (params.unwatched) actions.push(() => this.programs.filter(o => !o.watchedOn));
 
     if (params.textual.length) {
       try {
         const rex = new RegExp(params.textual, 'i');
-        actions.push(() => this.rows.filter(o => rex.test(o.name)));
+        actions.push(() => this.programs.filter(o => rex.test(o.name)));
       } catch (err) {}
     }
   },
@@ -37,21 +37,20 @@ export const result = {
       default: return;
     }
 
-    actions.push(() => this.rows.toSorted(fnc));
+    actions.push(() => this.programs.toSorted(fnc));
   },
 
   apply(params) {
     const actions = [];
 
-    this.rows = [...this.rows_source];
+    this.programs = [...this.source_data];
     this.process_filters(params, actions);
     this.process_sort(params, actions);
 
-    console.dir(actions);
     for (const f of actions) {
-      this.rows = f();
+      this.programs = f();
     }
 
-    this.count.filtered = this.rows.length;
+    this.count.filtered = this.programs.length;
   }
 };
