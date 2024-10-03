@@ -26,7 +26,6 @@ const model = reactive({
 
 });
 
-model.params.textual = 'asfd';
 const app = createApp({
   model,
 
@@ -72,22 +71,26 @@ const app = createApp({
   },
 
   mounted() {
-    model.data.loadSeries().then(() => {
-      const keys = Object.keys(model.data.series);
-      if (keys.length) {
-
-        const seriesId = keys[0];
-        model.params.seriesId = seriesId;
-
-        model.data.loadTracked(seriesId).then(() => {
-          const series = model.data.series[model.params.seriesId];
-          model.result.source = series.programs;
-          model.result.apply(model.params);
-
-          after(1100).then(this.uncloak);
-        });
-      }
-    });
   },
-}).mount();
+});//.mount();
+
+
+
+model.data.loadSeries().then(() => {
+  const keys = Object.keys(model.data.series);
+  if (keys.length) {
+
+    const seriesId = keys[0];
+    model.params.seriesId = seriesId;
+
+    model.data.loadTracked(seriesId).then(() => {
+      const series = model.data.series[model.params.seriesId];
+      model.result.source = series.programs;
+      model.result.apply(model.params);
+
+      app.mount();
+      after(1100).then(this.uncloak);
+    });
+  }
+});
 
