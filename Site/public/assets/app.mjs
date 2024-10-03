@@ -71,6 +71,7 @@ const app = createApp({
   },
 
   mounted() {
+    after(1100).then(this.uncloak);
   },
 });//.mount();
 
@@ -89,7 +90,6 @@ model.data.loadSeries().then(() => {
       model.result.apply(model.params);
 
       app.mount();
-      after(1100).then(this.uncloak);
     });
   }
 });
