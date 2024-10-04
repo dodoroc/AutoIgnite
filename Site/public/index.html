@@ -55,12 +55,19 @@
           gap: 0 15px;
           white-space: nowrap;
         }
-        & .sorting label {
+        & .sorting b {
+          font-weight: 400;
+          background: red;
         }
 
         & .counts {
           height: 21px;
           line-height: 21px;
+        }
+      }
+      @media (max-width: 600px) {
+        .sorting b {
+          height: 2lh;
         }
       }
 
@@ -122,7 +129,7 @@
       <label class="ckrd-marg ckrd-left">Unwatched only<input class="switch" type="checkbox" name="filter-unwatched" v-model="model.params.unwatched"></label>
 
       <div class="sorting span-all-columns ckrd-marg ckrd-right">
-        Sort by
+        <b>Sort by</b>
         <label><input type="radio" name="sorted" value="un" v-model="model.params.sort">Unsorted</label>
         <label><input type="radio" name="sorted" value="nm" v-model="model.params.sort">Name</label>
         <label><input type="radio" name="sorted" value="ky" v-model="model.params.sort">SE key<i class="circ-sym qst" title="Season and episode key"></i></label>
@@ -143,7 +150,7 @@
         </thead>
 
         <tbody v-if="model.result.programs.length">
-          <tr v-for="program in model.result.programs" :akey="model.params.seriesId+program.seepKey">
+          <tr v-for="program in model.result.programs"> <!-- :key="model.params.seriesId+program.seepKey"> -->
             <td>{{program.name}}</td>
             <td>{{program.airedOn}}</td>
             <td>{{program.watchedOn}}</td>
