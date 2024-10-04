@@ -56,7 +56,8 @@
           white-space: nowrap;
         }
         & .sorting b {
-          font-weight: 400;
+          order: 1;
+          font-weight: 500;
           background: red;
         }
         & .sorting b.spc {
@@ -70,7 +71,7 @@
         }
       }
       @media (min-width: 600px) {
-        .sorting b.spc {
+        .sorting b {
           visibility: collapse;
 /*          height: 2lh;*/
         }
@@ -134,13 +135,12 @@
       <label class="ckrd-marg ckrd-left">Unwatched only<input class="switch" type="checkbox" name="filter-unwatched" v-model="model.params.unwatched"></label>
 
       <div class="sorting span-all-columns ckrd-marg ckrd-right">
-        <b>Sort by</b>
         <label><input type="radio" name="sorted" value="un" v-model="model.params.sort">Unsorted</label>
         <label><input type="radio" name="sorted" value="nm" v-model="model.params.sort">Name</label>
         <label><input type="radio" name="sorted" value="ky" v-model="model.params.sort">SE key<i class="circ-sym qst" title="Season and episode key"></i></label>
-        <b class="spc" role="none" aria-hidden="true">Sort by</b>
         <label><input type="radio" name="sorted" value="da" v-model="model.params.sort">Aired on</label>
         <label><input type="radio" name="sorted" value="dw" v-model="model.params.sort">Watched on</label>
+        <b>Sort by</b>
       </div>
 
       <span class="counts span-all-columns">Found: {{model.result.found}} │ Filtered: {{model.result.filtered}}</span>
