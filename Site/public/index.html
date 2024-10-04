@@ -59,14 +59,19 @@
           font-weight: 400;
           background: red;
         }
+        & .sorting b.spc {
+          color: transparent;
+        }
+
 
         & .counts {
           height: 21px;
           line-height: 21px;
         }
       }
-      @media (max-width: 600px) {
-        .sorting b {
+      @media (min-width: 600px) {
+        .sorting b.spc {
+          visibility: collapse;
 /*          height: 2lh;*/
         }
       }
