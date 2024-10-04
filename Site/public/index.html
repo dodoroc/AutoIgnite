@@ -39,6 +39,9 @@
         grid-template: repeat(4, auto) / 1fr min-content;
         gap: 10px;
 
+        & > * {
+          min-width: 0;
+        }
 
         & .span-all-columns {
           grid-column: 1 / -1;
@@ -140,7 +143,7 @@
         </thead>
 
         <tbody v-if="model.result.programs.length">
-          <tr v-for="program in model.result.programs" :key="model.params.seriesId+program.seepKey">
+          <tr v-for="program in model.result.programs" :akey="model.params.seriesId+program.seepKey">
             <td>{{program.name}}</td>
             <td>{{program.airedOn}}</td>
             <td>{{program.watchedOn}}</td>
