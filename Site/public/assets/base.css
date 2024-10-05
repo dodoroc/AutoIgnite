@@ -532,7 +532,7 @@ table tbody tr:hover td {
 
   font-size: 0.84em;
   font-weight: normal;
-/*  pointer-events: none;*/
+  pointer-events: none;
 
 
   &.nfo::before {
