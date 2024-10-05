@@ -553,10 +553,15 @@ table tbody tr:hover td {
     background-color: var(--clr-switch-bg);
     border: solid 1px var(--clr-border);
     padding: 0.25em 1em;
+/*    line-height: ;*/
 
     background-color: orangered;
     padding: 2em 5em;
   }
+  &:not(:where(:hover, :active, :focus)) {
+    display: none;
+  }
+
 }
 
 .ckrd-marg {
