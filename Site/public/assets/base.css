@@ -553,11 +553,12 @@ table tbody tr:hover td {
 
   &::after {
     position: absolute;
+    display: block;
     transform: translate(-50%, -110%);
     background-color: var(--clr-switch-bg);
     border: solid 1px var(--clr-border);
     padding: 0.25em 1em;
-/*    line-height: ;*/
+    line-height: 1.2lh;
 
     background-color: orangered;
     padding: 2em 5em;
