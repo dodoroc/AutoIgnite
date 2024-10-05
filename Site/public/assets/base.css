@@ -518,6 +518,7 @@ table tbody tr:hover td {
 
 
 .circ-sym {
+  position: relative;
   display: inline-grid;
   place-content: center;
 
@@ -532,17 +533,25 @@ table tbody tr:hover td {
   font-size: 0.84em;
 
 
-  &.nfo::after {
+  &.nfo::before {
     font-style: italic;
     content: 'i';
   }
 
-  &.qst::after {
+  &.qst::before {
     content: '?';
   }
 
-  &.exc::after {
+  &.exc::before {
     content: '!';
+  }
+
+  &::after {
+    position: absolute;
+    transform: translate(-50% -110%);
+    background-color: var(--clr-switch-bg);
+    border: solid 1px var(--clr-border);
+    padding: 0.25em 1em;
   }
 }
 
