@@ -532,6 +532,7 @@ table tbody tr:hover td {
 
   font-size: 0.84em;
   font-weight: normal;
+/*  pointer-events: none;*/
 
 
   &.nfo::before {
@@ -558,7 +559,7 @@ table tbody tr:hover td {
     background-color: orangered;
     padding: 2em 5em;
   }
-  &:not(:where(:hover, :active, :focus)) {
+  &:not(:where(:hover, :active, :focus))::after {
     display: none;
   }
 
