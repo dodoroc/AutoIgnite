@@ -553,6 +553,9 @@ table tbody tr:hover td {
     background-color: var(--clr-switch-bg);
     border: solid 1px var(--clr-border);
     padding: 0.25em 1em;
+
+    background-color: orangered;
+    padding: 2em 5em;
   }
 }
 

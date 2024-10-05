@@ -69,10 +69,6 @@
         }
       }
 
-      search.aute .sorting .circ-sym {
-        margin-left: 0.67ch;
-      }
-
       table.aute {
         & :where(.nm, .ao, .wo, .sk) { width: auto }
         & .nm { width: 100% }
@@ -84,11 +80,13 @@
         & td[colspan] {
           text-align: center !important;
         }
+      }
 
-        &.seep:active::after {
-        &.seep:hover::after {
-          content: 'Season and episode key';
-        }
+      .circ-sym.seep {
+        margin-left: 0.67ch;
+      }
+      .circ-sym.seep::after {
+        content: 'Season and episode key';
       }
     </style>
 
