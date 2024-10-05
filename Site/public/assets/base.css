@@ -534,6 +534,9 @@ table tbody tr:hover td {
   font-weight: normal;
   pointer-events: none;
 
+  &::before {
+    pointer-events: revert;
+  }
 
   &.nfo::before {
     font-style: italic;
@@ -559,6 +562,7 @@ table tbody tr:hover td {
     background-color: orangered;
     padding: 2em 5em;
   }
+
   &:not(:where(:hover, :active, :focus))::after {
     display: none;
   }
