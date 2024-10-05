@@ -305,7 +305,7 @@ input[type="checkbox"].switch:checked::before {
 .select-box::after {
   pointer-events: none;
   position: absolute;
-  z-index: 20;
+  z-index: 10;
   right: 8px;
   top: 0; bottom: 0;
   display: inline-grid;
@@ -325,7 +325,7 @@ input[type="checkbox"].switch:checked::before {
 .select-box .items {
   position: absolute;
   left: 0; right: 0; top: 0;
-  z-index: 10;
+  z-index: 11;
 
   display: flex;
   flex-flow: column;
@@ -518,6 +518,7 @@ table tbody tr:hover td {
 
 
 .circ-sym {
+  container-type: size;
   position: relative;
   display: inline-grid;
   place-content: center;
@@ -553,8 +554,10 @@ table tbody tr:hover td {
 
   &::after {
     position: absolute;
+    top: -100cqh;
+    z-index: 100;
     display: block;
-    transform: translate(-50%, -110%);
+    transform: translateX(-50%);
     background-color: var(--clr-switch-bg);
     border: solid 1px var(--clr-border);
     padding: 0.25em 1em;
