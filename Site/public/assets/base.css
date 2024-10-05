@@ -535,7 +535,7 @@ table tbody tr:hover td {
   pointer-events: none;
 
   &::before {
-    pointer-events: revert;
+    pointer-events: auto;
   }
 
   &.nfo::before {
