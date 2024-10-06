@@ -542,7 +542,7 @@ table tbody tr:hover td {
   pointer-events: none;
 
   &::before {
-/*    display: inline-block;*/
+    display: inline-block;
     pointer-events: all;
   }
 
