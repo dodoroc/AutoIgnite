@@ -560,6 +560,7 @@ table tbody tr:hover td {
   &::after {
     position: absolute;
     top: -100cqh;
+    right: max(auto, 0);
     z-index: 100;
     display: block;
     transform: translateX(-50%);
