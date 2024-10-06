@@ -518,6 +518,7 @@ table tbody tr:hover td {
   align-items: stretch;
 
   width: 100%;
+  overflow-x: auto;
 /*  overflow: auto hidden;*/
 }
 
