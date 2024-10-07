@@ -524,14 +524,12 @@ table tbody tr:hover td {
 
 
 .circ-sym {
-  container-type: size;
-  position: relative;
   display: inline-grid;
   place-content: center;
 
   width: auto;
   height: 1.2em;
-  line-height: 1em;
+  line-height: 1;
 
   aspect-ratio: 1;
   border: solid 1px currentColor;
@@ -539,11 +537,9 @@ table tbody tr:hover td {
 
   font-size: 0.84em;
   font-weight: normal;
-  pointer-events: none;
 
   &::before {
     display: inline-block;
-    pointer-events: all;
   }
 
   &.nfo::before {
@@ -558,27 +554,6 @@ table tbody tr:hover td {
   &.exc::before {
     content: '!';
   }
-/*
-  &::after {
-    position: absolute;
-    top: -100cqh;
-    right: max(auto, 0);
-    z-index: 100;
-    display: block;
-    transform: translateX(-50%);
-    background-color: var(--clr-switch-bg);
-    border: solid 1px var(--clr-border);
-    padding: 0.25em 1em;
-    line-height: 1.2lh;
-
-    background-color: orangered;
-    padding: 2em 5em;
-  }
-
-  &:not(:where(:hover, :active, :focus))::after {
-    display: none;
-  }
-*/
 }
 
 .ckrd-marg {
