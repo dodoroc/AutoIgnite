@@ -420,6 +420,7 @@ table thead td {
   font-weight: 800;
   text-underline-offset: 1px;
   text-decoration: underline  var(--clr-border);
+  line-height: 1.8rem;
 }
 
 table td {
@@ -428,7 +429,7 @@ table td {
   white-space: nowrap;
 /*  overflow: hidden;*/
 
-  line-height: 1.667rem;
+  line-height: 1.67rem;
   border: solid 1px var(--clr-border);
 }
 table tbody tr td {
