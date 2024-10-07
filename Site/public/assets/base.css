@@ -558,7 +558,7 @@ table tbody tr:hover td {
   &.exc::before {
     content: '!';
   }
-
+/*
   &::after {
     position: absolute;
     top: -100cqh;
@@ -578,7 +578,7 @@ table tbody tr:hover td {
   &:not(:where(:hover, :active, :focus))::after {
     display: none;
   }
-
+*/
 }
 
 .ckrd-marg {
