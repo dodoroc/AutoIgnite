@@ -530,7 +530,6 @@ table tbody tr:hover td {
   width: auto;
   height: 1.2em;
   line-height: 1;
-/*  margin-bottom: -1px;*/
 
   aspect-ratio: 1;
   border: solid 1px currentColor;
