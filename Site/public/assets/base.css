@@ -420,7 +420,7 @@ table thead td {
   font-weight: 800;
   text-underline-offset: 1px;
   text-decoration: underline  var(--clr-border);
-  line-height: 1.8rem;
+  background-color: var(--clr-700);
 }
 
 table td {
@@ -431,7 +431,7 @@ table td {
 
   white-space: nowrap;
   vertical-align: middle;
-  line-height: 1.67rem;
+  line-height: 1.7rem;
 }
 table tbody tr td {
   font-size: var(--font-size-sm);
@@ -457,7 +457,6 @@ table tbody tr:hover td {
   font-size: clamp(24px, 9dvmin, 56px);
   color: #0000;
 
-/*  background: no-repeat radial-gradient(var(--clr-100) 0px, var(--clr-500) 100px, var(--clr-800) 250px);*/
   background: no-repeat radial-gradient(var(--clr-200) 0px, var(--clr-600) 100px, var(--clr-800) 250px);
   background-clip: text;
   background-size: 80cqmin 80cqmin;
@@ -521,7 +520,6 @@ table tbody tr:hover td {
 
   width: 100%;
   overflow-x: auto;
-/*  overflow: auto hidden;*/
 }
 
 
