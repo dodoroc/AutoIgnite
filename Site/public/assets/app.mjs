@@ -34,7 +34,10 @@ const test = options => {
   return obj;
 };
 const app = createApp({
-  test(),
+  created() {
+    console.log('created');
+  },
+  test,
   model,
 
   textualDebounceId: 0,
