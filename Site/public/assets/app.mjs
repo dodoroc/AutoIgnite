@@ -14,6 +14,10 @@ const after = (start_ms => {
 
 
 const model = reactive({
+  constructor() {
+    console.log('constructor mo');
+
+  },
   result,
   data,
 
@@ -29,6 +33,7 @@ const model = reactive({
 const app = createApp({
   constructor() {
     console.log('constructor');
+
   },
   model,
 
