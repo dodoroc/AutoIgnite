@@ -14,10 +14,6 @@ const after = (start_ms => {
 
 
 const model = reactive({
-  constructor() {
-    console.log('constructor mo');
-
-  },
   result,
   data,
 
@@ -31,18 +27,14 @@ const model = reactive({
 });
 
 
-const text = options => {
+const test = options => {
   const obj = {};
   console.log('faux constructor');
   console.dir(options);
   return obj;
 };
 const app = createApp({
-  text,
-  constructor() {
-    console.log('constructor');
-
-  },
+  test(),
   model,
 
   textualDebounceId: 0,
