@@ -43,7 +43,7 @@ export const data = {
   seriesId: null,
 
   get count() {
-    return this.series[this.seriesId].length ?? 0;
+    return this.series[this.seriesId]?.programs?.length ?? 0;
   },
 
   loadSeries() {
