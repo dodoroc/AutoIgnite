@@ -237,7 +237,6 @@ select {
 }
 
 input[type="checkbox"].switch {
-  z-index: 1;
   container-type: size;
   display: inline-grid;
   place-content: center start;
@@ -287,7 +286,6 @@ input[type="checkbox"].switch:checked::before {
 
 /* Fully styled custom select box */
 .select-box {
-  z-index: 1;
   position: relative;
   display: inline-flex;
   flex-flow: column;
@@ -307,7 +305,6 @@ input[type="checkbox"].switch:checked::before {
 .select-box::after {
   pointer-events: none;
   position: absolute;
-/*  z-index: 10;*/
   right: 8px;
   top: 0; bottom: 0;
   display: inline-grid;
@@ -327,7 +324,6 @@ input[type="checkbox"].switch:checked::before {
 .select-box .items {
   position: absolute;
   left: 0; right: 0; top: 0;
-/*  z-index: 11;*/
 
   display: flex;
   flex-flow: column;
@@ -379,6 +375,10 @@ input[type="checkbox"].switch:checked::before {
   & ~ .message {
     background-color: var(--clr-ctrl-act-bg);
   }
+  & ~ .items {
+    z-index: 1;
+  }
+
 }
 
 .select-box [popover]:popover-open ~ .items label {
