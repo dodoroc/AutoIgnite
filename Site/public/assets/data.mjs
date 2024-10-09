@@ -47,7 +47,8 @@ export const data = {
       return Promise.resolve();
     }
 
-    return fetch(`http://192.168.50.200:9080/series`)
+    // return fetch(`http://192.168.50.200:9080/series`)
+    return fetch(`/series`)
     .then(data => data.json())
     .then(json => {
       if (json?.constructor === Object) {
@@ -62,7 +63,8 @@ export const data = {
       return Promise.resolve();
     }
 
-    return fetch(`http://192.168.50.200:9080/series/${seriesId}/tracked`)
+    // return fetch(`http://192.168.50.200:9080/series/${seriesId}/tracked`)
+    return fetch(`/series/${seriesId}/tracked`)
     .then(data => data.json())
     .then(json => {
       if (json?.constructor === Array) {
