@@ -30,7 +30,15 @@ const model = reactive({
 
 });
 
+
+const text = options => {
+  const obj = {};
+  console.log('faux constructor');
+  console.dir(options);
+  return obj;
+};
 const app = createApp({
+  text,
   constructor() {
     console.log('constructor');
 
