@@ -27,23 +27,13 @@ const model = reactive({
 });
 
 
-const test = options => {
-  const obj = {};
-  console.log('faux constructor');
-  console.dir(options);
-  return obj;
-};
 const app = createApp({
-  created() {
-    console.log('created');
-  },
-  test,
   model,
 
   textualDebounceId: 0,
   onInput(ev) {
     if (ev === 'val') {
-      model.result.apply(model.params);
+      model.result.filter(model.params);
     }
     else if (ev.target.name === 'filter-textual') {
       clearTimeout(this.textualDebounceId);
@@ -57,13 +47,13 @@ const app = createApp({
         model.data.loadTracked(model.params.seriesId).then(() => {
           const series = model.data.series[model.params.seriesId];
           model.result.source = series.programs;
-          model.result.apply(model.params);
+          model.result.filter(model.params);
         });
         break;
 
       case 'filter-unwatched':
       case 'sorted':
-        model.result.apply(model.params);
+        model.result.filter(model.params);
         break;
       default: return;
     }
@@ -91,7 +81,7 @@ model.data.loadSeries().then(() => {
     model.data.loadTracked(seriesId).then(() => {
       const series = model.data.series[model.params.seriesId];
       model.result.source = series.programs;
-      model.result.apply(model.params);
+      model.result.filter(model.params);
 
       app.mount();
     });

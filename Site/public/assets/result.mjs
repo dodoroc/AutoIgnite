@@ -2,18 +2,14 @@
 export const result = {
   programs: [],
   source_data: null,
-  count: {
-    found: 0,
-    filtered: 0,
-  },
 
   set source(src) {
     this.source_data = src;
-    this.count.found = src.length;
   },
-  get found() { return this.count.found },
-  get filtered() { return this.count.filtered },
 
+  get count() {
+    return this.programs.length ?? 0;
+  },
 
   process_filters(params, actions) {
     if (params.unwatched) actions.push(() => this.programs.filter(o => !o.watchedOn));
@@ -40,7 +36,7 @@ export const result = {
     actions.push(() => this.programs.toSorted(fnc));
   },
 
-  apply(params) {
+  filter(params) {
     const actions = [];
 
     this.programs = [...this.source_data];
@@ -50,7 +46,5 @@ export const result = {
     for (const f of actions) {
       this.programs = f();
     }
-
-    this.count.filtered = this.programs.length;
   }
 };

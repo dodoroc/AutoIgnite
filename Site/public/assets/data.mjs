@@ -40,6 +40,11 @@
 
 export const data = {
   series: null,
+  seriesId: null,
+
+  get count() {
+    return this.series[this.seriesId].length ?? 0;
+  },
 
   loadSeries() {
     // cached data available then return
@@ -58,8 +63,10 @@ export const data = {
   },
 
   loadTracked(seriesId) {
+    this.seriesId = null;
     // cached data available then return
     if (this.series[seriesId].programs) {
+      this.seriesId = seriesId;
       return Promise.resolve();
     }
 
@@ -68,6 +75,7 @@ export const data = {
     .then(data => data.json())
     .then(json => {
       if (json?.constructor === Array) {
+        this.seriesId = seriesId;
         this.series[seriesId].programs = json;
       }
     });
