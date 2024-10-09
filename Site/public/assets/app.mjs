@@ -86,4 +86,7 @@ model.data.loadSeries().then(() => {
     });
   }
 });
+console.log(import.meta.url);
+document.log(document.currentScript.src);
+console.log(globalThis);
 
