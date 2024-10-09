@@ -4,7 +4,7 @@ import { result } from '/assets/result.mjs';
 import { data } from '/assets/data.mjs';
 
 // Return a function that returns a promise after a specified timeout
-// used to hide the loading spinner. Will always resolve after a timeout >= 0ms.
+// used to hide the loading spinner. Always resolves & timeout >= 0ms.
 const after = (start_ms => {
   return delta_ms => {
     const ms = Math.max(0, delta_ms - (Date.now() - start_ms));
@@ -23,7 +23,6 @@ const model = reactive({
     textual: '',
     sort: 'un',
   },
-
 });
 
 

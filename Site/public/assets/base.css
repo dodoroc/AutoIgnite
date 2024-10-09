@@ -237,6 +237,7 @@ select {
 }
 
 input[type="checkbox"].switch {
+  z-index: 1;
   container-type: size;
   display: inline-grid;
   place-content: center start;
@@ -286,6 +287,7 @@ input[type="checkbox"].switch:checked::before {
 
 /* Fully styled custom select box */
 .select-box {
+  z-index: 1;
   position: relative;
   display: inline-flex;
   flex-flow: column;
