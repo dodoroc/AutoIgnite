@@ -322,6 +322,7 @@ input[type="checkbox"].switch:checked::before {
 }
 
 .select-box .items {
+  z-index: 1;
   position: absolute;
   left: 0; right: 0; top: 0;
 
@@ -376,7 +377,6 @@ input[type="checkbox"].switch:checked::before {
     background-color: var(--clr-ctrl-act-bg);
   }
   & ~ .items {
-    z-index: 1;
   }
 
 }
