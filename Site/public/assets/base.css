@@ -302,6 +302,25 @@ input[type="checkbox"].switch:checked::before {
   user-select: none;
   cursor: default;
 }
+.select-box::after {
+  z-index: 2;
+  position: absolute;
+  right: 8px;
+  top: 0; bottom: 0;
+  display: inline-grid;
+  place-content: center;
+  font-size: 0.68rem;
+  line-height: var(--ctrl-vsize);
+  line-height: 40px;
+  content: '▼';
+  color: var(--clr-border);
+  transform: scaleX(1.4);
+  transition: transform 200ms linear;
+  pointer-events: none;
+}
+.select-box:has(:popover-open)::after {
+  transform: scale(1.4, -1);
+}
 
 .select-box .items {
   z-index: 1;
@@ -318,25 +337,6 @@ input[type="checkbox"].switch:checked::before {
 
   margin-top: calc(var(--ctrl-vsize) - 1px);
   transition: margin-top 200ms linear;
-}
-.select-box .items::after {
-  pointer-events: none;
-  position: absolute;
-  right: 8px;
-  top: 0; bottom: 0;
-  height: var(--ctrl-vsize);
-  display: inline-grid;
-  place-content: center;
-  font-size: 0.68rem;
-  line-height: var(--ctrl-vsize);
-  line-height: 40px;
-  content: '▼';
-  color: var(--clr-border);
-  transform: scaleX(1.4);
-  transition: transform 200ms linear;
-}
-.select-box:has(:popover-open) .items::after {
-  transform: scale(1.4, -1);
 }
 
 .select-box .message,
@@ -377,6 +377,7 @@ input[type="checkbox"].switch:checked::before {
   & ~ .message {
     background-color: var(--clr-ctrl-act-bg);
   }
+
 }
 
 .select-box [popover]:popover-open ~ .items label {
