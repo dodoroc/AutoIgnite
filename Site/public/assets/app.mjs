@@ -27,6 +27,9 @@ const model = reactive({
 });
 
 const app = createApp({
+  constructor() {
+    console.log('constructor');
+  },
   model,
 
   textualDebounceId: 0,
