@@ -302,6 +302,7 @@ input[type="checkbox"].switch:checked::before {
   user-select: none;
   cursor: default;
 }
+
 .select-box::after {
   z-index: 2;
   position: absolute;
