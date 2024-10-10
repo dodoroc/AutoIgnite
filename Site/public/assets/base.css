@@ -382,7 +382,8 @@ input[type="checkbox"].switch:checked::before {
 
 .select-box [popover]:popover-open ~ .items label {
   background-color: var(--clr-ctrl-act-bg);
-  transition: background-color 50ms linear 0ms;
+  transition: background-color 0ms linear 0ms;
+/*  transition: height 200ms linear, background-color 50ms linear 150ms;*/
 
   &:has(:checked) {
     background-color: var(--clr-option-sel-bg);
