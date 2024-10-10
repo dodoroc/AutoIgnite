@@ -391,6 +391,10 @@ input[type="checkbox"].switch:checked::before {
 }
 
 .select-box [popover]:not(:popover-open) {
+  & ~ .items label {
+    transition: height 200ms linear, background-color 10ms linear 0ms;
+  }
+
   & ~ .items label:has(:not(:checked)) {
     height: 0;
   }
