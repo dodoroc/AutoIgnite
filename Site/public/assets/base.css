@@ -360,7 +360,7 @@ input[type="checkbox"].switch:checked::before {
 
 .select-box .items label {
   height: calc(var(--ctrl-vsize) - 2px);
-  transition: height 200ms linear, background-color 200ms linear;
+  transition: height 200ms linear, background-color 50ms linear 150ms;
 }
 
 .select-box .items label input[type="radio"] {
