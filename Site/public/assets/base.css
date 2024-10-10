@@ -359,7 +359,7 @@ input[type="checkbox"].switch:checked::before {
 
 .select-box .items label {
   height: calc(var(--ctrl-vsize) - 2px);
-  transition: height 200ms linear, background-color 10ms linear 190ms;
+/*  transition: height 200ms linear, background-color 10ms linear 190ms;*/
 }
 
 .select-box .items label input[type="radio"] {
@@ -380,6 +380,7 @@ input[type="checkbox"].switch:checked::before {
 
 .select-box [popover]:popover-open ~ .items label {
   background-color: var(--clr-ctrl-act-bg);
+  transition: height 200ms linear, background-color 10ms linear 190ms;
 
   &:has(:checked) {
     background-color: var(--clr-option-sel-bg);
