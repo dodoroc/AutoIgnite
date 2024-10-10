@@ -270,7 +270,7 @@ input[type="checkbox"].switch::before {
 
   transition: transform 200ms linear;
   transform: translateX(0);
-/*  box-shadow: inset 0 0 0px var(--ctrl-ckrd-inner-size) var(--clr-switch-btn-bg);*/
+
   box-shadow: unset;
   background-color: var(--clr-switch-btn-bg);
   border-radius: var(--ctrl-switch-radius);
@@ -359,7 +359,7 @@ input[type="checkbox"].switch:checked::before {
 
 .select-box .items label {
   height: calc(var(--ctrl-vsize) - 2px);
-  transition: height 200ms linear, background-color 50ms linear 190ms;
+  transition: height 200ms linear, background-color 10ms linear 190ms;
 }
 
 .select-box .items label input[type="radio"] {
