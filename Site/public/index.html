@@ -75,10 +75,12 @@
 
         & tr td:last-of-type {
           text-align: right;
-          color: var(--clr-border);
         }
-        & tr td:last-of-type i {
-          color: revert;
+        & tbody tr td:last-of-type {
+          color: var(--clr-border);
+          & i {
+            color: revert;
+          }
         }
 
         & td[colspan] {
