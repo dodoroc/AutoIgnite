@@ -63,9 +63,9 @@ const app = createApp({
     // return str.replace(/(?|(000)([1-9])|(00)([1-9]\d)|(0)([1-9]\d\d)|()([1-9]\d\d\d))(?|(00)([1-9])|(0)([1-9]\d)|()([1-9]\d\d))/, '$1<i>$2</i>.$3<i>$4</i>');
     //*
     let se = str.slice(0,4);
-    se = se.replace(/(0*)(\d+)/, '$1<i>$2</i>');
+    se = se.replace(/(0*)(\d+)/, '<i>$1</i>$2');
     let ep = str.slice(-3);
-    ep = ep.replace(/(0*)(\d+)/, '$1<i>$2</i>');
+    ep = ep.replace(/(0*)(\d+)/, '<i>$1</i>$2');
     return `${se}.${ep}`;
     //*/
   },
