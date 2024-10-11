@@ -31,12 +31,12 @@ const app = createApp({
 
   textualDebounceId: 0,
   onInput(ev) {
-    if (ev === 'val') {
+    if (ev === 'use-val') {
       model.result.filter(model.params);
     }
     else if (ev.target.name === 'filter-textual') {
       clearTimeout(this.textualDebounceId);
-      this.textualDebounceId = setTimeout(this.onInput, 500, 'val');
+      this.textualDebounceId = setTimeout(this.onInput, 500, 'use-val');
     }
   },
 
@@ -59,7 +59,8 @@ const app = createApp({
   },
 
   seep(str) {
-    return str.replace(/^(\d{4})(\d{3})$/, '$1.$2')
+    // return str.replace(/^(\d{4})(\d{3})$/, '$1.$2');
+    return str.replace(/^(?|(000)([1-9])|(00)([1-9]\d)|(0)([1-9]\d\d)|()([1-9]\d\d\d))(?|(00)([1-9])|(0)([1-9]\d)|()([1-9]\d\d))$/, '$1<i>$2</i>.$3<i>$4</i>');
   },
 
   mounted() {

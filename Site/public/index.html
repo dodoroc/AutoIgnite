@@ -154,7 +154,8 @@
             <td>{{program.name}}</td>
             <td>{{program.airedOn}}</td>
             <td>{{program.watchedOn}}</td>
-            <td>{{seep(program.seepKey)}}</td>
+            <!-- <td>{{seep(program.seepKey)}}</td> -->
+            <td v-html="seep(program.seepKey)"></td>
           </tr>
         </tbody>
 
