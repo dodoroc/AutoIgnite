@@ -1,6 +1,6 @@
 # Extension
 
-- Get watched list (object or array depending on how accessed).
-- Get details for each item in watched list such as show name, series name, season, show title...
-- Remove item in watched list via 'mark unwatched' (needs confirmation but expected to work)
-- Show which episodes haven't been watched to schedule recording (automation possible?)
+- Get watched list from external site.
+- Get watched list from database.
+- For each item in external watched list not in local watched list, fetch program details (name, series, dates, etc).
+- Update local database with new info.

@@ -10,30 +10,35 @@
 
 Browser extension to inject code into the sieged page, create a communications channel, send/recv data from an internal api (server), process data and monitor progress. 
 
-Tech: HTML, CSS, JS/ES, Browser Extension API
+Tech: HTML, CSS, JavaScript/ES, Browser Extension API
 
 
 ## Server
 
 Simple experiment building a no framework api, end result a micro-micro-micro framework emerged. 
 
-Tech: PHP 8, Composer, PostgreSQL 16, nginx, github actions
+Tech: PHP 8, PDO, Composer, PostgreSQL 16 RDBMS, NGiNX web server
 
 
 ## Site
 
 Basically a simple dashboard and some basic filters.
 
-Tech: HTML, CSS, JS/ES, Petite VUE, nginx
+Tech: HTML 5, CSS 3, JavaScript, Petite VUE, nginx
 
 
 
 ### Other Tech
 
-- NGiNX web server
-- PostgreSQL 16 RDBMS
 - GitHub Actions 
 - Linux server (Rocky 9)
+
+
+
+### Further
+
+- Add program episodes to extension instead of just cutting and pasting script to general query from scraped data.
+- ...
 
 
 ### References
