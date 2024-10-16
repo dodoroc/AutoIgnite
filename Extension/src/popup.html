@@ -7,9 +7,11 @@
     <style>
       :root {
         --clr-darkest:  hsl(0, 0%,  10%);
-        --clr-darker:   hsl(0, 0%,  25%);
+        --clr-darker:   hsl(0, 0%,  18%);
+        --clr-dark:     hsl(0, 0%,  25%);
         --clr-median:   hsl(0, 0%,  50%);
-        --clr-lighter:  hsl(0, 0%,  75%);
+        --clr-light:    hsl(0, 0%,  75%);
+        --clr-lighter:  hsl(0, 0%,  82%);
         --clr-lightest: hsl(0, 0%,  90%);
 
         --clr-warn:     hsl(0, 100%, 53%);
@@ -28,9 +30,9 @@
       @media (prefers-color-scheme: light) {
         :root {
           --clr-darkest:  hsl(0, 0%,  90%);
-          --clr-darker:   hsl(0, 0%,  75%);
+          --clr-dark:   hsl(0, 0%,  75%);
           --clr-median:   hsl(0, 0%,  50%);
-          --clr-lighter:  hsl(0, 0%,  25%);
+          --clr-light:  hsl(0, 0%,  25%);
           --clr-lightest: hsl(0, 0%,  10%);
         }
       }
@@ -38,22 +40,23 @@
 
       html {
         overflow: hidden auto;
+        overflow: hidden scroll;
         overscroll-behavior: none;
 
         scrollbar-gutter: stable;
         scrollbar-width: thin;
-        scrollbar-color: var(--clr-median) var(--clr-darkest);
+        scrollbar-color: var(--clr-median) var(--clr-darker);
+        scrollbar-color: var(--clr-median) var(--clr-dark);
 
         max-width: 800px; /* extension defined max */
         max-height: 600px; /* extension defined max */
-        height: 100svh;
       }
 
       html, body {
         margin: 0;
         padding: 0;
 
-        font: normal normal 14px/1.4 tahoma, arial, sans-serif;
+        font: normal normal 14px/1.6 tahoma, arial, sans-serif;
       }
 
       *, *::before, *::after {
@@ -65,7 +68,7 @@
         position: relative;
         box-sizing: border-box;
         overflow: hidden;
-        width: 420px;
+        width: 480px;
 
 
         display: flex;
@@ -75,7 +78,7 @@
         gap: 10px 0;
         padding: 10px;
 
-        color: var(--clr-lighter);
+        color: var(--clr-light);
         background-color: var(--clr-darkest);
         font-size: var(--font-size-rg);
       }
@@ -92,77 +95,9 @@
       section > h1 {
         font-size: var(--font-size-h3);
         line-height: 1;
-        font-weight: lighter;
+        font-weight: light;
         font-variant-caps: all-small-caps;
       }
-/*
-      button, input, textarea, select {
-        color: var(--clr-darker);
-        background-color: var(--clr-lighter);
-        border: solid 1px var(--clr-lighter);
-        outline: none;
-        transition: 200ms linear;
-        transition-property: border-color, background-color, color;
-      }
-      button, input:is([type="button"], [type="submit"], [type="clear"]) {
-        text-align: center;
-        cursor: pointer;
-      }
-      button:active, input:is([type="button"], [type="submit"], [type="clear"]):active {
-        color: var(--clr-darkest);
-        background-color: var(--clr-lightest);
-        border-color: var(--clr-lightest);
-      }
-      :is(:not(button, input[type="button"], [type="checkbox"], [type="radio"])):focus {
-        background-color: var(--clr-lightest);
-        border-color: var(--clr-lightest);
-      }
-      input:is([type="checkbox"], [type="radio"]) {
-        width: 16px;
-        height: 16px;
-        margin: 0;
-        padding: 3px;
-        color: var(--clr-lighter);
-        background-color: transparent;
-        background-clip: content-box;
-        border: solid 1px var(--clr-lighter);
-
-        appearance: none;
-        zoom: 1;
-      }
-      input:is([type="checkbox"], [type="radio"]):enabled {
-        cursor: pointer;
-      }
-      input:is([type="checkbox"], [type="radio"]):disabled {
-        background-color: var(--clr-median) !important;
-      }
-
-      input[type="radio"] {
-        border-radius: 50%;
-      }
-      input:is([type="checkbox"], [type="radio"]):checked {
-        background-color: var(--clr-lighter);
-      }
-      input:is([type="text"], [type="date"]), button {
-        height: 28px;
-        line-height: 28px;
-        padding: 0 5px;
-      }
-      label {
-        display: flex;
-        align-items: center;
-        height: 28px;
-        line-height: 28px;
-      }
-      label > input:is([type="checkbox"], [type="radio"]) {
-        margin-right: 1ch;
-      }
-*/
-
-
-
-
-
 
 
 
@@ -196,17 +131,17 @@
         appearance: none;
 
         padding: 2px;
-        border: solid 1px var(--clr-lighter);
+        border: solid 1px var(--clr-light);
 
 
         --fract: clamp(0, 100 * var(--scale), 100);
         --shift: round(down, clamp(0, var(--fract) - 70, 1));
       }
 
-      progress::-moz-progress-bar { background: var(--clr-darker) }
-      progress::-webkit-progress-bar { background: var(--clr-darker) }
-      progress::-moz-progress-value { background: var(--clr-lighter) }
-      progress::-webkit-progress-value { background: var(--clr-lighter) }
+      progress::-moz-progress-bar { background: var(--clr-dark) }
+      progress::-webkit-progress-bar { background: var(--clr-dark) }
+      progress::-moz-progress-value { background: var(--clr-light) }
+      progress::-webkit-progress-value { background: var(--clr-light) }
       progress::-moz-progress-inner-element { border: 0 }
       progress::-webkit-progress-inner-element { border: 0 }
 
@@ -263,7 +198,7 @@
         border-collapse: collapse;
         padding: 0;
         border: none;
-        outline: solid 1px var(--clr-lighter);
+        outline: solid 1px var(--clr-light);
         outline-offset: -1px;
       }
 
@@ -290,15 +225,23 @@
       table#programs tr :first-child { border-left-width: 6px }
       table#programs tr :last-child { border-right-width: 6px }
 
-      table#programs col { width: auto }
-      table#programs col:nth-of-type(1) { width: 55% }
-      table#programs col:nth-of-type(2) { width: 15% }
+/*      table#programs col { width: 30px }*/
+      table#programs col:nth-of-type(1) { width: 100% }
+      table#programs col:nth-of-type(2) { width: 75px }
+      table#programs col:nth-of-type(3) { width: 55px }
+      table#programs col:nth-of-type(4) { width: 35px }
+      table#programs col:nth-of-type(5) { width: 35px }
+
+      table#programs abbr {
+        text-decoration: none;
+        font: inherit;
+      }
 
 
       ul#messages {
         box-sizing: border-box;
         padding: 5px;
-        border: solid 1px var(--clr-lighter);
+        border: solid 1px var(--clr-light);
         font-size: 13px;
       }
 
@@ -317,7 +260,7 @@
 
       ul#messages li::marker {
         content: '\00bb';
-        color: var(--clr-lighter);
+        color: var(--clr-light);
       }
 
     </style>
@@ -340,7 +283,7 @@
 
       <table id="programs">
         <colgroup><col><col><col><col><col></colgroup>
-        <thead><tr><td>Name</td><td>Aired</td><td>Type</td><td>SeriesId</td><td>ProgramId</td></tr></thead>
+        <thead><tr><td>Name</td><td>Aired</td><td>Type</td><td><abbr title="Series Id">S.Id</abbr></td><td><abbr title="Program Id">P.Id</abbr></td></tr></thead>
         <tbody></tbody>
       </table>
     </section>

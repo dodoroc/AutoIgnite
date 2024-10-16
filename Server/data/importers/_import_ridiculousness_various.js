@@ -31,7 +31,7 @@ const vals = [];
 const rows = document.querySelectorAll('li.list-group-item');
 rows.forEach(s => {
   const name = s.children[0].children[1].innerText.replace(/"/g, '').trim();
-  if (name.toLowercase() == 'tba') return;
+  if (name.toLowerCase() == 'tba') return;
 
   const tmp1 = s.children[1].children[0].innerText.trim();
   const aired = new Date(tmp1).toISOString().slice(0, 10);
@@ -50,10 +50,10 @@ console.log(`
 INSERT INTO tracker.tracked (series_id, name, aired_on, seep_key, source) VALUES
 ${vals.join(',\n')}
 ON CONFLICT (series_id, name) DO --NOTHING
-UPDATE SET aired_on = EXCLUDED.aired_on, seep_key = EXCLUDED.seep_key
-WHERE tracked.aired_on IS NULL OR tracked.seep_key IS NULL
+UPDATE SET aired_on = EXCLUDED.aired_on, seep_key = EXCLUDED.seep_key, source = EXCLUDED.source
 ;
 `);
+// WHERE tracked.aired_on IS NULL OR tracked.seep_key IS NULL
 // DO UPDATE SET aired_on=EXCLUDED.aired_on, seep=EXCLUDED.seep
 // DO NOTHING
 
