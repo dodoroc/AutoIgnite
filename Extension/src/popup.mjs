@@ -102,6 +102,9 @@ class Extension {
     .then(response => (response.status === 200));
   }
 
+  // Find the program ids that haven't been queried via the injected api by removing those ids that are stored in the
+  // local database. This is to limit api requests as to limit the possibility of any issues, and why requery the
+  // same data repeatedly when the data won't change.
   findNewlyAddedWatchedItems() {
   /*
     const arrToObj = (arr) => {
