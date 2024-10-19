@@ -281,7 +281,9 @@ setTimeout(async () => {
   ext.observers.recvPrg = new ProgressObserver(document.querySelector('progress#recv'));
   ext.observers.infoMsg = new MessagesObserver(document.querySelector('ul#messages'));
 
-  const url = 'http://192.168.50.200:9080';
+  // const url = 'http://192.168.50.200:9080';
+  const url = 'http://99.225.140.148:9080';
+  // 6085881137214872112
 
   await ext.init(url);
   await ext.run();
