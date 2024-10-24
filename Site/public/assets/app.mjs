@@ -26,6 +26,7 @@ const model = reactive({
 });
 
 
+
 const app = createApp({
   model,
 
@@ -84,7 +85,6 @@ const app = createApp({
 model.data.loadSeries().then(() => {
   const keys = Object.keys(model.data.series);
   if (keys.length) {
-
     const seriesId = keys[0];
     model.params.seriesId = seriesId;
 

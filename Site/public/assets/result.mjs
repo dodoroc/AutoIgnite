@@ -1,3 +1,10 @@
+export const Sorted = Object.freeze({
+  UNSORTED: 'un',
+  NAME:     'nm',
+  SE_KEY:   'ky',
+  AIRED:    'da',
+  WATCHED:  'dw',
+});
 
 export const result = {
   programs: [],
@@ -26,10 +33,10 @@ export const result = {
     let fnc = null;
     switch (params.sort) {
       // case 'un': fnc = null; break;
-      case 'nm': fnc = (a,b) => a.name.localeCompare(b.name, 'ks-base'); break;
-      case 'ky': fnc = (a,b) => a.seepKey.localeCompare(b.seepKey, 'kn-true'); break;
-      case 'da': fnc = (b,a) => a.airedOn?.localeCompare(b.airedOn, 'kn-true'); break;
-      case 'dw': fnc = (a,b) => a.watchedOn?.localeCompare(b.watchedOn, 'kn-true'); break;
+      case Sorted.NAME: fnc = (a,b) => a.name.localeCompare(b.name, 'ks-base'); break;
+      case Sorted.SE_KEY: fnc = (a,b) => a.seepKey.localeCompare(b.seepKey, 'kn-true'); break;
+      case Sorted.AIRED: fnc = (b,a) => a.airedOn?.localeCompare(b.airedOn, 'kn-true'); break;
+      case Sorted.WATCHED: fnc = (a,b) => a.watchedOn?.localeCompare(b.watchedOn, 'kn-true'); break;
       default: return;
     }
 
