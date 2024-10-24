@@ -25,7 +25,7 @@ const model = reactive({
   },
 });
 
-
+console.log(Sorted.AIRED);
 
 const app = createApp({
   model,
