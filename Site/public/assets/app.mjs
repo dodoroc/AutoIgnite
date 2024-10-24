@@ -21,7 +21,7 @@ const model = reactive({
     seriesId: null,
     unwatched: false,
     textual: '',
-    sort: 'un',
+    sort: Sort.UNSORTED,
   },
 
 });
