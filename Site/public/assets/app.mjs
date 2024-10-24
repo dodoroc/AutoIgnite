@@ -1,6 +1,6 @@
 // import { createApp, reactive } from 'https://unpkg.com/petite-vue?module';
 import { createApp, reactive } from 'https://unpkg.com/petite-vue@0.4.1/dist/petite-vue.es.js?module';
-import { result } from '/assets/result.mjs';
+import { result, Sorted } from '/assets/result.mjs';
 import { data } from '/assets/data.mjs';
 
 // Return a function that returns a promise after a specified timeout
