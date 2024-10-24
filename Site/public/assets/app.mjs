@@ -24,13 +24,14 @@ const model = reactive({
     sort: 'un',
   },
 
-  Sorted,
 });
 
 console.log(Sorted.AIRED);
 
 const app = createApp({
   model,
+
+  Sorted,
 
   textualDebounceId: 0,
   onInput(ev) {
