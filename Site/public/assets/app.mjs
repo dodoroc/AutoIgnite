@@ -23,6 +23,8 @@ const model = reactive({
     textual: '',
     sort: 'un',
   },
+
+  Sorted,
 });
 
 console.log(Sorted.AIRED);
