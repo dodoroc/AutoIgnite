@@ -85,8 +85,6 @@
 html {
   overflow: hidden auto;
   overscroll-behavior: none;
-
-  text-size-adjust: none;
 }
 @supports (   -moz-text-size-adjust: none) { html {    -moz-text-size-adjust: none } }
 @supports (-webkit-text-size-adjust: none) { html { -webkit-text-size-adjust: none } }
