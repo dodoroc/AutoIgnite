@@ -88,13 +88,9 @@ html {
 
   text-size-adjust: none;
 }
-@supports not (text-size-adjust: none) {
-  html {
-    text-size-adjust: unset;
-    -moz-text-size-adjust: none;
-    -webkit-text-size-adjust: none;
-  }
-}
+@supports (   -moz-text-size-adjust: none) { html {    -moz-text-size-adjust: none } }
+@supports (-webkit-text-size-adjust: none) { html { -webkit-text-size-adjust: none } }
+@supports (        text-size-adjust: none) { html {         text-size-adjust: none } }
 @supports (scrollbar-gutter: stable) {
   html {
     scrollbar-gutter: stable;
