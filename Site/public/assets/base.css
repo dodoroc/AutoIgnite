@@ -92,6 +92,12 @@ html {
 
   text-size-adjust: none;
 }
+@supports not (text-size-adjust: none) {
+  html {
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+  }
+}
 
 html, body {
   margin: 0;

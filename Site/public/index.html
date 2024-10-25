@@ -109,11 +109,11 @@
       </select>
       -->
 
-      <button class="select-box span-all-columns" role="listbox" popovertarget="select-box-popover-sk443f">
+      <button class="select-box span-all-columns" popovertarget="select-box-popover-sk443f" role="group">
         <span popover id="select-box-popover-sk443f"></span>
         <span class="message">Select series</span>
-        <span class="items">
-          <label v-for="series in model.data.series">
+        <span class="items" role="listbox">
+          <label v-for="series in model.data.series" role="option">
             <input
               type="radio"
               name="filter-seriesid"
