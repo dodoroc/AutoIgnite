@@ -110,7 +110,7 @@
       -->
 
       <button class="select-box span-all-columns" popovertarget="select-box-popover-sk443f" role="menu">
-        <span popover id="select-box-popover-sk443f"></span>
+        <span popover id="select-box-popover-sk443f" aria-hidden="true"></span>
         <span class="message">Select series</span>
         <span class="items" role="group">
           <label v-for="series in model.data.series" role="menuitem">
@@ -157,11 +157,10 @@
         </thead>
 
         <tbody v-if="model.result.programs.length">
-          <tr v-for="program in model.result.programs"> <!-- :key="model.params.seriesId+program.seepKey"> -->
+          <tr v-for="program in model.result.programs">
             <td>{{program.name}}</td>
             <td>{{program.airedOn}}</td>
             <td>{{program.watchedOn}}</td>
-            <!-- <td>{{seep(program.seepKey)}}</td> -->
             <td v-html="seep(program.seepKey)"></td>
           </tr>
         </tbody>
