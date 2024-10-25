@@ -86,16 +86,20 @@ html {
   overflow: hidden auto;
   overscroll-behavior: none;
 
-  scrollbar-gutter: stable;
-  scrollbar-width: thin;
-/*  scrollbar-color: var(--clr-median) var(--clr-darkest);*/
-
   text-size-adjust: none;
 }
 @supports not (text-size-adjust: none) {
   html {
+    text-size-adjust: unset;
     -moz-text-size-adjust: none;
     -webkit-text-size-adjust: none;
+  }
+}
+@supports (scrollbar-gutter: stable) {
+  html {
+    scrollbar-gutter: stable;
+    scrollbar-width: thin;
+  /*  scrollbar-color: var(--clr-median) var(--clr-darkest);*/
   }
 }
 
