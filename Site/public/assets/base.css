@@ -254,10 +254,12 @@ input[type="checkbox"].switch {
 
   transition: --switch-offset 200ms linear;
   --switch-offset: 0%;
+  --switch-offset: 25%;
 }
 
 input[type="checkbox"].switch:checked {
   --switch-offset: 100%;
+  --switch-offset: 75%;
 }
 
 input[type="checkbox"].switch::before {
