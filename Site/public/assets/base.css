@@ -70,8 +70,6 @@
 
   --ctrl-ckrd-gap: 0.6ch;
   --ctrl-switch-size: 24px;
-  --ctrl-switch-half-size: 12px;
-  --ctrl-switch-width: round(down, calc(var(--ctrl-switch-size) * 1.724), 2px);
   --ctrl-switch-radius: 11px;
   --ctrl-ckrd-outer-size: 18px;
   --ctrl-ckrd-inner-size: 10px;
@@ -241,31 +239,35 @@ select {
 }
 
 input[type="checkbox"].switch {
+  --switch-width: round(down, calc(var(--ctrl-switch-size) * 1.724), 2px);
+  --switch-grad-px-min: calc(var(--ctrl-switch-size) / 2);
+  --switch-grad-px-max: calc(var(--switch-width) - var(--switch-grad-px-min));
+
   container-type: size;
   display: inline-grid;
   place-content: center start;
 
   padding: 0;
-  width: var(--ctrl-switch-width);
+  width: var(--switch-width);
   height: var(--ctrl-switch-size);
 
-  background: red linear-gradient(90deg, var(--clr-switch-act-bg) var(--switch-offset), var(--clr-switch-bg) var(--switch-offset));
+  background: transparent linear-gradient(90deg, var(--clr-switch-act-bg) var(--switch-offset), var(--clr-switch-bg) var(--switch-offset));
   border: solid 1px var(--clr-border);
   border-radius: var(--ctrl-switch-radius);
   color: var(--clr-300);
 
   transition: --switch-offset 200ms linear;
-  --switch-offset: var(--ctrl-switch-half-size);
+  --switch-offset: var(--switch-grad-px-min);
 }
 
 input[type="checkbox"].switch:checked {
-/*  --switch-offset: calc(var(--ctrl-switch-width) - var(--ctrl-switch-half-size));*/
-  --switch-offset: calc(100cqw - var(--ctrl-switch-half-size));
+  --switch-offset: var(--switch-grad-px-max);
 }
 
 input[type="checkbox"].switch::before {
   content: 'ο';
   display: inline-block;
+  display: none;
   text-align: center;
   font-size: 88cqh;
   line-height: 86cqh;
