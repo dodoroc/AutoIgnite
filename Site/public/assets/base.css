@@ -267,7 +267,6 @@ input[type="checkbox"].switch:checked {
 input[type="checkbox"].switch::before {
   content: 'ο';
   display: inline-block;
-  display: none;
   text-align: center;
   font-size: 88cqh;
   line-height: 86cqh;
