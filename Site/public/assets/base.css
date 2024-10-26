@@ -235,9 +235,7 @@ select {
 
 /* custome property to allow animation via transition */
 @property --switch-offset {
-/*  syntax: '<percentage>';*/
   syntax: '<length>';
-/*  initial-value: var(--ctrl-switch-half-size);*/
   initial-value: 0;
   inherits: true;
 }
@@ -261,7 +259,8 @@ input[type="checkbox"].switch {
 }
 
 input[type="checkbox"].switch:checked {
-  --switch-offset: calc(var(--ctrl-switch-width) - var(--ctrl-switch-half-size));
+/*  --switch-offset: calc(var(--ctrl-switch-width) - var(--ctrl-switch-half-size));*/
+  --switch-offset: calc(100cqw - var(--ctrl-switch-half-size));
 }
 
 input[type="checkbox"].switch::before {
