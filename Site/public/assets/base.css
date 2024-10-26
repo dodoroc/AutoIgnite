@@ -241,7 +241,7 @@ select {
 input[type="checkbox"].switch {
   --switch-width: round(down, calc(var(--ctrl-switch-size) * 1.724), 2px);
   --switch-grad-px-min: calc(var(--ctrl-switch-size) / 2);
-  --switch-grad-px-max: calc(var(--switch-width) - var(--switch-grad-px-min));
+  --switch-grad-px-max: calc(var(--switch-width) - var(--switch-grad-px-min) - 2px);
 
   container-type: size;
   display: inline-grid;
