@@ -237,7 +237,8 @@ select {
 @property --switch-offset {
 /*  syntax: '<percentage>';*/
   syntax: '<length>';
-  initial-value: var(--ctrl-switch-half-size);
+/*  initial-value: var(--ctrl-switch-half-size);*/
+  initial-value: 0;
   inherits: false;
 }
 
