@@ -121,26 +121,26 @@ html, body {
 */
 
 @media (orientation: portrait) {
-  @media (min-width:  2in) { #dpi::after { content: ' - 2in' } }
-  @media (min-width:  4in) { #dpi::after { content: ' - 4in' } }
-  @media (min-width:  6in) { #dpi::after { content: ' - 6in' } }
-  @media (min-width:  8in) { #dpi::after { content: ' - 8in' } }
-  @media (min-width: 10in) { #dpi::after { content: ' - 10in' } }
-  @media (min-width: 12in) { #dpi::after { content: ' - 12in' } }
-  @media (min-width: 14in) { #dpi::after { content: ' - 14in' } }
-  @media (min-width: 16in) { #dpi::after { content: ' - 16in' } }
-  @media (min-width: 18in) { #dpi::after { content: ' - 18in' } }
+  @media (max-width: 18in) { #dpi::after { content: ' - 18in' } }
+  @media (max-width: 16in) { #dpi::after { content: ' - 16in' } }
+  @media (max-width: 14in) { #dpi::after { content: ' - 14in' } }
+  @media (max-width: 12in) { #dpi::after { content: ' - 12in' } }
+  @media (max-width: 10in) { #dpi::after { content: ' - 10in' } }
+  @media (max-width:  8in) { #dpi::after { content: ' - 8in' } }
+  @media (max-width:  6in) { #dpi::after { content: ' - 6in' } }
+  @media (max-width:  4in) { #dpi::after { content: ' - 4in' } }
+  @media (max-width:  2in) { #dpi::after { content: ' - 2in' } }
 }
 @media (orientation: landscape) {
-  @media (min-height:  2in) { #dpi::after { content: ' - 2in' } }
-  @media (min-height:  4in) { #dpi::after { content: ' - 4in' } }
-  @media (min-height:  6in) { #dpi::after { content: ' - 6in' } }
-  @media (min-height:  8in) { #dpi::after { content: ' - 8in' } }
-  @media (min-height: 10in) { #dpi::after { content: ' - 10in' } }
-  @media (min-height: 12in) { #dpi::after { content: ' - 12in' } }
-  @media (min-height: 14in) { #dpi::after { content: ' - 14in' } }
-  @media (min-height: 16in) { #dpi::after { content: ' - 16in' } }
-  @media (min-height: 18in) { #dpi::after { content: ' - 18in' } }
+  @media (max-height: 18in) { #dpi::after { content: ' - 18in' } }
+  @media (max-height: 16in) { #dpi::after { content: ' - 16in' } }
+  @media (max-height: 14in) { #dpi::after { content: ' - 14in' } }
+  @media (max-height: 12in) { #dpi::after { content: ' - 12in' } }
+  @media (max-height: 10in) { #dpi::after { content: ' - 10in' } }
+  @media (max-height:  8in) { #dpi::after { content: ' - 8in' } }
+  @media (max-height:  6in) { #dpi::after { content: ' - 6in' } }
+  @media (max-height:  4in) { #dpi::after { content: ' - 4in' } }
+  @media (max-height:  2in) { #dpi::after { content: ' - 2in' } }
 }
 
 
