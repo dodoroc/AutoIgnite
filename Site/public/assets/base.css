@@ -121,7 +121,7 @@ html, body {
 */
 @media (max-device-width: 6in) {
   :root {
-    --dw: max-device-width;
+    --dw: calc(1 * max-device-width);
     --xw: 'asdf';
   }
 }
