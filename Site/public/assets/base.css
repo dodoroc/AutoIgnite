@@ -119,9 +119,14 @@ html, body {
   }
 }
 */
+@media (max-device-width: 6in) {
+  :root {
+    --dw: max-device-width;
+  }
+}
 
 @media (orientation: portrait) {
-  @media (max-width: 18in) { #dpi::after { content: ' - 18in' } }
+  @media (max-width: 18in) { #dpi::after { content: ' - 18in'  } }
   @media (max-width: 17in) { #dpi::after { content: ' - 17in' } }
   @media (max-width: 16in) { #dpi::after { content: ' - 16in' } }
   @media (max-width: 15in) { #dpi::after { content: ' - 15in' } }
@@ -134,8 +139,8 @@ html, body {
   @media (max-width:  8in) { #dpi::after { content: ' - 8in' } }
   @media (max-width:  7in) { #dpi::after { content: ' - 7in' } }
   @media (max-width:  6in) { #dpi::after { content: ' - 6in' } }
-  @media (max-width:  5in) { #dpi::after { content: ' - 5in' } }
-  @media (max-width:  4in) { #dpi::after { content: ' - 4in' } }
+  @media (max-width:  5in) { #dpi::after { content: ' - 5in' var(--dw)} }
+  @media (max-width:  4in) { #dpi::after { content: ' - 4in' var(--dw) } }
   @media (max-width:  3in) { #dpi::after { content: ' - 3in' } }
   @media (max-width:  2in) { #dpi::after { content: ' - 2in' } }
   @media (max-width:  1in) { #dpi::after { content: ' - 1in' } }
