@@ -140,7 +140,7 @@ html, body {
   @media (max-width:  7in) { #dpi::after { content: ' - 7in' } }
   @media (max-width:  6in) { #dpi::after { content: ' - 6in' } }
   @media (max-width:  5in) { #dpi::after { content: ' - 5in' var(--dw) ' aa'} }
-  @media (max-width:  4in) { #dpi::after { content: ' - 4in' var(--dw), ' bb' } }
+  @media (max-width:  4in) { #dpi::after { content: ' - 4in' var(--dw) ' bb' } }
   @media (max-width:  3in) { #dpi::after { content: ' - 3in' } }
   @media (max-width:  2in) { #dpi::after { content: ' - 2in' } }
   @media (max-width:  1in) { #dpi::after { content: ' - 1in' } }
