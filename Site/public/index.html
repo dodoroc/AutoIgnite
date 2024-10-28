@@ -100,7 +100,7 @@
 
     <h1>AutoIgnite Dashboard</h1>
     <div id="dpi"></div>
-    <script defer>document.getElementById('dpi').textContent = window.devicePixelRatio + ' ' + window.screen.width</script>
+    <script defer>document.getElementById('dpi').textContent = window.devicePixelRatio + ' ' + window.screen.width + ' ' + window.screen.height</script>
 
     <search class="aute" id="aute-filters" @submit.prevent @input="onInput" @change="onChanged">
       <!--
