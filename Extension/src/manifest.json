@@ -2,19 +2,23 @@
   "manifest_version": 3,
 
 	"name": "XTVAutomate",
-  "version": "1.0",
+  "version": "1.1",
 
   "permissions": [
     "scripting", "activeTab", "tabs"
   ],
 
   "host_permissions": [
+    "https://rogersxfinitystream.rogers.com/*",
     "https://ignitetv.rogers.com/*",
     "http://localhost/*"
   ],
 
   "web_accessible_resources": [{
-    "matches": ["https://ignitetv.rogers.com/*"],
+    "matches": [
+      "https://rogersxfinitystream.rogers.com/*",
+      "https://ignitetv.rogers.com/*"
+    ],
     "resources": [
       "task/runner.mjs", "task/actions_base.mjs", "task/actions.mjs"
     ]
@@ -23,13 +27,17 @@
   "externally_connectable": {
     "ids": ["*"],
     "matches": [
+      "https://rogersxfinitystream.rogers.com/*",
       "https://ignitetv.rogers.com/*"
       // "<all_urls>"
     ]
   },
 
   "content_scripts": [{
-    "matches": ["https://ignitetv.rogers.com/*"],
+    "matches": [
+      "https://rogersxfinitystream.rogers.com/*",
+      "https://ignitetv.rogers.com/*"
+    ],
     "js": ["content.js"]
   }],
 
