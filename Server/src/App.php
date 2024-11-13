@@ -42,7 +42,6 @@ final class App
     $path = $path === '' ? [] : explode('/', $path);
 
     $router = new SimpleRouter;
-
     return $router->route($method, $path);
   }
 }

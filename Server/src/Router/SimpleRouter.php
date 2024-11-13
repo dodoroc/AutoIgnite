@@ -13,8 +13,8 @@ final class SimpleRouter extends AbstractRouter
   // <words> literal path component
   // <^...$> Anything anchored will be processed by regex; use named capture groups to pass var to controller
   //
-  // Important: Cannot initialize routes inline as php won't allow 'new' to be used.
-  // Use constructor initalization (standard or promotion).
+  // Important: Cannot initialize routes inline due to 'new' restriction.
+  // Use constructor initalization (standard or promotion)
   public function __construct(
     public readonly array $routes = [
 

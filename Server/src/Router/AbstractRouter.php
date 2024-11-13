@@ -10,7 +10,7 @@ namespace Server\Router;
 use Server\Router\Routing;
 use Server\Controller\{ControllerInterface, ErrorNotFoundController, ErrorBadRequestController, ErrorNotAllowedController};
 
-abstract class AbstractRouter implements RouterInterface
+abstract class AbstractRouter
 {
   protected function search(array $node, array $paths, int $ndx, int $len, array $vars = []) : Routing|null
   {
@@ -19,14 +19,16 @@ abstract class AbstractRouter implements RouterInterface
     foreach ($node as $pat => $obj) {
 
       if ($pat[0] === '^' && preg_match("#$pat#s", $seg, $matches) === 1) {
-        // Copy named capture groups to 'vars' then passed to controller
+        // regex node matched
+        // copy _only_ the named capture groups to 'vars'
         foreach ($matches as $k => $v) if (!is_int($k)) $vars[$k] = $v;
       }
       elseif ($pat === $seg) {
+        // simple text node matched
         // do not delete this condition otherwise 'else' will handle it and fail
       }
       else {
-        // no match found
+        // node not matched
         continue;
       }
 
