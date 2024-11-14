@@ -13,6 +13,6 @@ final class TeapotController extends AbstractController
 {
   public function execute() : ResponseInterface
   {
-    return new ResponseTeapot();
+    return new ResponseTeapot;
   }
 }

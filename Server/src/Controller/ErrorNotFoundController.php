@@ -13,6 +13,6 @@ final class ErrorNotFoundController extends AbstractController
 {
   public function execute() : ResponseInterface
   {
-    return new ResponseNotFound();
+    return new ResponseNotFound;
   }
 }
