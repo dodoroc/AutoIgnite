@@ -26,7 +26,8 @@ final class WatchedGetAllProcess extends AbstractDatabaseProcess
     $this->results = new \StdClass;
 
     $sql = $this->createQuery();
-    $stm = $this->dbc->query($sql, PDO::FETCH_OBJ);
+    // $stm = $this->dbc->query($sql, PDO::FETCH_OBJ);
+    $stm = $this->dbc->query($sql);
 
     foreach ($stm as $r) {
       $this->results->{$r->program_id} = null;

@@ -39,7 +39,7 @@ final class WatchedPutSomeProcess extends AbstractDatabaseProcess
     $sql = $this->createQuery();
 
     $stm = $this->dbc->prepare($sql);
-    $stm->setFetchMode(PDO::FETCH_OBJ);
+    // $stm->setFetchMode(PDO::FETCH_OBJ);
 
     try {
       $this->dbc->beginTransaction();
