@@ -21,8 +21,8 @@ require '../vendor/autoload.php';
 use Server\Router\{SimpleRouter, HttpMethods};
 use Server\Controller\ControllerInterface;
 
-$cfg1 = parse_ini_file('../../.secrets/.ini');
-$cfg2 = parse_ini_file('./app.ini');
+$cfg1 = parse_ini_file('../../.secrets/.ini', true);
+$cfg2 = parse_ini_file('./app.ini', true);
 define('CFG', $cfg1+$cfg2);
 
 final class App

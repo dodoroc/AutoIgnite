@@ -18,10 +18,9 @@ abstract class AbstractDatabaseProcess extends AbstractProcess
     // ALTER USER projects_user RESET search_path;
     // SET search_path TO tracker
 
-    // $db = \Server\App::$config['db'];
-    $dsn = CFG['DB_DSN'];
-    $usr = CFG['DB_USER'];
-    $pwd = CFG['DB_PASS'];
+    $dsn = CFG['database']['dsn'];
+    $usr = CFG['database']['user'];
+    $pwd = CFG['database']['pass'];
 
     $this->dbc = new PDO($dsn, $usr, $pwd, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
     $this->dbc->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
