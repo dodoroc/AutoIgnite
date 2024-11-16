@@ -21,7 +21,9 @@ require '../vendor/autoload.php';
 use Server\Router\{SimpleRouter, HttpMethods};
 use Server\Controller\ControllerInterface;
 
-define('CFG', parse_ini_file('../../.secrets/.ini'));
+$cfg1 = parse_ini_file('../../.secrets/.ini');
+$cfg2 = parse_ini_file('./app.ini');
+define('CFG', $cfg1+$cfg2);
 
 final class App
 {
@@ -36,7 +38,7 @@ final class App
 
     // CHECK Which server var is most correct (SCRIPT_NAME PHP_SELF apache/php)(DOCUMENT_URI nginx)
     // TEST Confirm UTF-8 isn't mangled in any way
-    // There is a bug in filter_input with INPUT_SERVER
+    // NOTE There is a bug in filter_input with INPUT_SERVER
     $path = filter_var($_SERVER['DOCUMENT_URI'], FILTER_SANITIZE_URL); //
     $path = trim(urldecode($path ?: ''), '/');
     $path = $path === '' ? [] : explode('/', $path);
