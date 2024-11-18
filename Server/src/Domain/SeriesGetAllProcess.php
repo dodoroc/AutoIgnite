@@ -12,6 +12,11 @@ use \PDO;
 
 final class SeriesGetAllProcess extends AbstractDatabaseProcess
 {
+  public function __construct()
+  {
+    parent::__construct();
+  }
+
   private function createQuery() : string
   {
     $sql = <<<'SQL'
@@ -27,7 +32,6 @@ final class SeriesGetAllProcess extends AbstractDatabaseProcess
     $this->results = new \StdClass;
 
     $sql = $this->createQuery();
-    // $stm = $this->dbc->query($sql, PDO::FETCH_OBJ);
     $stm = $this->dbc->query($sql);
 
     foreach ($stm as $r) {

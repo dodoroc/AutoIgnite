@@ -28,7 +28,6 @@ final class TrackedGetAllBySeriesIdProcess extends AbstractDatabaseProcess
     $this->results = [];
 
     $sql = $this->createQuery();
-    // $stm = $this->dbc->query($sql, PDO::FETCH_OBJ);
     $stm = $this->dbc->query($sql);
 
     foreach ($stm as $r) {
