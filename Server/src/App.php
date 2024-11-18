@@ -23,7 +23,7 @@ use Server\Controller\ControllerInterface;
 
 $cfg1 = parse_ini_file('../../.secrets/.ini', true);
 $cfg2 = parse_ini_file('./app.ini', true);
-define('CFG', $cfg1+$cfg2);
+define('CONFIG', $cfg1+$cfg2);
 
 final class App
 {

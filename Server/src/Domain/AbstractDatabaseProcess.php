@@ -27,7 +27,7 @@ abstract class AbstractDatabaseProcess extends AbstractProcess
     // $this->dbc = new PDO($dsn, $usr, $pwd, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
     // $this->dbc->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 
-    $dsn = CFG['dsn']['projects'];
+    $dsn = CONFIG['dsn']['projects'];
 
     $this->dbc = new PDO($dsn);
     $this->dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
