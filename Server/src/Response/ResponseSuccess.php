@@ -15,7 +15,7 @@ final class ResponseSuccess extends AbstractResponse
     parent::__construct(self::CODE, $content, $headers);
   }
 
-  public function fromJSON(mixed $value)
+  public static function fromJSON(mixed $value)
   {
     $content = json_encode($value);
     $headers = [
