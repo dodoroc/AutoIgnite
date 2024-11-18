@@ -44,6 +44,6 @@ abstract class AbstractResponse implements ResponseInterface
       header($item);
     }
 
-    echo $this->body;
+    echo $this->content;
   }
 }
