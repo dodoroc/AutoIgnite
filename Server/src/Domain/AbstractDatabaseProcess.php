@@ -20,12 +20,6 @@ abstract class AbstractDatabaseProcess extends AbstractProcess
     // ALTER USER projects_user RESET search_path;
     // SET search_path TO tracker
 
-    // $dsn = CFG['database']['dsn'];
-    // $usr = CFG['database']['user'];
-    // $pwd = CFG['database']['pass'];
-
-    // $this->dbc = new PDO($dsn, $usr, $pwd, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-    // $this->dbc->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 
     $dsn = CONFIG['dsn']['projects'];
 
