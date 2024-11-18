@@ -12,6 +12,6 @@ final class ResponseSuccess extends AbstractResponse
   const CODE = 200;
   public function __construct(string $body = '')
   {
-    self::init(self::CODE, $body);
+    $this->init(self::CODE, $body);
   }
 }

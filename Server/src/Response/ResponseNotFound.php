@@ -12,6 +12,6 @@ final class ResponseNotFound extends AbstractResponse
   const CODE = 404;
   public function __construct()
   {
-    self::init(self::CODE, '[ '. self::CODE .' ]; Oops, cannot find that.');
+    $this->init(self::CODE, '[ '. self::CODE .' ]; Oops, cannot find that.');
   }
 }

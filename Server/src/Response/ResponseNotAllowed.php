@@ -12,6 +12,6 @@ final class ResponseNotAllowed extends AbstractResponse
   const CODE = 405;
   public function __construct()
   {
-    self::init(self::CODE, '[ '. self::CODE .' ]; You gave me a spoon, maybe a spork would be better.');
+    $this->init(self::CODE, '[ '. self::CODE .' ]; You gave me a spoon, maybe a spork would be better.');
   }
 }

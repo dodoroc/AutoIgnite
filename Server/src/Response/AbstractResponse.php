@@ -35,6 +35,7 @@ abstract class AbstractResponse implements ResponseInterface
     $this->body = $body;
   }
 
+  /*
   // get/set $this->body
   // return current value when param is null else the original values
   final public function body(string|null $body = null) : string
@@ -47,11 +48,11 @@ abstract class AbstractResponse implements ResponseInterface
 
     return $org ?? '';
   }
+  */
 
   final public function vent() : void
   {
     http_response_code($this->code);
-
 
     // $this->setHeader('Content-Length', (string)strlen($this->body));
     foreach ($this->headers as $key => $val) {

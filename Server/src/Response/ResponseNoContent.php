@@ -12,6 +12,6 @@ final class ResponseNoContent extends AbstractResponse
   const CODE = 204;
   public function __construct()
   {
-    self::init(self::CODE, '');
+    $this->init(self::CODE, '');
   }
 }
