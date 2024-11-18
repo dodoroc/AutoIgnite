@@ -36,7 +36,7 @@ abstract class AbstractResponse implements ResponseInterface
   final public function vent() : void
   {
     http_response_code($this->code);
-    header('Content-Length', (string)strlen($this->body));
+    header('Content-Length', (string)strlen($this->content));
 
     foreach ($this->headers as $key => $val) {
       $item = "$key: $val";
