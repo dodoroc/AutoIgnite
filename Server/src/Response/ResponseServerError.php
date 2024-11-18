@@ -12,6 +12,6 @@ final class ResponseServerError extends AbstractResponse
   const CODE = 500;
   public function __construct()
   {
-    $this->init(self::CODE, '[ '. self::CODE .' ]; Something went horribly wrong; xoxo!');
+    parent::__construct(self::CODE, '[ '. self::CODE .' ]; Something went horribly wrong; xoxo!');
   }
 }

@@ -12,6 +12,6 @@ final class ResponseMisdirected extends AbstractResponse
   const CODE = 421;
   public function __construct()
   {
-    $this->init(self::CODE, '[ '. self::CODE .' ]; Something happened; cannot produce a response!');
+    parent::__construct(self::CODE, '[ '. self::CODE .' ]; Something happened; cannot produce a response!');
   }
 }

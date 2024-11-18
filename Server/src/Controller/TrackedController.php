@@ -19,11 +19,7 @@ final class TrackedController extends AbstractController
     $proc = new TrackedGetAllBySeriesIdProcess(new SeriesId($this->pathData['seriesId']));
     $proc->execute();
 
-    $resp = new ResponseSuccess;
-    $resp->body = json_encode($proc);
-    $resp->setHeader('Content-Length', (string)strlen($resp->body));
-    $resp->setHeader('Content-Type', 'application/json');
-
+    $resp = ResponseSuccess::fromJSON($proc);
     return $resp;
   }
 

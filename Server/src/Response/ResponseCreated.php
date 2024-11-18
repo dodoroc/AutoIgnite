@@ -10,8 +10,8 @@ namespace Server\Response;
 final class ResponseCreated extends AbstractResponse
 {
   const CODE = 201;
-  public function __construct(string $body = 'Created')
+  public function __construct(string $content = 'Created')
   {
-    $this->init(self::CODE, $body);
+    parent::__construct(self::CODE, $content);
   }
 }

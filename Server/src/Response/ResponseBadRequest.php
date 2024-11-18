@@ -12,6 +12,6 @@ final class ResponseBadRequest extends AbstractResponse
   const CODE = 400;
   public function __construct()
   {
-    $this->init(self::CODE, '[ '. self::CODE .' ]; So confused, cannot do anything; bye...');
+    parent::__construct(self::CODE, '[ '. self::CODE .' ]; So confused, cannot do anything; bye...');
   }
 }

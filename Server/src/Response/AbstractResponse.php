@@ -9,9 +9,12 @@ namespace Server\Response;
 
 abstract class AbstractResponse implements ResponseInterface
 {
+  public function __construct(protected int $code = 0, protected string $content = '', protected array $headers = [])
+  {}
+
+
+  /*
   public array $headers = [];
-  public int $code = 0;
-  public string $body = '';
 
   // Minimal implementation for now
   final public function setHeader(string $key, string|array|null $value, bool $replace = true) : void
@@ -27,37 +30,16 @@ abstract class AbstractResponse implements ResponseInterface
       $this->headers[$key] = [...$this->headers[$key], ...$arrVal];
     }
   }
-
-
-  final public function init(int $code, string $body) : void
-  {
-    $this->code = $code;
-    $this->body = $body;
-  }
-
-  /*
-  // get/set $this->body
-  // return current value when param is null else the original values
-  final public function body(string|null $body = null) : string
-  {
-    $org = $this->body;
-
-    if ($body !== null) {
-      $this->body = $body;
-    }
-
-    return $org ?? '';
-  }
   */
+
 
   final public function vent() : void
   {
     http_response_code($this->code);
+    header('Content-Length', (string)strlen($this->body));
 
-    // $this->setHeader('Content-Length', (string)strlen($this->body));
     foreach ($this->headers as $key => $val) {
-      $cleaned = array_filter($val);
-      $item = "$key: ".implode(',', $cleaned);
+      $item = "$key: $val";
       header($item);
     }
 
