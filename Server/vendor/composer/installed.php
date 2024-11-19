@@ -1,19 +1,19 @@
 <?php return array(
     'root' => array(
-        'name' => 'ignite/server',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'name' => 'autoignite/server',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '3e5a2a7fc8fe8e542771133533fbd93ed98bf8da',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
-        'ignite/server' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+        'autoignite/server' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '3e5a2a7fc8fe8e542771133533fbd93ed98bf8da',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
