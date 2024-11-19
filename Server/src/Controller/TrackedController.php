@@ -8,7 +8,7 @@
 namespace Server\Controller;
 
 use Server\Router\HttpMethods;
-use Server\Response\{ResponseInterface, ResponseSuccess, ResponseMisdirected};
+use Server\Response\{Response, ResponseInterface, ResponseSuccess, ResponseMisdirected};
 use Server\Domain\TrackedGetAllBySeriesIdProcess;
 use Server\Entity\SeriesId;
 
@@ -19,7 +19,7 @@ final class TrackedController extends AbstractController
     $proc = new TrackedGetAllBySeriesIdProcess(new SeriesId($this->pathData['seriesId']));
     $proc->execute();
 
-    $resp = ResponseSuccess::asJSON($proc);
+    $resp = Response::asJSON($proc);
     return $resp;
   }
 

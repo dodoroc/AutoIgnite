@@ -4,9 +4,10 @@
  *
  */
 
-namespace Server\Trait;
 
-trait ResponseAsJSON
+namespace Server\Response;
+
+final class Response
 {
   public static function asJSON(mixed $value)
   {

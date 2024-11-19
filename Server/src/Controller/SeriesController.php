@@ -8,7 +8,7 @@
 namespace Server\Controller;
 
 use Server\Router\HttpMethods;
-use Server\Response\{ResponseInterface, ResponseSuccess, ResponseMisdirected};
+use Server\Response\{Response, ResponseInterface, ResponseSuccess, ResponseMisdirected};
 use Server\Domain\SeriesGetAllProcess;
 
 final class SeriesController extends AbstractController
