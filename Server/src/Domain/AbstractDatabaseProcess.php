@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 /**
- * NEED DI container and more this into a proper place
+ * NEED DI container and move this into a proper place
  */
 
 namespace Server\Domain;

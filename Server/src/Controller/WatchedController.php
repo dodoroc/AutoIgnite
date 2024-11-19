@@ -21,7 +21,7 @@ final class WatchedController extends AbstractController
     $proc = new WatchedGetAllProcess;
     $proc->execute();
 
-    $resp = ResponseSuccess::fromJSON($proc);
+    $resp = ResponseSuccess::asJSON($proc);
     return $resp;
   }
 
