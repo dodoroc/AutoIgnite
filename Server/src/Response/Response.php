@@ -9,14 +9,14 @@ namespace Server\Response;
 
 final class Response
 {
-  public static function asJSON(mixed $value)
+  public static function asJSON(mixed $value, object $class)
   {
     $content = json_encode($value);
     $headers = [
       'Content-Type' => 'application/json'
     ];
 
-    $resp = new self($content, $headers);
+    $resp = new $class($content, $headers);
     return $resp;
   }
 }

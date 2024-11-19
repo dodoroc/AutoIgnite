@@ -18,7 +18,7 @@ final class SeriesController extends AbstractController
     $proc = new SeriesGetAllProcess;
     $proc->execute();
 
-    $resp = ResponseSuccess::asJSON($proc);
+    $resp = Response::asJSON($proc, ResponseSuccess::class);
     return $resp;
   }
 
