@@ -13,7 +13,6 @@ use Server\DepContainer;
 
 final class SeriesGetAllProcess extends AbstractDatabaseProcess
 {
-  private $dbc = null;
   public function __construct()
   {
     //parent::__construct();
