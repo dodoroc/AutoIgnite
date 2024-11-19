@@ -11,7 +11,7 @@ use Server\Response\ResponseInterface;
 
 final class Response
 {
-  public static function asJSON(mixed $value, object $class) : ResponseInterface
+  public static function asJSON(mixed $value, string $class) : ResponseInterface
   {
     $content = json_encode($value);
     $headers = [
