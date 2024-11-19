@@ -3,7 +3,7 @@
 /**
  *
  */
-
+namespace Test;
 
 use \PDO;
 use Server\DepContainer;
