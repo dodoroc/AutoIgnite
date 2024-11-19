@@ -3,12 +3,13 @@
 /**
  *
  */
-namespace Server\Test;
+namespace Test;
 
 //
 use \PDO;
-use \Server\DepContainer;
+use Server\DepContainer;
 
+echo "\n\npreinit\n\n";
 
 $cfg1 = parse_ini_file('../../.secrets/.ini', true);
 define('CONFIG', $cfg1);
