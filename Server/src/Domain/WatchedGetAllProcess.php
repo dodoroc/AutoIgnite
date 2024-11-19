@@ -13,7 +13,7 @@ final class WatchedGetAllProcess extends AbstractDatabaseProcess
 {
   public function __construct()
   {
-    parent::__construct();
+    $this->connect();
   }
 
   private function createQuery() : string

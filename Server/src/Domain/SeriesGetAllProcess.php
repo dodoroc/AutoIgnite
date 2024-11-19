@@ -9,14 +9,12 @@ namespace Server\Domain;
 
 use Server\Entity\{SeriesId, Series};
 use \PDO;
-use Server\DepContainer;
 
 final class SeriesGetAllProcess extends AbstractDatabaseProcess
 {
   public function __construct()
   {
-    //parent::__construct();
-    $this->dbc = DepContainer::get('projects-dbc');
+    $this->connect();
   }
 
   private function createQuery() : string

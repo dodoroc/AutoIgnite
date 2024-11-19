@@ -7,6 +7,7 @@
 namespace Server\Domain;
 
 use \PDO;
+use Server\DepContainer;
 
 abstract class AbstractDatabaseProcess extends AbstractProcess
 {
@@ -15,27 +16,6 @@ abstract class AbstractDatabaseProcess extends AbstractProcess
   protected function connect() : void
   {
     // $this->dbc = new PDO('sqlite:./$$data/series-tracker.db', null, null, [PDO::ATTR_PERSISTENT => true]);
-
-    // ALTER USER projects_user SET search_path TO tracker;
-    // ALTER USER projects_user RESET search_path;
-    // SET search_path TO tracker
-
-
-    $dsn = CONFIG['dsn']['projects'];
-
-    // $this->dbc = new PDO($dsn);
-    // $this->dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // $this->dbc->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-
-    $this->dbc = new PDO($dsn, null, null, [
-      PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-      PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
-      PDO::ATTR_PERSISTENT => true,
-    ]);
-  }
-
-  public function __construct()
-  {
-    $this->connect();
+    $this->dbc = DepContainer::get('projects-dbc');
   }
 }

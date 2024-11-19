@@ -14,7 +14,7 @@ final class TrackedGetAllBySeriesIdProcess extends AbstractDatabaseProcess
 {
   public function __construct(private SeriesId $seriesId)
   {
-    parent::__construct();
+    $this->connect();
   }
 
   private function createQuery() : string

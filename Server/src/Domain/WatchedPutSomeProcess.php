@@ -14,7 +14,7 @@ final class WatchedPutSomeProcess extends AbstractDatabaseProcess
 {
   public function __construct(private array $watchedItems)
   {
-    parent::__construct();
+    $this->connect();
   }
 
   private function createQuery() : string
