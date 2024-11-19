@@ -6,7 +6,7 @@
 namespace Test;
 
 use \PDO;
-use Server\DepContainer;
+use \Server\DepContainer;
 
 
 $cfg1 = parse_ini_file('../../.secrets/.ini', true);

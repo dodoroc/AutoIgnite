@@ -19,7 +19,8 @@
 
   "autoload": {
     "psr-4": {
-      "Server\\": "src/"
+      "Server\\": "src/",
+      "Test\\": "tests/"
     }
   }
 }
