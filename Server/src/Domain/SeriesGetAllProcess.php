@@ -9,12 +9,14 @@ namespace Server\Domain;
 
 use Server\Entity\{SeriesId, Series};
 use \PDO;
+use Server\Stat;
 
 final class SeriesGetAllProcess extends AbstractDatabaseProcess
 {
   public function __construct()
   {
     parent::__construct();
+    error_log(print_r(Stat::$values, true), 3, '/home/projects/AutoIgnite/logs/stat.log');
   }
 
   private function createQuery() : string

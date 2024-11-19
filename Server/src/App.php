@@ -21,9 +21,13 @@ require '../vendor/autoload.php';
 use Server\Router\{SimpleRouter, HttpMethods};
 use Server\Controller\ControllerInterface;
 
+// Meh; needs work
 $cfg1 = parse_ini_file('../../.secrets/.ini', true);
 $cfg2 = parse_ini_file('./app.ini', true);
 define('CONFIG', $cfg1+$cfg2);
+
+
+Stat::$values['inapp'] = true;
 
 final class App
 {
