@@ -23,10 +23,14 @@ abstract class AbstractDatabaseProcess extends AbstractProcess
 
     $dsn = CONFIG['dsn']['projects'];
 
-    $this->dbc = new PDO($dsn);
-    $this->dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $this->dbc->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+    // $this->dbc = new PDO($dsn);
+    // $this->dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // $this->dbc->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 
+    $this->dbc = new PDO($dsn, null, null, [
+      PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+      PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
+    ]);
   }
 
   public function __construct()
