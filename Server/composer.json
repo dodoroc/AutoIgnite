@@ -20,7 +20,7 @@
   "autoload": {
     "psr-4": {
       "Server\\": "src/",
-      "Test\\": "tests/"
+      "Server\\Test\\": "tests/"
     }
   }
 }
