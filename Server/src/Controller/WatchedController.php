@@ -35,7 +35,6 @@ final class WatchedController extends AbstractController
     $proc->execute();
 
     $resp = new ResponseSuccess;
-
     return $resp;
   }
 
