@@ -27,13 +27,27 @@ $cfg2 = parse_ini_file('./app.ini', true);
 define('CONFIG', $cfg1+$cfg2);
 
 
-Stat::$values['inapp'] = true;
 
 final class App
 {
-
   public function __construct()
   {
+    DepContainer::register('projects-dbc', function() {
+      $dbc = null;
+
+      try {
+        $dsn = CONFIG['dsn']['projects'];
+
+        $dbc = new \PDO($dsn, null, null, [
+          PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+          PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
+          PDO::ATTR_PERSISTENT => true,
+        ]);
+      }
+      catch (Exception $ex) {}
+
+      return $dbc;
+    });
   }
 
   public function run() : ControllerInterface

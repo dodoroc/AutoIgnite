@@ -9,14 +9,15 @@ namespace Server\Domain;
 
 use Server\Entity\{SeriesId, Series};
 use \PDO;
-use Server\Stat;
+use Server\DepContainer;
 
 final class SeriesGetAllProcess extends AbstractDatabaseProcess
 {
+  private $dbc = null;
   public function __construct()
   {
-    parent::__construct();
-    error_log(print_r(Stat::$values, true), 3, '/home/projects/AutoIgnite/logs/stat.log');
+    //parent::__construct();
+    $this->dbc = DepContainer::get('projects-dbc');
   }
 
   private function createQuery() : string
