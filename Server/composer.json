@@ -21,5 +21,11 @@
     "psr-4": {
       "Server\\": "src/"
     }
+  },
+
+  "autoload-dev": {
+    "psr-4": {
+      "Test\\": "tests/"
+    }
   }
 }

@@ -3,7 +3,10 @@
 /**
  *
  */
-//namespace Test;
+namespace Test;
+
+require '../vendor/autoload.php';
+
 
 //
 //use \PDO;
