@@ -59,14 +59,16 @@ $dbc = new PDO($dsn, null, null, [
 ]);
 //*/
 
-function s() {
-  yield sleep(5);
+function s(&$c) {
+  yield $c->query('select pg_sleep(35)');
 }
 echo "\na ", time();
-s();
+s($dbc1);
 echo "\nb ", time();
-s();
+s($dbc1);
 echo "\nc ", time();
+s($dbc);
+echo "\nd ", time();
 
 echo "\nwaiting ", time();
 sleep(20);
