@@ -27,11 +27,8 @@ define('CONFIG', [
   ...parse_ini_file('../../.secrets/.ini', true),
   ...parse_ini_file('./app.ini', true),
 ]);
-
-error_log("\n-- app start pro\n\n");
 ini_set('error_log', CONFIG['logger']['file']['default']);
-// for testing delete
-error_log("\n-- app start epi\n\n");
+
 
 final class App
 {
@@ -41,7 +38,7 @@ final class App
       $file = CONFIG['logger']['file']['app'];
       return new Logger($file);
     });
-    DepContainer::get('logger')->log("start");
+
     DepContainer::register('projects-dbc', function() {
       $dbc = null;
 
@@ -86,7 +83,7 @@ try {
 }
 catch (Exception $ex) {
   $res = new ResponseServerError;
-  error_log(print_r($ex, true));
+  DepContainer::get('logger')->log("App exception!\n".$ex->__toString());
 }
 
 $res->vent();
