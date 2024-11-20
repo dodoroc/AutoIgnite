@@ -28,6 +28,9 @@ define('CONFIG', [
   ...parse_ini_file('./app.ini', true),
 ]);
 
+// for testing delete
+error_log("\n\n-- app start");
+
 final class App
 {
   public function __construct()
