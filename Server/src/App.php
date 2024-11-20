@@ -30,7 +30,7 @@ define('CONFIG', [
 
 ini_set('error_log', CONFIG['logger']['file']['default']);
 // for testing delete
-error_log("\n\n-- app start");
+error_log("\n\n-- app start\n");
 
 final class App
 {
