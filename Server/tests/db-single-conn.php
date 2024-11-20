@@ -60,17 +60,17 @@ $dbc0 = new PDO($dsn, null, null, [
 //*/
 
 
-$f0 = new Fiber(function () use ($dbc0): void {
+$f0 = new \Fiber(function () use (&$dbc0): void {
    //$parm = Fiber::suspend('fiber');
    //echo "Value used to resume fiber: ", $parm, PHP_EOL;
   $dbc0->query('select pg_sleep(35)');
 });
-$f1 = new Fiber(function () use ($dbc1): void {
+$f1 = new \Fiber(function () use (&$dbc1): void {
    //$parm = Fiber::suspend('fiber');
    //echo "Value used to resume fiber: ", $parm, PHP_EOL;
   $dbc1->query('select pg_sleep(36)');
 });
-$f2 = new Fiber(function () use ($dbc2): void {
+$f2 = new \Fiber(function () use (&$dbc2): void {
    //$parm = Fiber::suspend('fiber');
    //echo "Value used to resume fiber: ", $parm, PHP_EOL;
   $dbc2->query('select pg_sleep(37)');
