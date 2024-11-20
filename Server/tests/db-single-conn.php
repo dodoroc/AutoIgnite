@@ -58,39 +58,32 @@ $dbc0 = new PDO($dsn, null, null, [
 $dbc1 = DepContainer::get('projects-dbc');
 $dbc2 = DepContainer::get('projects-dbc');
 
-
-$f0 = new \Fiber(function () use (&$dbc0): void {
-   //$parm = Fiber::suspend('fiber');
-   //echo "Value used to resume fiber: ", $parm, PHP_EOL;
-  $dbc0->query('select pg_sleep(35)');
-  \Fiber::suspend('0');
-});
-$f1 = new \Fiber(function () use (&$dbc1): void {
-   //$parm = Fiber::suspend('fiber');
-   //echo "Value used to resume fiber: ", $parm, PHP_EOL;
-  $dbc1->query('select pg_sleep(36)');
-  \Fiber::suspend('1');
-});
-$f2 = new \Fiber(function () use (&$dbc2): void {
-   //$parm = Fiber::suspend('fiber');
-   //echo "Value used to resume fiber: ", $parm, PHP_EOL;
-  $dbc2->query('select pg_sleep(37)');
-  \Fiber::suspend('2');
-});
-
 echo "\nstart ", time();
 
-$f0->start();
-$f1->start();
-$f2->start();
+$pid = pcntl_fork();
+if (!$pid) {
+  $dbc0->query('select pg_sleep(35)');
+  // exit($i);
+}
+$pid = pcntl_fork();
+if (!$pid) {
+  $dbc1->query('select pg_sleep(36)');
+  // exit($i);
+}
+$pid = pcntl_fork();
+if (!$pid) {
+  $dbc2->query('select pg_sleep(37)');
+  // exit($i);
+}
+
 
 echo "\nwaiting ", time();
 
-$f0->resume();
-$f1->resume();
-$f2->resume();
 
-
+while (pcntl_waitpid(0, $status) != -1) {
+  $status = pcntl_wexitstatus($status);
+  echo "\nchild $status completed ", time();
+}
 
 // sleep(40);
 echo "\ndone ", time();
