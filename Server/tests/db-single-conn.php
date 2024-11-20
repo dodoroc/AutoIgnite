@@ -62,16 +62,19 @@ echo "\nstart ", time();
 
 $pid = pcntl_fork();
 if (!$pid) {
+  echo "\nchild 0 ", time();
   $dbc0->query('select pg_sleep(35)');
   // exit($i);
 }
 $pid = pcntl_fork();
 if (!$pid) {
+  echo "\nchild 1 ", time();
   $dbc1->query('select pg_sleep(36)');
   // exit($i);
 }
 $pid = pcntl_fork();
 if (!$pid) {
+  echo "\nchild 2 ", time();
   $dbc2->query('select pg_sleep(37)');
   // exit($i);
 }
@@ -85,6 +88,7 @@ while (pcntl_waitpid(0, $status) != -1) {
   echo "\nchild $status completed ", time();
 }
 
-// sleep(40);
-echo "\ndone ", time();
+echo "\ndone1 ", time();
+sleep(40);
+echo "\ndone2 ", time();
 echo "\n\n";
