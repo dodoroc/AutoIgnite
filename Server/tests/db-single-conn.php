@@ -52,23 +52,39 @@ $dbc2 = DepContainer::get('projects-dbc');
 //*
 $dsn = CONFIG['dsn']['projects'];
 
-$dbc = new PDO($dsn, null, null, [
+$dbc0 = new PDO($dsn, null, null, [
   PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
   PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
   PDO::ATTR_PERSISTENT => true,
 ]);
 //*/
 
-function s(&$c) {
-  yield from $c->query('select pg_sleep(35)');
-}
+
+$f0 = new Fiber(function () use ($dbc0): void {
+   //$parm = Fiber::suspend('fiber');
+   //echo "Value used to resume fiber: ", $parm, PHP_EOL;
+  $dbc0->query('select pg_sleep(35)');
+});
+$f1 = new Fiber(function () use ($dbc1): void {
+   //$parm = Fiber::suspend('fiber');
+   //echo "Value used to resume fiber: ", $parm, PHP_EOL;
+  $dbc1->query('select pg_sleep(36)');
+});
+$f2 = new Fiber(function () use ($dbc2): void {
+   //$parm = Fiber::suspend('fiber');
+   //echo "Value used to resume fiber: ", $parm, PHP_EOL;
+  $dbc2->query('select pg_sleep(37)');
+});
+
 echo "\na ", time();
-s($dbc1);
+
+$f0->start();
+$f1->start();
+$f2->start();
+
 echo "\nb ", time();
-s($dbc1);
-echo "\nc ", time();
-s($dbc);
-echo "\nd ", time();
+
+
 
 echo "\nwaiting ", time();
 sleep(40);
