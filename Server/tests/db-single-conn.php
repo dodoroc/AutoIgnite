@@ -64,16 +64,19 @@ $f0 = new \Fiber(function () use (&$dbc0): void {
    //$parm = Fiber::suspend('fiber');
    //echo "Value used to resume fiber: ", $parm, PHP_EOL;
   $dbc0->query('select pg_sleep(35)');
+  \Fiber::suspend('0');
 });
 $f1 = new \Fiber(function () use (&$dbc1): void {
    //$parm = Fiber::suspend('fiber');
    //echo "Value used to resume fiber: ", $parm, PHP_EOL;
   $dbc1->query('select pg_sleep(36)');
+  \Fiber::suspend('1');
 });
 $f2 = new \Fiber(function () use (&$dbc2): void {
    //$parm = Fiber::suspend('fiber');
    //echo "Value used to resume fiber: ", $parm, PHP_EOL;
   $dbc2->query('select pg_sleep(37)');
+  \Fiber::suspend('2');
 });
 
 echo "\na ", time();
