@@ -23,29 +23,36 @@ use Server\Controller\ControllerInterface;
 use \PDO;
 
 // Meh; needs work
-$cfg1 = parse_ini_file('../../.secrets/.ini', true);
-$cfg2 = parse_ini_file('./app.ini', true);
-define('CONFIG', $cfg1+$cfg2);
-
-
+define('CONFIG', [
+  ...parse_ini_file('../../.secrets/.ini', true),
+  ...parse_ini_file('./app.ini', true),
+]);
 
 final class App
 {
   public function __construct()
   {
+    DepContainer::register('logger', function() {
+      $file = CONFIG['logger']['file']['app'];
+      return new Logger($file);
+    });
     DepContainer::register('projects-dbc', function() {
       $dbc = null;
 
       try {
         $dsn = CONFIG['dsn']['projects'];
+        $usr = CONFIG['database']['projects']['usr'];
+        $pwd = CONFIG['database']['projects']['pwd'];
 
-        $dbc = new PDO($dsn, null, null, [
+        $dbc = new PDO($dsn, $usr, $pwd, [
           PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
           PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
           PDO::ATTR_PERSISTENT => true,
         ]);
       }
-      catch (Exception $ex) {}
+      catch (Exception $ex) {
+        DepContainer::get('logger').log("Cannot connect to database!\n".$ex->__toString());
+      }
 
       return $dbc;
     });
