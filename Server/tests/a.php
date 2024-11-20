@@ -13,7 +13,7 @@ echo "\nini ", time();
 
 $fibers = [];
 for ($i = 0; $i < 3; $i++) {
-  $fibers[] = new Fiber(function () {
+  $fibers[] = new \Fiber(function () {
     echo "\n pro $i ",time();
     sleep(30+$i);
     echo "\n epi $i ",time();
