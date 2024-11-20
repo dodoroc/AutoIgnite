@@ -28,6 +28,7 @@ define('CONFIG', [
   ...parse_ini_file('./app.ini', true),
 ]);
 
+ini_set('error_log', CONFIG['logger']['file']['default']);
 // for testing delete
 error_log("\n\n-- app start");
 
