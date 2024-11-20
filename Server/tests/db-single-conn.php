@@ -8,19 +8,18 @@ namespace Test;
 require '../vendor/autoload.php';
 
 
-//
-//use \PDO;
-//use Server\DepContainer;
+use \PDO;
+use Server\DepContainer;
 
 echo "\n\npreinit\n\n";
-echo (int)class_exists("DepContainer", false),"\n";
-echo (int)class_exists("DepContainer", true),"\n";
-echo (int)class_exists("\DepContainer", false),"\n";
-echo (int)class_exists("\DepContainer", true),"\n";
-echo (int)class_exists("Server\DepContainer", false),"\n";
-echo (int)class_exists("Server\DepContainer", true),"\n";
-echo (int)class_exists("\Server\DepContainer", false),"\n";
-echo (int)class_exists("\Server\DepContainer", true),"\n";
+// echo (int)class_exists("DepContainer", false),"\n";
+// echo (int)class_exists("DepContainer", true),"\n";
+// echo (int)class_exists("\DepContainer", false),"\n";
+// echo (int)class_exists("\DepContainer", true),"\n";
+// echo (int)class_exists("Server\DepContainer", false),"\n";
+// echo (int)class_exists("Server\DepContainer", true),"\n";
+// echo (int)class_exists("\Server\DepContainer", false),"\n";
+// echo (int)class_exists("\Server\DepContainer", true),"\n";
 echo "\n\n";
 
 $cfg1 = parse_ini_file('../../.secrets/.ini', true);
