@@ -41,7 +41,7 @@ final class App
       $file = CONFIG['logger']['file']['app'];
       return new Logger($file);
     });
-    DepContainer::get('logger').log("start");
+    DepContainer::get('logger')->log("start");
     DepContainer::register('projects-dbc', function() {
       $dbc = null;
 
@@ -57,7 +57,7 @@ final class App
         ]);
       }
       catch (Exception $ex) {
-        DepContainer::get('logger').log("Cannot connect to database!\n".$ex->__toString());
+        DepContainer::get('logger')->log("Cannot connect to database!\n".$ex->__toString());
       }
 
       return $dbc;
