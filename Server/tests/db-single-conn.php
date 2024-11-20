@@ -71,6 +71,6 @@ s($dbc);
 echo "\nd ", time();
 
 echo "\nwaiting ", time();
-sleep(20);
+sleep(40);
 echo "\ndone ", time();
 echo "\n\n";
