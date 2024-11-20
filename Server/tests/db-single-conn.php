@@ -43,11 +43,7 @@ DepContainer::register('projects-dbc', function() {
   return $dbc;
 });
 
-echo "\nstart";
-echo "\ninit dbc1 ", time();
-$dbc1 = DepContainer::get('projects-dbc');
-echo "\ninit dbc2 ", time();
-$dbc2 = DepContainer::get('projects-dbc');
+echo "\npre start ", time();
 
 //*
 $dsn = CONFIG['dsn']['projects'];
@@ -58,6 +54,9 @@ $dbc0 = new PDO($dsn, null, null, [
   PDO::ATTR_PERSISTENT => true,
 ]);
 //*/
+
+$dbc1 = DepContainer::get('projects-dbc');
+$dbc2 = DepContainer::get('projects-dbc');
 
 
 $f0 = new \Fiber(function () use (&$dbc0): void {
@@ -79,17 +78,20 @@ $f2 = new \Fiber(function () use (&$dbc2): void {
   \Fiber::suspend('2');
 });
 
-echo "\na ", time();
+echo "\nstart ", time();
 
 $f0->start();
 $f1->start();
 $f2->start();
 
-echo "\nb ", time();
-
-
-
 echo "\nwaiting ", time();
-sleep(40);
+
+$f0->resume();
+$f1->resume();
+$f2->resume();
+
+
+
+// sleep(40);
 echo "\ndone ", time();
 echo "\n\n";
