@@ -65,7 +65,7 @@ if ($pid == -1) {
   //die('could not fork');
 } else if ($pid) {
   // parent
-  pcntl_wait($status); //Protect against Zombie children
+  // pcntl_wait($status); //Protect against Zombie children
 } else {
   // child
   echo "\nchild 0 ", time();
@@ -77,7 +77,7 @@ if ($pid == -1) {
   //die('could not fork');
 } else if ($pid) {
   // parent
-  pcntl_wait($status); //Protect against Zombie children
+  // pcntl_wait($status); //Protect against Zombie children
 } else {
   // child
   echo "\nchild 1 ", time();
@@ -89,7 +89,7 @@ if ($pid == -1) {
   //die('could not fork');
 } else if ($pid) {
   // parent
-  pcntl_wait($status); //Protect against Zombie children
+  // pcntl_wait($status); //Protect against Zombie children
 } else {
   // child
   echo "\nchild 2 ", time();
@@ -99,14 +99,6 @@ if ($pid == -1) {
 
 
 echo "\nwaiting ", time();
-
-
-while (pcntl_waitpid(0, $status) != -1) {
-  $status = pcntl_wexitstatus($status);
-  echo "\nchild $status completed ", time();
-}
-
-echo "\ndone1 ", time();
 sleep(40);
-echo "\ndone2 ", time();
+echo "\ndone ", time();
 echo "\n\n";
