@@ -45,7 +45,7 @@ DepContainer::register('projects-dbc', function() {
 
 echo "\npre start ", time();
 
-/*
+//*
 $dsn = CONFIG['dsn']['projects'];
 
 $dbc0 = new PDO($dsn, null, null, [
