@@ -16,7 +16,7 @@ final class WatchedPutSomeProcess extends AbstractProcess
 
   public function __construct(private array $watchedItems)
   {
-    $this->dbc = Server\DepContainer::get('projects-dbc');
+    $this->dbc = \Server\DepContainer::get('projects-dbc');
   }
 
   private function createQuery() : string
