@@ -60,41 +60,9 @@ $dbc2 = DepContainer::get('projects-dbc');
 
 echo "\nstart ", time();
 
-$pid = pcntl_fork();
-if ($pid == -1) {
-  //die('could not fork');
-} else if ($pid) {
-  // parent
-  // pcntl_wait($status); //Protect against Zombie children
-} else {
-  // child
-  echo "\nchild 0 ", time();
-  $dbc0->query('select pg_sleep(35)');
-}
-
-$pid = pcntl_fork();
-if ($pid == -1) {
-  //die('could not fork');
-} else if ($pid) {
-  // parent
-  // pcntl_wait($status); //Protect against Zombie children
-} else {
-  // child
-  echo "\nchild 1 ", time();
-  $dbc1->query('select pg_sleep(36)');
-}
-
-$pid = pcntl_fork();
-if ($pid == -1) {
-  //die('could not fork');
-} else if ($pid) {
-  // parent
-  // pcntl_wait($status); //Protect against Zombie children
-} else {
-  // child
-  echo "\nchild 2 ", time();
-  $dbc2->query('select pg_sleep(37)');
-}
+$dbc0->query('select pg_sleep(0)');
+$dbc1->query('select pg_sleep(0)');
+$dbc2->query('select pg_sleep(0)');
 
 
 
