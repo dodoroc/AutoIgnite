@@ -58,10 +58,14 @@ $dbc = new PDO($dsn, null, null, [
   PDO::ATTR_PERSISTENT => true,
 ]);
 //*/
+
+function s() {
+  yield sleep(5);
+}
 echo "\na ", time();
-yield sleep(5);
+s();
 echo "\nb ", time();
-yield sleep(5);
+s();
 echo "\nc ", time();
 
 echo "\nwaiting ", time();
