@@ -10,11 +10,13 @@ namespace Server\Domain;
 use Server\Entity\{SeriesId, Series};
 use \PDO;
 
-final class SeriesGetAllProcess extends AbstractDatabaseProcess
+final class SeriesGetAllProcess extends AbstractProcess
 {
+  private PDO|null $dbc = null;
+
   public function __construct()
   {
-    $this->connect();
+    $this->dbc = DepContainer::get('projects-dbc');
   }
 
   private function createQuery() : string

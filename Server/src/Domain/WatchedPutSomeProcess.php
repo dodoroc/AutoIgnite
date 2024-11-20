@@ -10,11 +10,13 @@ namespace Server\Domain;
 
 use \PDO;
 
-final class WatchedPutSomeProcess extends AbstractDatabaseProcess
+final class WatchedPutSomeProcess extends AbstractProcess
 {
+  private PDO|null $dbc = null;
+
   public function __construct(private array $watchedItems)
   {
-    $this->connect();
+    $this->dbc = DepContainer::get('projects-dbc');
   }
 
   private function createQuery() : string
