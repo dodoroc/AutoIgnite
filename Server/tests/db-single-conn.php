@@ -49,7 +49,17 @@ $dbc1 = DepContainer::get('projects-dbc');
 echo "\ninit dbc2 ", time();
 $dbc2 = DepContainer::get('projects-dbc');
 
+//*
+$dsn = CONFIG['dsn']['projects'];
+
+$dbc = new PDO($dsn, null, null, [
+  PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+  PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
+  PDO::ATTR_PERSISTENT => true,
+]);
+//*/
+
 echo "\nwaiting ", time();
-sleep(30);
+sleep(20);
 echo "\ndone ", time();
 echo "\n\n";
