@@ -1,6 +1,7 @@
 # AutoIgnite
 
-- This was supposed to be a simple way (console) to track episodes of a series where a mismatch between episode titles/dates/seasons occurred; specifically the show Ridiculousness after Chanel (female laughing host) left.
+- This is an EXPERIMENT not for production; insanity building this without frameworks.
+- This was supposed to be a simple way (console app) to track episodes of a series where a mismatch between episode titles/dates/seasons occurred by the tv provider and reality made it difficult to track missed episodes.
 - A source of well known episode names is imported and then compared against data received from the api of watched episodes. 
 - The source provider (Rogers Ignite) uses Comcast's XFinity system.
 - This project then grew as an experiment and is broken into 3 parts 'Extension' to bypass CORS issues and fetch data, 'Server' which really is just a basic API and 'Site' which is just a dashboard to view the results. 
@@ -17,7 +18,7 @@ Tech: HTML, CSS, JavaScript/ES, Browser Extension API
 
 Simple experiment building a no framework api, end result a micro-micro-micro framework emerged. 
 
-Tech: PHP 8, PDO, Composer, PostgreSQL 16 RDBMS, NGiNX web server
+Tech: PHP 8, PDO, Composer, PostgreSQL 16 RDBMS w/ HStore, NGiNX web server
 
 
 ## Site
@@ -37,7 +38,7 @@ Tech: HTML 5, CSS 3, JavaScript, Petite VUE, nginx
 
 ### Further
 
-- Add program episodes to extension instead of just cutting and pasting script to general query from scraped data.
+- Add program episodes to extension instead of just cutting and pasting javascript to console to scrape data.
 - ...
 
 
