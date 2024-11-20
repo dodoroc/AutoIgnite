@@ -45,7 +45,7 @@ DepContainer::register('projects-dbc', function() {
 
 echo "\npre start ", time();
 
-//*
+/*
 $dsn = CONFIG['dsn']['projects'];
 
 $dbc0 = new PDO($dsn, null, null, [
@@ -56,13 +56,13 @@ $dbc0 = new PDO($dsn, null, null, [
 //*/
 
 $dbc1 = DepContainer::get('projects-dbc');
-$dbc2 = DepContainer::get('projects-dbc');
+// $dbc2 = DepContainer::get('projects-dbc');
 
 echo "\nstart ", time();
 
-$dbc0->query('select pg_sleep(0)');
-$dbc1->query('select pg_sleep(0)');
-$dbc2->query('select pg_sleep(0)');
+// $dbc0->query('select pg_sleep(0)');
+// $dbc1->query('select pg_sleep(0)');
+// $dbc2->query('select pg_sleep(0)');
 
 
 
