@@ -50,6 +50,6 @@ echo "\ninit dbc2 ", time();
 $dbc2 = DepContainer::get('projects-dbc');
 
 echo "\nwaiting ", time();
-sleep(120);
+sleep(30);
 echo "\ndone ", time();
 echo "\n\n";
