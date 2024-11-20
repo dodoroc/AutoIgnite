@@ -16,7 +16,7 @@ final class TrackedGetAllBySeriesIdProcess extends AbstractProcess
 
   public function __construct(private SeriesId $seriesId)
   {
-    $this->dbc = DepContainer::get('projects-dbc');
+    $this->dbc = Server\DepContainer::get('projects-dbc');
   }
 
   private function createQuery() : string

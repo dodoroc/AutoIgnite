@@ -16,7 +16,7 @@ final class SeriesGetAllProcess extends AbstractProcess
 
   public function __construct()
   {
-    $this->dbc = DepContainer::get('projects-dbc');
+    $this->dbc = Server\DepContainer::get('projects-dbc');
   }
 
   private function createQuery() : string
