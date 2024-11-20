@@ -60,7 +60,7 @@ $dbc = new PDO($dsn, null, null, [
 //*/
 
 function s(&$c) {
-  yield $c->query('select pg_sleep(35)');
+  yield from $c->query('select pg_sleep(35)');
 }
 echo "\na ", time();
 s($dbc1);
