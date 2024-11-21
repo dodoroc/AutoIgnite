@@ -16,6 +16,7 @@ class Logger
   public function log($msg) : void
   {
     $msg = trim($msg);
-    error_log("\n--------\n{$msg}\n\n", 3, $this->file);
+    $date = date('c');
+    error_log("\n--------\n{$date}     {$msg}\n\n", 3, $this->file);
   }
 }
