@@ -96,7 +96,6 @@ function run() {
   const extId = new URL(import.meta.url).searchParams.get('id');
 
   const fetcher = DataFetchFactory.create();
-  // fetcher.tokensFrom(localStorage);
 
   const callback = (mutations, observer) => {
     for (const mutation of mutations) {
@@ -104,7 +103,6 @@ function run() {
         const cmd = mutation.target.dataset.state;
 
         if (cmd === 'init') {
-          console.log('runner.mjs init');
           fetcher.tokensFrom(localStorage);
           return;
         }

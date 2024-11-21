@@ -38,6 +38,8 @@ window.browser = window.browser || window.chrome;
   }
 
   function setup() {
+    console.log('content.js in setup');
+
     const extId = browser.runtime.id;
     let scriptObj = null;
 
@@ -62,10 +64,10 @@ window.browser = window.browser || window.chrome;
       // delay(6, removePayloadScript, extId);
     }
 
-    console.log('content.js in setup');
     // Receive messages from extension
     browser.runtime.onConnect.addListener(port => {
       console.log('content.js onConnect');
+
       port.onMessage.addListener(handleMsg);
     });
   }
