@@ -14,7 +14,7 @@
   },
 
   "config": {
-    "optimize-autoloader": false
+    "optimize-autoloader": true
   },
 
   "autoload": {

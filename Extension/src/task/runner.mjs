@@ -7,11 +7,14 @@ class DataFetchFactory {
     this.tokens = {};
   }
 
-  static create(tokensFrom) {
-    this.tokens.xsct = localStorage.getItem('tv-xsct');
-    this.tokens.acct = JSON.parse(localStorage.getItem('tv-tokens-acc'))[0];
-    this.tokens.feat = JSON.parse(localStorage.getItem(`tv-features-${this.tokens.acct}`)).featuresToken;
+  static create() {
     return this;
+  }
+
+  static tokensFrom(src) {
+    this.tokens.xsct = src.getItem('tv-xsct');
+    this.tokens.acct = JSON.parse(src.getItem('tv-tokens-acc'))[0];
+    this.tokens.feat = JSON.parse(src.getItem(`tv-features-${this.tokens.acct}`)).featuresToken;
   }
 
   static #getWatchedPrograms(req) {
@@ -92,12 +95,19 @@ class DataFetchFactory {
 function run() {
   const extId = new URL(import.meta.url).searchParams.get('id');
 
-  const fetcher = DataFetchFactory.create(localStorage);
+  const fetcher = DataFetchFactory.create();
+  // fetcher.tokensFrom(localStorage);
 
   const callback = (mutations, observer) => {
     for (const mutation of mutations) {
       if (mutation.type === 'attributes' && mutation.attributeName === 'data-state') {
         const cmd = mutation.target.dataset.state;
+
+        if (cmd === 'init') {
+          console.log('runner.mjs init');
+          fetcher.tokensFrom(localStorage);
+          return;
+        }
 
         fetcher.exec(cmd).then(res => {
           const port = browser.runtime.connect(extId);

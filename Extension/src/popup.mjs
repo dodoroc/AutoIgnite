@@ -33,7 +33,9 @@ class Extension {
       port.onMessage.addListener(this.dispatch);
     });
 
+    console.log('popup.mjs connect');
     this.siegePort = this.browser.tabs.connect(this.activeTab.id);
+    this.siegePort.postMessage(`init`);
   }
 
   // shows we checked previously and will skip this run

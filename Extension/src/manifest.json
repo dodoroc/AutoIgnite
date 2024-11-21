@@ -20,7 +20,7 @@
       "https://ignitetv.rogers.com/*"
     ],
     "resources": [
-      "task/runner.mjs", "task/actions_base.mjs", "task/actions.mjs"
+      "task/actions_base.mjs", "task/actions.mjs", "task/runner.mjs"
     ]
   }],
 
