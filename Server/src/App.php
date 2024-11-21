@@ -27,7 +27,7 @@ define('CONFIG', [
   ...parse_ini_file('../../.secrets/.ini', true),
   ...parse_ini_file('./app.ini', true),
 ]);
-ini_set('error_log', CONFIG['logger']['file']['default']);
+ini_set('error_log', CONFIG['logger']['file']['err']);
 
 
 final class App
