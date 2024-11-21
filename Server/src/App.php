@@ -38,6 +38,7 @@ final class App
       $file = CONFIG['logger']['file']['app'];
       return new Logger($file);
     });
+    DepContainer::get('logger')->log("App start\n");
 
     DepContainer::register('projects-dbc', function() {
       $dbc = null;
