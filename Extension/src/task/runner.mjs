@@ -121,7 +121,34 @@ function run() {
   observer.observe(target, { attributes: true }); //attributeOldValue: true,
 }
 
+/*
+function test() {
+  const extId = new URL(import.meta.url).searchParams.get('id');
+
+  browser.runtime.onConnect.addListener(port => {
+    port.onMessage.addListener(msg => {
+      console.log('int.', msg);
+    });
+  });
+
+  browser.runtime.onMessage.addListener(msg => {
+    console.log('int. b.', msg);
+  });
+
+  browser.runtime.onConnectExternal.addListener(port => {
+    port.onMessageExternal.addListener(msg => {
+      console.log('ext.', msg);
+    });
+  });
+
+  browser.runtime.onMessageExternal.addListener(msg => {
+    console.log('ext. b.', msg);
+  });
+}
+//*/
+
 try {
+  // test();
   run();
 } catch (err) {
   // console.dir(err);

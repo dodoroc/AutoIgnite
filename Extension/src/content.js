@@ -1,10 +1,9 @@
 /**
  * This script (content.js) is added via the manifest and installs the script (runner.mjs) that performs the work.
- * Content scripts do not have access to js of the page they are injected in to, whereas the installed does.
- * Updating dataset.state with a message packet from current milliseconds to trigger a mutation so that the runner.mjs
- * initiates a connection back the extension. We need to do since the connection is lost each
- * time the extension popup is closed; also connections to actual web pages from scripts is
- * not allowed per spec.
+ * Content scripts have restricted access to the page they are injected into, whereas the installed scripts do not.
+ * Updating dataset.state with a message packet received from the extension (popup.mjs) which is processed by a
+ * mutation observer (runner.mjs) that watches the script tag (src=content.js). The observer connects to the
+ * extension (popup.mjs) and sends the results.
  *
  */
 
@@ -46,15 +45,6 @@ window.browser = window.browser || window.chrome;
     const handleMsg = message => {
       console.log('content.js onMessage handler: ' +message);
 
-      if (message === 'reset') {
-        if (isPayloadScriptInstalled()) {
-          removePayloadScript(extId);
-          scriptObj = appendPayloadScript(extId, '/task/runner.mjs');
-          delay(6, removePayloadScript, extId);
-        }
-        return;
-      }
-
       scriptObj.dataset.state = message;
       // delay(2, removePayloadScript, extId);
     };
@@ -62,6 +52,7 @@ window.browser = window.browser || window.chrome;
     if (!isPayloadScriptInstalled(extId)) {
       scriptObj = appendPayloadScript(extId, '/task/runner.mjs');
       // delay(6, removePayloadScript, extId);
+      delay(0.2, removePayloadScript, extId);
     }
 
     // Receive messages from extension
@@ -73,7 +64,6 @@ window.browser = window.browser || window.chrome;
   }
 
   try {
-    console.log('content.js pre setup');
     setup();
   } catch (err) {
     // suppress errors for prod

@@ -22,6 +22,12 @@ class Extension {
   async getCurrentTab() {
     const queryOptions = { active: true, currentWindow: true };
     const [tab] = await this.browser.tabs.query(queryOptions);
+    console.dir(tab);
+    // setTimeout(() => {console.log(tab.aSimpleTestFnc)}, 2000);
+    this.browser.windows.getCurrent({ populate: true }).then(obj => {
+      console.dir(obj);
+      console.log(obj.aSimpleTestFnc)
+    });
     return tab ?? null;
   }
 
@@ -30,12 +36,18 @@ class Extension {
     this.activeTab = await this.getCurrentTab();
 
     this.browser.runtime.onConnectExternal.addListener(port => {
+      console.log('ini onConnectExternal ');
+      console.dir(port);
       port.onMessage.addListener(this.dispatch);
     });
 
     // console.log('popup.mjs connect');
     this.siegePort = this.browser.tabs.connect(this.activeTab.id);
     this.siegePort.postMessage(`init`);
+    this.siegePort.onDisconnect.addListener(port => {
+      alert('zzzzz');
+      console.dir(port);
+    });
   }
 
   // shows we checked previously and will skip this run
@@ -290,4 +302,7 @@ setTimeout(async () => {
 
   await ext.init(url);
   await ext.run();
+
 }, 100);
+
+
