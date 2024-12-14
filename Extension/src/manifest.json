@@ -41,6 +41,11 @@
     "js": ["content.js"]
   }],
 
+  // "background": {
+  //   "service_worker": "background.mjs",
+  //   "type": "module"
+  // },
+
   "action": {
     "default_popup": "popup.html"
   }

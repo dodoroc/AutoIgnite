@@ -42,8 +42,6 @@ class ApiHeaders {
 
 
 class ApiRequest {
-  static BASE_URL = 'https://xtvapi.cloudtv.comcast.net';
-
   static GET = 'GET';
   static POST = 'POST';
   // static PUT = 'PUT';
@@ -51,23 +49,30 @@ class ApiRequest {
   // static DELETE = 'DELETE';
   // static OPTIONS = 'OPTIONS';
 
-  static async sendRequest(request) {
-    const headers = ApiHeaders.reset().merge(request.headers).get();
-    const options = { headers, method: request.method, redirect: 'follow', };
+  request = {
+    headers: {},
+    url: '',
+    method: '',
+    params: {}
+  };
 
-    const params = (new URLSearchParams(request.params)).toString();
+  async fetch() {
+    const headers = ApiHeaders.reset().merge(this.request.headers).get();
+    const options = { headers, method: this.request.method, redirect: 'follow', };
+
+    const params = (new URLSearchParams(this.request.params)).toString();
     if (params.length) {
-      if (request.method === ApiRequest.POST) {
+      if (this.request.method === ApiRequest.POST) {
         options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
         options.body = params;
       }
-      else if (request.method === ApiRequest.GET) {
-        request.url += '?' + params;
+      else if (this.request.method === ApiRequest.GET) {
+        this.request.url += '?' + params;
       }
     }
 
     let result = await
-    fetch(ApiRequest.BASE_URL + request.url, options)
+    fetch(`https://xtvapi.cloudtv.comcast.net${this.request.url}`, options)
     .then(response => {
       if (response.ok) {
         if (response.status === 200) {
@@ -86,26 +91,16 @@ class ApiRequest {
 }
 
 
-class Action {
-  request = {
-    headers: {},
-    url: '',
-    method: '',
-    params: {}
-  };
-
-  fetch() {
-    return ApiRequest.sendRequest(this.request);
-  }
-
+class Request extends ApiRequest {
   constructor(xsctAuthToken, featuresToken) {
+    super();
     this.request.headers['Authorization'] = 'CCP ' + xsctAuthToken;
     this.request.headers['X-Finity-Features'] = featuresToken;
   }
 }
 
 
-export class GetAction extends Action {
+export class GetRequest extends Request {
   constructor(xsctAuthToken, featuresToken) {
     super(xsctAuthToken, featuresToken);
     this.request.method = ApiRequest.GET;
@@ -113,7 +108,7 @@ export class GetAction extends Action {
 }
 
 
-export class PostAction extends Action {
+export class PostRequest extends Request {
   constructor(xsctAuthToken, featuresToken) {
     super(xsctAuthToken, featuresToken);
     this.request.method = ApiRequest.POST;

@@ -18,7 +18,8 @@ class DataFetchFactory {
   }
 
   static #getWatchedPrograms(req) {
-    return req.fetch().then(data => {
+    return req.fetch()
+    .then(data => {
       return data._embedded.watchedPrograms.reduce((obj, item) => {
         obj[item.programId] = {
           'programId': item.programId,
@@ -92,64 +93,72 @@ class DataFetchFactory {
   }
 }
 
-function run() {
-  const extId = new URL(import.meta.url).searchParams.get('id');
+class Runner {
+  #extId = null;
+  #port = null;
+  #fetcher = null;
 
-  const fetcher = DataFetchFactory.create();
-
-  const callback = (mutations, observer) => {
-    for (const mutation of mutations) {
-      if (mutation.type === 'attributes' && mutation.attributeName === 'data-state') {
-        const cmd = mutation.target.dataset.state;
-
-        if (cmd === 'init') {
-          fetcher.tokensFrom(localStorage);
-          return;
-        }
-
-        fetcher.exec(cmd).then(res => {
-          const port = browser.runtime.connect(extId);
-          port.postMessage(res);
-          port.disconnect();
-        });
-      }
-    }
+  #onMessage = cmd => {
+    // console.log('on message (runner)', cmd);
+    this.#fetcher.exec(cmd).then(res => {
+      this.#port.postMessage(res);
+    });
   };
 
-  const observer = new MutationObserver(callback);
-  const target = document.querySelector(`#${extId}`);
-  observer.observe(target, { attributes: true }); //attributeOldValue: true,
+  #onDisconnect = port => {
+    this.#port = null;
+  };
+
+  reset() {
+    try {
+      if (this.#port) {
+        this.#port?.onDisconnect.removeListener(this.#onDisconnect);
+        this.#port?.onMessage.removeListener(this.#onMessage);
+        this.#port?.disconnect();
+        this.#port = null;
+      }
+    }
+    catch (err) {
+      console.dir(err);
+    }
+  }
+
+  connect() {
+    try {
+      if (!this.#port) {
+        this.#fetcher.tokensFrom(window.localStorage);
+
+        this.#port = chrome.runtime.connect(this.#extId);
+        this.#port.onDisconnect.addListener(this.#onDisconnect);
+        this.#port.onMessage.addListener(this.#onMessage);
+        // this.#port.postMessage('a msg');
+
+      }
+    }
+    catch (err) {
+      console.dir(err);
+    }
+  }
+
+
+  constructor() {
+    this.#extId = new URL(import.meta.url).searchParams.get('id');
+    this.#fetcher = DataFetchFactory.create();
+  }
 }
-
-/*
-function test() {
-  const extId = new URL(import.meta.url).searchParams.get('id');
-
-  browser.runtime.onConnect.addListener(port => {
-    port.onMessage.addListener(msg => {
-      console.log('int.', msg);
-    });
-  });
-
-  browser.runtime.onMessage.addListener(msg => {
-    console.log('int. b.', msg);
-  });
-
-  browser.runtime.onConnectExternal.addListener(port => {
-    port.onMessageExternal.addListener(msg => {
-      console.log('ext.', msg);
-    });
-  });
-
-  browser.runtime.onMessageExternal.addListener(msg => {
-    console.log('ext. b.', msg);
-  });
-}
-//*/
 
 try {
-  // test();
-  run();
-} catch (err) {
-  // console.dir(err);
+  const r = new Runner;
+  window.addEventListener('message', ev => {
+    if (ev.data === 'connect') {
+      // console.log('Runner message', ev.data);
+      r.reset();
+      r.connect();
+    }
+  });
+
+}
+catch (err) {
+  // suppress errors for prod
+  // console.log('Runner', err);
 }

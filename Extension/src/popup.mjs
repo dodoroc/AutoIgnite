@@ -1,4 +1,8 @@
-import {ProgressObserver, EpisodeDataObserver, MessagesObserver} from './popup_observers.mjs';
+// import { getDataCheckedTask, putDataWatchedTask, getDataToCheckTask, getDataEpisodesTask, } from './requests.mjs';
+
+import { ProgressObserver, EpisodeDataObserver, MessagesObserver } from './popup_observers.mjs';
+import { Model } from './model.mjs';
+
 /**
  * Extension
  */
@@ -8,6 +12,7 @@ class Extension {
   browser = null;
   activeTab = null;
   siegePort = null;
+  siegePort2 = null;
   dispatch = cargo => {};
 
   toCheck = {};
@@ -22,11 +27,12 @@ class Extension {
   async getCurrentTab() {
     const queryOptions = { active: true, currentWindow: true };
     const [tab] = await this.browser.tabs.query(queryOptions);
-    console.dir(tab);
-    // setTimeout(() => {console.log(tab.aSimpleTestFnc)}, 2000);
-    this.browser.windows.getCurrent({ populate: true }).then(obj => {
-      console.dir(obj);
-      console.log(obj.aSimpleTestFnc)
+    // this.browser.windows.getCurrent({ populate: true }).then(obj => {
+    //   console.dir(obj);
+    // });
+
+    this.browser.tabs.sendMessage(tab.id, { action: "getImages" }, res => {
+
     });
     return tab ?? null;
   }
@@ -38,15 +44,40 @@ class Extension {
     this.browser.runtime.onConnectExternal.addListener(port => {
       console.log('ini onConnectExternal ');
       console.dir(port);
-      port.onMessage.addListener(this.dispatch);
+      this.siegePort = port;
+      this.siegePort.onMessage.addListener(port => {
+        console.log('onConnectExternal');
+      });
     });
 
-    // console.log('popup.mjs connect');
-    this.siegePort = this.browser.tabs.connect(this.activeTab.id);
-    this.siegePort.postMessage(`init`);
-    this.siegePort.onDisconnect.addListener(port => {
-      alert('zzzzz');
+    this.browser.runtime.onConnect.addListener(port => {
+      console.log('ini onConnect ');
       console.dir(port);
+      this.siegePort2 = port;
+      this.siegePort2.onMessage.addListener(port => {
+        console.log('onConnect');
+      });
+    });
+
+    // this.siegePort = this.browser.tabs.connect(this.activeTab.id);
+    // this.siegePort.postMessage(`init`);
+    // this.siegePort.onDisconnect.addListener(port => {
+    //   console.dir(port);
+    // });
+  }
+
+  // shows that were watched and include previously checked ones (ext api)
+  // returns obj {id0:{programId:<num>, watchedOn:<date>} ... idn:{programId:<num>, watchedOn:<date>}}
+  async getWatchedToCheckData() {
+    const received = new Promise(resolve => {
+      this.dispatch = resolve;
+    });
+
+    this.siegePort.postMessage('getWatchedPrograms');
+
+    return received.then(response => {
+      this.dispatch = cargo => {};
+      return response;
     });
   }
 
@@ -71,21 +102,6 @@ class Extension {
     });
   }
 
-  // shows that were watched and include previously checked ones (ext api)
-  // returns obj {id0:{programId:<num>, watchedOn:<date>} ... idn:{programId:<num>, watchedOn:<date>}}
-  async getWatchedToCheckData() {
-    const received = new Promise(resolve => {
-      this.dispatch = resolve;
-    });
-
-    this.siegePort.postMessage('getWatchedPrograms');
-
-    return received.then(response => {
-      this.dispatch = cargo => {};
-      return response;
-    });
-  }
-
   async updateWatchedData(watched) {
     const body = JSON.stringify(watched);
 
@@ -98,21 +114,6 @@ class Extension {
     };
 
     return fetch(this.apiBaseURL+'/watched', options)
-    .then(response => (response.status === 200));
-  }
-
-  async updateEpisodeData(eps) {
-    const body = JSON.stringify(eps);
-
-    const options = {
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      method: 'PUT',
-      body
-    };
-
-    return fetch(this.apiBaseURL+'/episode', options)
     .then(response => (response.status === 200));
   }
 
@@ -284,7 +285,7 @@ class Extension {
  */
 
 setTimeout(async () => {
-  // return;
+  return;
   const ext = new Extension(window.browser || window.chrome);
 
   ext.observers.prgData = new EpisodeDataObserver(
@@ -303,6 +304,297 @@ setTimeout(async () => {
   await ext.init(url);
   await ext.run();
 
+  setTimeout(() => {
+    window.top.postMessage('I\'m loaded popup.mjs', '*');
+  }, 3000);
+
 }, 100);
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class ObservableMessageQueue {
+  #messages = new Map;
+  #handlers = new Map;
+
+  has(key) {
+    return this.#messages.has(key);
+  }
+
+  set(key, msg) {
+    console.log('key', key);
+    console.dir(msg);
+
+    this.#messages.set(key, msg);
+    this.notify();
+  }
+
+  del(key) {
+    return this.#messages.delete(key);
+  }
+
+  get(key) {
+    if (this.#messages.has(key)) {
+      return this.#messages.get(key);
+    }
+
+    return undefined;
+  }
+
+  nth(n) {
+    if (n < this.#messages.size) {
+      return this.#messages.values()[n];
+    }
+
+    return undefined;
+  }
+
+  attach(key, handler) {
+    this.#handlers.set(key, handler);
+  }
+
+  detach(key) {
+    return this.#handlers.delete(key);
+  }
+
+  notify() {
+    for (const [key, handler] of this.#handlers) {
+      if (typeof handler === 'function') {
+        handler(key);
+      }
+    }
+  }
+}
+
+
+class SiegeChannel {
+}
+class StashChannel {
+}
+
+
+
+
+
+
+
+const PID_LENGTH = 19;
+
+class _Extension {
+  apiUrl = null;
+  browser = null;
+  activeTab = null;
+  ctrlPort = null;
+  dataPort = null;
+  queue = new ObservableMessageQueue;
+  observers = { 'sendPrg':null, 'recvPrg': null, 'prgData':null, 'infoMsg': null };
+
+  constructor(browser, tab, url) {
+    this.browser = browser;
+    this.activeTab = tab;
+    this.apiUrl = url;
+
+    this.browser.runtime.onConnectExternal.addListener(port => {
+      console.log('_Ext got connect');
+      this.dataPort = port;
+      /*
+      this.dataPort.onDisconnect.addListener(port => {
+        this.dataPort = null;
+      })
+      this.dataPort.onMessage.addListener(msg => {
+        console.log('onMessage[0]', msg);
+      });
+      */
+
+/*
+      const req = new PortRequestSingle(this.dataPort);
+      req.init().fetch('getWatchedPrograms')
+      .then(res => {
+        console.log('then', performance.now());
+        console.log(typeof res);
+        console.dir(res);
+      })
+      .catch(err => console.dir)
+      .finally(() => req.term());
+*/
+
+      // this.process();
+      const mod = new Model(this.dataPort);
+      mod.process();
+    });
+
+    // Send message to have the runner.mjs script connect to this extension
+    this.ctrlPort = this.browser.tabs.connect(this.activeTab.id);
+    this.ctrlPort.postMessage('connect');
+    this.ctrlPort.disconnect();
+  }
+
+
+  async handlerForProgramsNeedingProgramInfo() {
+    const handler = new Promise((resolve, reject) => {
+      this.queue.attach('newprograms', key => {
+        if (this.queue.has('tocheck') && this.queue.has('checked')) {
+          const checked = this.queue.get('checked');
+          const toCheck = this.queue.get('tocheck');
+          // console.dir(checked);
+          // console.dir(toCheck);
+          for (const k in toCheck) {
+            if (k in checked) {
+              delete toCheck[k];
+            }
+          }
+
+          this.queue.detach('newprograms');
+          this.queue.del('tocheck');
+          this.queue.del('checked');
+
+          resolve(toCheck);
+        }
+      });
+      // do timeout
+    });
+
+    return handler;
+  }
+
+  // returns: promise that resolves on receiving data and creating a set of programIds
+  // that we need further information for
+  async getProgramsNeedingProgramInfo() {
+    const dataFetched = this.handlerForProgramsNeedingProgramInfo();
+
+    // request data: toCheck
+    this.dataPort.postMessage('getWatchedPrograms');
+
+    // request data: checked
+    fetch(this.apiUrl+'/watched', {'method':'GET', 'signal': AbortSignal.timeout(1000)})
+    .then(res => {
+      if (res.ok && res.status === 200) {
+        const json = res.json();
+        return json;
+      }
+
+      return null;
+    })
+    // .catch (err => {
+    //   console.log('-- ', err.message);
+    //   return null;
+    // })
+    .then(data => {
+      this.queue.set('checked', data);
+    });
+
+    return dataFetched;
+  }
+
+  // Find the program ids that haven't been queried via the injected api by removing those ids that are stored in the
+  // local database. This is to limit api requests as to limit the possibility of any issues, and why requery the
+  // same data repeatedly when the data won't change.
+
+  async requestProgramInfoWhereMissing(toCheck, len) {
+    const keys = Object.keys(toCheck);
+    let nth = 0;
+    this.observers.sendPrg?.update(++nth, len);
+
+    const id = setInterval(() => {
+      const k = keys.pop();
+      this.dataPort.postMessage(`getProgramEntity|${k}`);
+
+      this.observers.sendPrg?.update(++nth, len);
+      if (nth === len) {
+        clearInterval(id);
+      }
+    }, 100);
+  }
+
+  async handleProgramInfoResponses(toCheck, len) {
+    let nth = 0;
+
+    this.queue.attach('program', key => {
+      if (key.length === 2+PID_LENGTH && key.startsWith('ep')) {
+        const programId = key.substring(2);
+        const watchedOn = toCheck[programId];
+        constructor
+        this.observers.recvPrg?.update(++nth, len);
+      }
+    });
+  }
+
+  /*
+  toCheck:
+  {
+    {
+      programId: "5752128241908407112",
+      watchedOn: "2024-12-04"
+    },
+    ...
+  }
+
+  programInfo:
+  {
+    airedOn: "2023-01-12"
+    name: "Quarterfinal #8: Patton Oswalt, Candace Parker and Torrey DeVitto"
+    programId: "6386587064318555112"
+    season: 1
+    seriesId: "7300511853304109112"
+    type: "TVEpisode"
+  }
+  */
+
+  // async
+
+  async process() {
+    const toCheck = await this.getProgramsNeedingProgramInfo();
+    console.dir(toCheck);
+    const len = Object.keys(toCheck).length;
+    this.observers.sendPrg?.update(0, len);
+    this.observers.recvPrg?.update(0, len);
+
+    this.handleProgramInfoResponses(toCheck, len);
+    this.requestProgramInfoWhereMissing(toCheck, len);
+  }
+}
+
+
+
+const apiUrl = 'http://192.168.50.200:9080';
+const webRex = /rogers\.com/;
+
+const browser = window.browser || window.chrome;
+browser.tabs.query({ active: true, currentWindow: true })
+.then(tabs => {
+  const [tab] = tabs;
+
+  if (!tab) throw 'Tab is null';
+  if (tab.status !== 'complete') throw 'Site not finished loading!';
+  if (!webRex.test(tab.url)) throw 'Not correct website!';
+
+  const ext = new _Extension(browser, tab, apiUrl);
+
+  ext.observers.prgData = new EpisodeDataObserver(
+    document.querySelector('table#programs'),
+    ['name','airedOn','type','seriesId','programId']
+  );
+  ext.observers.sendPrg = new ProgressObserver(document.querySelector('progress#send'));
+  ext.observers.recvPrg = new ProgressObserver(document.querySelector('progress#recv'));
+  ext.observers.infoMsg = new MessagesObserver(document.querySelector('ul#messages'));
+
+  // ext.process();
+  // ...
+})
+.catch(err => {
+  window.close();
+  alert(err);
+});

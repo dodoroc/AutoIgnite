@@ -1,9 +1,9 @@
-import {GetAction, PostAction} from '/task/actions_base.mjs';
+import {GetRequest, PostRequest} from '/task/actions_base.mjs';
 
 
 // "href": "watchedprograms/{?maxDaysOld}"
 // @return array of objects of watchedprograms
-export class getWatchedPrograms extends GetAction {
+export class getWatchedPrograms extends GetRequest {
   constructor(xsctAuthToken, featuresToken) {
     super(xsctAuthToken, featuresToken);
     this.request.url = `/watchedprograms/`;
@@ -13,7 +13,7 @@ export class getWatchedPrograms extends GetAction {
 
 // "href": "entity/program/{programId}/"
 // @return program entity object
-export class getProgramEntity extends GetAction {
+export class getProgramEntity extends GetRequest {
   constructor(xsctAuthToken, featuresToken, programId) {
     super(xsctAuthToken, featuresToken);
     this.request.url = `/entity/program/${programId}/`;
@@ -23,7 +23,7 @@ export class getProgramEntity extends GetAction {
 
 
 // "href": "entity/detail/program/{programId}/{?streamFormat,includeTve,includeTveLinear}"
-export class getProgramEntityDetail extends GetAction {
+export class getProgramEntityDetail extends GetRequest {
   constructor(xsctAuthToken, featuresToken, programId) {
     super(xsctAuthToken, featuresToken);
     this.request.url = `/entity/detail/program/${programId}/`;
@@ -36,7 +36,7 @@ export class getProgramEntityDetail extends GetAction {
 
 
 // "href": "entity/program/{programId}/upcomingListings/{?freetome}"
-export class getProgramUpcomingListings extends GetAction {
+export class getProgramUpcomingListings extends GetRequest {
   constructor(xsctAuthToken, featuresToken, programId) {
     super(xsctAuthToken, featuresToken);
     this.request.url = `/entity/program/${programId}/upcomingListings/`;
@@ -47,7 +47,7 @@ export class getProgramUpcomingListings extends GetAction {
 
 
 // "href": "entity/series/{seriesId}/tvseason/{seasonNumber}/"
-export class getTvSeasonEntity extends GetAction {
+export class getTvSeasonEntity extends GetRequest {
   constructor(xsctAuthToken, featuresToken, seriesId, seasonNum) {
     super(xsctAuthToken, featuresToken);
     this.request.url = `/entity/series/${seriesId}/tvseason/${seasonNum}/`;
@@ -57,7 +57,7 @@ export class getTvSeasonEntity extends GetAction {
 
 
 // "href": "entity/tvseason/ungrouped/{programId}/",
-export class getTvSeasonUngroupedEntity extends GetAction {
+export class getTvSeasonUngroupedEntity extends GetRequest {
   constructor(xsctAuthToken, featuresToken, programId) {
     super(xsctAuthToken, featuresToken);
     this.request.url = `/entity/tvseason/ungrouped/${programId}/`;
@@ -67,7 +67,7 @@ export class getTvSeasonUngroupedEntity extends GetAction {
 
 
 // "href": "search/term/{?query,ftmvod,freetome,limit,includeMenus,aliasName,includeStations,matchExactChannel,includeVodCompany}",
-export class searchByTerm extends GetAction {
+export class searchByTerm extends GetRequest {
   constructor(xsctAuthToken, featuresToken, searchTerm) {
     super(xsctAuthToken, featuresToken);
     this.request.url = `/search/term/`;
