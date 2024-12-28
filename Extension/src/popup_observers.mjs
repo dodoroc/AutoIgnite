@@ -5,22 +5,22 @@
 export class ProgressObserver {
   #progressEl = null;
 
-  constructor(progressEl, initialize) {
+  constructor(progressEl) {
     if (progressEl.constructor !== HTMLProgressElement) throw new TypeError;
 
     this.#progressEl = progressEl;
   }
 
   #progress(nth, max) {
-    this.#progressEl.value = nth;
-    this.#progressEl.max = max;
+    let fract = 0;
 
-    let sc = 0;
-    if (max) {
-      sc = nth/max;
+    if (max > 0) {
+      this.#progressEl.value = nth;
+      this.#progressEl.max = max;
+      fract = nth / max;
     }
 
-    this.#progressEl.style = `--scale: ${sc.toFixed(2)}`;
+    this.#progressEl.style = `--fract: ${fract.toFixed(4)}`;
   }
 
   clear() {

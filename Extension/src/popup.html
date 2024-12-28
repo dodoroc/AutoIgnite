@@ -25,6 +25,7 @@
         --font-size-rg: 1.000rem;
         --font-size-sm: 0.937rem;
         --font-size-xs: 0.878rem;
+        --font-size-xx: 0.823rem;
       }
       /*
       @media (prefers-color-scheme: light) {
@@ -67,51 +68,39 @@
 
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
-        align-items: stretch;
-        gap: 10px 0;
-        padding: 10px;
-
+/*        justify-content: flex-start;*/
+/*        align-items: stretch;*/
+        gap: 15px;
+        padding: 10px 5px 10px 10px;
         color: var(--clr-light);
         background-color: var(--clr-darkest);
         font-size: var(--font-size-rg);
       }
 
+      [hidden] {
+        display: none;
+      }
+
       h1 {
         margin: 0;
         padding: 0;
-      }
-      body > h1 {
-        height: 2.1rem;
-        line-height: 2.1rem;
+        line-height: 1.4rem;
         font-size: var(--font-size-h1);
       }
-      section > h1 {
-        font-size: var(--font-size-h3);
-        line-height: 1;
-        font-weight: light;
-        font-variant-caps: all-small-caps;
-      }
 
-
-
-
-      /* Result entities
-       *
-       */
-
-      .as-rows {
+      .progress {
         display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: stretch;
-        gap: 10px;
+        flex-flow: column;
       }
 
-
-      label {
-        width: 100%;
-        line-height: 1.5;
+      .progress label {
+        padding: 0;
+        font-size: var(--font-size-xx);
+        letter-spacing: 0.06em;
+        line-height: 1;
+        height: 15px;
+        text-transform: uppercase;
+        vertical-align: super;
       }
 
       progress {
@@ -126,53 +115,68 @@
 
         padding: 2px;
         border: solid 1px var(--clr-light);
-
-
-        --fract: clamp(0, 100 * var(--scale), 100);
-        --shift: round(down, clamp(0, var(--fract) - 70, 1));
+        container-type: inline-size;
       }
 
-      progress::-moz-progress-bar { background: var(--clr-dark) }
-      progress::-webkit-progress-bar { background: var(--clr-dark) }
-      progress::-moz-progress-value { background: var(--clr-light) }
-      progress::-webkit-progress-value { background: var(--clr-light) }
       progress::-moz-progress-inner-element { border: 0 }
+      progress::-moz-progress-bar { background: var(--clr-dark) }
+      progress::-moz-progress-value { background: var(--clr-light); transition: width 300ms linear }
       progress::-webkit-progress-inner-element { border: 0 }
+      progress::-webkit-progress-bar { background: var(--clr-dark) }
+      progress::-webkit-progress-value { background: var(--clr-light); transition: width 300ms linear }
 
-      /*
+/*
       progress[value]::before {
-        display: block;
+        display: flex;
+        justify-content: center;
         position: absolute;
-        width: var(--w);
-        height: 10px;
-        background-color: pink;
-        content: ' ';
+        content: '';
+        content: attr(value) "/" attr(max);
+        width: min-content;
+        min-width: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        top: -26px;
+        border-bottom: solid 5px red;
       }
-      */
-      progress[value]::after {
-        display: block;
+*/
+      progress[value][max]::after {
+        display: grid;
+        place-items: center;
         position: absolute;
         top: 0;
         bottom: 0;
+        left: 0;
+        z-index: 1000;
 
-        left: calc(1% * var(--fract));
-        transform: translateX(calc(-100% * var(--shift)));
-        transition: left 1s ease;
-        margin: 0 1px;
-
-        padding: 0 5px;
         width: min-content;
-        font-size: 12px;
-        line-height: 20px;
-        content: attr(value)"/"attr(max);
+        padding: 0 3px;
+        margin: 0;
+
+
+        /*plot[x, -1-(1*(-1/(1+exp(27(x-0.5)*2)))),{x,0,1}]*/
+        /*1/(e^(54 x - 27) + 1) - 1*/
+        --denom: calc(exp(54 * var(--fract) - 27) + 1);
+        --final: calc(100% * (1 / var(--denom) - 1));
+
+        transition: all 300ms linear;
+        transform: translateX(var(--final));
+        left: calc(100cqw * var(--fract) + 2px);
 
         color: transparent;
         background-clip: text;
         background-image: linear-gradient(to right,
-          var(--clr-darkest) calc(100% * var(--shift)),
-          var(--clr-lightest) calc(100% * var(--shift))
+          var(--clr-darkest) calc(-1 * var(--final)),
+          var(--clr-lightest) calc(-1 * var(--final))
         );
+/*        background: #ff000044;*/
+/*        color: #00ffff;*/
+
+        font-size: 14px;
+        line-height: 0;
+        content: attr(value) "/" attr(max);
       }
+
 
       progress#send {
       }
@@ -195,6 +199,9 @@
         outline: solid 1px var(--clr-light);
         outline-offset: -1px;
       }
+      table#programs:has(tbody:empty) {
+        display: none;
+      }
 
       table#programs thead td {
         font-weight: 600;
@@ -207,9 +214,8 @@
         overflow: hidden;
 
         font-size: 13px;
-        line-height: 13px;
-        height: 18px;
-        height: 20px;
+        line-height: 15px;
+        height: min-content;
         width: auto;
 
         border: solid transparent;
@@ -232,6 +238,7 @@
 
       ul#messages {
         box-sizing: border-box;
+        margin: 0;
         padding: 5px;
         border: solid 1px var(--clr-light);
         font-size: 13px;
@@ -261,24 +268,24 @@
   <body>
 
     <h1>Automation</h1>
-    <section class="as-rows">
-      <label>
-        Sending
-        <progress id="send"></progress>
-      </label>
-      <label>
-        Received
-        <progress id="recv"></progress>
-      </label>
 
-      <ul id="messages"></ul>
+    <div class="progress">
+      <label>Fetching</label>
+      <progress id="send"></progress>
+    </div>
 
-      <table id="programs">
-        <colgroup><col><col><col><col><col></colgroup>
-        <thead><tr><td>Name</td><td>Aired</td><td>Type</td><td><abbr title="Series Id">S.Id</abbr></td><td><abbr title="Program Id">P.Id</abbr></td></tr></thead>
-        <tbody></tbody>
-      </table>
-    </section>
+    <div class="progress">
+      <label>Updating</label>
+      <progress id="recv"></progress>
+    </div>
+
+    <ul id="messages"></ul>
+
+    <table id="programs">
+      <colgroup><col><col><col><col><col></colgroup>
+      <thead><tr><td>Name</td><td>Aired</td><td>Type</td><td><abbr title="Series Id">S.Id</abbr></td><td><abbr title="Program Id">P.Id</abbr></td></tr></thead>
+      <tbody></tbody>
+    </table>
 
   </body>
 </html>

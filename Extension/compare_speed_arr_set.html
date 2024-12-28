@@ -1,71 +1,236 @@
 <!DOCTYPE html>
-
 <html lang="en">
-  <body>
-    <script type="module">
+<body>
+<script type="module">
 
-    Array.prototype.shuffle = function() {
-      let m = this.length, i;
-      while (m) {
-        i = (Math.random() * m--) >>> 0;
-        [this[m], this[i]] = [this[i], this[m]]
+Array.prototype.shuffle = function() {
+  let m = this.length, i;
+  while (m) {
+    i = (Math.random() * m--) >>> 0;
+    [this[m], this[i]] = [this[i], this[m]]
+  }
+  return this;
+};
+
+function arrToObj(arr) {
+  // console.dir(arr);
+  return arr.reduce((obj, item) => {
+    obj[item.programId] = item.programId;
+    return obj;
+  }, {});
+}
+
+let watched = [];
+for(let i = 0; i < 250_000; i++) {
+  watched.push({ programId: Math.random() });
+}
+watched = [...new Set(watched)];
+watched.splice(150_000)
+
+let ignored = [...watched];
+ignored.shuffle();
+ignored = ignored.slice(50_000, 55_000);
+
+
+function testFilterNaive(watchedBase, ignoredBase) {
+  const ini = -performance.now();
+  let resLen = 0;
+
+  for (let i = 0; i < 30; i++) {
+    let watched = {...watchedBase};
+    let ignored = {...ignoredBase};
+
+    for (const k in watched) {
+      if (k in ignored) {
+        delete watched[k];
       }
-      return this;
-    };
+    }
+    const t = watched;
+    resLen = Object.keys(t).length;
+  }
 
-    var watched = [];
-    for(let i = 0; i < 150000; i++){watched.push({programId:Math.random()});}
 
-    var ignored = [...watched];
-    ignored.shuffle();
-    ignored = ignored.slice(50000, 55000);
+  const elapsed = ini + performance.now();
+  console.log(`\n30 iterations, ${Math.round(elapsed).toString().padStart(9, ' ')}ms - ${resLen.toString().padStart(5, ' ')}`);
+}
 
-    var c1 = 0;
-    var i1 = 0;
-    var c2 = 0;
-    var i2 = 0;
-    var c2 = 0;
-    var i2 = 0;
-    var once = false;
+function testFilterNaiveAlt(watchedBase, ignoredBase) {
+  const ini = -performance.now();
+  let resLen = 0;
 
-    for (let i = 0; i < 30; i++) {
-      c1++;
-      watched.filter(wObj => {
-        return !ignored.some((iObj, ndx) => {
-          i1++;
-          return iObj.programId === wObj.programId;
-        });
-      });
+  for (let i = 0; i < 30; i++) {
+    let watched = {...watchedBase};
+    let ignored = {...ignoredBase};
+
+    for (const k in ignored) {
+      if (k in watched) {
+        delete watched[k];
+      }
+    }
+    const t = watched;
+    resLen = Object.keys(t).length;
+  }
+
+
+  const elapsed = ini + performance.now();
+  console.log(`\n30 iterations, ${Math.round(elapsed).toString().padStart(9, ' ')}ms - ${resLen.toString().padStart(5, ' ')}`);
+}
+
+function testFilterNaiveAlt2(watchedBase, ignoredBase) {
+  const ini = -performance.now();
+  let resLen = 0;
+
+  for (let i = 0; i < 30; i++) {
+    let watched = {...watchedBase};
+    let ignored = {...ignoredBase};
+
+    for (const k in ignored) {
+      if (watched.hasOwnProperty(k)) {
+        delete watched[k];
+      }
+    }
+    const t = watched;
+    resLen = Object.keys(t).length;
+  }
+
+
+  const elapsed = ini + performance.now();
+  console.log(`\n30 iterations, ${Math.round(elapsed).toString().padStart(9, ' ')}ms - ${resLen.toString().padStart(5, ' ')}`);
+}
+
+function testFilterNaiveAlt3(watchedBase, ignoredBase) {
+  const ini = -performance.now();
+  let resLen = 0;
+
+  for (let i = 0; i < 30; i++) {
+    let watched = {...watchedBase};
+    let ignored = {...ignoredBase};
+
+    for (const k in watched) {
+      if (ignored.hasOwnProperty(k)) {
+        delete watched[k];
+      }
+    }
+    const t = watched;
+    resLen = Object.keys(t).length;
+  }
+
+
+  const elapsed = ini + performance.now();
+  console.log(`\n30 iterations, ${Math.round(elapsed).toString().padStart(9, ' ')}ms - ${resLen.toString().padStart(5, ' ')}`);
+}
+
+
+
+function testFiltersFilterSome(watchedBase, ignoredBase) {
+  const ini = -performance.now();
+  let resLen = 0;
+
+  for (let i = 0; i < 3; i++) {
+    let watched = [...watchedBase];
+    let ignored = [...ignoredBase];
+
+    const t = watched.filter(obj => !ignored.some(item => item.programId === obj.programId));
+    resLen = t.length;
+  }
+
+  const elapsed = ini + performance.now();
+  console.log(`\n30 iterations, ${Math.round(elapsed).toString().padStart(9, ' ')}ms - ${resLen.toString().padStart(5, ' ')}`);
+}
+
+function testFiltersFilterSomePopped(watchedBase, ignoredBase) {
+  const ini = -performance.now();
+  let resLen = 0;
+
+  for (let i = 0; i < 3; i++) {
+    let watched = [...watchedBase];
+    let ignored = [...ignoredBase];
+
+    const t = watched.filter(wObj =>
+      !ignored.some((iObj, ndx) => {
+        if (iObj.programId === wObj.programId) {
+          ignored[ndx].programId = ignored.pop().programId;
+          return true;
+        }
+        return false;
+      })
+    );
+    resLen = t.length;
+  }
+
+  const elapsed = ini + performance.now();
+  console.log(`\n30 iterations, ${Math.round(elapsed).toString().padStart(9, ' ')}ms - ${resLen.toString().padStart(5, ' ')}`);
+}
+
+function testFiltersFilterSet(watchedBase, ignoredBase) {
+  const ini = -performance.now();
+  let resLen = 0;
+
+  for (let i = 0; i < 30; i++) {
+    let watched = {...watchedBase};
+    let ignored = {...ignoredBase};
+
+    const ws = new Set(Object.keys(watched));
+    const is = new Set(Object.keys(ignored));
+    const diff = ws.intersection(is);
+
+    for (const k of diff) {
+      delete watched[k];
     }
 
-    for (let i = 0; i < 30; i++) {
-      c2++;
-      watched.filter(wObj =>
-        !ignored.some((iObj, ndx) => {
-          i2++;
-          if (iObj.programId === wObj.programId) {
-            ignored[ndx].programId = ignored.pop().programId;
-            return true;
-          }
-          return false;
-        })
-      );
+    // const t = watched.filter(Set.prototype.has, new Set(ignored));
+    // const t = watched.filter(obj => !ignored[obj.parentId]);
+    // const igSet = new Set(ignored.flatMap(obj => obj.parentId));
+    // const t = watched.filter(wObj => !igSet.has(wObj.parentId));
+    resLen = Object.keys(watched).length;
+  }
+
+  const elapsed = ini + performance.now();
+  console.log(`\n30 iterations, ${Math.round(elapsed).toString().padStart(9, ' ')}ms - ${resLen.toString().padStart(5, ' ')}`);
+}
+
+
+testFilterNaive(arrToObj(watched), arrToObj(ignored));
+testFilterNaiveAlt(arrToObj(watched), arrToObj(ignored));
+testFilterNaiveAlt2(arrToObj(watched), arrToObj(ignored));
+testFilterNaiveAlt3(arrToObj(watched), arrToObj(ignored));
+// testFiltersFilterSome([...watched], [...ignored]);
+// testFiltersFilterSomePopped([...watched], [...ignored]);
+testFiltersFilterSet(arrToObj(watched), arrToObj(ignored));
+// testFiltersFilterSet((watched), (ignored));
+
+// let a1 = a.filter((e, i, self) => i === self.indexOf(e));
+// const objToMap = (o) => new Map(Object.entries(o));
+
+
+
+/*
+findNewlyAddedWatchedItems() {
+
+const toCheck = this.toCheck.filter(obj => {
+  return !this.checked.some(item => item.programId === obj.programId);
+});
+11.6 op/s
+
+const toCheck = this.toCheck.filter(wObj =>
+  !this.checked.some((iObj, ndx) => {
+    if (iObj.programId === wObj.programId) {
+      this.checked[ndx].programId = this.checked.pop().programId;
+      return true;
     }
+    return false;
+  })
+);
+194 op/s
 
-    // wa.filter(Set.prototype.has, new Set(ig));
-    const igSet = new Set(ignored.flatMap(obj => obj.parentId));
-    const toCheck = watched.filter(wObj => !igSet.has(wObj.parentId));
+toCheck = watched - ignored
+const igSet = new Set(this.checked.flatMap(obj => obj.parentId));
+const toCheck = this.toCheck.filter(obj => !igSet.has(obj.parentId));
+636 op/s
+}
+*/
 
 
-
-    if (!once) {
-      const r1 = (i1/c1)/1000000;
-      const r2 = (i2/c2)/1000000;
-      console.log('Ops: ', r1.toFixed(2).padStart(6, ' ')+'M');
-      console.log('Ops: ', r2.toFixed(2).padStart(6, ' ')+'M');
-      once = true;
-    }
-
-    </script>
-  </body>
+</script>
+</body>
 </html>
