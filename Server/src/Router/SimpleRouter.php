@@ -33,7 +33,7 @@ final class SimpleRouter extends AbstractRouter
         ]
       ],
 
-      'materialize' => new Routing('\Server\Controller\UpdateMaterializedViewsController', [HttpMethods::GET])
+      'materialize' => new Routing('\Server\Controller\UpdateMaterializedViewsController', [HttpMethods::GET]),
 
       'teapot' => new Routing('\Server\Controller\TeapotController', [HttpMethods::GET])
     ]
