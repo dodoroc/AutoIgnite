@@ -29,8 +29,11 @@ final class SimpleRouter extends AbstractRouter
         '^(?<seriesId>\d{19})$' => [
           // get: array of tracked episodes which are pulled from per series materialized views
           'tracked' => new Routing('\Server\Controller\TrackedController', [HttpMethods::GET]),
+          'unwatched' => new Routing('\Server\Controller\UnwatchedController', [HttpMethods::GET])
         ]
       ],
+
+      'materialize' => new Routing('\Server\Controller\UpdateMaterializedViewsController', [HttpMethods::GET])
 
       'teapot' => new Routing('\Server\Controller\TeapotController', [HttpMethods::GET])
     ]

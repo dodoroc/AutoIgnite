@@ -289,7 +289,7 @@ export class Model {
   }
 
 
-  async processGetDetails(watched, numEps, observers) {
+  async updateDetailsForWatched(watched, numEps, observers) {
     const comm = (new BufferedPortRequest(this.#port)).timeout(250*numEps).init();
     const batch = [], batchSize = Math.min(10, Math.ceil(numEps/3));
     let iid, nthSend = 0, nthRecv = 0;
@@ -339,5 +339,69 @@ export class Model {
     });
   }
 
+  async searchByTerm(query) {
+    const req = new PortRequest(this.#port);
+    return req.init()
+    .fetch(`searchByTerm|${query}`)
+    .finally(() => req.term());
+  }
+
+  async getProgramUpcomingListings(seriesId) {
+    const req = new PortRequest(this.#port);
+    return req.init()
+    .fetch(`getProgramUpcomingListings|${seriesId}`)
+    .finally(() => req.term());
+  }
+
+  async getUpcomingForUnwatched(unwatched) {
+    return;
+    const comm = (new BufferedPortRequest(this.#port)).timeout(250*numEps).init();
+    const batch = [], batchSize = Math.min(10, Math.ceil(numEps/3));
+    let iid, nthSend = 0, nthRecv = 0;
+
+    return new Promise(resolve => {
+      const keys = Object.keys(watched);
+
+      iid = setInterval(() => {
+        if (keys.length) {
+          const k = keys.shift();
+          observers?.sendPrg?.update(nthSend += 1, numEps);
+          comm.send(`getProgramEntity|${k}`);
+        }
+
+        const size = comm.size();
+        if (size) {
+          const pgm = comm.read(1)[0];
+          pgm.watchedOn = watched[pgm.programId].watchedOn;
+          batch.push(pgm);
+
+          observers?.recvPrg?.update(nthRecv += 1, numEps);
+          observers?.prgData?.update(pgm);
+
+          if (batch.length >= batchSize) {
+            this.updateWatchedData(batch);
+            batch.length = 0;
+          }
+        }
+
+        if (nthSend === numEps && nthRecv === numEps) {
+          clearInterval(iid);
+          resolve();
+        }
+      }, 200);
+    })
+    .catch(err => {
+      clearInterval(iid);
+      console.error(err);
+      // TODO deal with errors properly
+    })
+    .finally(() => {
+      comm.timeout(0).term();
+      if (batch.length) {
+        this.updateWatchedData(batch);
+        batch.length = 0;
+      }
+    });
+  }
 
 }

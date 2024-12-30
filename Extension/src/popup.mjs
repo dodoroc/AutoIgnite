@@ -11,8 +11,6 @@ import { Model } from './model.mjs';
 class Extension {
   browser = null;
   activeTab = null;
-  ctrlPort = null;
-  dataPort = null;
   observers = { 'sendPrg':null, 'recvPrg': null, 'prgData':null, 'infoMsg': null };
 
   constructor(browser, tab) {
@@ -21,23 +19,26 @@ class Extension {
 
     // should clean up this orphaned event listener if it leaks mem
     this.browser.runtime.onConnectExternal.addListener(port => {
-      console.log(this.constructor.name, 'onConnectExternal');
-      this.dataPort = port;
-      this.process();
+      console.log(this.constructor.name, 'onConnectExternal', port?.name);
+      this.process(port);
     });
 
-    // Send message to have the runner.mjs script connect to this extension
-    this.ctrlPort = this.browser.tabs.connect(this.activeTab.id);
-    this.ctrlPort.postMessage('connect');
-    this.ctrlPort.disconnect();
+    this.requestConnection();
+  }
+
+  // Send message to have the runner.mjs script connect to this extension
+  requestConnection() {
+    const port = this.browser.tabs.connect(this.activeTab.id);
+    port.postMessage('connect');
+    port.disconnect();
   }
 
 
 
-  async process() {
+  async process(port) {
     this.observers.infoMsg?.update(`Starting`);
 
-    const mod = new Model(this.dataPort);
+    const mod = new Model(port);
 
     const toCheck = await mod.getWatchedData();
     const numEps = Object.keys(toCheck).length;
@@ -50,11 +51,15 @@ class Extension {
       this.observers.sendPrg?.update(0, numEps);
       this.observers.recvPrg?.update(0, numEps);
 
-      await mod.processGetDetails(toCheck, numEps, this.observers);
+      await mod.updateDetailsForWatched(toCheck, numEps, this.observers);
     }
     else {
       this.observers.infoMsg?.update(`Nothing to process`);
     }
+
+    // const res = await mod.searchByTerm('Sterling and Nina Agdal');
+    const res = await mod.getProgramUpcomingListings('6774048176174390112');
+    console.dir(res);
 
     this.observers.infoMsg?.update(`Completed`);
   }

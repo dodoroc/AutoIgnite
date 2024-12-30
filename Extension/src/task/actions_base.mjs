@@ -60,7 +60,12 @@ class ApiRequest {
     const headers = ApiHeaders.reset().merge(this.request.headers).get();
     const options = { headers, method: this.request.method, redirect: 'follow', };
 
+    // const params = Object.entries(this.request.params).reduce(
+    //   (acc,par) => acc + `${encodeURIComponent(par[0])}=${encodeURIComponent(par[1])}`,
+    //   ''
+    // );
     const params = (new URLSearchParams(this.request.params)).toString();
+
     if (params.length) {
       if (this.request.method === ApiRequest.POST) {
         options.headers['Content-Type'] = 'application/x-www-form-urlencoded';

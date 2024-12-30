@@ -61,6 +61,7 @@ export const data = {
 
   loadTracked(seriesId) {
     this.seriesId = null;
+
     // cached data available then return
     if (this.series[seriesId].programs) {
       this.seriesId = seriesId;

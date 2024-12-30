@@ -40,8 +40,10 @@ export class getProgramUpcomingListings extends GetRequest {
   constructor(xsctAuthToken, featuresToken, programId) {
     super(xsctAuthToken, featuresToken);
     this.request.url = `/entity/program/${programId}/upcomingListings/`;
-    this.request.params['freetome'] = 1;
-    // this.request.headers['Cache-control'] = 'no-cache, no-store';
+    this.request.params['freetome'] = 'all';
+
+    this.request.headers['Cache-control'] = 'no-cache, no-store';
+    this.request.headers['CLIENT-PLATFORM'] = 'web;linear-tve;local-tve;est;i18n-ratings;beta-channels;standard-sports-images;session;livod;local-tve-nbc-v3;record-tve';
   }
 }
 
@@ -65,14 +67,19 @@ export class getTvSeasonUngroupedEntity extends GetRequest {
   }
 }
 
-
 // "href": "search/term/{?query,ftmvod,freetome,limit,includeMenus,aliasName,includeStations,matchExactChannel,includeVodCompany}",
 export class searchByTerm extends GetRequest {
   constructor(xsctAuthToken, featuresToken, searchTerm) {
     super(xsctAuthToken, featuresToken);
     this.request.url = `/search/term/`;
     this.request.params['query'] = searchTerm;
-    this.request.params['ftmvod'] = 1;
-    this.request.params['freetome'] = 1;
+    this.request.params['limit'] = 100;
+    this.request.params['freetome'] = 'all';
+    this.request.params['includeMenus'] = 'true';
+    this.request.params['matchExactChannel'] = 'true';
+    this.request.params['includeVodCompany'] = 'false';
+
+    this.request.headers['CLIENT-PLATFORM'] = 'web;linear-tve;local-tve;est;i18n-ratings;beta-channels;standard-sports-images;session;livod;local-tve-nbc-v3;record-tve';
+
   }
 }

@@ -64,6 +64,53 @@ class DataFetchFactory {
     });
   }
 
+  static #searchByTerm(req) {
+    return req.fetch().then(data => {
+      if (data) {
+        console.dir(data);
+        return {};
+      }
+
+      return null;
+    });
+  }
+
+  static #getTvSeasonEntity(req) {
+    return req.fetch().then(data => {
+      if (data) {
+        console.dir(data);
+        return {};
+      }
+
+      return null;
+    });
+  }
+
+  static #getProgramUpcomingListings(req) {
+    return req.fetch().then(data => {
+      if (data?._type === 'UpcomingListings') {
+        const programs  = data._embedded.programs;
+        const filtered = [];
+        // _embedded.programs[0].partOfSeason.seasonNumber
+        // _embedded.programs[0].name
+        // _embedded.programs[0]._embedded.upcomingListings._embedded.listings[0].airingType === 'REPEAT'
+        // _embedded.programs[0]._embedded.upcomingListings._embedded.listings[0]._forms.scheduleDateTime
+
+        // console.dir(programs);
+        for (let i = 0; i < programs.length; i++) {
+          if (programs[i].partOfSeason?.seasonNumber > 30) {
+            filtered.push(programs[i]);
+            console.log(programs[i].name);
+          }
+        }
+
+        return filtered;
+      }
+
+      return null;
+    });
+  }
+
   // the exresult from the custom fetch request
   static exec(cmd) {
     const [fnc, p1, p2, p3] = [...cmd.split('|'), null, null, null];
@@ -81,6 +128,26 @@ class DataFetchFactory {
           const req = new actions.getProgramEntity(tok.xsct, tok.feat, p1);
           return this.#getProgramEntity(req);
         }
+
+        case 'searchByTerm': {
+          // p1 required search query
+          const req = new actions.searchByTerm(tok.xsct, tok.feat, p1);
+          return this.#searchByTerm(req);
+        }
+
+        case 'getTvSeasonEntity': {
+          // p1 required seriesId, p2 required season num
+          const req = new actions.getTvSeasonEntity(tok.xsct, tok.feat, p1, p2);
+          return this.#getTvSeasonEntity(req);
+        }
+
+        case 'getProgramUpcomingListings': {
+          // p1 required programId which in our cause is mainly seriesId
+          const req = new actions.getProgramUpcomingListings(tok.xsct, tok.feat, p1);
+          return this.#getProgramUpcomingListings(req);
+        }
+
+
       }
     }
     catch (err) {
@@ -131,8 +198,6 @@ class Runner {
         this.#port = chrome.runtime.connect(this.#extId);
         this.#port.onDisconnect.addListener(this.#onDisconnect);
         this.#port.onMessage.addListener(this.#onMessage);
-        // this.#port.postMessage('a msg');
-
       }
     }
     catch (err) {
