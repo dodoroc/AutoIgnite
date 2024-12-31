@@ -100,7 +100,7 @@ class DataFetchFactory {
         for (let i = 0; i < programs.length; i++) {
           if (programs[i].partOfSeason?.seasonNumber > 30) {
             filtered.push(programs[i]);
-            console.log(programs[i].name);
+            // console.log(programs[i].name);
           }
         }
 

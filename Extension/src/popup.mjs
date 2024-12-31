@@ -23,7 +23,8 @@ class Extension {
       this.process(port);
     });
 
-    this.requestConnection();
+    // this.requestConnection();
+    setTimeout(() => this.requestConnection(), 3000);
   }
 
   // Send message to have the runner.mjs script connect to this extension
@@ -58,8 +59,16 @@ class Extension {
     }
 
     // const res = await mod.searchByTerm('Sterling and Nina Agdal');
-    const res = await mod.getProgramUpcomingListings('6774048176174390112');
-    console.dir(res);
+    const seriesId = '6774048176174390112';
+    const p1 = mod.getProgramUpcomingListings(seriesId);
+    const p2 = mod.getUnwatchedTitlesBySeriesId(seriesId);
+    const [r1, r2] = await Promise.allSettled([p1, p2]);
+    const upcoming = r1.value;
+    const unwatched = r2.value;
+    console.dir(upcoming);
+    console.dir(unwatched);
+
+
 
     this.observers.infoMsg?.update(`Completed`);
   }

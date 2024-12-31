@@ -353,6 +353,11 @@ export class Model {
     .finally(() => req.term());
   }
 
+  async getUnwatchedTitlesBySeriesId(seriesId) {
+    const req = new Fetch(this.#urlBase, this.#timeout);
+    return req.get(`series/${seriesId}/unwatched`)
+    .catch(err => console.error);
+  }
 
 
 
