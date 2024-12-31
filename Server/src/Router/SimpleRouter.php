@@ -29,6 +29,8 @@ final class SimpleRouter extends AbstractRouter
         '^(?<seriesId>\d{19})$' => [
           // get: array of tracked episodes which are pulled from per series materialized views
           'tracked' => new Routing('\Server\Controller\TrackedController', [HttpMethods::GET]),
+
+          // get: array of unwatched titles for a series
           'unwatched' => new Routing('\Server\Controller\UnwatchedController', [HttpMethods::GET])
         ]
       ],
