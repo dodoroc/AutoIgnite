@@ -19,7 +19,8 @@ final class UpdateMaterializedViewsController extends AbstractController
     $proc = new UpdateMaterializedViewsProcess();//new SeriesId($this->pathData['seriesId']));
     $proc->execute();
 
-    $resp = Response::asJSON($proc, ResponseSuccess::class);
+    // $resp = Response::asJSON($proc, ResponseSuccess::class);
+    $resp = new ResponseSuccess;
     return $resp;
   }
 
