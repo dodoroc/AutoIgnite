@@ -7,7 +7,7 @@
 
 namespace Server\Domain;
 
-use Server\Entity\{SeriesId, ProgramId, Tracked};
+use Server\Entity\{SeriesId};
 use \PDO;
 
 final class UnwatchedBySeriesIdProcess extends AbstractProcess
@@ -33,9 +33,15 @@ final class UnwatchedBySeriesIdProcess extends AbstractProcess
 
   public function execute() : void
   {
+    $this->results = [];
+
     $sql = $this->createQuery();
     $stm = $this->dbc->prepare($sql);
     $stm->bindParam(':series_id', $this->seriesId, PDO::PARAM_STR);
     $stm = $this->dbc->execute();
+
+    foreach ($stm as $r) {
+      array_push($this->results, $r->name);
+    }
   }
 }
