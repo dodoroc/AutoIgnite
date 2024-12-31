@@ -38,7 +38,7 @@ final class UnwatchedBySeriesIdProcess extends AbstractProcess
     $sql = $this->createQuery();
     $stm = $this->dbc->prepare($sql);
     $stm->bindParam(':series_id', $this->seriesId, PDO::PARAM_STR);
-    $stm = $this->dbc->execute();
+    $stm->execute();
 
     foreach ($stm as $r) {
       array_push($this->results, $r->name);
