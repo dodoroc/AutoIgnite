@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: php-actions/composer@v6
-        uses: php-actions/phpstan@v3
+      - uses: php-actions/phpstan@v3
         with:
           path: src/ inc/
 
@@ -28,8 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: copy file via ssh key
-        uses: appleboy/scp-action@master
+      - uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
