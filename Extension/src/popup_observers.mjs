@@ -51,12 +51,12 @@ export class EpisodeDataObserver {
     }
 
     this.#tblBodyEl = tableEl.createTBody();
-    this.fields = fields;
+    this.#fields = fields;
   }
 
   #append(data) {
     const row = this.#tblBodyEl.insertRow();
-    for (const f of this.fields) {
+    for (const f of this.#fields) {
       row.insertCell().textContent = data[f];
     }
   }
