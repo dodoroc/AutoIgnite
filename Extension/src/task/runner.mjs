@@ -173,7 +173,7 @@ class Runner {
     });
   };
 
-  #onDisconnect = port => {
+  #onDisconnect = () => {
     this.#port = null;
   };
 
