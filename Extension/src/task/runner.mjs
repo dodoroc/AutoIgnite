@@ -114,7 +114,7 @@ class DataFetchFactory {
 
   // the exresult from the custom fetch request
   static exec(cmd) {
-    const [fnc, p1, p2, p3] = [...cmd.split('|'), null, null, null];
+    const [fnc, p1, p2, _p3] = [...cmd.split('|'), null, null, null];
     const tok = this.tokens;
 
     try {
@@ -156,7 +156,6 @@ class DataFetchFactory {
       // 403 with alert to refresh or re-login
       console.dir(err);
     }
-    p3 = null;
 
     return null;
   }
@@ -225,7 +224,7 @@ try {
   });
 
 }
-catch (err) {
+catch {
   // suppress errors for prod
   // console.log('Runner', err);
 }

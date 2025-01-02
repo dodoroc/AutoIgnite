@@ -244,7 +244,7 @@ export class Model {
     return req.get('watched')
     // .then(data => {console.log(JSON.stringify(data)); return data})
     // .then(data => data.json())
-    .catch(err => console.error);
+    .catch(err => console.error(err));
   }
 
   async getWatchedData() {
@@ -285,7 +285,7 @@ export class Model {
     const req = new Fetch(this.#urlBase, this.#timeout);
     return req.put('watched', data)
     .then(response => (response.status === 200))
-    .catch(err => console.error);
+    .catch(err => console.error(err));
   }
 
 
@@ -365,8 +365,8 @@ export class Model {
 
 
 
-  async getUpcomingForUnwatched(unwatched) {
-    return;
+  /*
+  async getUpcomingForUnwatched(_unwatched) {
     const comm = (new BufferedPortRequest(this.#port)).timeout(Math.max(1500, 250*numEps)).init();
     const batch = [], batchSize = Math.min(10, Math.ceil(numEps/3));
     let iid, nthSend = 0, nthRecv = 0;
@@ -415,5 +415,6 @@ export class Model {
       }
     });
   }
+  //*/
 
 }

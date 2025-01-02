@@ -54,7 +54,7 @@ try {
   const browser = window.browser || window.chrome;
   (new Broker(browser)).mediate();
 }
-catch (err) {
+catch {
   // suppress errors for prod
   // console.log('Broker', err);
 }
