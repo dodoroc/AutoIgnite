@@ -1,6 +1,6 @@
 // -------------------------------------------------------------------
 // https://en.wikipedia.org/wiki/List_of_Ridiculousness_episodes_(season_21%E2%80%93present)#Season_31_(2023)
-/*
+
 const vals = [];
 const rows = document.querySelectorAll('table:is(.wikitable,.plainrowheaders):has(th[scope]) tr:has(th+td)');
 rows.forEach(s => {
@@ -20,13 +20,13 @@ ON CONFLICT (series_id, name) DO NOTHING
 ;
 `);
 // UPDATE SET air_date=EXCLUDED.air_date WHERE episode.air_date IS NULL
-*/
+
 
 
 
 // -------------------------------------------------------------------
 // https://thetvdb.com/series/ridiculousness/allseasons/official
-/*
+
 const vals = [];
 const rows = document.querySelectorAll('li.list-group-item');
 rows.forEach(s => {
@@ -56,7 +56,7 @@ UPDATE SET aired_on = EXCLUDED.aired_on, seep_key = EXCLUDED.seep_key, source = 
 // WHERE tracked.aired_on IS NULL OR tracked.seep_key IS NULL
 // DO UPDATE SET aired_on=EXCLUDED.aired_on, seep=EXCLUDED.seep
 // DO NOTHING
-*/
+
 
 
 
@@ -88,7 +88,6 @@ UPDATE SET aired_on = EXCLUDED.aired_on, seep_key = EXCLUDED.seep_key, source = 
 // -------------------------------------------------------------------
 // https://epguides.com/Ridiculousness/
 // * issues with data [1/5]
-/*
 const vals = [];
 const rows = document.querySelectorAll('div#eplist table tr:has(td.epinfo)');
 rows.forEach(s => {
@@ -109,13 +108,12 @@ ON CONFLICT (series_id, name) DO NOTHING
 ;
 `);
 // UPDATE SET air_date=EXCLUDED.air_date WHERE episode.air_date IS NULL
-*/
+
 
 
 // -------------------------------------------------------------------
 // https://www.themoviedb.org/tv/38657-ridiculousness/season/31?language=en-CA
 // * issues with data [4/5]
-/*
 const vals = [];
 const rows = document.querySelectorAll('div.card div.episode_title');
 rows.forEach(s => {
@@ -133,7 +131,7 @@ ON CONFLICT (series_id, name) DO NOTHING
 ;
 `);
 // UPDATE SET air_date=EXCLUDED.air_date WHERE episode.air_date IS NULL
-*/
+
 
 
 // -------------------------------------------------------------------
@@ -144,7 +142,6 @@ ON CONFLICT (series_id, name) DO NOTHING
 TODO issues with date I think
 solution implemented but not tested
 */
-/*
 const vals = [];
 const rows = document.querySelectorAll('div[data-type="episode"][data-episode-number][data-season-number]');
 rows.forEach(s => {
@@ -167,7 +164,7 @@ UPDATE SET aired_on = EXCLUDED.aired_on, seep_key = EXCLUDED.seep_key
 `);
 // DO UPDATE SET aired_on=EXCLUDED.aired_on, seep=EXCLUDED.seep
 // DO NOTHING
-*/
+
 
 
 // -------------------------------------------------------------------
