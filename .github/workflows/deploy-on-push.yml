@@ -1,17 +1,26 @@
 name: Deploy on Push
+runs-on: ubuntu-latest
+
 on: [push]
 jobs:
 
   oxlint:
-    name: Lint JS
-    runs-on: ubuntu-latest
+    name: es/js linter
     steps:
       - uses: actions/checkout@v4
-      - run: npx --yes oxlint@0.15.3 --deny-warnings # change to the latest release
+      - run: npx --yes oxlint@0.15.3 --deny-warnings
+
+  phpstan:
+    name: phpstan
+    steps:
+      - uses: actions/checkout@v3
+      - uses: php-actions/composer@v6
+        uses: php-actions/phpstan@v3
+        with:
+          path: src/ inc/
 
   deploy:
-    runs-on: ubuntu-latest
-
+    name: deploy
     steps:
       - uses: actions/checkout@master
       - name: copy file via ssh key
