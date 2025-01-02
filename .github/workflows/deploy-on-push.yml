@@ -2,16 +2,19 @@ name: Deploy on Push
 
 on: [push]
 jobs:
-  runs-on: ubuntu-latest
 
   oxlint:
     name: es/js linter
+
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - run: npx --yes oxlint@0.15.3 --deny-warnings
 
   phpstan:
     name: phpstan
+
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: php-actions/composer@v6
@@ -21,6 +24,8 @@ jobs:
 
   deploy:
     name: deploy
+
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
       - name: copy file via ssh key
