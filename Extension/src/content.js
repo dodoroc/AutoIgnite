@@ -39,7 +39,7 @@ class Broker {
     return script;
   }
 
-  removePayloadScript(extId) {
+  removePayloadScript() {
     const script = document.head.querySelector(`script[id=${this.#extId}]`);
     script?.remove();
   }

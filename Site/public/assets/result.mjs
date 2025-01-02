@@ -25,7 +25,7 @@ export const result = {
       try {
         const rex = new RegExp(params.textual, 'i');
         actions.push(() => this.programs.filter(o => rex.test(o.name)));
-      } catch (err) {}
+      } catch (_err) {}
     }
   },
 

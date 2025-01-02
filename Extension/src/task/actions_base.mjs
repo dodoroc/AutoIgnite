@@ -88,7 +88,7 @@ class ApiRequest {
       throw new Error('ERR:API', {cause: response});
     })
     .catch(error => {
-      // throw new Error('ERR:NET', {cause: error.cause});
+      throw new Error('ERR:NET', {cause: error.cause});
       // TODO handle errors properly
     });
 

@@ -149,8 +149,6 @@ class DataFetchFactory {
           const req = new actions.getProgramUpcomingListings(tok.xsct, tok.feat, p1);
           return this.#getProgramUpcomingListings(req);
         }
-
-
       }
     }
     catch (err) {
@@ -158,6 +156,7 @@ class DataFetchFactory {
       // 403 with alert to refresh or re-login
       console.dir(err);
     }
+    p3 = null;
 
     return null;
   }

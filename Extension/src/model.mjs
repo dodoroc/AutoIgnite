@@ -33,7 +33,7 @@ export class PortRequest {
   async fetch(msg, timeout) {
     const timeoutId = setTimeout(() => { throw new Error('timeout') }, timeout || 60_000);
 
-    let isr = m => false;
+    let isr = m => m;
     const interrupt = m => isr(m);
     this.#port.onMessage.addListener(interrupt);
 
@@ -61,7 +61,7 @@ export class PortRequest {
   *receiver(max, timeout) {
     const timeoutId = setTimeout(() => { throw new Error('timeout') }, timeout || 60_000);
 
-    let isr = m => false;
+    let isr = m => m;
     const interrupt = m => isr(m);
 
     this.#port.onMessage.addListener(interrupt);
@@ -360,7 +360,7 @@ export class Model {
   async getUnwatchedTitlesBySeriesId(seriesId) {
     const req = new Fetch(this.#urlBase, this.#timeout);
     return req.get(`series/${seriesId}/unwatched`)
-    .catch(err => console.error);
+    .catch(err => console.error(err));
   }
 
 
