@@ -19,8 +19,7 @@
 
   "autoload": {
     "psr-4": {
-      "Server\\": "src/",
-      "App\\": "."
+      "Server\\": "src/"
     }
   },
 
