@@ -79,6 +79,7 @@ export class searchByTerm extends GetRequest {
     this.request.params['matchExactChannel'] = 'true';
     this.request.params['includeVodCompany'] = 'false';
 
+    this.request.headers['Cache-control'] = 'no-cache, no-store';
     this.request.headers['CLIENT-PLATFORM'] = 'web;linear-tve;local-tve;est;i18n-ratings;beta-channels;standard-sports-images;session;livod;local-tve-nbc-v3;record-tve';
 
   }

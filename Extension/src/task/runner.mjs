@@ -88,6 +88,7 @@ class DataFetchFactory {
 
   static #getProgramUpcomingListings(req) {
     return req.fetch().then(data => {
+      console.dir(data);
       if (data?._type === 'UpcomingListings') {
         const programs  = data._embedded.programs;
         const filtered = [];
@@ -96,7 +97,7 @@ class DataFetchFactory {
         // _embedded.programs[0]._embedded.upcomingListings._embedded.listings[0].airingType === 'REPEAT'
         // _embedded.programs[0]._embedded.upcomingListings._embedded.listings[0]._forms.scheduleDateTime
 
-        // console.dir(programs);
+        console.dir(programs);
         for (let i = 0; i < programs.length; i++) {
           if (programs[i].partOfSeason?.seasonNumber > 30) {
             filtered.push(programs[i]);
@@ -129,12 +130,14 @@ class DataFetchFactory {
           return this.#getProgramEntity(req);
         }
 
+        // just for testing currently
         case 'searchByTerm': {
           // p1 required search query
           const req = new actions.searchByTerm(tok.xsct, tok.feat, p1);
           return this.#searchByTerm(req);
         }
 
+        // just for testing currently
         case 'getTvSeasonEntity': {
           // p1 required seriesId, p2 required season num
           const req = new actions.getTvSeasonEntity(tok.xsct, tok.feat, p1, p2);

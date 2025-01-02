@@ -289,8 +289,9 @@ export class Model {
   }
 
 
+  // get details for a program and update database with said data
   async updateDetailsForWatched(watched, numEps, observers) {
-    const comm = (new BufferedPortRequest(this.#port)).timeout(250*numEps).init();
+    const comm = (new BufferedPortRequest(this.#port)).timeout(Math.max(1500, 250*numEps)).init();
     const batch = [], batchSize = Math.min(10, Math.ceil(numEps/3));
     let iid, nthSend = 0, nthRecv = 0;
 
@@ -346,13 +347,16 @@ export class Model {
     .finally(() => req.term());
   }
 
-  async getProgramUpcomingListings(seriesId) {
+  // get program details for episodes that are due to air, the recordable listings are
+  // also available in the same results that will eventually be processed
+  async getUpcomingListingsBySeriesId(seriesId) {
     const req = new PortRequest(this.#port);
     return req.init()
     .fetch(`getProgramUpcomingListings|${seriesId}`)
     .finally(() => req.term());
   }
 
+  // get array of titles for a series that haven't been watched yet
   async getUnwatchedTitlesBySeriesId(seriesId) {
     const req = new Fetch(this.#urlBase, this.#timeout);
     return req.get(`series/${seriesId}/unwatched`)
@@ -363,7 +367,7 @@ export class Model {
 
   async getUpcomingForUnwatched(unwatched) {
     return;
-    const comm = (new BufferedPortRequest(this.#port)).timeout(250*numEps).init();
+    const comm = (new BufferedPortRequest(this.#port)).timeout(Math.max(1500, 250*numEps)).init();
     const batch = [], batchSize = Math.min(10, Math.ceil(numEps/3));
     let iid, nthSend = 0, nthRecv = 0;
 

@@ -43,9 +43,9 @@ class Extension {
 
     const toCheck = await mod.getWatchedData();
     const numEps = Object.keys(toCheck).length;
-    // console.log('---------------', numEps);
-    // console.dir(toCheck);
-    // console.dir(Object.keys(toCheck));
+    console.log('---------------', numEps);
+    console.dir(toCheck);
+    console.dir(Object.keys(toCheck));
 
     if (numEps) {
       this.observers.infoMsg?.update(`Processing ${numEps} result(s)`);
@@ -59,8 +59,10 @@ class Extension {
     }
 
     // const res = await mod.searchByTerm('Sterling and Nina Agdal');
-    const seriesId = '6774048176174390112';
-    const p1 = mod.getProgramUpcomingListings(seriesId);
+    // const seriesId = '6774048176174390112'; //ridic
+    const seriesId = '8263471060961978112'; //ncis org
+
+    const p1 = mod.getUpcomingListingsBySeriesId(seriesId);
     const p2 = mod.getUnwatchedTitlesBySeriesId(seriesId);
     const [r1, r2] = await Promise.allSettled([p1, p2]);
     const upcoming = r1.value;
