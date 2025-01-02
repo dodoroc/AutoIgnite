@@ -15,6 +15,10 @@ class ComposerStaticInit3c5b8e3e48d84f263c128cb5334f1b38
         array (
             'Server\\' => 7,
         ),
+        'A' => 
+        array (
+            'App\\' => 4,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -26,10 +30,68 @@ class ComposerStaticInit3c5b8e3e48d84f263c128cb5334f1b38
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/',
+        ),
     );
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Server\\App' => __DIR__ . '/../..' . '/src/App.php',
+        'Server\\Controller\\AbstractController' => __DIR__ . '/../..' . '/src/Controller/AbstractController.php',
+        'Server\\Controller\\ControllerInterface' => __DIR__ . '/../..' . '/src/Controller/ControllerInterface.php',
+        'Server\\Controller\\ErrorBadRequestController' => __DIR__ . '/../..' . '/src/Controller/ErrorBadRequestController.php',
+        'Server\\Controller\\ErrorNotAllowedController' => __DIR__ . '/../..' . '/src/Controller/ErrorNotAllowedController.php',
+        'Server\\Controller\\ErrorNotFoundController' => __DIR__ . '/../..' . '/src/Controller/ErrorNotFoundController.php',
+        'Server\\Controller\\SeriesController' => __DIR__ . '/../..' . '/src/Controller/SeriesController.php',
+        'Server\\Controller\\TeapotController' => __DIR__ . '/../..' . '/src/Controller/TeapotController.php',
+        'Server\\Controller\\TrackedController' => __DIR__ . '/../..' . '/src/Controller/TrackedController.php',
+        'Server\\Controller\\UnwatchedController' => __DIR__ . '/../..' . '/src/Controller/UnwatchedController.php',
+        'Server\\Controller\\UpdateMaterializedViewsController' => __DIR__ . '/../..' . '/src/Controller/UpdateMaterializedViewsController.php',
+        'Server\\Controller\\WatchedController' => __DIR__ . '/../..' . '/src/Controller/WatchedController.php',
+        'Server\\DepContainer' => __DIR__ . '/../..' . '/src/DepContainer.php',
+        'Server\\Domain\\AbstractProcess' => __DIR__ . '/../..' . '/src/Domain/AbstractProcess.php',
+        'Server\\Domain\\ProcessInterface' => __DIR__ . '/../..' . '/src/Domain/ProcessInterface.php',
+        'Server\\Domain\\SeriesGetAllProcess' => __DIR__ . '/../..' . '/src/Domain/SeriesGetAllProcess.php',
+        'Server\\Domain\\TrackedGetAllBySeriesIdProcess' => __DIR__ . '/../..' . '/src/Domain/TrackedGetAllBySeriesIdProcess.php',
+        'Server\\Domain\\UnwatchedBySeriesIdProcess' => __DIR__ . '/../..' . '/src/Domain/UnwatchedBySeriesIdProcess.php',
+        'Server\\Domain\\UpdateMaterializedViewsProcess' => __DIR__ . '/../..' . '/src/Domain/UpdateMaterializedViewsProcess.php',
+        'Server\\Domain\\WatchedGetAllProcess' => __DIR__ . '/../..' . '/src/Domain/WatchedGetAllProcess.php',
+        'Server\\Domain\\WatchedPutSomeProcess' => __DIR__ . '/../..' . '/src/Domain/WatchedPutSomeProcess.php',
+        'Server\\Entity\\AbstractEntity' => __DIR__ . '/../..' . '/src/Entity/AbstractEntity.php',
+        'Server\\Entity\\AbstractEntityId' => __DIR__ . '/../..' . '/src/Entity/AbstractEntityId.php',
+        'Server\\Entity\\EntityIdInterface' => __DIR__ . '/../..' . '/src/Entity/EntityIdInterface.php',
+        'Server\\Entity\\EntityInterface' => __DIR__ . '/../..' . '/src/Entity/EntityInterface.php',
+        'Server\\Entity\\ProgramId' => __DIR__ . '/../..' . '/src/Entity/ProgramId.php',
+        'Server\\Entity\\Series' => __DIR__ . '/../..' . '/src/Entity/Series.php',
+        'Server\\Entity\\SeriesId' => __DIR__ . '/../..' . '/src/Entity/SeriesId.php',
+        'Server\\Entity\\Tracked' => __DIR__ . '/../..' . '/src/Entity/Tracked.php',
+        'Server\\Logger' => __DIR__ . '/../..' . '/src/Logger.php',
+        'Server\\Response\\AbstractResponse' => __DIR__ . '/../..' . '/src/Response/AbstractResponse.php',
+        'Server\\Response\\Response' => __DIR__ . '/../..' . '/src/Response/Response.php',
+        'Server\\Response\\ResponseBadRequest' => __DIR__ . '/../..' . '/src/Response/ResponseBadRequest.php',
+        'Server\\Response\\ResponseConflict' => __DIR__ . '/../..' . '/src/Response/ResponseConflict.php',
+        'Server\\Response\\ResponseCreated' => __DIR__ . '/../..' . '/src/Response/ResponseCreated.php',
+        'Server\\Response\\ResponseInterface' => __DIR__ . '/../..' . '/src/Response/ResponseInterface.php',
+        'Server\\Response\\ResponseMisdirected' => __DIR__ . '/../..' . '/src/Response/ResponseMisdirected.php',
+        'Server\\Response\\ResponseNoContent' => __DIR__ . '/../..' . '/src/Response/ResponseNoContent.php',
+        'Server\\Response\\ResponseNotAllowed' => __DIR__ . '/../..' . '/src/Response/ResponseNotAllowed.php',
+        'Server\\Response\\ResponseNotFound' => __DIR__ . '/../..' . '/src/Response/ResponseNotFound.php',
+        'Server\\Response\\ResponseServerError' => __DIR__ . '/../..' . '/src/Response/ResponseServerError.php',
+        'Server\\Response\\ResponseSuccess' => __DIR__ . '/../..' . '/src/Response/ResponseSuccess.php',
+        'Server\\Response\\ResponseTeapot' => __DIR__ . '/../..' . '/src/Response/ResponseTeapot.php',
+        'Server\\Router\\AbstractRouter' => __DIR__ . '/../..' . '/src/Router/AbstractRouter.php',
+        'Server\\Router\\HttpMethods' => __DIR__ . '/../..' . '/src/Router/HttpMethods.php',
+        'Server\\Router\\Routing' => __DIR__ . '/../..' . '/src/Router/Routing.php',
+        'Server\\Router\\SimpleRouter' => __DIR__ . '/../..' . '/src/Router/SimpleRouter.php',
+        'Server\\Trait\\MagicGetTrait' => __DIR__ . '/../..' . '/src/Trait/MagicGetTrait.php',
+        'Server\\Trait\\MagicSetTrait' => __DIR__ . '/../..' . '/src/Trait/MagicSetTrait.php',
+        'Server\\Trait\\UseContentDataTrait' => __DIR__ . '/../..' . '/src/Trait/UseContentDataTrait.php',
+        'Server\\Trait\\UseCookieDataTrait' => __DIR__ . '/../..' . '/src/Trait/UseCookieDataTrait.php',
+        'Server\\Trait\\UseHeaderDataTrait' => __DIR__ . '/../..' . '/src/Trait/UseHeaderDataTrait.php',
+        'Server\\Trait\\UseQueryDataTrait' => __DIR__ . '/../..' . '/src/Trait/UseQueryDataTrait.php',
+        'Server\\Trait\\UseRawBodyDataTrait' => __DIR__ . '/../..' . '/src/Trait/UseRawBodyDataTrait.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

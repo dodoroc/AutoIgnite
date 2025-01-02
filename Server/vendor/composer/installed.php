@@ -3,7 +3,7 @@
         'name' => 'autoignite/server',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'eadcd3815bbfe2a4fa231d60f23f44470d5efb3f',
+        'reference' => '89137db2d0b380bea62c755901efcf10c0fbb3a4',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'autoignite/server' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'eadcd3815bbfe2a4fa231d60f23f44470d5efb3f',
+            'reference' => '89137db2d0b380bea62c755901efcf10c0fbb3a4',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
