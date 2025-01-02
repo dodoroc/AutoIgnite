@@ -1,8 +1,8 @@
 name: Deploy on Push
-runs-on: ubuntu-latest
 
 on: [push]
 jobs:
+  runs-on: ubuntu-latest
 
   oxlint:
     name: es/js linter
