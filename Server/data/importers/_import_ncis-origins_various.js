@@ -1,6 +1,6 @@
 // -------------------------------------------------------------------
 // https://epguides.com/NCISOrigins/
-
+/*
 const vals = [];
 const rows = document.querySelectorAll('div#eplist table tr:has(td.epinfo)');
 rows.forEach(s => {
@@ -26,4 +26,4 @@ WHERE tracked.aired_on IS NULL OR tracked.seep_key IS NULL
 ;
 `);
 // UPDATE SET air_date=EXCLUDED.air_date WHERE episode.air_date IS NULL
-
+*/

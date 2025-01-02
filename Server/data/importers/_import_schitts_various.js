@@ -1,6 +1,6 @@
 // -------------------------------------------------------------------
 // https://en.wikipedia.org/wiki/List_of_Schitt%27s_Creek_episodes
-
+/*
 const vals = [];
 const rows = document.querySelectorAll('table:is(.wikitable,.wikiepisodetable):has(th[scope]) tr:is(.module-episode-list-row)');
 rows.forEach(s => {
@@ -18,12 +18,12 @@ ON CONFLICT (series_id, name) DO NOTHING
 ;
 `);
 // UPDATE SET air_date=EXCLUDED.air_date WHERE episode.air_date IS NULL
-
+*/
 
 
 // -------------------------------------------------------------------
 // https://epguides.com/SchittsCreek/
-
+/*
 const vals = [];
 const rows = document.querySelectorAll('div#eplist table tr:has(td.epinfo)');
 rows.forEach(s => {
@@ -49,4 +49,4 @@ WHERE tracked.aired_on IS NULL OR tracked.seep_key IS NULL
 ;
 `);
 // UPDATE SET air_date=EXCLUDED.air_date WHERE episode.air_date IS NULL
-
+*/
