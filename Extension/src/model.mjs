@@ -291,7 +291,7 @@ export class Model {
 
   // get details for a program and update database with said data
   async updateDetailsForWatched(watched, numEps, observers) {
-    const comm = (new BufferedPortRequest(this.#port)).timeout(Math.max(5000, 500*numEps)).init();
+    const comm = (new BufferedPortRequest(this.#port)).timeout(Math.max(6000, 750*numEps)).init();
     const batch = [], batchSize = Math.min(10, Math.ceil(numEps/3));
     let iid, nthSend = 0, nthRecv = 0;
 
