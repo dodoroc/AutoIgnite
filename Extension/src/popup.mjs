@@ -24,7 +24,7 @@ class Extension {
     });
 
     // this.requestConnection();
-    setTimeout(() => this.requestConnection(), 3000);
+    setTimeout(() => this.requestConnection(), 0);
   }
 
   // Send message to have the runner.mjs script connect to this extension
