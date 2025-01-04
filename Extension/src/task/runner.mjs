@@ -91,21 +91,13 @@ class DataFetchFactory {
       console.dir(data);
       if (data?._type === 'UpcomingListings') {
         const programs  = data._embedded.programs;
-        const filtered = [];
         // _embedded.programs[0].partOfSeason.seasonNumber
         // _embedded.programs[0].name
         // _embedded.programs[0]._embedded.upcomingListings._embedded.listings[0].airingType === 'REPEAT'
         // _embedded.programs[0]._embedded.upcomingListings._embedded.listings[0]._forms.scheduleDateTime
 
-        console.dir(programs);
-        for (let i = 0; i < programs.length; i++) {
-          if (programs[i].partOfSeason?.seasonNumber > 30) {
-            filtered.push(programs[i]);
-            // console.log(programs[i].name);
-          }
-        }
-
-        return filtered;
+        // console.dir(programs);
+        return programs;
       }
 
       return null;

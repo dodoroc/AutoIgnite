@@ -25,21 +25,22 @@ use \PDO;
 // Meh; needs work
 define('CONFIG', [
   ...parse_ini_file('../../.secrets/.ini', true),
-  ...parse_ini_file('./app.ini', true),
+  ...parse_ini_file('../conf/app.ini', true),
 ]);
 ini_set('error_log', CONFIG['logger']['file']['err']);
 
 
 final class App
 {
-  public function __construct()
-  {
+  private function addDepLogger() {
     DepContainer::register('logger', function() {
       $file = CONFIG['logger']['file']['app'];
       return new Logger($file);
     });
-    DepContainer::get('logger')->log("App start! {$_SERVER['REQUEST_URI']}\n");
+    // DepContainer::get('logger')->log("App start! {$_SERVER['REQUEST_URI']}\n");
+  }
 
+  private function addDepDatabase() {
     DepContainer::register('projects-dbc', function() {
       $dbc = null;
 
@@ -60,6 +61,12 @@ final class App
 
       return $dbc;
     });
+  }
+
+  public function __construct()
+  {
+    $this->addDepLogger();
+    $this->addDepDatabase();
   }
 
   public function run() : ControllerInterface
