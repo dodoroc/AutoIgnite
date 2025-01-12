@@ -68,8 +68,11 @@ final class App
     $this->addDepLogger($conf);
     $this->addDepDatabase($conf);
 
-    $udp = $this->ioc->get(DefaultDatabase::class);
+    $udp = $this->ioc->get(UDPLogger::class);
     $udp->log('testing');
+
+    $log = $this->ioc->get(FileLogger::class);
+    $log->log('testing');
   }
 
   public function run() : ControllerInterface
@@ -94,7 +97,6 @@ try {
 }
 catch (Exception $ex) {
   $res = new ResponseServerError;
-  DepContainer::get('logger')->log("App exception!\n".$ex->__toString());
 }
 
 $res->vent();
