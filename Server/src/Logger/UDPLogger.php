@@ -29,7 +29,7 @@ final class UDPLogger implements LoggerInterface
 
   public function __construct(string $addr)
   {
-    [$ip, $port] = explode(':', $addr);
+    [$ip, $port] = [...explode(':', $addr), null];
 
     if ($ip && $port) {
       $socket = @socket_create(AF_INET, SOCK_DGRAM, SOL_UDP) ?: null;

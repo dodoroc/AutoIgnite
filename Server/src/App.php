@@ -25,7 +25,8 @@ use Server\Logger\{FileLogger, UDPLogger};
 
 final class App
 {
-  private Dependency $ioc = new Dependency;
+  // private Dependency $ioc = new Dependency;
+  private Dependency $ioc = null;
 
   private function addDepLogger($conf) {
     ini_set('error_log', $conf['logger']['path']['err']);
@@ -57,6 +58,8 @@ final class App
 
   public function __construct()
   {
+    $this->ioc = new Dependency;
+
     $this->ioc->set('conf', function() {
       return [
         ...parse_ini_file('../../.secrets/server.ini', true),
