@@ -60,7 +60,6 @@ final class App
   {
     $this->ioc = new Dependency;
 
-
     $this->ioc->set('conf', function() {
       return [
         ...parse_ini_file('../../.secrets/server.ini', true),
