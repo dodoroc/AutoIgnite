@@ -5,7 +5,7 @@
  */
 
 
-namespace Server;
+namespace Server\Logger;
 
 class Logger
 {

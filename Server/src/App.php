@@ -20,53 +20,56 @@ require '../vendor/autoload.php';
 
 use Server\Router\{SimpleRouter, HttpMethods};
 use Server\Controller\ControllerInterface;
-use \PDO;
-
-// Meh; needs work
-define('CONFIG', [
-  ...parse_ini_file('../../.secrets/.ini', true),
-  ...parse_ini_file('../conf/app.ini', true),
-]);
-ini_set('error_log', CONFIG['logger']['file']['err']);
-
+use Server\Domain\DefaultDatabase;
+use Server\Logger\{FileLogger, UDPLogger};
 
 final class App
 {
-  private function addDepLogger() {
-    DepContainer::register('logger', function() {
-      $file = CONFIG['logger']['file']['app'];
-      return new Logger($file);
+  private Dependency $ioc = new Dependency;
+
+  private function addDepLogger($conf) {
+    ini_set('error_log', $conf['logger']['path']['err']);
+
+    $this->ioc->set(FileLogger::class, function() {
+      $file = $conf['logger']['path']['app'];
+      return new FileLogger($file);
     });
-    // DepContainer::get('logger')->log("App start! {$_SERVER['REQUEST_URI']}\n");
+
+    $this->ioc->set(UDPLogger::class, function() {
+      $addr = $conf['logger']['udp'];
+      return new UDPLogger($addr);
+    });
   }
 
-  private function addDepDatabase() {
-    DepContainer::register('projects-dbc', function() {
-      $dbc = null;
+  private function addDepDatabase($conf) {
+    $this->ioc->set(DefaultDatabase::class, function() {
+      $dsn = $conf['database']['projects']['dsn'];
+      $usr = $conf['database']['projects']['usr'];
+      $pwd = $conf['database']['projects']['pwd'];
 
-      try {
-        $dsn = CONFIG['dsn']['projects'];
-        $usr = CONFIG['database']['projects']['usr'];
-        $pwd = CONFIG['database']['projects']['pwd'];
-
-        $dbc = new PDO($dsn, $usr, $pwd, [
-          PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-          PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
-          PDO::ATTR_PERSISTENT => true,
-        ]);
-      }
-      catch (Exception $ex) {
-        DepContainer::get('logger')->log("Cannot connect to database!\n".$ex->__toString());
-      }
-
-      return $dbc;
+      return new DefaultDatabase($dsn, $usr, $pwd, [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
+        PDO::ATTR_PERSISTENT => true,
+      ]);
     });
   }
 
   public function __construct()
   {
-    $this->addDepLogger();
-    $this->addDepDatabase();
+    $this->ioc->set('conf', function() {
+      return [
+        ...parse_ini_file('../../.secrets/server.ini', true),
+        ...parse_ini_file('../server.ini', true),
+      ];
+    });
+    $conf = $this->ioc->get('conf');
+
+    $this->addDepLogger($conf);
+    $this->addDepDatabase($conf);
+
+    $udp = $this->ioc->get(DefaultDatabase::class);
+    $udp->log('testing');
   }
 
   public function run() : ControllerInterface
