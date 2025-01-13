@@ -7,9 +7,10 @@
 
 namespace Server\Domain;
 
-class DefaultDatabase extends \PDO
+use \PDO;
+
+class DefaultDatabase extends PDO
 {
-  /*
   public function __construct(string $dsn, string $usr, string $pwd) {
     parent::__construct($dsn, $usr, $pwd, [
       PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -17,5 +18,4 @@ class DefaultDatabase extends \PDO
       PDO::ATTR_PERSISTENT => true,
     ]);
   }
-  */
 }

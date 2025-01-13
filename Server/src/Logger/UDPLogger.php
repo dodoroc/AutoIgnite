@@ -24,17 +24,17 @@ namespace Server\Logger;
 
 final class UDPLogger implements LoggerInterface
 {
-  private Socket $socket = null;
+  private \Socket|null $socket = null;
   private const MAX_LEN = 65467;
 
   public function __construct(string $addr)
   {
-    [$ip, $port] = [...explode(':', $addr), null];
+    [$ip, $port] = explode(':', $addr);
 
     if ($ip && $port) {
       $socket = @socket_create(AF_INET, SOCK_DGRAM, SOL_UDP) ?: null;
       if ($socket) {
-        if (socket_connect($socket, $ip, $port)) {
+        if (socket_connect($socket, $ip, intval($port))) {
           $this->socket = $socket;
         }
       }
@@ -48,7 +48,7 @@ final class UDPLogger implements LoggerInterface
     }
   }
 
-  public function log(string $msg) : void
+  public function log(string $msg): void
   {
     if ($this->socket) {
       $msg = trim($msg);
@@ -56,7 +56,7 @@ final class UDPLogger implements LoggerInterface
       if ($msg) {
         do {
           $len = min(static::MAX_LEN, strlen($msg));
-          socket_send($this->socket, $msg, $len);
+          socket_send($this->socket, $msg, $len, 0);
           $msg = substr($msg, $len);
         } while ($msg);
       }

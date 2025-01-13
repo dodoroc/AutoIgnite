@@ -9,5 +9,5 @@ namespace Server\Response;
 
 interface ResponseInterface
 {
-  public function vent() : void;
+  public function vent(): void;
 }

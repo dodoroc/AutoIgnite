@@ -7,17 +7,17 @@
 
 namespace Server;
 
-final class Dependency implements DepedencyInterface
+final class Dependency implements DependencyInterface
 {
   private $dependencies = [];
   private $initializers = [];
 
-  public function has(string $name) : bool
+  public function has(string $name): bool
   {
-    return array_key_exists($name, $this->$dependency);
+    return array_key_exists($name, $this->dependencies);
   }
 
-  public function get(string $name) : mixed
+  public function get(string $name): mixed
   {
     if ($this->has($name)) {
       return $this->dependencies[$name];
@@ -33,7 +33,7 @@ final class Dependency implements DepedencyInterface
     return null;
   }
 
-  public function set(string $name, callable $initializer) : void
+  public function set(string $name, callable $initializer): void
   {
     $this->initializers[$name] = $initializer;
   }

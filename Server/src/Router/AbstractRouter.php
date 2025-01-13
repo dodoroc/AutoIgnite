@@ -12,7 +12,7 @@ use Server\Controller\{ControllerInterface, ErrorNotFoundController, ErrorBadReq
 
 abstract class AbstractRouter
 {
-  protected function search(array $node, array $paths, int $ndx, int $len, array $vars = []) : Routing|null
+  protected function search(array $node, array $paths, int $ndx, int $len, array $vars = []): Routing|null
   {
     $seg = $paths[$ndx] ?? '.';
 
@@ -48,7 +48,7 @@ abstract class AbstractRouter
     return null;
   }
 
-  public function route(string $method, array $path) : ControllerInterface
+  public function route(string $method, array $path): ControllerInterface
   {
     $routing = $this->search($this->routes, $path, 0, count($path));
 

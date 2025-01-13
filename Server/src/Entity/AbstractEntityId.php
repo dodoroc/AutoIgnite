@@ -12,14 +12,14 @@ abstract class AbstractEntityId implements EntityIdInterface, \JsonSerializable
   public function __construct(public readonly string $value)
   {}
 
-  public function __toString() : string
+  public function __toString(): string
   {
     return $this->value;
   }
 
   // See EntityIdInterface for the rules this was coded for
   // /''|[0-9]{19}/
-  public function hasValidKey(bool $isEmptyValid = false) : bool
+  public function hasValidKey(bool $isEmptyValid = false): bool
   {
     if ($isEmptyValid && $this->value === '')  return true;
 
@@ -29,7 +29,7 @@ abstract class AbstractEntityId implements EntityIdInterface, \JsonSerializable
     return true;
   }
 
-  public function jsonSerialize() : mixed
+  public function jsonSerialize(): mixed
   {
     return $this->value;
   }

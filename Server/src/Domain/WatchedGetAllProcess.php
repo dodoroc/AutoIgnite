@@ -7,18 +7,16 @@
 
 namespace Server\Domain;
 
-use \PDO;
+use Server\Domain\DefaultDatabase;
+// use \PDO;
 
 final class WatchedGetAllProcess extends AbstractProcess
 {
-  private PDO|null $dbc = null;
-
-  public function __construct()
+  public function __construct(private DefaultDatabase $dbc)
   {
-    $this->dbc = \Server\DepContainer::get('projects-dbc');
   }
 
-  private function createQuery() : string
+  private function createQuery(): string
   {
     $sql = <<<'SQL'
       SELECT program_id
@@ -28,7 +26,7 @@ final class WatchedGetAllProcess extends AbstractProcess
     return $sql;
   }
 
-  public function execute() : void
+  public function execute(): void
   {
     $this->results = new \StdClass;
 

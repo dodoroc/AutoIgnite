@@ -13,5 +13,5 @@ interface EntityIdInterface
   // By default hasValidKey will not consider an empty
   // string as valid, so in cases where needed we can
   // override this behavious
-  public function hasValidKey(bool $isEmptyValid = false) : bool;
+  public function hasValidKey(bool $isEmptyValid = false): bool;
 }

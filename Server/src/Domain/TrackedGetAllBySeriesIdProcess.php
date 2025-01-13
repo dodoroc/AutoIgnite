@@ -8,24 +8,21 @@
 namespace Server\Domain;
 
 use Server\Entity\{SeriesId, ProgramId, Tracked};
-use \PDO;
+use Server\Domain\DefaultDatabase;
 
 final class TrackedGetAllBySeriesIdProcess extends AbstractProcess
 {
-  private PDO|null $dbc = null;
-
-  public function __construct(private SeriesId $seriesId)
+  public function __construct(private DefaultDatabase $dbc, private SeriesId $seriesId)
   {
-    $this->dbc = \Server\DepContainer::get('projects-dbc');
   }
 
-  private function createQuery() : string
+  private function createQuery(): string
   {
     $sql = 'SELECT name,aired_on,watched_on,program_id,seep_key FROM tracker.series_'.$this->seriesId;
     return $sql;
   }
 
-  public function execute() : void
+  public function execute(): void
   {
     $this->results = [];
 

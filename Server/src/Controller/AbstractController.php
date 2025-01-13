@@ -16,5 +16,5 @@ abstract class AbstractController implements ControllerInterface
     protected readonly array $pathData
   ) {}
 
-  abstract public function execute() : ResponseInterface;
+  abstract public function execute(): ResponseInterface;
 }

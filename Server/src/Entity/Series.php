@@ -16,7 +16,7 @@ final class Series extends AbstractEntity
     public readonly int $seasonMax,
   ) {}
 
-  public function isValid() : bool
+  public function isValid(): bool
   {
     return true;
   }

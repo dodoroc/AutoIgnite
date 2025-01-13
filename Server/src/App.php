@@ -7,16 +7,8 @@
 
 namespace Server;
 
-/*
-function f(string $msg)
-{
-  $fp = fopen('php://stderr', 'w');
-  fwrite($fp, $msg);
-  fclose($fp);
-}
-//*/
-
 require '../vendor/autoload.php';
+require 'helpers.php';
 
 use Server\Router\{SimpleRouter, HttpMethods};
 use Server\Controller\ControllerInterface;
@@ -25,61 +17,58 @@ use Server\Logger\{FileLogger, UDPLogger};
 
 final class App
 {
-  // private Dependency $ioc = new Dependency;
-  private Dependency $ioc = null;
+  public static Dependency $dependencies;
 
-  private function addDepLogger($conf) {
+  private function addDepLogger(array $conf): void
+  {
     ini_set('error_log', $conf['logger']['path']['err']);
 
-    $this->ioc->set(FileLogger::class, function() {
+    static::$dependencies->set(FileLogger::class, function() use ($conf) {
       $file = $conf['logger']['path']['app'];
       return new FileLogger($file);
     });
 
-    $this->ioc->set(UDPLogger::class, function() {
+    static::$dependencies->set(UDPLogger::class, function() use ($conf) {
       $addr = $conf['logger']['udp'];
       return new UDPLogger($addr);
     });
   }
 
-  private function addDepDatabase($conf) {
-    $this->ioc->set(DefaultDatabase::class, function() {
+  private function addDepDatabase(array $conf): void
+  {
+    static::$dependencies->set(DefaultDatabase::class, function() use ($conf) {
       $dsn = $conf['database']['projects']['dsn'];
       $usr = $conf['database']['projects']['usr'];
       $pwd = $conf['database']['projects']['pwd'];
 
-      return new DefaultDatabase($dsn, $usr, $pwd, [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
-        PDO::ATTR_PERSISTENT => true,
-      ]);
+      return new DefaultDatabase($dsn, $usr, $pwd);
     });
   }
 
   public function __construct()
   {
-    $this->ioc = new Dependency;
+    static::$dependencies = new Dependency;
 
-
-    $this->ioc->set('conf', function() {
-      return [
-        ...parse_ini_file('../../.secrets/server.ini', true),
-        ...parse_ini_file('../server.ini', true),
-      ];
+    static::$dependencies->set('conf', function() {
+      return array_merge_recursive(
+        parse_ini_file('../../.secrets/server.ini', true),
+        parse_ini_file('../server.ini', true),
+      );
     });
-    $conf = $this->ioc->get('conf');
 
+    $conf = static::$dependencies->get('conf');
     $this->addDepLogger($conf);
     $this->addDepDatabase($conf);
 
-    $udp = $this->ioc->get(UDPLogger::class);
+    $udp = static::$dependencies->get(UDPLogger::class);
     $udp->log('testing');
+    $udp->log(print_r(static::$dependencies, true));
 
-    $log = $this->ioc->get(FileLogger::class);
+    $log = static::$dependencies->get(FileLogger::class);
     $log->log('testing');
   }
 
-  public function run() : ControllerInterface
+  public function run(): ControllerInterface
   {
     $method = $_SERVER['REQUEST_METHOD'];
 
@@ -94,6 +83,7 @@ final class App
     return $router->route($method, $path);
   }
 }
+
 
 try {
   $ctl = (new App)->run();

@@ -8,18 +8,15 @@
 namespace Server\Domain;
 
 use Server\Entity\{SeriesId, Series};
-use \PDO;
+use Server\Domain\DefaultDatabase;
 
 final class SeriesGetAllProcess extends AbstractProcess
 {
-  private PDO|null $dbc = null;
-
-  public function __construct()
+  public function __construct(private DefaultDatabase $dbc)
   {
-    $this->dbc = \Server\DepContainer::get('projects-dbc');
   }
 
-  private function createQuery() : string
+  private function createQuery(): string
   {
     $sql = <<<'SQL'
       SELECT series_id, name, release_year, season_min, season_max
@@ -29,7 +26,7 @@ final class SeriesGetAllProcess extends AbstractProcess
     return $sql;
   }
 
-  public function execute() : void
+  public function execute(): void
   {
     $this->results = new \StdClass;
 

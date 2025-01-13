@@ -15,10 +15,6 @@ class ComposerStaticInit3c5b8e3e48d84f263c128cb5334f1b38
         array (
             'Server\\' => 7,
         ),
-        'A' => 
-        array (
-            'App\\' => 4,
-        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -29,10 +25,6 @@ class ComposerStaticInit3c5b8e3e48d84f263c128cb5334f1b38
         'Server\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
-        ),
-        'App\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/',
         ),
     );
 
@@ -50,8 +42,10 @@ class ComposerStaticInit3c5b8e3e48d84f263c128cb5334f1b38
         'Server\\Controller\\UnwatchedController' => __DIR__ . '/../..' . '/src/Controller/UnwatchedController.php',
         'Server\\Controller\\UpdateMaterializedViewsController' => __DIR__ . '/../..' . '/src/Controller/UpdateMaterializedViewsController.php',
         'Server\\Controller\\WatchedController' => __DIR__ . '/../..' . '/src/Controller/WatchedController.php',
-        'Server\\DepContainer' => __DIR__ . '/../..' . '/src/DepContainer.php',
+        'Server\\Dependency' => __DIR__ . '/../..' . '/src/Dependency.php',
+        'Server\\DependencyInterface' => __DIR__ . '/../..' . '/src/DependencyInterface.php',
         'Server\\Domain\\AbstractProcess' => __DIR__ . '/../..' . '/src/Domain/AbstractProcess.php',
+        'Server\\Domain\\DefaultDatabase' => __DIR__ . '/../..' . '/src/Domain/DefaultDatabase.php',
         'Server\\Domain\\ProcessInterface' => __DIR__ . '/../..' . '/src/Domain/ProcessInterface.php',
         'Server\\Domain\\SeriesGetAllProcess' => __DIR__ . '/../..' . '/src/Domain/SeriesGetAllProcess.php',
         'Server\\Domain\\TrackedGetAllBySeriesIdProcess' => __DIR__ . '/../..' . '/src/Domain/TrackedGetAllBySeriesIdProcess.php',
@@ -67,7 +61,10 @@ class ComposerStaticInit3c5b8e3e48d84f263c128cb5334f1b38
         'Server\\Entity\\Series' => __DIR__ . '/../..' . '/src/Entity/Series.php',
         'Server\\Entity\\SeriesId' => __DIR__ . '/../..' . '/src/Entity/SeriesId.php',
         'Server\\Entity\\Tracked' => __DIR__ . '/../..' . '/src/Entity/Tracked.php',
-        'Server\\Logger' => __DIR__ . '/../..' . '/src/Logger.php',
+        'Server\\Logger\\ErrorLogger' => __DIR__ . '/../..' . '/src/Logger/ErrorLogger.php',
+        'Server\\Logger\\FileLogger' => __DIR__ . '/../..' . '/src/Logger/FileLogger.php',
+        'Server\\Logger\\LoggerInterface' => __DIR__ . '/../..' . '/src/Logger/LoggerInterface.php',
+        'Server\\Logger\\UDPLogger' => __DIR__ . '/../..' . '/src/Logger/UDPLogger.php',
         'Server\\Response\\AbstractResponse' => __DIR__ . '/../..' . '/src/Response/AbstractResponse.php',
         'Server\\Response\\Response' => __DIR__ . '/../..' . '/src/Response/Response.php',
         'Server\\Response\\ResponseBadRequest' => __DIR__ . '/../..' . '/src/Response/ResponseBadRequest.php',
@@ -85,13 +82,6 @@ class ComposerStaticInit3c5b8e3e48d84f263c128cb5334f1b38
         'Server\\Router\\HttpMethods' => __DIR__ . '/../..' . '/src/Router/HttpMethods.php',
         'Server\\Router\\Routing' => __DIR__ . '/../..' . '/src/Router/Routing.php',
         'Server\\Router\\SimpleRouter' => __DIR__ . '/../..' . '/src/Router/SimpleRouter.php',
-        'Server\\Trait\\MagicGetTrait' => __DIR__ . '/../..' . '/src/Trait/MagicGetTrait.php',
-        'Server\\Trait\\MagicSetTrait' => __DIR__ . '/../..' . '/src/Trait/MagicSetTrait.php',
-        'Server\\Trait\\UseContentDataTrait' => __DIR__ . '/../..' . '/src/Trait/UseContentDataTrait.php',
-        'Server\\Trait\\UseCookieDataTrait' => __DIR__ . '/../..' . '/src/Trait/UseCookieDataTrait.php',
-        'Server\\Trait\\UseHeaderDataTrait' => __DIR__ . '/../..' . '/src/Trait/UseHeaderDataTrait.php',
-        'Server\\Trait\\UseQueryDataTrait' => __DIR__ . '/../..' . '/src/Trait/UseQueryDataTrait.php',
-        'Server\\Trait\\UseRawBodyDataTrait' => __DIR__ . '/../..' . '/src/Trait/UseRawBodyDataTrait.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

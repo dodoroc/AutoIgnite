@@ -9,36 +9,38 @@ namespace Server\Controller;
 
 use Server\Router\HttpMethods;
 use Server\Response\{Response, ResponseInterface, ResponseSuccess, ResponseMisdirected};
-use Server\Domain\{WatchedGetAllProcess, WatchedPutSomeProcess};
+use Server\Domain\{DefaultDatabase, WatchedGetAllProcess, WatchedPutSomeProcess};
 
 // use function \Server\f;
 
 final class WatchedController extends AbstractController
 {
   // return an object with programIds as keys that were watched
-  private function doGet() : ResponseInterface
+  private function doGet(): ResponseInterface
   {
-    $proc = new WatchedGetAllProcess;
+    $dbc = deps()->get(DefaultDatabase::class);
+    $proc = new WatchedGetAllProcess($dbc);
     $proc->execute();
 
     $resp = Response::asJSON($proc, ResponseSuccess::class);
     return $resp;
   }
 
-  private function doPut() : ResponseInterface
+  private function doPut(): ResponseInterface
   {
     $raw = file_get_contents('php://input');
     $watchedItems = json_decode($raw);
     $raw = null;
 
-    $proc = new WatchedPutSomeProcess($watchedItems);
+    $dbc = deps()->get(DefaultDatabase::class);
+    $proc = new WatchedPutSomeProcess($dbc, $watchedItems);
     $proc->execute();
 
     $resp = new ResponseSuccess;
     return $resp;
   }
 
-  public function execute() : ResponseInterface
+  public function execute(): ResponseInterface
   {
     $resp = new ResponseMisdirected;
 

@@ -8,18 +8,16 @@
 namespace Server\Domain;
 
 use Server\Entity\{SeriesId};
+use Server\Domain\DefaultDatabase;
 use \PDO;
 
 final class UnwatchedBySeriesIdProcess extends AbstractProcess
 {
-  private PDO|null $dbc = null;
-
-  public function __construct(private SeriesId $seriesId)
+  public function __construct(private DefaultDatabase $dbc, private SeriesId $seriesId)
   {
-    $this->dbc = \Server\DepContainer::get('projects-dbc');
   }
 
-  private function createQuery() : string
+  private function createQuery(): string
   {
     $sql = <<<'SQL'
       SELECT tracked.name FROM tracker.tracked
@@ -31,7 +29,7 @@ final class UnwatchedBySeriesIdProcess extends AbstractProcess
     return $sql;
   }
 
-  public function execute() : void
+  public function execute(): void
   {
     $this->results = [];
 

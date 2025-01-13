@@ -23,7 +23,7 @@ final class FileLogger implements LoggerInterface
     }
   }
 
-  public function log(string $msg) : void
+  public function log(string $msg): void
   {
     if ($this->handle) {
       $msg = trim($msg);

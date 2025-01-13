@@ -9,7 +9,7 @@ namespace Server\Logger;
 
 final class ErrorLogger implements LoggerInterface
 {
-  public function log($msg) : void
+  public function log($msg): void
   {
     $msg = trim($msg);
     $date = date('Y-m-d H:i:s');

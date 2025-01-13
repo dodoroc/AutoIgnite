@@ -9,5 +9,5 @@ namespace Server\Logger;
 
 interface LoggerInterface
 {
-  public function log(string $msg) : void;
+  public function log(string $msg): void;
 }

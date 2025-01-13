@@ -11,5 +11,5 @@ use Server\Response\ResponseInterface;
 
 interface ControllerInterface
 {
-  public function execute() : ResponseInterface;
+  public function execute(): ResponseInterface;
 }

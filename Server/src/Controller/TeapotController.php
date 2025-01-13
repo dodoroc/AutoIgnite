@@ -11,7 +11,7 @@ use Server\Response\{ResponseInterface, ResponseTeapot};
 
 final class TeapotController extends AbstractController
 {
-  public function execute() : ResponseInterface
+  public function execute(): ResponseInterface
   {
     return new ResponseTeapot;
   }

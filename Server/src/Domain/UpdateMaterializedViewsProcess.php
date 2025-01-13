@@ -7,18 +7,16 @@
 
 namespace Server\Domain;
 
-use \PDO;
+use Server\Domain\DefaultDatabase;
+// use \PDO;
 
 final class UpdateMaterializedViewsProcess extends AbstractProcess
 {
-  private PDO|null $dbc = null;
-
-  public function __construct()
+  public function __construct(private DefaultDatabase $dbc)
   {
-    $this->dbc = \Server\DepContainer::get('projects-dbc');
   }
 
-  public function execute() : void
+  public function execute(): void
   {
     // $sql = <<<'SQL'
     //   EXECUTE FORMAT('REFRESH MATERIALIZED VIEW tracker.series_%s WITH DATA', ?);

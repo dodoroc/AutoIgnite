@@ -8,6 +8,6 @@ namespace Server\Entity;
 
 abstract class AbstractEntity implements EntityInterface//, JsonSerializable
 {
-  abstract public function isValid() : bool;
-  // abstract public function jsonSerialize() : mixed;
+  abstract public function isValid(): bool;
+  // abstract public function jsonSerialize(): mixed;
 }

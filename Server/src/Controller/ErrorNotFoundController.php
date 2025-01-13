@@ -11,7 +11,7 @@ use Server\Response\{ResponseInterface, ResponseNotFound};
 
 final class ErrorNotFoundController extends AbstractController
 {
-  public function execute() : ResponseInterface
+  public function execute(): ResponseInterface
   {
     return new ResponseNotFound;
   }

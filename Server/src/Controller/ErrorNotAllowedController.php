@@ -11,7 +11,7 @@ use Server\Response\{ResponseInterface, ResponseNotAllowed};
 
 final class ErrorNotAllowedController extends AbstractController
 {
-  public function execute() : ResponseInterface
+  public function execute(): ResponseInterface
   {
     return new ResponseNotAllowed;
   }

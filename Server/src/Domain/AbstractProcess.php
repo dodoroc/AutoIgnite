@@ -10,10 +10,10 @@ abstract class AbstractProcess implements ProcessInterface, \JsonSerializable
 {
   protected mixed $results;
 
-  public function jsonSerialize() : mixed
+  public function jsonSerialize(): mixed
   {
     return $this->results;
   }
 
-  abstract public function execute() : void;
+  abstract public function execute(): void;
 }

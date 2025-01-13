@@ -8,5 +8,5 @@ namespace Server\Domain;
 
 interface ProcessInterface
 {
-  public function execute() : void;
+  public function execute(): void;
 }

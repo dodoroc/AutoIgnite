@@ -16,7 +16,7 @@ final class Tracked extends AbstractEntity
     public readonly string|null $seepKey,
   ) {}
 
-  public function isValid() : bool
+  public function isValid(): bool
   {
     return true;
   }

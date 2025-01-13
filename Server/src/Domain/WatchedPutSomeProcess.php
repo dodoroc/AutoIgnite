@@ -9,17 +9,15 @@
 namespace Server\Domain;
 
 use \PDO;
+use Server\Domain\DefaultDatabase;
 
 final class WatchedPutSomeProcess extends AbstractProcess
 {
-  private PDO|null $dbc = null;
-
-  public function __construct(private array $watchedItems)
+  public function __construct(private DefaultDatabase $dbc, private array $watchedItems)
   {
-    $this->dbc = \Server\DepContainer::get('projects-dbc');
   }
 
-  private function createQuery() : string
+  private function createQuery(): string
   {
     $sql = <<<'SQL'
       INSERT INTO tracker.watched (program_id, watched_on, type, name, aired_on, season, series_id)
@@ -36,7 +34,7 @@ final class WatchedPutSomeProcess extends AbstractProcess
     return $sql;
   }
 
-  public function execute() : void
+  public function execute(): void
   {
     $sql = $this->createQuery();
 
